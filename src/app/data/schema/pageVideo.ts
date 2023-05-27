@@ -1,3 +1,5 @@
+import Page from "./page";
+
 export interface PageVideo{
   multipartFile?: any
 
@@ -5,5 +7,5 @@ export interface PageVideo{
 
   videoPath?: string
 
-  page?: any
+  page?: Page
 }

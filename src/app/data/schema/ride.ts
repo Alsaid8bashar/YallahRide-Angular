@@ -12,7 +12,7 @@ export interface Ride{
 
   isInstantBooking?: boolean
 
-  date?: any
+  date?: Date
 
   seats?: number
 

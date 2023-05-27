@@ -1,3 +1,5 @@
+import {User} from "./user";
+
 export default interface Account {
   id?: number
 
@@ -7,7 +9,7 @@ export default interface Account {
 
   passwordHash?: string
 
-  date?: any
+  date?: Date
 
   user?: User
 

@@ -1,4 +1,5 @@
 import {CarImage} from "./carImage";
+import {User} from "./user";
 
 export interface Car{
   id?: number

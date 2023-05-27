@@ -1,4 +1,5 @@
 import {User} from "./user";
+import {Ride} from "./ride";
 
 export interface Report{
   id?: number
@@ -7,9 +8,9 @@ export interface Report{
 
   description?: string
 
-  date?: any
+  date?: Date
 
-  ride?: any
+  ride?: Ride
 
   user?: User
 }
