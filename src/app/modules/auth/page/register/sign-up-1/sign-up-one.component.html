@@ -4,7 +4,7 @@
       <div class="bg-mode shadow rounded-3 overflow-hidden">
         <div class="row g-0">
           <!-- Vector Image -->
-          <div class="col-lg-6 d-flex align-items-center order-2 order-lg-1">
+          <div class="col-lg-6 d-md-flex align-items-center order-2 order-lg-1">
             <div class="p-3 p-lg-5">
               <img src="/assets/images/element/signin.svg" alt="">
             </div>
@@ -14,44 +14,56 @@
 
           <!-- Information -->
           <div class="col-lg-6 order-1">
-            <div class="p-4 p-sm-7">
+            <div class="p-4 p-sm-6">
               <!-- Logo -->
               <a href="index.html">
                 <img class="h-50px mb-4" src="/assets/images/logo-icon.svg" alt="logo">
               </a>
               <!-- Title -->
-              <h1 class="mb-2 h3">Welcome back</h1>
-              <p class="mb-0">New here?<a href="sign-up.html"> Create an account</a></p>
+              <h1 class="mb-2 h3">Create new account</h1>
+              <p class="mb-0">Already a member?<a [routerLink]="['/auth/login']"> Log in</a></p>
 
               <!-- Form START -->
-              <form class="mt-4 text-start">
-                <!-- Email -->
+              <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="mt-4 text-start">
+                <!-- Phone Number -->
                 <div class="mb-3">
                   <label class="form-label">Enter Phone Number</label>
+                  <input type="number" class="form-control">
+                  <app-control-messages [control]="f['phoneNumber']"></app-control-messages>
+                </div>
+                <!-- Email -->
+                <div class="mb-3">
+                  <label class="form-label">Enter Email Address</label>
                   <input type="email" class="form-control">
+                  <app-control-messages [control]="f['email']"></app-control-messages>
                 </div>
                 <!-- Password -->
                 <div class="mb-3 position-relative">
                   <label class="form-label">Enter password</label>
                   <input class="form-control fakepassword" type="password" id="psw-input">
+                  <app-control-messages [control]="f['password']"></app-control-messages>
                   <span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
                 </div>
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control">
+                  <app-control-messages [control]="f['username']"></app-control-messages>
+                </div>
                 <!-- Remember me -->
-                <div class="mb-3 d-sm-flex justify-content-between">
-                  <div>
-                    <input type="checkbox" class="form-check-input" id="rememberCheck">
-                    <label class="form-check-label" for="rememberCheck">Remember me?</label>
-                  </div>
-                  <a href="forgot-password.html">Forgot password?</a>
+                <div class="mb-3">
+                  <input type="checkbox" class="form-check-input" id="rememberCheck">
+                  <label class="form-check-label" for="rememberCheck">Keep me signed in</label>
                 </div>
                 <!-- Button -->
-                <div><button type="submit" class="btn btn-primary w-100 mb-0">Login</button></div>
-
+                <div>
+                  <button  type="submit" class="btn btn-primary w-100 mb-0">Sign up</button>
+                </div>
 
                 <!-- Copyright -->
-                <div class="text-primary-hover mt-3 text-center"> Copyrights ©2023 YallahRide. </div>
+                <div class="text-primary-hover mt-3 text-center"> Copyrights ©2023 YallahRide.</div>
               </form>
               <!-- Form END -->
             </div>
