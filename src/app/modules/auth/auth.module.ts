@@ -16,7 +16,6 @@ import {TwoFactorAuthComponent} from "./page/register/two-factor-auth/two-factor
   imports: [
     CommonModule,
     AuthRoutingModule,
-
   ]
 })
 export class AuthModule {

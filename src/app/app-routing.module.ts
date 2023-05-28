@@ -4,6 +4,11 @@ import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/auth/login',
+    pathMatch: 'full'
+  },
+  {
     path: 'auth',
     component: AuthLayoutComponent,
     loadChildren: () =>
@@ -12,7 +17,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    })
+  ],
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }
