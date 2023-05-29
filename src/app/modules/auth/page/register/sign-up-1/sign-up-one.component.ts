@@ -1,6 +1,9 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../../../../data/service/account.service";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {emailExistsValidator} from "./emailExistence.validator";
 
 @Component({
   selector: 'app-sign-up-1',
@@ -9,28 +12,49 @@ import {FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} fro
 })
 export class SignUpOneComponent {
 
-  loginForm: UntypedFormGroup;
+  register: FormGroup = new FormGroup({
+    phoneNumber: new FormControl('', [Validators.required,]),
+    password: new FormControl('', [Validators.required,
+      Validators.minLength(8),
+      Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]),
+    confirmPassword: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email, ],[emailExistsValidator(this.authService)] )
+  });
 
-  constructor(private formBuilder: UntypedFormBuilder,
-              private router: Router) {
-    this.loginForm = this.buildForm();
+  
+
+  constructor(private router: Router, private http:HttpClient, private authService: AuthService) {
+
   }
 
-  get f() {
-    return this.loginForm.controls;
+  private checkPhoneNumberExistence(phoneNumber:string) : boolean{
+    this.authService.checkPhoneNumberExistence(this.register.value.phoneNumber)
+      .subscribe(
+        (response: boolean) => {
+          return response;
+        }
+      );
+    return false;
+  }
+
+  private checkEmailExistence(email:string) : boolean{
+    this.authService.checkEmailExistence(this.register.value.email)
+      .subscribe(
+        (response: boolean) => {
+          return response;
+        }
+      );
+    return false;
   }
 
   onSubmit() {
-    this.router.navigate(['/two-factor-authentication'])
-  }
+    if(!this.checkEmailExistence(this.register.value.email) &&
+       !this.checkPhoneNumberExistence(this.register.value.phoneNumber)){
+      this.router.navigate(['/two-factor-authentication'])
+    }
+    else
+    {
 
-  private buildForm() {
-    this.loginForm = new UntypedFormGroup({
-      phoneNumber: new UntypedFormControl(''),
-      email: new UntypedFormControl(''),
-      password: new UntypedFormControl(''),
-      confirmPassword: new UntypedFormControl(''),
-    });
-    return this.loginForm;
+    }
   }
 }

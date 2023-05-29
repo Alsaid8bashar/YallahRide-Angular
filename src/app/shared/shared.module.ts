@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {ControlMessagesComponent} from "./component/control-messages/control-messages.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {ControlMessagesComponent} from "./component/control-messages/control-mes
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
     RouterModule,
     ControlMessagesComponent,
   ]

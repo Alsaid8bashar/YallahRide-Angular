@@ -21,45 +21,71 @@
               </a>
               <!-- Title -->
               <h1 class="mb-2 h3">Create new account</h1>
-              <p class="mb-0">Already a member?<a [routerLink]="['/auth/login']"> Log in</a></p>
+              <p class="mb-0">Already a member?<a routerLink="/auth/sign-in"> Log in</a></p>
 
               <!-- Form START -->
-              <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="mt-4 text-start">
+              <form class="mt-4 text-start" [formGroup]="register" >
                 <!-- Phone Number -->
                 <div class="mb-3">
                   <label class="form-label">Enter Phone Number</label>
-                  <input type="number" class="form-control">
-                  <app-control-messages [control]="f['phoneNumber']"></app-control-messages>
+                  <input type="tel" class="form-control" formControlName="phoneNumber">
+                  <div>
+                    <mat-error
+                      *ngIf="register.controls['phoneNumber'].hasError('required')&& register.controls['phoneNumber'].touched">
+                      phone number is <strong>required</strong></mat-error>
+                  </div>
                 </div>
                 <!-- Email -->
                 <div class="mb-3">
-                  <label class="form-label">Enter Email Address</label>
-                  <input type="email" class="form-control">
-                  <app-control-messages [control]="f['email']"></app-control-messages>
+                  <label class="form-label">Enter your email</label>
+                  <input  type="email" class="form-control" formControlName="email">
+                  <div>
+                    <mat-error
+                      *ngIf="register.controls['email'].hasError('required')&& register.controls['email'].touched">
+                      email is <strong>required</strong></mat-error>
+                    <mat-error
+                      *ngIf="register.controls['email'].hasError('email')&& register.controls['email'].touched">
+                      enter a <strong>valid</strong> email address</mat-error>
+                    <mat-error
+                      *ngIf="register.controls['email'].hasError('emailExists')&& register.controls['email'].touched">
+                      email address already <strong>exist</strong></mat-error>
+                  </div>
                 </div>
                 <!-- Password -->
                 <div class="mb-3 position-relative">
                   <label class="form-label">Enter password</label>
-                  <input class="form-control fakepassword" type="password" id="psw-input">
-                  <app-control-messages [control]="f['password']"></app-control-messages>
+                  <input class="form-control fakepassword" type="password" id="psw-input"
+                         formControlName="password">
                   <span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
+                  <div>
+                    <mat-error
+                      *ngIf="register.controls['password'].hasError('required')&& register.controls['password'].touched">
+                      password is <strong>required</strong></mat-error>
+                    <mat-error
+                      *ngIf="register.controls['password'].hasError('minlength') && register.controls['password'].touched">
+                      Please enter a strong password
+                    </mat-error>
+                    <mat-error *ngIf="register.controls['password'].hasError('pattern') && register.controls['password'].touched">
+                      Password should contain at least one letter, one number, and one special character
+                    </mat-error>
+                  </div>
                 </div>
                 <!-- Confirm Password -->
                 <div class="mb-3">
                   <label class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control">
-                  <app-control-messages [control]="f['username']"></app-control-messages>
-                </div>
-                <!-- Remember me -->
-                <div class="mb-3">
-                  <input type="checkbox" class="form-check-input" id="rememberCheck">
-                  <label class="form-check-label" for="rememberCheck">Keep me signed in</label>
+                  <input type="password" class="form-control" formControlName="confirmPassword">
+                  <div>
+                    <mat-error
+                      *ngIf="register.controls['confirmPassword'].hasError('passwordMismatch') && register.controls['confirmPassword'].touched">
+                      Passwords do not match
+                    </mat-error>
+                  </div>
                 </div>
                 <!-- Button -->
                 <div>
-                  <button  type="submit" class="btn btn-primary w-100 mb-0">Sign up</button>
+                  <button (click)="onSubmit()" type="submit" class="btn btn-primary w-100 mb-0">Sign up</button>
                 </div>
 
                 <!-- Copyright -->

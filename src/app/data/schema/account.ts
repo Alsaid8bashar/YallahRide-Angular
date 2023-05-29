@@ -1,6 +1,6 @@
 import {User} from "./user";
 
-export default interface Account {
+export class Account {
   id?: number
 
   email?: string
