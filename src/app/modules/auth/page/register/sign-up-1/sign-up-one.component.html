@@ -24,28 +24,32 @@
               <p class="mb-0">Already a member?<a routerLink="/auth/sign-in"> Log in</a></p>
 
               <!-- Form START -->
-              <form class="mt-4 text-start" [formGroup]="register" >
+              <form class="mt-4 text-start" [formGroup]="register">
                 <!-- Phone Number -->
                 <div class="mb-3">
                   <label class="form-label">Enter Phone Number</label>
-                  <input type="tel" class="form-control" formControlName="phoneNumber">
+                  <input type="tel" class="form-control" formControlName="phoneNumber" >
                   <div>
                     <mat-error
                       *ngIf="register.controls['phoneNumber'].hasError('required')&& register.controls['phoneNumber'].touched">
                       phone number is <strong>required</strong></mat-error>
+                    <mat-error
+                      *ngIf="register.controls['phoneNumber'].hasError('phoneExists')&& register.controls['email'].touched">
+                      Phone number already <strong>exist</strong></mat-error>
                   </div>
                 </div>
                 <!-- Email -->
                 <div class="mb-3">
                   <label class="form-label">Enter your email</label>
-                  <input  type="email" class="form-control" formControlName="email">
+                  <input type="email" class="form-control" formControlName="email">
                   <div>
                     <mat-error
                       *ngIf="register.controls['email'].hasError('required')&& register.controls['email'].touched">
                       email is <strong>required</strong></mat-error>
                     <mat-error
                       *ngIf="register.controls['email'].hasError('email')&& register.controls['email'].touched">
-                      enter a <strong>valid</strong> email address</mat-error>
+                      enter a <strong>valid</strong> email address
+                    </mat-error>
                     <mat-error
                       *ngIf="register.controls['email'].hasError('emailExists')&& register.controls['email'].touched">
                       email address already <strong>exist</strong></mat-error>
@@ -67,7 +71,8 @@
                       *ngIf="register.controls['password'].hasError('minlength') && register.controls['password'].touched">
                       Please enter a strong password
                     </mat-error>
-                    <mat-error *ngIf="register.controls['password'].hasError('pattern') && register.controls['password'].touched">
+                    <mat-error
+                      *ngIf="register.controls['password'].hasError('pattern') && register.controls['password'].touched">
                       Password should contain at least one letter, one number, and one special character
                     </mat-error>
                   </div>
@@ -77,6 +82,9 @@
                   <label class="form-label">Confirm Password</label>
                   <input type="password" class="form-control" formControlName="confirmPassword">
                   <div>
+                    <mat-error
+                      *ngIf="register.controls['confirmPassword'].hasError('required')&& register.controls['confirmPassword'].touched">
+                      Confirm Password is <strong>required</strong></mat-error>
                     <mat-error
                       *ngIf="register.controls['confirmPassword'].hasError('passwordMismatch') && register.controls['confirmPassword'].touched">
                       Passwords do not match

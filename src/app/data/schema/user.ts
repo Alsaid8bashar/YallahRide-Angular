@@ -1,7 +1,7 @@
 import {TravelPreference} from "./travelPreference";
 import {Role} from "./role";
 
-export interface User{
+export class User{
   multipartFile?: any
 
   id?: number
@@ -21,4 +21,11 @@ export interface User{
   travelPreferences?: TravelPreference[]
 
   roles?: Role[]
+
+
+  constructor(firstName: string, lastName: string, gender: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+  }
 }

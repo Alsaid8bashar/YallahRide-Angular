@@ -23,34 +23,40 @@
               <h1 class="mb-2 h3">User information</h1>
 
               <!-- Form START -->
-              <form class="mt-4 text-start">
+              <form class="mt-4 text-start" [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
                 <!-- First name -->
                 <div class="mb-3">
                   <label class="form-label">First name</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="firstName">
+                  <div>
+                    <mat-error
+                      *ngIf="userInfoForm.controls['firstName'].hasError('required')&& userInfoForm.controls['firstName'].touched">
+                      First name is <strong>required</strong></mat-error>
+                  </div>
                 </div>
+
                 <!-- Last name -->
                 <div class="mb-3 position-relative">
                   <label class="form-label">Last name</label>
-                  <input type="text" class="form-control">
-                </div>
-                <!-- Email -->
-                <div class="mb-3 position-relative">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control">
+                  <input type="text" class="form-control" formControlName="lastName">
+                  <div>
+                    <mat-error
+                      *ngIf="userInfoForm.controls['lastName'].hasError('required')&& userInfoForm.controls['lastName'].touched">
+                      Last name is <strong>required</strong></mat-error>
+                  </div>
                 </div>
                 <!-- Nationality -->
                 <div class="mb-3 position-relative">
-                  <label class="form-label">Gender<span class="text-danger">*</span></label>
-                  <select class="form-select js-choice">
-                    <option value="">Select your gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                  <label class="form-label">Gender<span class="text-danger"></span></label>
+                  <select class="form-select js-choice"  formControlName="gender">
+<!--                                        <option disabled selected>Select your gender</option>-->
+                    <option selected value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
                 </div>
                 <!-- Button -->
                 <div>
-                  <button type="submit" class="btn btn-primary w-100 mb-0">Done</button>
+                  <button type="submit" class="btn btn-primary w-100 mb-0">Submit</button>
                 </div>
 
                 <!-- Copyright -->

@@ -21,22 +21,33 @@
               </a>
               <!-- Title -->
               <h1 class="mb-2 h3">Welcome back</h1>
-              <p class="mb-0">New here?<a [routerLink]="['/auth/sign-up']"> Create an account</a></p>
+              <p class="mb-0">New here?<a [routerLink]="['/auth/user-info']"> Create an account</a></p>
 
               <!-- Form START -->
-              <form class="mt-4 text-start">
+              <form class="mt-4 text-start" [formGroup]="login"  (ngSubmit)="onSubmit()">
                 <!-- Email -->
                 <div class="mb-3">
                   <label class="form-label">Enter Phone Number</label>
-                  <input type="email" class="form-control">
+                  <input type="email" class="form-control" formControlName="phoneNumber">
+                  <div>
+                    <mat-error
+                      *ngIf="login.controls['phoneNumber'].hasError('required')&& login.controls['phoneNumber'].touched">
+                      phone number is <strong>required</strong></mat-error>
+                  </div>
                 </div>
                 <!-- Password -->
                 <div class="mb-3 position-relative">
                   <label class="form-label">Enter password</label>
-                  <input class="form-control fakepassword" type="password" id="psw-input">
+                  <input class="form-control fakepassword" type="password" id="psw-input"
+                         formControlName="password">
                   <span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
+                  <div>
+                    <mat-error
+                      *ngIf="login.controls['password'].hasError('required')&& login.controls['password'].touched">
+                      password is <strong>required</strong></mat-error>
+                  </div>
                 </div>
                 <!-- Remember me -->
                 <div class="mb-3 d-sm-flex justify-content-between">
@@ -44,7 +55,7 @@
                     <input type="checkbox" class="form-check-input" id="rememberCheck">
                     <label class="form-check-label" for="rememberCheck">Remember me?</label>
                   </div>
-                  <a href="forgot-password.html">Forgot password?</a>
+                  <a routerLink="/auth/forget-password">Forgot password?</a>
                 </div>
                 <!-- Button -->
                 <div>

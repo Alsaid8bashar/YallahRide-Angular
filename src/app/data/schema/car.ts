@@ -1,7 +1,7 @@
 import {CarImage} from "./carImage";
 import {User} from "./user";
 
-export interface Car{
+export class Car{
   id?: number
 
   color?: string

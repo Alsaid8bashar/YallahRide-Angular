@@ -24,17 +24,14 @@
               <p class="mb-sm-0">We have to send a code to <b>+962798084013</b></p>
 
               <!-- Form START -->
-              <form class="mt-sm-4">
+              <form [formGroup]="form" class="mt-sm-4">
                 <!-- Input box -->
                 <p class="mb-1">Enter the code we have sent you:</p>
-                <div class="autotab d-flex justify-content-between gap-1 gap-sm-3 mb-2">
-                  <input type="text" maxlength="1" class="form-control text-center p-3">
-                  <input type="text" maxlength="1" class="form-control text-center p-3">
-                  <input type="text" maxlength="1" class="form-control text-center p-3">
-                  <input type="text" maxlength="1" class="form-control text-center p-3">
-                  <input type="text" maxlength="1" class="form-control text-center p-3">
+                <div class="autotab d-flex justify-content-between gap-1 gap-sm-3 mb-2" formArrayName="codes">
+                  <ng-container *ngFor="let control of codeControls.controls; let i = index;">
+                    <input type="text" maxlength="1" class="form-control text-center p-3" [formControlName]="i">
+                  </ng-container>
                 </div>
-
                 <!-- Button link -->
                 <div class="d-sm-flex justify-content-between small mb-4">
                   <span>Don't get a code?</span>
@@ -43,7 +40,8 @@
 
                 <!-- Button -->
                 <div>
-                  <button (click)="onSubmit()" type="submit" class="btn btn-primary w-100 mb-0">Verify and Process</button>
+                  <button (click)="onSubmit()" type="submit" class="btn btn-primary w-100 mb-0">Verify and Process
+                  </button>
                 </div>
 
                 <!-- Copyright -->
