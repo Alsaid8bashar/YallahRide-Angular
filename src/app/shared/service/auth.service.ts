@@ -28,8 +28,7 @@ export class AuthService {
       "passwordHash": password
     }
 
-
-    this.http.post<any>(url, JSON.stringify(requestBody), {headers, observe: 'response' })
+    this.http.post<any>(url, JSON.stringify(requestBody), {headers, observe: 'response'})
       .subscribe((response: any) => {
           let header: HttpHeaders = response.headers;
           this.storageService.saveObject('token', header.get('Authorization'));
@@ -39,4 +38,9 @@ export class AuthService {
         }
       );
   }
+
+  getAuthToken(): string {
+    return this.storageService.getObject('token')
+  }
+
 }
