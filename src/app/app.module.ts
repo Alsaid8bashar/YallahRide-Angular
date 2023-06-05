@@ -24,7 +24,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
     SpinnerComponent,
     HeaderComponent,
     FooterComponent,
-    ContentLayoutComponent
+    ContentLayoutComponent,
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -42,9 +42,6 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
       useClass: TokenInterceptor,
       multi: true
     }
-  ],
-  exports: [
-    HeaderComponent
   ],
   bootstrap: [AppComponent]
 })

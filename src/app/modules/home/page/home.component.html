@@ -1,0 +1,560 @@
+<!-- **************** MAIN CONTENT START **************** -->
+
+  <!-- =======================
+  Main Banner START -->
+  <section class="pt-0 pt-lg-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-10 ms-auto position-relative">
+          <img src="assets/images/bg/03.jpg" class="rounded-3" alt="">
+
+          <!-- Search START -->
+          <div class="col-11 col-sm-10 col-lg-8 col-xl-6 position-lg-middle ms-lg-8 ms-xl-7">
+            <div class="card shadow pb-0 mt-n7 mt-sm-n8 mt-lg-0">
+
+              <!-- Card header -->
+              <div class="card-header border-bottom p-3 p-sm-4">
+                <h5 class="card-title mb-0">Book Your Online Cab</h5>
+              </div>
+
+              <!-- Card body START -->
+              <form class="card-body form-control-border p-3 p-sm-4">
+                <!-- Tabs START -->
+                <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <div class="form-check form-check-inline active" id="cab2-one-way-tab" data-bs-toggle="pill" data-bs-target="#cab2-one-way" role="tab" aria-controls="cab2-one-way" aria-selected="true">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cabRadio1" value="option1" checked>
+                    <label class="form-check-label" for="cabRadio1">One Way</label>
+                  </div>
+                  <div class="form-check form-check-inline" id="cab2-round-way-tab" data-bs-toggle="pill" data-bs-target="#cab2-round-way" role="tab" aria-controls="cab2-round-way" aria-selected="false">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cabRadio2" value="option2">
+                    <label class="form-check-label" for="cabRadio2">Round Trip</label>
+                  </div>
+                </div>
+                <!-- Tabs END -->
+
+                <!-- Tabs content START -->
+                <div class="tab-content my-4" id="pills-tabContent">
+                  <!-- One way START -->
+                  <div class="tab-pane fade show active" id="cab2-one-way" role="tabpanel" aria-labelledby="cab2-one-way-tab">
+                    <div class="row g-2 g-md-4">
+                      <!-- Pickup -->
+                      <div class="col-md-6 position-relative">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small">Pickup</label>
+                          <select class="form-select js-choice" data-search-enabled="true">
+                            <option value="">Select location</option>
+                            <option>New York</option>
+                            <option>Canada</option>
+                            <option>Paris</option>
+                          </select>
+                        </div>
+
+                        <!-- Auto fill button -->
+                        <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
+                          <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
+                        </div>
+                      </div>
+
+                      <!-- Drop -->
+                      <div class="col-md-6 text-md-end">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
+                          <select class="form-select js-choice" data-search-enabled="true">
+                            <option value="">Select Location</option>
+                            <option>Canada</option>
+                            <option>New York</option>
+                            <option>Paris</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- Date -->
+                      <div class="col-md-6">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small">Pickup Date</label>
+                          <input type="text" class="form-control flatpickr" placeholder="Select date">
+                        </div>
+                      </div>
+
+                      <!-- Time -->
+                      <div class="col-md-6 text-md-end">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small ms-3 ms-md-0 me-md-3">Pickup time</label>
+                          <input type="text" class="form-control flatpickr text-md-end" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- One way END -->
+
+                  <!-- Round trip START -->
+                  <div class="tab-pane fade" id="cab2-round-way" role="tabpanel" aria-labelledby="cab2-round-way-tab">
+                    <div class="row g-2 g-md-4">
+                      <!-- Pickup -->
+                      <div class="col-md-6 position-relative">
+                        <label class="form-label small">Pickup</label>
+                        <div class="form-fs-lg form-control-transparent">
+                          <select class="form-select js-choice" data-search-enabled="true">
+                            <option value="">Select Location</option>
+                            <option>New York</option>
+                            <option>Canada</option>
+                            <option>Paris</option>
+                          </select>
+                        </div>
+
+                        <!-- Auto fill button -->
+                        <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
+                          <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
+                        </div>
+                      </div>
+
+                      <!-- Drop -->
+                      <div class="col-sm-6 text-sm-end">
+                        <label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
+                        <div class="form-fs-lg form-control-transparent">
+                          <select class="form-select js-choice" data-search-enabled="true">
+                            <option value="">Select Location</option>
+                            <option>Canada</option>
+                            <option>New York</option>
+                            <option>Paris</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- Date -->
+                      <div class="col-sm-6">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small">Pickup Date</label>
+                          <input type="text" class="form-control flatpickr" placeholder="Select date">
+                        </div>
+                      </div>
+
+                      <!-- Time -->
+                      <div class="col-sm-6 text-sm-end">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small ms-3 ms-md-0 me-md-3">Pickup time</label>
+                          <input type="text" class="form-control flatpickr text-sm-end" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
+                        </div>
+                      </div>
+
+                      <!-- Date -->
+                      <div class="col-sm-6">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small">Return Date</label>
+                          <input type="text" class="form-control flatpickr" placeholder="Select date">
+                        </div>
+                      </div>
+
+                      <!-- Time -->
+                      <div class="col-sm-6 text-sm-end">
+                        <div class="form-fs-lg form-control-transparent">
+                          <label class="form-label small ms-3 ms-md-0 me-md-3">Return time</label>
+                          <input type="text" class="form-control flatpickr text-sm-end" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
+                        </div>
+                      </div>
+                    </div> <!-- Row END -->
+                  </div>
+                  <!-- Round trip END -->
+                </div>
+                <!-- Tabs content END -->
+
+                <!-- Button -->
+                <div class="d-grid">
+                  <button class="btn btn-dark mb-0">Search Rides</button>
+                </div>
+
+              </form>
+              <!-- Card-body END -->
+            </div>
+          </div>
+          <!-- Search END -->
+        </div>
+      </div> <!-- Row END -->
+    </div>
+  </section>
+  <!-- =======================
+  Main Banner END -->
+
+
+
+  <!-- =======================
+  Why Choose Us START -->
+  <section class="pt-0 pt-xl-5">
+    <div class="container">
+      <!-- Title -->
+      <div class="row mb-3 mb-sm-4">
+        <div class="col-12 text-center">
+          <h2>Why Choose Us</h2>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Category item -->
+        <div class="col-sm-6 col-lg-4">
+          <!-- Card START -->
+          <div class="card card-body shadow p-4 h-100">
+            <!-- Icon -->
+            <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="bi bi-lightning-fill fs-5"></i></div>
+            <h5>Advance Booking</h5>
+            <p class="mb-0">Happiness prosperous impression had conviction For every delay in they Extremity now. </p>
+          </div>
+          <!-- Card END -->
+        </div>
+
+        <!-- Category item -->
+        <div class="col-sm-6 col-lg-4">
+          <!-- Card START -->
+          <div class="card card-body shadow p-4 h-100">
+            <!-- Icon -->
+            <div class="icon-lg bg-success bg-opacity-10 text-success rounded-circle mb-4"><i class="fa-solid fa-leaf fs-5"></i></div>
+            <h5>Economical Trip</h5>
+            <p class="mb-0">Extremity now strangers contained breakfast him discourse additions Sincerity.</p>
+          </div>
+          <!-- Card END -->
+        </div>
+
+        <!-- Category item -->
+        <div class="col-sm-6 col-lg-4">
+          <!-- Card START -->
+          <div class="card card-body shadow p-4 h-100">
+            <!-- Icon -->
+            <div class="icon-lg bg-warning bg-opacity-15 text-warning rounded-circle mb-4"><i class="bi bi-life-preserver fs-5"></i></div>
+            <h5>Secure and Safer</h5>
+            <p class="mb-0">Perpetual extremity now strangers contained breakfast him discourse additions.</p>
+          </div>
+          <!-- Card END -->
+        </div>
+
+        <!-- Category item -->
+        <div class="col-sm-6 col-lg-4">
+          <!-- Card START -->
+          <div class="card card-body shadow p-4 h-100">
+            <!-- Icon -->
+            <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-4"><i class="fa-solid fa-car fs-5"></i></div>
+            <h5>Vehicle Options</h5>
+            <p class="mb-0">The Prosperous impression had conviction For every delay in they Extremity now. </p>
+          </div>
+          <!-- Card END -->
+        </div>
+
+        <!-- Category item -->
+        <div class="col-sm-6 col-lg-4">
+          <!-- Card START -->
+          <div class="card card-body shadow p-4 h-100">
+            <!-- Icon -->
+            <div class="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle mb-4"><i class="fa-solid fa-wifi fs-5"></i></div>
+            <h5>Cab Entertainment</h5>
+            <p class="mb-0">Extremity now strangers contained breakfast him discourse additions Sincerity.</p>
+          </div>
+          <!-- Card END -->
+        </div>
+
+        <!-- Category item -->
+        <div class="col-sm-6 col-lg-4">
+          <!-- Card START -->
+          <div class="card card-body shadow p-4 h-100">
+            <!-- Icon -->
+            <div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle mb-4"><i class="fa-solid fa-wheelchair fs-5"></i></div>
+            <h5>Polite Driver</h5>
+            <p class="mb-0">Perpetual extremity now strangers contained breakfast him discourse additions.</p>
+          </div>
+          <!-- Card END -->
+        </div>
+
+      </div> <!-- Row END -->
+
+    </div>
+  </section>
+  <!-- =======================
+  Why Choose Us END -->
+
+
+  <!-- =======================
+  Testimonials START -->
+  <section class="pt-0 pt-md-5">
+    <div class="container">
+      <div class="text-center position-relative py-5"
+           style="background-image:url(assets/images/element/map.svg); background-position: center left; background-size: cover;">
+        <!-- Avatar decoration -->
+        <div class="avatar position-absolute top-50 end-0 mt-5 me-7">
+          <img class="avatar-img rounded-circle border border-2 border-light d-none d-md-block"
+               src="assets/images/avatar/09.jpg" alt="avatar">
+        </div>
+        <!-- Avatar decoration -->
+        <div class="avatar avatar-lg position-absolute top-0 end-0 mt-5">
+          <img class="avatar-img rounded-circle border border-2 border-light d-none d-lg-block"
+               src="assets/images/avatar/05.jpg" alt="avatar">
+        </div>
+        <!-- Avatar decoration -->
+        <div class="avatar position-absolute top-50 start-0 ms-5">
+          <img class="avatar-img rounded-circle border border-2 border-light d-none d-md-block"
+               src="assets/images/avatar/04.jpg" alt="avatar">
+        </div>
+        <!-- Avatar decoration -->
+        <div class="avatar avatar-sm position-absolute bottom-0 start-0 mb-5 ms-8">
+          <img class="avatar-img rounded-circle border border-2 border-light d-none d-md-block"
+               src="assets/images/avatar/07.jpg" alt="avatar">
+        </div>
+        <!-- Avatar decoration -->
+        <div class="avatar avatar-lg position-absolute top-0 start-0 mt-5">
+          <img class="avatar-img rounded-circle border border-2 border-light d-none d-lg-block"
+               src="assets/images/avatar/06.jpg" alt="avatar">
+        </div>
+
+        <!-- Title -->
+        <div class="row mb-5">
+          <div class="col-12">
+            <h2>Hear From Our Happy Clients</h2>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="row">
+          <div class="col-md-9 col-xl-7 mx-auto">
+            <!-- Slider START -->
+            <div class="tiny-slider dots-primary">
+              <div class="tiny-slider-inner" data-autoplay="true" data-arrow="false" data-dots="true"
+                   data-edge="2" data-items="1">
+                <!-- Slider item -->
+                <div>
+                  <!-- Avatar -->
+                  <div class="avatar avatar-xl mb-4">
+                    <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg"
+                         alt="avatar">
+                  </div>
+                  <!-- Content -->
+                  <p class="h5 fw-light mb-3">"Size-like body someone had. Are conduct viewing boy minutes
+                    warrant the expense? Tolerably behavior may admit daughters offending her ask own.
+                    Praise effects wish change way and any wanted."</p>
+                  <ul class="list-inline small mb-3">
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i>
+                    </li>
+                  </ul>
+                  <h5 class="mb-0">Carolyn Ortiz</h5>
+                  <span>Ceo of Google</span>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                  <!-- Avatar -->
+                  <div class="avatar avatar-xl mb-4">
+                    <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg"
+                         alt="avatar">
+                  </div>
+                  <!-- Content -->
+                  <p class="h5 fw-light mb-3">"Are conduct viewing boy minutes warrant the expense?
+                    Tolerably behavior may admit daughters offending her ask own. Praise effects wish
+                    change way and any wanted."</p>
+                  <ul class="list-inline small mb-3">
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                    <li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i>
+                    </li>
+                  </ul>
+                  <h5 class="mb-0">Louis Ferguson</h5>
+                  <span>Editor in Chief</span>
+                </div>
+              </div>
+            </div>
+            <!-- Slider END -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- =======================
+  Testimonials END -->
+
+
+  <!-- =======================
+  Near by START -->
+  <section>
+    <div class="container">
+      <!-- Title -->
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h2 class="mb-0">Explore Nearby</h2>
+        </div>
+      </div>
+
+      <div class="row g-4 g-md-5">
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Irbid.jpg" class="rounded-circle" alt="">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Irbid</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Ajloun.jpg" class="rounded-circle" alt="">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Ajloun</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Jarash.jpg" class="rounded-circle" alt="">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Jerash</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Mafraq.jpg" class="rounded-circle" alt="">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Mafraq</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <!-- Image -->
+            <img src="assets/images/cities/AlBalqa.jpg" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Balqa</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+
+            <img src="assets/images/cities/Amman.jpg" class="rounded-circle" alt="">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Amman</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Zarqa.jpg" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Zarqa</a></h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Madaba.jpg" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Madaba</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Karak.jpg" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Karak</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Tafilah.jpg" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Tafilah</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Ma'an.jpg" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Ma'an</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+          <div class="card bg-transparent text-center p-1 h-100">
+            <!-- Image -->
+            <img src="assets/images/cities/Aqaba.png" class="card-img-top rounded-circle" alt=""
+                 style="object-fit: cover; height: 150px; width: 150px;">
+
+            <div class="card-body p-0 pt-3">
+              <h5 class="card-title"><a href="#" class="stretched-link">Aqaba</a></h5>
+            </div>
+          </div>
+        </div>
+        <!-- Card item END -->
+      </div> <!-- Row END -->…
+    </div>
+  </section>
+  <!-- =======================
+  Near by END -->
+
+
+<!-- **************** MAIN CONTENT END **************** -->
