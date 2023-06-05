@@ -2,3 +2,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}

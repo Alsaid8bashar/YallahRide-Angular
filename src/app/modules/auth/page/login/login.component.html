@@ -24,14 +24,14 @@
               <p class="mb-0">New here?<a [routerLink]="['/auth/user-info']"> Create an account</a></p>
 
               <!-- Form START -->
-              <form class="mt-4 text-start" [formGroup]="login"  (ngSubmit)="onSubmit()">
+              <form class="mt-4 text-start" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <!-- Email -->
                 <div class="mb-3">
                   <label class="form-label">Enter Phone Number</label>
                   <input type="email" class="form-control" formControlName="phoneNumber">
                   <div>
                     <mat-error
-                      *ngIf="login.controls['phoneNumber'].hasError('required')&& login.controls['phoneNumber'].touched">
+                      *ngIf="loginForm.controls['phoneNumber'].hasError('required')&& loginForm.controls['phoneNumber'].touched">
                       phone number is <strong>required</strong></mat-error>
                   </div>
                 </div>
@@ -39,15 +39,18 @@
                 <div class="mb-3 position-relative">
                   <label class="form-label">Enter password</label>
                   <input class="form-control fakepassword" type="password" id="psw-input"
-                         formControlName="password">
+                         formControlName="passwordHash">
                   <span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
                   <div>
                     <mat-error
-                      *ngIf="login.controls['password'].hasError('required')&& login.controls['password'].touched">
+                      *ngIf="loginForm.controls['passwordHash'].hasError('required')&& loginForm.controls['passwordHash'].touched">
                       password is <strong>required</strong></mat-error>
                   </div>
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger">
+                  {{ errorMessage }}
                 </div>
                 <!-- Remember me -->
                 <div class="mb-3 d-sm-flex justify-content-between">

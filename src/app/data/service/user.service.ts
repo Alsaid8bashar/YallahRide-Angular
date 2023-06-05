@@ -26,38 +26,32 @@ export class UserService {
   }
 
   getUserByID(id: number): Observable<User> {
-    this.http.get<User>(`${this.apiURL}/${id}`).subscribe(
-      (user: User) => {
-        this._userSubject.next(user);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._userSubject.asObservable();
+    return this.http.get<User>(`${this.apiURL}/${id}`);
+    //   .subscribe(
+    //   (user: User) => {
+    //     this._userSubject.next(user);
+    //   },
+    //   (error) => {
+    //     console.log('Error:', error);
+    //   }
+    // );
+    // return this._userSubject.asObservable();
   }
 
   createUser(user: User): Observable<User> {
-    this.http.post<User>(`${this.apiURL}create`, user).subscribe(
-      (response: User) => {
-        this._userSubject.next(response);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._userSubject.asObservable();
+    return this.http.post<User>(`${this.apiURL}create`, user);
   }
 
   deleteUser(id: number) {
-    this.http.delete(`${this.apiURL}delete/${id}`).subscribe(
-      () => {
-        console.log('User deleted successfully');
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
+    this.http.delete(`${this.apiURL}delete/${id}`)
+      .subscribe(
+        () => {
+          console.log('User deleted successfully');
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
   }
 
   getNumberOfUsers(): Observable<number> {
@@ -65,26 +59,29 @@ export class UserService {
   }
 
   activateUserById(id: number): Observable<User> {
-    this.http.delete(`${this.apiURL}activate/${id}`).subscribe(
-      (response: User) => {
-        this._userSubject.next(response);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._userSubject.asObservable();
+    return this.http.delete(`${this.apiURL}activate/${id}`)
+    //   .subscribe(
+    //   (response: User) => {
+    //     this._userSubject.next(response);
+    //   },
+    //   (error) => {
+    //     console.log('Error:', error);
+    //   }
+    // );
+    // return this._userSubject.asObservable();
   }
 
   deactivateUserById(id: number): Observable<User> {
-    this.http.delete(`${this.apiURL}deactivate/${id}`).subscribe(
-      (response: User) => {
-        this._userSubject.next(response);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._userSubject.asObservable();
+    return this.http.delete(`${this.apiURL}deactivate/${id}`)
+
+    //   .subscribe(
+    //   (response: User) => {
+    //     this._userSubject.next(response);
+    //   },
+    //   (error) => {
+    //     console.log('Error:', error);
+    //   }
+    // );
+    // return this._userSubject.asObservable();
   }
 }

@@ -34,31 +34,25 @@ export class AccountService {
   }
 
   getAccountByID(id: number): Observable<Account> {
-    this.http.get<Account>(`${this.apiURL}/${id}`).subscribe(
-      (account: Account) => {
-        this._accountSubject.next(account);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._accountSubject.asObservable();
+    return this.http.get<Account>(`${this.apiURL}/${id}`);
+    //   .subscribe(
+    //   (account: Account) => {
+    //     this._accountSubject.next(account);
+    //   },
+    //   (error) => {
+    //     console.log('Error:', error);
+    //   }
+    // );
+    // return this._accountSubject.asObservable();
   }
 
   registerAccount(account: Account): Observable<Account> {
-    this.http.post<Account>(`${this.apiURL}register`, account).subscribe(
-      (response: Account) => {
-        this._accountSubject.next(response);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._accountSubject.asObservable();
+    return this.http.post<Account>(`${this.apiURL}register`, account);
   }
 
   deleteAccount(id: number) {
-    this.http.delete(`${this.apiURL}delete/${id}`).subscribe(
+    this.http.delete(`${this.apiURL}delete/${id}`)
+      .subscribe(
       () => {
         console.log('Account deleted successfully');
       },

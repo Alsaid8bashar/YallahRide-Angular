@@ -10,16 +10,23 @@ import {DataModule} from "./data/data.module";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptor} from "./core/interceptor/token.interceptor";
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
+import { SpinnerComponent } from './shared/component/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    SpinnerComponent
   ],
   imports: [
+    ToastrModule.forRoot(),
+    ToastNoAnimationModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
     AuthModule,
     DataModule
   ],

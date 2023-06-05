@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {emailExistsValidator} from "../sign-up-1/emailExistence.validator";
+import {emailExistsValidator, phoneExistsValidator} from "../sign-up-1/emailExistence.validator";
 import {AccountService} from "../../../../../data/service/account.service";
 import {BehaviorSubject} from "rxjs";
 import {Account} from "../../../../../data/schema/account";
@@ -14,22 +14,17 @@ import {UserService} from "../../../../../data/service/user.service";
   templateUrl: './sign-up-two.component.html',
   styleUrls: ['./sign-up-two.component.css']
 })
-export class SignUpTwoComponent{
-
+export class SignUpTwoComponent {
+  userInfoForm: FormGroup;
 
   constructor(private storageService: StorageService, private router: Router) {
+    this.buildForm();
   }
-
-  userInfoForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.required,]),
-    lastName: new FormControl('', [Validators.required]),
-    gender: new FormControl('', Validators.required)
-  });
 
 
   onSubmit() {
     if (this.userInfoForm.valid) {
-      let user = new User(this.userInfoForm.value.firstName, this.userInfoForm.value.lastName, this.userInfoForm.value.gender);
+      const user: User = this.userInfoForm.value;
       this.storageService.saveObject("user", user)
       this.router.navigate(['/sign-up'])
     } else {
@@ -37,6 +32,11 @@ export class SignUpTwoComponent{
     }
   }
 
-
-
+  private buildForm(): void {
+    this.userInfoForm = new FormGroup({
+      firstName: new FormControl('', [Validators.required,]),
+      lastName: new FormControl('', [Validators.required]),
+      gender: new FormControl('', Validators.required)
+    });
+  }
 }

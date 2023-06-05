@@ -17,11 +17,10 @@ export class Account {
 
 
 
-  constructor(email: string, phoneNumber: string, passwordHash: string, user: User) {
+  constructor(email: string, phoneNumber: string, passwordHash: string) {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.passwordHash = passwordHash;
-    this.user = user;
   }
 
 }

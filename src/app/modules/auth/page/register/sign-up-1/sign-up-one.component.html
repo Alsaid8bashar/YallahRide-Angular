@@ -59,20 +59,20 @@
                 <div class="mb-3 position-relative">
                   <label class="form-label">Enter password</label>
                   <input class="form-control fakepassword" type="password" id="psw-input"
-                         formControlName="password">
+                         formControlName="passwordHash">
                   <span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 											<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 										</span>
                   <div>
                     <mat-error
-                      *ngIf="register.controls['password'].hasError('required')&& register.controls['password'].touched">
+                      *ngIf="register.controls['passwordHash'].hasError('required')&& register.controls['passwordHash'].touched">
                       password is <strong>required</strong></mat-error>
                     <mat-error
-                      *ngIf="register.controls['password'].hasError('minlength') && register.controls['password'].touched">
+                      *ngIf="register.controls['passwordHash'].hasError('minlength') && register.controls['passwordHash'].touched">
                       Please enter a strong password
                     </mat-error>
                     <mat-error
-                      *ngIf="register.controls['password'].hasError('pattern') && register.controls['password'].touched">
+                      *ngIf="register.controls['passwordHash'].hasError('pattern') && register.controls['passwordHash'].touched">
                       Password should contain at least one letter, one number, and one special character
                     </mat-error>
                   </div>
