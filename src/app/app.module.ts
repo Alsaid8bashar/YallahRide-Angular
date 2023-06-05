@@ -13,12 +13,18 @@ import {TokenInterceptor} from "./core/interceptor/token.interceptor";
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
 import { SpinnerComponent } from './shared/component/spinner/spinner.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthLayoutComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContentLayoutComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -36,6 +42,9 @@ import { SpinnerComponent } from './shared/component/spinner/spinner.component';
       useClass: TokenInterceptor,
       multi: true
     }
+  ],
+  exports: [
+    HeaderComponent
   ],
   bootstrap: [AppComponent]
 })
