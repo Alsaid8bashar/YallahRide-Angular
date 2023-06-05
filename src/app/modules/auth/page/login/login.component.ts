@@ -24,36 +24,35 @@ export class LoginComponent implements OnDestroy {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      debugger;
       this.spinner.show();
       const credentials = this.loginForm.value;
       this.sub = this.authService
         .login(credentials)
         .pipe(// tap(() => this.router.navigate(['/dashboard/home'])),
           finalize(() => (this.spinner.hide())),
-          catchError(error => of((this.errorMessage = 'An error occurred. Please try again later.'))))
+          catchError(error => of((this.errorMessage = 'Invalid credentials. Please try again.'))))
         .subscribe((response: any) => {
-          if (response.status == 404) {
-            this.errorMessage = 'Invalid credentials. Please try again.'
-          } else {
-            this.sessionService.setItem('token', response.headers.get('Authorization'));
-            this.spinner.hide()
-          }
+          this.sessionService.setItem('token', response.headers.get('Authorization'));
+          this.spinner.hide()
         });
     } else {
       this.loginForm.markAllAsTouched();
     }
   }
 
-  private buildForm(): void {
+  private
 
+  buildForm():
+    void {
     this.loginForm = new FormGroup({
       phoneNumber: new FormControl('', Validators.required),
       passwordHash: new FormControl('', Validators.required)
     });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy()
+    :
+    void {
     this.sub.unsubscribe();
   }
 }
