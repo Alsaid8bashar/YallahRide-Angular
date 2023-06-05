@@ -1074,10 +1074,10 @@ var e = {
         // CHART: Page Views
         var options = {
           series: [{
-          name: 'Check-in',
+          name: 'Sign-up',
           data: [31, 40, 28, 51, 42, 109, 100]
         }, {
-          name: 'Check-out',
+          name: 'Account-delete',
           data: [11, 32, 45, 32, 34, 52, 41]
         }],
           chart: {
@@ -1112,8 +1112,8 @@ var e = {
       if (e.isVariableDefined(cpv)) {
         // CHART: Page Views
         var options = {
-          series: [70, 30],
-          labels: ['Sold Out', 'Available'],
+          series: [40, 20,20],
+          labels: ['Upcoming', 'Cancelled', 'Completed'],
           chart: {
             height: 300,
             width: 300,
@@ -1124,8 +1124,9 @@ var e = {
             }
           },
           colors: [
+            ThemeColor.getCssVariableValue('--bs-primary'),
             ThemeColor.getCssVariableValue('--bs-danger'),
-            ThemeColor.getCssVariableValue('--bs-success')
+            ThemeColor.getCssVariableValue('--bs-success'),
           ],
           tooltip: {
             theme: "dark"
