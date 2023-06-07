@@ -9,16 +9,19 @@ import {DynamicScriptLoaderService} from "./shared/service/dynamic-script-loader
 export class AppComponent implements OnInit {
   title = 'YallahRide-Angular';
 
-
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService) {
+  ngOnInit(): void {
   }
 
-  private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices',  'tiny-slider', 'flatpickr', 'glightbox','functions').then(data => {
-    }).catch(error => console.log(error));
-  }
-
-  ngOnInit() {
-    this.loadScripts();
-  }
+  //
+  // constructor(private dynamicScriptLoader: DynamicScriptLoaderService) {
+  // }
+  //
+  // private loadScripts() {
+  //   this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices',  'tiny-slider', 'flatpickr', 'glightbox','functions').then(data => {
+  //   }).catch(error => console.log(error));
+  // }
+  //
+  // ngOnInit() {
+  //   this.loadScripts();
+  // }
 }
