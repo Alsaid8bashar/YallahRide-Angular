@@ -1,13 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {emailExistsValidator, phoneExistsValidator} from "../sign-up-1/emailExistence.validator";
-import {AccountService} from "../../../../../data/service/account.service";
-import {BehaviorSubject} from "rxjs";
-import {Account} from "../../../../../data/schema/account";
 import {User} from "../../../../../data/schema/user";
 import {StorageService} from "../../../../../shared/service/storage.service";
 import {Router} from "@angular/router";
-import {UserService} from "../../../../../data/service/user.service";
 
 @Component({
   selector: 'app-sign-up-2',

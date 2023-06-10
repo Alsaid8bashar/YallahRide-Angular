@@ -11,17 +11,4 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  //
-  // constructor(private dynamicScriptLoader: DynamicScriptLoaderService) {
-  // }
-  //
-  // private loadScripts() {
-  //   this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices',  'tiny-slider', 'flatpickr', 'glightbox','functions').then(data => {
-  //   }).catch(error => console.log(error));
-  // }
-  //
-  // ngOnInit() {
-  //   this.loadScripts();
-  // }
 }

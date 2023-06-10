@@ -1,7 +1,7 @@
 import {User} from "./user";
 import {Report} from "./report";
 
-export interface Ride{
+export class Ride{
   id?: number
 
   from?: string
@@ -21,4 +21,13 @@ export interface Ride{
   driver?: User
 
   reports?: Report[]
+
+
+  constructor(from: string, to: string, seats: number, cost: number, driver: User) {
+    this.from = from;
+    this.to = to;
+    this.seats = seats;
+    this.cost = cost;
+    this.driver = driver;
+  }
 }

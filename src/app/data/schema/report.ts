@@ -1,7 +1,7 @@
 import {User} from "./user";
 import {Ride} from "./ride";
 
-export interface Report{
+export class Report {
   id?: number
 
   title?: string

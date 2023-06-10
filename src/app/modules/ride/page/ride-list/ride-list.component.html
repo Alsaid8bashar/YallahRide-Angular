@@ -1,0 +1,379 @@
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+  <!-- =======================
+  Search START -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- Booking from START -->
+          <form class="bg-mode border rounded position-relative px-4 pt-4 mb-4 mb-sm-0" [formGroup]="searchForRideFrom"
+                (ngSubmit)="onSubmit()">
+
+            <!-- Tab content START -->
+            <div class="tab-content mt-4" id="pills-tabContent">
+              <!-- One way tab START -->
+              <div class="tab-pane fade show active" id="pills-one-way" role="tabpanel"
+                   aria-labelledby="pills-one-way-tab">
+                <div class="row g-4">
+                  <!-- Leaving From -->
+                  <div class="col-md-6 col-lg-4 position-relative">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <!-- Input field -->
+                      <label class="mb-1"><i class="bi bi-geo-alt me-2"></i>From</label>
+                      <select class="form-select js-choice" data-search-enabled="true" formControlName="from">
+                        <option value="">Select location</option>
+                        <option>Canada</option>
+                        <option>New York</option>
+                        <option>Paris</option>
+                      </select>
+                    </div>
+
+                    <!-- Auto fill button -->
+                    <div class="btn-flip-icon mt-3 mt-md-0">
+                      <button class="btn btn-white shadow btn-round mb-0"><i
+                        class="fa-solid fa-right-left"></i></button>
+                    </div>
+                  </div>
+
+                  <!-- Going To -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <!-- Input field -->
+                      <label class="mb-1"><i class="bi bi-send me-2"></i>To</label>
+                      <select class="form-select js-choice" data-search-enabled="true" formControlName="to">
+                        <option value="">Select location</option>
+                        <option>Canada</option>
+                        <option>New York</option>
+                        <option>Paris</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Departure -->
+                  <div class="col-lg-4">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <label class="mb-1"><i class="bi bi-calendar me-2"></i>Departure</label>
+                      <input type="text" class="form-control flatpickr" data-date-format="d M Y" formControlName="date">
+                    </div>
+                  </div>
+
+                  <div class="col-12 text-end pt-0">
+                    <button class="btn btn-primary mb-n4" type="submit">Find ticket <i class="bi bi-arrow-right ps-3"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- One way tab END -->
+
+              <!-- Round way tab END -->
+              <div class="tab-pane fade" id="pills-round-trip" role="tabpanel" aria-labelledby="pills-round-trip-tab">
+                <div class="row g-4">
+
+                  <!-- Leaving From -->
+                  <div class="col-md-6 col-xl-3 position-relative">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <!-- Input field -->
+                      <label class="mb-1"><i class="bi bi-geo-alt me-2"></i>From</label>
+                      <select class="form-select js-choice" data-search-enabled="true">
+                        <option value="">Select location</option>
+                        <option>San Jacinto, USA</option>
+                        <option>North Dakota, Canada</option>
+                        <option>West Virginia, Paris</option>
+                      </select>
+                    </div>
+
+                    <!-- Auto fill button -->
+                    <div class="btn-flip-icon mt-3 mt-md-0">
+                      <button class="btn btn-white shadow btn-round mb-0"><i
+                        class="fa-solid fa-right-left"></i></button>
+                    </div>
+                  </div>
+
+                  <!-- Going To -->
+                  <div class="col-md-6 col-xl-3">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <!-- Input field -->
+                      <label class="mb-1"><i class="bi bi-send me-2"></i>To</label>
+                      <select class="form-select js-choice" data-search-enabled="true">
+                        <option value="">Select location</option>
+                        <option>San Jacinto, USA</option>
+                        <option>North Dakota, Canada</option>
+                        <option>West Virginia, Paris</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Departure -->
+                  <div class="col-md-6 col-xl-3">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <label class="mb-1"><i class="bi bi-calendar me-2"></i>Departure</label>
+                      <input type="text" class="form-control flatpickr" data-date-format="d M Y"
+                             placeholder="Select date">
+                    </div>
+                  </div>
+
+                  <!-- Return -->
+                  <div class="col-md-6 col-xl-3">
+                    <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
+                      <label class="mb-1"><i class="bi bi-calendar me-2"></i>Return</label>
+                      <input type="text" class="form-control flatpickr" data-date-format="d M Y"
+                             placeholder="Select date">
+                    </div>
+                  </div>
+
+                  <div class="col-12 text-end pt-0">
+                    <a class="btn btn-light-soft mb-n4" href="#">Find ride <i class="bi bi-arrow-right ps-3"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Round way tab END -->
+            </div>
+            <!-- Tab content END -->
+          </form>
+          <!-- Booking from END -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- =======================
+  Search START -->
+
+  <!-- =======================
+  Titles START -->
+  <section class="pt-6">
+    <div class="container position-relative">
+
+      <!-- Title and button START -->
+      <div class="row">
+        <div class="col-12">
+          <div class="d-sm-flex justify-content-sm-between align-items-center">
+            <!-- Title -->
+            <div class="mb-2 mb-sm-0">
+              <h1 class="fs-3 mb-2">{{availableRide}} Rides Available</h1>
+            </div>
+
+            <!-- Offcanvas Button -->
+            <button class="btn btn-primary-soft btn-primary-check d-xl-none mb-0" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+              <i class="fa-solid fa-sliders-h me-1"></i> Show filters
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Title and button END -->
+
+    </div>
+  </section>
+  <!-- =======================
+  Titles END -->
+
+  <!-- =======================
+  Cab list START -->
+  <section class="pt-0">
+    <div class="container" data-sticky-container>
+      <div class="row">
+
+        <!-- Left sidebar START -->
+        <aside class="col-xl-4 col-xxl-3">
+          <div>
+            <!-- Responsive offcanvas body START -->
+            <div class="offcanvas-xl offcanvas-end" tabindex="-1" id="offcanvasSidebar"
+                 aria-labelledby="offcanvasSidebarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasSidebarLabel">Advance Filters</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar"
+                        aria-label="Close"></button>
+              </div>
+              <!-- Offcanvas body -->
+              <div class="offcanvas-body flex-column p-3 p-xl-0">
+                <form class="rounded-3 shadow">
+                  <!-- Price START -->
+                  <div class="card card-body rounded-0 p-4">
+                    <!-- Title -->
+                    <h6 class="mb-2">Passenger Capacity</h6>
+                    <!-- Price group -->
+                    <div class="position-relative">
+                      <div class="noui-wrapper mb-2">
+                        <div class="d-flex justify-content-between">
+                          <input type="text" class="text-body input-with-range-min">
+                          <input type="text" class="text-body input-with-range-max">
+                        </div>
+                        <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='15'
+                             data-range-selected-min='0'
+                             data-range-selected-max='15'></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Price END -->
+
+                  <hr class="my-0"> <!-- Divider -->
+
+                  <!-- Price START -->
+                  <div class="card card-body rounded-0 p-4">
+                    <!-- Title -->
+                    <h6 class="mb-2">Price</h6>
+                    <!-- Price group -->
+                    <div class="position-relative">
+                      <div class="noui-wrapper mb-2">
+                        <div class="d-flex justify-content-between">
+                          <input type="text" class="text-body input-with-range-min">
+                          <input type="text" class="text-body input-with-range-max">
+                        </div>
+                        <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='1000'
+                             data-range-selected-min='0' data-range-selected-max='1000'></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Price END -->
+
+                  <hr class="my-0"> <!-- Divider -->
+
+                  <!-- Sort By START -->
+                  <div class="card card-body rounded-0 rounded-bottom p-4">
+                    <!-- Title -->
+                    <h6 class="mb-2">Sort By</h6>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">Earliest departure</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">Lowest price</label>
+                    </div>
+                  </div>
+                  <!-- Sort By END -->
+
+                  <hr class="my-0"> <!-- Divider -->
+
+                  <!-- Departure time START -->
+                  <div class="card card-body rounded-0 rounded-bottom p-4">
+                    <!-- Title -->
+                    <h6 class="mb-2">Departure time</h6>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">Before 06:00</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">06:00 - 12:00</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">12:01 - 18:00</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">After 18:00</label>
+                    </div>
+                  </div>
+                  <!-- Departure time END -->
+
+                  <hr class="my-0"> <!-- Divider -->
+
+                  <!-- Amenities START -->
+                  <div class="card card-body rounded-0 rounded-bottom p-4">
+                    <!-- Title -->
+                    <h6 class="mb-2">Amenities</h6>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1"><i class="bi bi-patch-check"></i> Verified
+                        Profile</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1"><i class="bi bi-people"></i> Max. 2 in the back</label>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">Instant Booking</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">Smoking allowed</label>
+                    </div>
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
+                      <label class="form-check-label" for="lauoverType1">Pets allowed</label>
+                    </div>
+                  </div>
+                  <!-- Amenities END -->
+                </form><!-- Form End -->
+              </div>
+
+              <!-- Buttons -->
+              <div class="d-flex justify-content-between p-2 p-xl-0 mt-xl-4">
+                <button class="btn btn-link p-0 mb-0">Clear all</button>
+                <button class="btn btn-primary mb-0">Filter Result</button>
+              </div>
+            </div>
+            <!-- Responsive offcanvas body END -->
+          </div>
+        </aside>
+        <!-- Left sidebar END -->
+
+        <!-- Main content START -->
+        <div class="col-xl-8 col-xxl-9">
+          <div class="vstack gap-4">
+
+            <!-- Alert box START -->
+            <div class="alert alert-warning border-warning rounded-3 mb-0" role="alert">
+              <h5>Why book a one-way trip with us?</h5>
+              <!-- List -->
+              <ul class="list-group list-group-borderless mb-0">
+                <li class="list-group-item d-flex text-body mb-0">
+                  <i class="fa-solid fa-check text-warning me-2"></i>Only one-side fare for your doorstep pickup & drop
+                  to destination.
+                </li>
+                <li class="list-group-item d-flex text-body mb-0">
+                  <i class="fa-solid fa-check text-warning me-2"></i>No hidden charges - Pay nothing extra than what's
+                  mentioned.
+                </li>
+                <li class="list-group-item d-flex text-body mb-0">
+                  <i class="fa-solid fa-check text-warning me-2"></i>Experienced & polite drivers with clean &
+                  comfortable cabs.
+                </li>
+              </ul>
+            </div>
+            <!-- Alert box END -->
+            <ng-container *ngIf="rides">
+              <app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
+            </ng-container>
+            <!-- Pagination -->
+            <nav class="d-flex justify-content-center" aria-label="navigation">
+              <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i
+                  class="fa-solid fa-angle-left"></i></a></li>
+                <li class="page-item mb-0 active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item mb-0 "><a class="page-link" href="#">2</a></li>
+                <li class="page-item mb-0 "><a class="page-link" href="#">3</a></li>
+                <li class="page-item mb-0 "><a class="page-link" href="#">4</a></li>
+                <li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- Main content END -->
+
+      </div> <!-- Row END -->
+
+    </div>
+  </section>
+  <!-- =======================
+  Cab list END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->

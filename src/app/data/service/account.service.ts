@@ -35,15 +35,6 @@ export class AccountService {
 
   getAccountByID(id: number): Observable<Account> {
     return this.http.get<Account>(`${this.apiURL}/${id}`);
-    //   .subscribe(
-    //   (account: Account) => {
-    //     this._accountSubject.next(account);
-    //   },
-    //   (error) => {
-    //     console.log('Error:', error);
-    //   }
-    // );
-    // return this._accountSubject.asObservable();
   }
 
   registerAccount(account: Account): Observable<Account> {

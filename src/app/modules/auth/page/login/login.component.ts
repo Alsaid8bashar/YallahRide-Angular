@@ -5,6 +5,7 @@ import {delay, finalize, of, Subscription, tap} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
 import {catchError} from "rxjs/operators";
 import {SessionStorageService} from "../../../../shared/service/session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnDestroy {
   loginForm: FormGroup;
 
 
-  constructor(private authService: AuthService, private spinner: NgxSpinnerService, private sessionService: SessionStorageService) {
+  constructor(private authService: AuthService, private spinner: NgxSpinnerService, private sessionService: SessionStorageService,private router:Router) {
     this.buildForm();
   }
 
@@ -28,7 +29,7 @@ export class LoginComponent implements OnDestroy {
       const credentials = this.loginForm.value;
       this.sub = this.authService
         .login(credentials)
-        .pipe(// tap(() => this.router.navigate(['/dashboard/home'])),
+        .pipe(tap(() => this.router.navigate(['/dashboard/home'])),
           finalize(() => (this.spinner.hide())),
           catchError(error => of((this.errorMessage = 'Invalid credentials. Please try again.'))))
         .subscribe((response: any) => {
@@ -50,8 +51,7 @@ export class LoginComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy()
-    :
+  ngOnDestroy():
     void {
     this.sub.unsubscribe();
   }
