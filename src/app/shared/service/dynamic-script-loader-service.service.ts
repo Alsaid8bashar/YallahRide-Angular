@@ -12,6 +12,7 @@ export const ScriptStore: Scripts[] = [
   {name: 'flatpickr', src: './assets/vendor/flatpickr/js/flatpickr.min.js'},
   {name: 'glightbox', src: './assets/vendor/glightbox/js/glightbox.js'},
   {name: 'choices', src: './assets/vendor/choices/js/choices.min.js'},
+  {name: 'aos', src: './assets/vendor/aos/aos.js'},
 ];
 
 declare var document: any;
@@ -67,4 +68,28 @@ export class DynamicScriptLoaderService {
     });
   }
 
+  unload(...scripts: string[]) {
+    const promises: any[] = [];
+    scripts.forEach((script) => promises.push(this.unloadScript(script)));
+    return Promise.all(promises);
+  }
+
+  unloadScript(name: string) {
+    return new Promise((resolve, reject) => {
+      if (this.scripts[name] && this.scripts[name].loaded) {
+        const scriptElements = document.getElementsByTagName('script');
+        for (let i = 0; i < scriptElements.length; i++) {
+          const script = scriptElements[i];
+          if (script.src.includes(this.scripts[name].src)) {
+            script.remove();
+            this.scripts[name].loaded = false;
+            resolve({script: name, loaded: false, status: 'Unloaded'});
+            return;
+          }
+        }
+      }
+      resolve({script: name, loaded: false, status: 'Not Found'});
+    });
+
+  }
 }

@@ -16,6 +16,7 @@ import { SpinnerComponent } from './shared/component/spinner/spinner.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { AccountLayoutComponent } from './layout/account-layout/account-layout.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
     HeaderComponent,
     FooterComponent,
     ContentLayoutComponent,
+    AccountLayoutComponent,
   ],
   imports: [
     ToastrModule.forRoot(),

@@ -30,7 +30,15 @@
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/functions.js",
+              "src/assets/vendor/tiny-slider/tiny-slider.js",
+              "src/assets/vendor/flatpickr/js/flatpickr.min.js",
+              "src/assets/vendor/glightbox/js/glightbox.js",
+              "src/assets/vendor/choices/js/choices.min.js",
+              "src/assets/vendor/aos/aos.js",
+              "src/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
