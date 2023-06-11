@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit  {
 
   onSubmit() {
     if (this.searchForRideFrom.valid) {
-      this.router.navigate(['/rides'], {queryParams: this.searchForRideFrom.value});
+      this.router.navigate(['/ride/list'], {queryParams: this.searchForRideFrom.value});
     } else {
       this.searchForRideFrom.markAllAsTouched();
     }
