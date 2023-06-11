@@ -27,6 +27,7 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.loadScripts();
     this.route.queryParams.subscribe(params => {
       this.to = params['drop'];
       this.date = params['date'];
@@ -70,21 +71,26 @@ export class RideListComponent implements OnInit, OnDestroy {
   buildForm(): void {
     this.searchForRideFrom = new FormGroup({
       to: new FormControl(this.to, Validators.required),
-      from: new FormControl(this.to, Validators.required),
+      from: new FormControl(this.from, Validators.required),
       date: new FormControl(this.date, Validators.required),
     });
   }
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky','nouislider').then(data => {
     }).catch(error => console.log(error));
   }
+  private unloadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky','nouislider').then(data => {
+    }).catch(error => console.log(error));
+  }
+
 
   ngOnDestroy() {
     if (this.ridesSubscription) {
       this.ridesSubscription.unsubscribe();
     }
-      this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox', 'functions', 'aos').then(r => console.log(r));
+      this.unloadScripts();
   }
 
 }

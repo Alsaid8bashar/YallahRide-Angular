@@ -38,7 +38,9 @@
               "src/assets/vendor/glightbox/js/glightbox.js",
               "src/assets/vendor/choices/js/choices.min.js",
               "src/assets/vendor/aos/aos.js",
-              "src/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "src/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/vendor/sticky-js/sticky.min.js",
+              "src/assets/vendor/nouislider/nouislider.min.js"
             ]
           },
           "configurations": {

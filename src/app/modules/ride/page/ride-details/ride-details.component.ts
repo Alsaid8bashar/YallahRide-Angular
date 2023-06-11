@@ -10,7 +10,7 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
   templateUrl: './ride-details.component.html',
   styleUrls: ['./ride-details.component.css']
 })
-export class RideDetailsComponent implements OnInit,OnDestroy {
+export class RideDetailsComponent implements OnInit, OnDestroy {
 
   ride: Ride;
 
@@ -35,13 +35,18 @@ export class RideDetailsComponent implements OnInit,OnDestroy {
     });
   }
 
+
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  private unloadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
 
   ngOnDestroy() {
-    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky').then(data => {
-    }).catch(error => console.log(error));
+    this.unloadScripts();
   }
 }
