@@ -77,19 +77,20 @@ export class DynamicScriptLoaderService {
   unloadScript(name: string) {
     return new Promise((resolve, reject) => {
       if (this.scripts[name] && this.scripts[name].loaded) {
+        // Reset the loaded status of the script
+        this.scripts[name].loaded = false;
         const scriptElements = document.getElementsByTagName('script');
         for (let i = 0; i < scriptElements.length; i++) {
           const script = scriptElements[i];
           if (script.src.includes(this.scripts[name].src)) {
             script.remove();
-            this.scripts[name].loaded = false;
-            resolve({script: name, loaded: false, status: 'Unloaded'});
+            resolve({ script: name, loaded: false, status: 'Unloaded' });
             return;
           }
         }
       }
-      resolve({script: name, loaded: false, status: 'Not Found'});
+      resolve({ script: name, loaded: false, status: 'Not Found' });
     });
-
   }
+
 }

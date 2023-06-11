@@ -4,11 +4,7 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
 @Component({
   selector: 'app-account-feedback',
   templateUrl: './account-feedback.component.html',
-  styleUrls: ['../../../../../assets/vendor/font-awesome/css/all.min.css',
-    '../../../../../assets/vendor/bootstrap-icons/bootstrap-icons.css',
-    '../../../../../assets/vendor/aos/aos.css',
-    '../../../../../assets/vendor/flatpickr/css/flatpickr.min.css',
-    '../../../../../assets/vendor/choices/css/choices.min.css']
+  styleUrls: []
 })
 export class AccountFeedbackComponent implements OnInit,OnDestroy{
 
