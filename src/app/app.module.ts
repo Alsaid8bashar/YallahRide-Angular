@@ -12,12 +12,14 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptor} from "./core/interceptor/token.interceptor";
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
-import {SpinnerComponent} from './shared/component/spinner/spinner.component';
-import {HeaderComponent} from './layout/header/header.component';
-import {FooterComponent} from './layout/footer/footer.component';
-import {ContentLayoutComponent} from './layout/content-layout/content-layout.component';
-import {HomeModule} from "./modules/home/home.module";
+import { SpinnerComponent } from './shared/component/spinner/spinner.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { AccountLayoutComponent } from './layout/account-layout/account-layout.component';
 import {RideModule} from "./modules/ride/ride.module";
+import {HomeModule} from "./modules/home/home.module";
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {RideModule} from "./modules/ride/ride.module";
     HeaderComponent,
     FooterComponent,
     ContentLayoutComponent,
+    AccountLayoutComponent,
   ],
   imports: [
     ToastrModule.forRoot(),

@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {ContentLayoutComponent} from "./layout/content-layout/content-layout.component";
+import {AccountLayoutComponent} from "./layout/account-layout/account-layout.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,12 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'account',
+    component: AccountLayoutComponent,
+    loadChildren: () =>
+      import('./modules/account/account.module').then((m) => m.AccountModule),
   },
 ];
 
