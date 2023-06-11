@@ -13,8 +13,10 @@ export const ScriptStore: Scripts[] = [
   {name: 'glightbox', src: './assets/vendor/glightbox/js/glightbox.js'},
   {name: 'choices', src: './assets/vendor/choices/js/choices.min.js'},
   {name: 'aos', src: './assets/vendor/aos/aos.js'},
-];
+  {name: 'sticky', src: './assets/vendor/sticky-js/sticky.min.js'},
+  {name: 'nouislider', src: './assets/vendor/nouislider/nouislider.min.js'},
 
+];
 declare var document: any;
 
 @Injectable({
