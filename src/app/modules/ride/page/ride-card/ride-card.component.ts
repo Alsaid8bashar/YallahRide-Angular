@@ -23,6 +23,6 @@ export class RideCardComponent implements OnInit {
   }
 
   displayRideDetails() {
-    this.router.navigate(['/ride-details', String(this.ride.id)]);
+    this.router.navigate(['ride/details', String(this.ride.id)]);
   }
 }

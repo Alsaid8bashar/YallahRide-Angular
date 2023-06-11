@@ -33,6 +33,7 @@ export class RideListComponent implements OnInit, OnDestroy {
       this.date = params['date'];
       this.from = params['pickup'];
     });
+    this.loadScripts();
     this.buildForm();
     this.loadFilteredRides();
   }
@@ -70,7 +71,7 @@ export class RideListComponent implements OnInit, OnDestroy {
   buildForm(): void {
     this.searchForRideFrom = new FormGroup({
       to: new FormControl(this.to, Validators.required),
-      from: new FormControl(this.to, Validators.required),
+      from: new FormControl(this.from, Validators.required),
       date: new FormControl(this.date, Validators.required),
     });
   }
@@ -79,13 +80,17 @@ export class RideListComponent implements OnInit, OnDestroy {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky','nouislider').then(data => {
     }).catch(error => console.log(error));
   }
+  private unloadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky','nouislider').then(data => {
+    }).catch(error => console.log(error));
+  }
+
 
   ngOnDestroy() {
-    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky','nouislider').then(data => {
-    }).catch(error => console.log(error));
     if (this.ridesSubscription) {
       this.ridesSubscription.unsubscribe();
     }
+      this.unloadScripts();
   }
 
 }

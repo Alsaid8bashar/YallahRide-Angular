@@ -15,7 +15,6 @@ export const ScriptStore: Scripts[] = [
   {name: 'aos', src: './assets/vendor/aos/aos.js'},
   {name: 'sticky', src: './assets/vendor/sticky-js/sticky.min.js'},
   {name: 'nouislider', src: './assets/vendor/nouislider/nouislider.min.js'},
-
 ];
 declare var document: any;
 

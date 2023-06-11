@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../schema/user";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {Ride} from "../schema/ride";
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,10 @@ export class UserService {
   set userSubject(value: BehaviorSubject<User>) {
     this._userSubject = value;
   }
+  // GET http://localhost:8080/user/{{id}}
 
-  getUserByID(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiURL}/${id}`);
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiURL}${id}`);
   }
 
   createUser(user: User): Observable<User> {

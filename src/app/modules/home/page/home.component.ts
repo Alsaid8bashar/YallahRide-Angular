@@ -4,6 +4,7 @@ import {RideService} from "../../../data/service/ride.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../data/schema/user";
 import {Router} from "@angular/router";
+import {UserService} from "../../../data/service/user.service";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   searchForRideFrom: FormGroup;
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private rideService: RideService, private router: Router) {
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private rideService: RideService, private router: Router,private userService:UserService) {
   }
 
   private loadScripts() {
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.searchForRideFrom.valid) {
-      this.router.navigate(['/rides'], {queryParams: this.searchForRideFrom.value});
+      this.router.navigate(['/ride/list'], {queryParams: this.searchForRideFrom.value});
     } else {
       this.searchForRideFrom.markAllAsTouched();
     }
