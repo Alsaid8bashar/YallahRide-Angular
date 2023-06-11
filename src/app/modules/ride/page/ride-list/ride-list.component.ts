@@ -24,7 +24,6 @@ export class RideListComponent implements OnInit, OnDestroy {
 
 
   constructor(private rideService: RideService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
-    this.loadScripts();
   }
 
   ngOnInit() {
@@ -33,6 +32,7 @@ export class RideListComponent implements OnInit, OnDestroy {
       this.date = params['date'];
       this.from = params['pickup'];
     });
+    this.loadScripts();
     this.buildForm();
     this.loadFilteredRides();
   }
@@ -84,6 +84,7 @@ export class RideListComponent implements OnInit, OnDestroy {
     if (this.ridesSubscription) {
       this.ridesSubscription.unsubscribe();
     }
+      this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox', 'functions', 'aos').then(r => console.log(r));
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Ride} from "../../../../data/schema/ride";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RideService} from "../../../../data/service/ride.service";
@@ -10,7 +10,7 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
   templateUrl: './ride-details.component.html',
   styleUrls: ['./ride-details.component.css']
 })
-export class RideDetailsComponent implements OnInit {
+export class RideDetailsComponent implements OnInit,OnDestroy {
 
   ride: Ride;
 
@@ -18,6 +18,7 @@ export class RideDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadScripts();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.spinner.show();
@@ -35,8 +36,12 @@ export class RideDetailsComponent implements OnInit {
   }
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky').then(data => {
     }).catch(error => console.log(error));
   }
 
+  ngOnDestroy() {
+    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
 }

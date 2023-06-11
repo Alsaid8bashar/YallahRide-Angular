@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit  {
 
   searchForRideFrom: FormGroup;
 
@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.buildForm();
   }
 
