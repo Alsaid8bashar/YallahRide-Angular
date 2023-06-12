@@ -7,7 +7,7 @@ import {DynamicScriptLoaderService} from "../../shared/service/dynamic-script-lo
   templateUrl: './account-layout.component.html',
   styleUrls: ['./account-layout.component.css']
 })
-export class AccountLayoutComponent implements AfterViewInit {
+export class AccountLayoutComponent implements OnInit,AfterViewInit {
   constructor(private router: Router,private dynamicScriptLoader: DynamicScriptLoaderService) {
 
   }
@@ -15,10 +15,14 @@ export class AccountLayoutComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.unloadScripts();
-        this.loadScripts();
+        this.load();
+        this.updateActiveListItem(event.urlAfterRedirects)
       }
     });
+  }
+
+  updateActiveListItem(currentRoute: string) {
+    console.log(currentRoute);
   }
 
   private loadScripts() {
@@ -28,6 +32,14 @@ export class AccountLayoutComponent implements AfterViewInit {
   private unloadScripts() {
     this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox','functions','aos').then(data => {console.log(data)
     }).catch(error => console.log(error));
-    console.log("Hasan")
+  }
+
+  private load(){
+    this.unloadScripts();
+    this.loadScripts();
+  }
+
+  ngOnInit(): void {
+    this.load();
   }
 }
