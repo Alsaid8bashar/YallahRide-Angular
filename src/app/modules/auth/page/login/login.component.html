@@ -49,10 +49,15 @@
                       password is <strong>required</strong></mat-error>
                   </div>
                 </div>
-                <div *ngIf="errorMessage" class="alert alert-danger">
-                  {{ errorMessage }}
+                <!--                <div *ngIf="errorMessage" class="alert alert-danger">-->
+                <!--                  {{ errorMessage }}-->
+                <!--                </div>-->
+                <div class="my-2">
+                  <mat-error *ngIf="errorMessage">
+                    Invalid Phone number or Password
+                  </mat-error>
                 </div>
-                <!-- Remember me -->
+                <!--                 Remember me -->
                 <div class="mb-3 d-sm-flex justify-content-between">
                   <div>
                     <input type="checkbox" class="form-check-input" id="rememberCheck">

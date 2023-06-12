@@ -1,7 +1,8 @@
 import {User} from "./user";
 import {Report} from "./report";
+import {Car} from "./car";
 
-export class Ride{
+export class Ride {
   id?: number
 
   from?: string
@@ -21,7 +22,7 @@ export class Ride{
   driver?: User
 
   reports?: Report[]
-
+  car: Car
 
   constructor(from: string, to: string, seats: number, cost: number, driver: User) {
     this.from = from;
