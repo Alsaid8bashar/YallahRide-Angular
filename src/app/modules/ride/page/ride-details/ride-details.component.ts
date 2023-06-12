@@ -5,10 +5,13 @@ import {RideService} from "../../../../data/service/ride.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
 
+
+
+
+
 @Component({
   selector: 'app-ride-details',
-  templateUrl: './ride-details.component.html',
-  styleUrls: ['./ride-details.component.css']
+  templateUrl: './ride-details.component.html'
 })
 export class RideDetailsComponent implements OnInit, OnDestroy {
 
@@ -18,6 +21,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.unloadScripts();
     this.loadScripts();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');

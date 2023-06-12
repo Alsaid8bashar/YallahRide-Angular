@@ -57,6 +57,12 @@ export class AccountService {
     return this.http.get<number>(`${this.apiURL}statistics`);
   }
 
+  findAccountByPhoneNumber(phoneNumber: number){
+    const url = 'http://localhost:8080/account/find-by-phone';
+    const params = { phone: phoneNumber };
+    return this.http.get<Account>(url, {  params  });
+  }
+
   ngOnDestroy(): void {
 
   }

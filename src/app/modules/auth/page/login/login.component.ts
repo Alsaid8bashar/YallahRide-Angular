@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../shared/service/auth.service";
-import {delay, finalize, of, Subscription, tap} from "rxjs";
+import {of, Subscription, tap} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
 import {catchError} from "rxjs/operators";
 import {SessionStorageService} from "../../../../shared/service/session.service";
@@ -44,7 +44,8 @@ export class LoginComponent implements OnDestroy {
             const tokenWithoutBearer = authHeader.split('Bearer ')[1];
             const decodedToken: { userId } = jwt_decode(tokenWithoutBearer);
             const userId = +decodedToken.userId;
-
+            console.log(tokenWithoutBearer);
+            console.log(decodedToken);
             this.userService.getUserById(userId)
               .subscribe(
                 (user: User) => {
