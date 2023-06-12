@@ -19,6 +19,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 import { AccountLayoutComponent } from './layout/account-layout/account-layout.component';
 import {RideModule} from "./modules/ride/ride.module";
 import {HomeModule} from "./modules/home/home.module";
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {HomeModule} from "./modules/home/home.module";
     //   useClass: TokenInterceptor,
     //   multi: true
     // }
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

@@ -32,7 +32,7 @@ Main Content START -->
 
                 <!-- List -->
                 <ul class="nav nav-divider h6 fw-normal text-body mb-0">
-                  <li class="nav-item">25 Jan 2023</li>
+                  <li class="nav-item">{{formattedDate}}</li>
                 </ul>
               </div>
               <!-- Title and content END -->
@@ -117,15 +117,15 @@ Main Content START -->
                       <ul class="list-group list-group-borderless">
                         <li class="list-group-item">
                           <span class="h6 mb-0 me-1">Make:</span>
-                          <span class="h6 fw-light mb-0"></span>
+                          <span class="h6 fw-light mb-0">{{ride.car.make}}</span>
                         </li>
                         <li class="list-group-item">
                           <span class="h6 mb-0 me-1">Model:</span>
-                          <span class="h6 fw-light mb-0">Fusion</span>
+                          <span class="h6 fw-light mb-0">{{ride.car.model}}</span>
                         </li>
                         <li class="list-group-item">
                           <span class="h6 mb-0 me-1">Model Year:</span>
-                          <span class="h6 fw-light mb-0">2014</span>
+                          <span class="h6 fw-light mb-0">{{ride.car.modelYear}}</span>
                         </li>
                       </ul>
                     </div>
@@ -133,11 +133,11 @@ Main Content START -->
                       <ul class="list-group list-group-borderless">
                         <li class="list-group-item">
                           <span class="h6 mb-0 me-1">Color:</span>
-                          <span class="h6 fw-light mb-0">Black</span>
+                          <span class="h6 fw-light mb-0">{{ride.car.color}}</span>
                         </li>
                         <li class="list-group-item">
                           <span class="h6 mb-0 me-1">License Plate:</span>
-                          <span class="h6 fw-light mb-0">19-89893</span>
+                          <span class="h6 fw-light mb-0">{{ride.car.licensePlate}}</span>
                         </li>
                       </ul>
                     </div>
@@ -298,7 +298,7 @@ Main Content START -->
                       <li
                         class="list-group-item d-flex justify-content-between align-items-center">
                         <span class="h6 fw-normal mb-0">Total Fare</span>
-                        <span class="fs-5">5.50 JOD</span>
+                        <span class="fs-5">{{ride.cost}} JOD</span>
                       </li>
                     </ul>
                   </div>

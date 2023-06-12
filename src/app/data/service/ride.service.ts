@@ -26,11 +26,11 @@ export class RideService {
     return this.http.get<Ride[]>(`${this.apiURL}all`);
   }
 
-  deleteRideById(id: number): Observable<Ride> {
+  deleteRideById(id: number): Observable<any> {
     return this.http.delete(`${this.apiURL}delete${id}`);
   }
 
-  deleteAllRide(): Observable<Ride> {
+  deleteAllRide(): Observable<any> {
     return this.http.delete(`${this.apiURL}delete/all`);
   }
 
