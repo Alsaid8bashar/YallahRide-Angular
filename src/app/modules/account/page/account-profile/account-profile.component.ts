@@ -6,6 +6,7 @@ import {User} from "../../../../data/schema/user";
 import {HttpClient} from "@angular/common/http";
 import {Account} from "../../../../data/schema/account";
 import {AccountService} from "../../../../data/service/account.service";
+import {TokenService} from "../../../../shared/service/token.service";
 
 @Component({
   selector: 'app-account-profile',
@@ -14,13 +15,12 @@ import {AccountService} from "../../../../data/service/account.service";
 })
 export class AccountProfileComponent implements OnInit{
 
-  public userObject: User = JSON.parse(this.sessionService.getItem('user'));
   private accountObject: Account;
 
-  constructor(private sessionService: SessionStorageService, http: HttpClient, private accountService:AccountService){
+  constructor(private tokenService:TokenService, http: HttpClient, private accountService:AccountService){
   }
 
   ngOnInit(): void {
-    console.log(this.userObject)
+
   }
 }

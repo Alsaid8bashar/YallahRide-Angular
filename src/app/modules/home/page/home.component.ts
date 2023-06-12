@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.unloadScripts();
     this.loadScripts();
     this.buildForm();
   }
