@@ -22,7 +22,12 @@ export class Ride {
   driver?: User
 
   reports?: Report[]
+
   car: Car
+
+  arrivalTime:Date
+
+  departureTime:Date
 
   constructor(from: string, to: string, seats: number, cost: number, driver: User) {
     this.from = from;

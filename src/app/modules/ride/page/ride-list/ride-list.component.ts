@@ -27,13 +27,13 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.unloadScripts();
     this.loadScripts();
     this.route.queryParams.subscribe(params => {
       this.to = params['drop'];
       this.date = params['date'];
       this.from = params['pickup'];
     });
-    this.loadScripts();
     this.buildForm();
     this.loadFilteredRides();
   }

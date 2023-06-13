@@ -49,7 +49,7 @@ Main Content START -->
                   <!-- Airport detail -->
                   <div class="col-sm-4 col-md-3">
                     <div class="text-center">
-                      <h4>07:35</h4>
+                      <h4>{{ride.departureTime}}</h4>
                       <h6 class="mb-0">{{ride.from}}</h6>
                     </div>
                   </div>
@@ -57,7 +57,7 @@ Main Content START -->
                   <!-- Time -->
                   <div class="col-sm-4 col-md-6 my-sm-auto text-center">
                     <!-- Time -->
-                    <h5>9hr 50min</h5>
+                    <h5>{{getRideTime}}</h5>
                     <div class="position-relative my-4">
                       <!-- Line -->
                       <hr class="bg-primary opacity-5 position-relative">
@@ -72,7 +72,7 @@ Main Content START -->
                   <!-- Airport detail -->
                   <div class="col-sm-4 col-md-3  align-items-center justify-content-center">
                     <div class="text-center">
-                      <h4>07:35</h4>
+                      <h4>{{ride.arrivalTime}}</h4>
                       <h6 class="mb-0">{{ride.to}}</h6>
                     </div>
                   </div>
@@ -250,21 +250,9 @@ Main Content START -->
                     <div class="card-body py-4">
                       <!-- List -->
                       <ul class="list-group list-group-borderless mb-0">
-                        <li class="list-group-item h6 fw-light d-flex mb-0"><i
-                          class="bi bi-patch-check-fill text-success me-2"></i>Free
-                          Breakfast and Lunch/Dinner.
-                        </li>
-                        <li class="list-group-item h6 fw-light d-flex mb-0"><i
-                          class="bi bi-patch-check-fill text-success me-2"></i>Great
-                          Small Breaks.
-                        </li>
-                        <li class="list-group-item h6 fw-light d-flex mb-0"><i
-                          class="bi bi-patch-check-fill text-success me-2"></i>Free
-                          Stay for Kids Below the age of 12 years.
-                        </li>
-                        <li class="list-group-item h6 fw-light d-flex mb-0"><i
-                          class="bi bi-patch-check-fill text-success me-2"></i>On
-                          Cancellation, You will not get any refund
+                        <li class="list-group-item h6 fw-light d-flex mb-0"
+                            *ngFor="let preference of ride.driver.travelPreferences"><i
+                          class="bi bi-patch-check-fill text-success me-2"></i>{{preference.description}}
                         </li>
                       </ul>
                     </div>
