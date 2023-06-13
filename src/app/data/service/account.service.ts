@@ -34,7 +34,7 @@ export class AccountService {
   }
 
   getAccountByID(id: number): Observable<Account> {
-    return this.http.get<Account>(`${this.apiURL}/${id}`);
+    return this.http.get<Account>(`${this.apiURL}${id}`);
   }
 
   registerAccount(account: Account): Observable<Account> {

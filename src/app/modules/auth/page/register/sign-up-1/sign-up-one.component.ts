@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {emailExistsValidator, phoneExistsValidator} from "./emailExistence.validator";
 import {AccountService} from "../../../../../data/service/account.service";
 import {StorageService} from "../../../../../shared/service/storage.service";

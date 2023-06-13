@@ -9,7 +9,7 @@ export class Account {
 
   passwordHash?: string
 
-  date?: Date
+  date?: string
 
   user?: User
 

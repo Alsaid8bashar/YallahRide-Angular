@@ -20,6 +20,7 @@ import { AccountLayoutComponent } from './layout/account-layout/account-layout.c
 import {RideModule} from "./modules/ride/ride.module";
 import {HomeModule} from "./modules/home/home.module";
 import {DatePipe} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import {DatePipe} from "@angular/common";
     AuthModule,
     HomeModule,
     RideModule,
-    DataModule
+    DataModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     // {

@@ -27,6 +27,7 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.unloadScripts();
     this.loadScripts();
     this.route.queryParams.subscribe(params => {
       this.to = params['drop'];
@@ -78,11 +79,11 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky', 'nouislider').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
   private unloadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky','nouislider').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky').then(data => {
     }).catch(error => console.log(error));
   }
 

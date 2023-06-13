@@ -8,6 +8,8 @@ import { AccountVehiclesComponent } from './page/account-vehicles/account-vehicl
 import { AccountDeleteComponent } from './page/account-delete/account-delete.component';
 import { AccountFeedbackComponent } from './page/account-feedback/account-feedback.component';
 import {AccountRoutingModule} from "./account-routing.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../../shared/shared.module";
 
 
 
@@ -23,7 +25,10 @@ import {AccountRoutingModule} from "./account-routing.module";
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class AccountModule { }
