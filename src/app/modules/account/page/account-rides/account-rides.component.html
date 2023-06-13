@@ -39,50 +39,11 @@
 
       <!-- Tab content item START -->
       <div class="tab-pane fade show active" id="tab-1">
-        <h6>Upcoming Rides (1)</h6>
+        <h6>Upcoming Rides ({{getRidesByStatus(RideStatus.Active)}})</h6>
         <!-- Card item START -->
-        <div class="card border my-3">
-          <!-- Card header -->
-          <div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-            <!-- Icon and Title -->
-            <div class="d-flex align-items-center">
-              <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
-              <!-- Title -->
-              <div class="ms-2">
-                <h6 class="card-title mb-0">Irbid to Amman</h6>
-                <ul class="nav nav-divider small">
-                  <li class="nav-item">Ride ID: CGDSUAHA12548</li>
-                  <li class="nav-item">Ford Fusion</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-4  text-center align-items-end">
-              <a href="account-ride-details.html" class="btn btn-outline-primary">View</a>
-              <a href="account-ride-requests.html" class="btn btn-outline-secondary">Ride Requests</a>
-            </div>
-          </div>
-
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-sm-6 col-md-4">
-                <span>Pickup address</span>
-                <h6 class="mb-0">Al Nassem Intersection</h6>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <span>Drop address</span>
-                <h6 class="mb-0">Tabarbor Bus Station</h6>
-              </div>
-
-              <div class="col-md-4">
-                <span>Ride Date</span>
-                <h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ng-container *ngFor="let ride of rides">
+          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Active" [ride]="ride"></app-ride-card>
+        </ng-container>
         <!-- Card item END -->
       </div>
 
@@ -90,188 +51,24 @@
 
       <!-- Tab content item START -->
       <div class="tab-pane fade" id="tab-2">
-        <h6>Cancelled booking (1)</h6>
+        <h6>Cancelled booking ({{getRidesByStatus(RideStatus.Canceled)}})</h6>
 
-
-        <div class="card border my-3">
-          <!-- Card header -->
-          <div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-            <!-- Icon and Title -->
-            <div class="d-flex align-items-center">
-              <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
-              <!-- Title -->
-              <div class="ms-2">
-                <h6 class="card-title mb-0">Irbid to Amman</h6>
-                <ul class="nav nav-divider small">
-                  <li class="nav-item">Ride ID: CGDSUAHA12548</li>
-                  <li class="nav-item">Ford Fusion</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="mt-2 mt-md-0">
-              <p href="#" class="btn btn-danger btn-sm mb-0" style="pointer-events: none;">Cancelled</p>
-            </div>
-          </div>
-
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-sm-6 col-md-4">
-                <span>Pickup address</span>
-                <h6 class="mb-0">Al Nassem Intersection</h6>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <span>Drop address</span>
-                <h6 class="mb-0">Tabarbor Bus Station</h6>
-              </div>
-
-              <div class="col-md-4">
-                <span>Ride Date</span>
-                <h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card border my-3">
-          <!-- Card header -->
-          <div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-            <!-- Icon and Title -->
-            <div class="d-flex align-items-center">
-              <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
-              <!-- Title -->
-              <div class="ms-2">
-                <h6 class="card-title mb-0">Irbid to Amman</h6>
-                <ul class="nav nav-divider small">
-                  <li class="nav-item">Ride ID: CGDSUAHA12548</li>
-                  <li class="nav-item">Ford Fusion</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="mt-2 mt-md-0">
-              <p href="#" class="btn btn-danger btn-sm mb-0" style="pointer-events: none;">Cancelled</p>
-            </div>
-          </div>
-
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-sm-6 col-md-4">
-                <span>Pickup address</span>
-                <h6 class="mb-0">Al Nassem Intersection</h6>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <span>Drop address</span>
-                <h6 class="mb-0">Tabarbor Bus Station</h6>
-              </div>
-
-              <div class="col-md-4">
-                <span>Ride Date</span>
-                <h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ng-container *ngFor="let ride of rides">
+          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Canceled" [ride]="ride"></app-ride-card>
+        </ng-container>
 
       </div>
       <!-- Tabs content item END -->
 
       <!-- Tab content item START -->
       <div class="tab-pane fade" id="tab-3">
-        <h6>Completed Rides (1)</h6>
+        <h6>Completed Rides ({{getRidesByStatus(RideStatus.Completed)}})</h6>
         <!-- Card item START -->
-        <div class="card border my-3">
-          <!-- Card header -->
-          <div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-            <!-- Icon and Title -->
-            <div class="d-flex align-items-center">
-              <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
-              <!-- Title -->
-              <div class="ms-2">
-                <h6 class="card-title mb-0">Irbid to Amman</h6>
-                <ul class="nav nav-divider small">
-                  <li class="nav-item">Ride ID: CGDSUAHA12548</li>
-                  <li class="nav-item">Ford Fusion</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="mt-2 mt-md-0">
-              <p href="#" class="btn btn-success btn-sm mb-0" style="pointer-events: none;">Completed</p>
-            </div>
-          </div>
-
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-sm-6 col-md-4">
-                <span>Pickup address</span>
-                <h6 class="mb-0">Al Nassem Intersection</h6>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <span>Drop address</span>
-                <h6 class="mb-0">Tabarbor Bus Station</h6>
-              </div>
-
-              <div class="col-md-4">
-                <span>Ride Date</span>
-                <h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Card item END -->
+        <ng-container *ngFor="let ride of rides">
+          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Completed" [ride]="ride"></app-ride-card>
+        </ng-container>
 
         <!-- Card item START -->
-        <div class="card border my-3">
-          <!-- Card header -->
-          <div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-            <!-- Icon and Title -->
-            <div class="d-flex align-items-center">
-              <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
-              <!-- Title -->
-              <div class="ms-2">
-                <h6 class="card-title mb-0">Irbid to Amman</h6>
-                <ul class="nav nav-divider small">
-                  <li class="nav-item">Ride ID: CGDSUAHA12548</li>
-                  <li class="nav-item">Ford Fusion</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="mt-2 mt-md-0">
-              <p href="#" class="btn btn-success btn-sm mb-0" style="pointer-events: none;">Completed</p>
-            </div>
-          </div>
-
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-sm-6 col-md-4">
-                <span>Pickup address</span>
-                <h6 class="mb-0">Al Nassem Intersection</h6>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-                <span>Drop address</span>
-                <h6 class="mb-0">Tabarbor Bus Station</h6>
-              </div>
-
-              <div class="col-md-4">
-                <span>Ride Date</span>
-                <h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- Card item END -->
       </div>
       <!-- Tabs content item END -->

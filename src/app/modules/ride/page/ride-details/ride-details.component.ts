@@ -11,7 +11,7 @@ import {DatePipe} from '@angular/common';
   selector: 'app-ride-details',
   templateUrl: './ride-details.component.html'
 })
-export class RideDetailsComponent implements OnInit, OnDestroy {
+export class RideDetailsComponent implements OnInit {
 
   ride: Ride;
 
@@ -19,8 +19,6 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.unloadScripts();
-    this.loadScripts();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.spinner.show();
@@ -37,42 +35,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  get getRideTime(): string {
-    const arrivalTime = new Date();
-    const arrivalTimeString = this.ride.arrivalTime.toString();
-    const arrivalTimeParts = arrivalTimeString.split(":");
-    arrivalTime.setHours(parseInt(arrivalTimeParts[0]));
-    arrivalTime.setMinutes(parseInt(arrivalTimeParts[1]));
 
-    const departureTime = new Date();
-    const departureTimeString = this.ride.departureTime.toString();
-    const departureTimeParts = departureTimeString.split(":");
-    departureTime.setHours(parseInt(departureTimeParts[0]));
-    departureTime.setMinutes(parseInt(departureTimeParts[1]));
 
-    // Check if the departure time is before the arrival time
-    const rideTimeInMinutes = Math.floor((departureTime.getTime() - arrivalTime.getTime()) / (1000 * 60));
 
-    const hours = Math.abs(Math.floor(rideTimeInMinutes / 60));
-    const minutes = Math.abs(rideTimeInMinutes % 60);
-    return `${hours}hr ${minutes}min`;
-  }
-
-  get formattedDate(): string {
-    return this.datePipe.transform(this.ride.date, 'dd MMM yyyy');
-  }
-
-  private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
-    }).catch(error => console.log(error));
-  }
-
-  private unloadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
-    }).catch(error => console.log(error));
-  }
-
-  ngOnDestroy() {
-    this.unloadScripts();
-  }
 }

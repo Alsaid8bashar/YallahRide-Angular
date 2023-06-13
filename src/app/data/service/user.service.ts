@@ -1,31 +1,33 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../schema/user";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Ride} from "../schema/ride";
+import {SessionStorageService} from "../../shared/service/session.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private _userSubject: BehaviorSubject<User>;
+  private _userSubject: User;
   apiURL = environment.serverUrl + 'user/';
 
-  constructor(private http: HttpClient) {
-    this._userSubject = new BehaviorSubject<User>(null);
+
+  constructor(private http: HttpClient, private sessionService: SessionStorageService) {
+    this.setUserObject();
+  }
+
+  private setUserObject() {
+    this._userSubject = JSON.parse(this.sessionService.getItem('user')) as User;
   }
 
 
-  get userSubject(): BehaviorSubject<User> {
+  getUserSubject(): User {
     return this._userSubject;
   }
 
-  set userSubject(value: BehaviorSubject<User>) {
-    this._userSubject = value;
-  }
-  // GET http://localhost:8080/user/{{id}}
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiURL}${id}`);
@@ -51,6 +53,7 @@ export class UserService {
     return this.http.get<number>(`${this.apiURL}statistics`);
   }
 
+
   activateUserById(id: number): Observable<User> {
     return this.http.delete(`${this.apiURL}activate/${id}`)
   }
@@ -58,4 +61,6 @@ export class UserService {
   deactivateUserById(id: number): Observable<User> {
     return this.http.delete(`${this.apiURL}deactivate/${id}`)
   }
+
+
 }

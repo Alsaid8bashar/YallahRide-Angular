@@ -1,8 +1,10 @@
 import {User} from "./user";
 import {Report} from "./report";
 import {Car} from "./car";
+import { RideStatus } from './Enum/RideStatus';
 
 export class Ride {
+
   id?: number
 
   from?: string
@@ -25,9 +27,11 @@ export class Ride {
 
   car: Car
 
-  arrivalTime:Date
+  arrivalTime: Date
 
-  departureTime:Date
+  departureTime: Date
+  rideStatus: RideStatus;
+
 
   constructor(from: string, to: string, seats: number, cost: number, driver: User) {
     this.from = from;

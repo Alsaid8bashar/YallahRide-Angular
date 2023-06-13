@@ -1,0 +1,225 @@
+<!-- Title START -->
+<div class="d-flex align-items-center">
+  <!-- Icon -->
+  <h1 class="display-4 mb-0"><i class="fa-solid fa-cab rtl-flip"></i></h1>
+
+  <!-- Title and content START -->
+  <div class="ms-3">
+    <!-- Title -->
+    <ul class="list-inline mb-2">
+      <li class="list-inline-item me-2">
+        <h3 class="mb-0">{{ride.from}}</h3>
+      </li>
+      <li class="list-inline-item me-2">
+        <h3 class="mb-0"><i class="bi bi-arrow-right"></i></h3>
+      </li>
+      <li class="list-inline-item me-0">
+        <h3 class="mb-0">{{ride.to}}</h3>
+      </li>
+    </ul>
+
+    <!-- List -->
+    <ul class="nav nav-divider h6 fw-normal text-body mb-0">
+      <li class="nav-item">{{formattedDate}}</li>
+    </ul>
+  </div>
+  <!-- Title and content END -->
+</div>
+<!-- Title END -->
+
+<!-- Cab item START -->
+<div class="card border p-4">
+
+  <!-- Card body -->
+  <div class="card-body p-4 pb-0">
+    <!-- Ticket item START -->
+    <div class="row g-4 justify-content-center mb-4">
+      <!-- Airport detail -->
+      <div class="col-sm-4 col-md-3">
+        <div class="text-center">
+          <h4>{{ride.departureTime}}</h4>
+          <h6 class="mb-0">{{ride.from}}</h6>
+        </div>
+      </div>
+
+      <!-- Time -->
+      <div class="col-sm-4 col-md-6 my-sm-auto text-center">
+        <!-- Time -->
+        <h5>{{getRideTime}}</h5>
+        <div class="position-relative my-4">
+          <!-- Line -->
+          <hr class="bg-primary opacity-5 position-relative">
+          <!-- Icon -->
+          <div
+            class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
+            <i class="bi bi-car-front-fill"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Airport detail -->
+      <div class="col-sm-4 col-md-3  align-items-center justify-content-center">
+        <div class="text-center">
+          <h4>{{ride.arrivalTime}}</h4>
+          <h6 class="mb-0">{{ride.to}}</h6>
+        </div>
+      </div>
+
+    </div>
+    <!-- Ticket item END -->
+  </div>
+</div>
+
+<!-- Information START -->
+<div class="card border">
+  <!-- Card header -->
+  <div class="card-header border-bottom px-4">
+    <h3 class="card-title mb-0">Driver and Car details</h3>
+  </div>
+  <!-- Card body -->
+  <div class="card-body py-4">
+    <!-- List -->
+    <h5 class="mb-3"><i class="bi bi-arrow-right rtl-flip me-2"></i>Driver</h5>
+    <div class="container">
+      <div class="row mt-3 align-items-center">
+        <div class="col-md-6 text-md-start">
+          <!-- Rating Star -->
+          <ul class="list-inline">
+            <div class="avatar">
+              <img class="avatar-img rounded-circle" src="/assets/images/avatar/01.jpg" alt="avatar">
+            </div>
+            <li class="list-inline-item h6 fw-normal me-1 mb-0">
+              <p>{{ride.driver.firstName}}</p>
+            </li>
+            <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+            <li class="list-inline-item h6 fw-normal me-1 mb-0">4.5</li>
+          </ul>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <h5 class="mb-3"><i class="bi bi-arrow-right rtl-flip me-2"></i>Car details</h5>
+    <div class="container">
+      <div class="row mt-3 align-items-center">
+        <div class="col-md-6 text-md-start">
+          <ul class="list-group list-group-borderless">
+            <li class="list-group-item">
+              <span class="h6 mb-0 me-1">Make:</span>
+              <span class="h6 fw-light mb-0">{{ride.car.make}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="h6 mb-0 me-1">Model:</span>
+              <span class="h6 fw-light mb-0">{{ride.car.model}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="h6 mb-0 me-1">Model Year:</span>
+              <span class="h6 fw-light mb-0">{{ride.car.modelYear}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-md-start">
+          <ul class="list-group list-group-borderless">
+            <li class="list-group-item">
+              <span class="h6 mb-0 me-1">Color:</span>
+              <span class="h6 fw-light mb-0">{{ride.car.color}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="h6 mb-0 me-1">License Plate:</span>
+              <span class="h6 fw-light mb-0">{{ride.car.licensePlate}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Images -->
+    <div class="row mt-3">
+      <!-- Slider START -->
+      <div class="tiny-slider arrow-round arrow-xs arrow-dark">
+        <div class="tiny-slider-inner rounded-2" data-autoplay="false" data-arrow="true" data-dots="false"
+             data-items="3" data-items-sm="2">
+          <!-- Image item -->
+          <div>
+            <a class="w-100 h-100" data-glightbox data-gallery="gallery"
+               href="assets/images/category/cab/4by3/02.jpg">
+              <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                <!-- Image -->
+                <img src="/assets/images/category/cab/4by3/02.jpg" class="rounded-3" alt="">
+                <!-- Full screen button -->
+                <div class="hover-element w-100 h-100">
+                  <i
+                    class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Image item -->
+          <div>
+            <a class="w-100 h-100" data-glightbox data-gallery="gallery"
+               href="assets/images/category/cab/4by3/01.jpg">
+              <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                <!-- Image -->
+                <img src="/assets/images/category/cab/4by3/01.jpg" class="rounded-3" alt="">
+                <!-- Full screen button -->
+                <div class="hover-element w-100 h-100">
+                  <i
+                    class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Image item -->
+          <div>
+            <a class="w-100 h-100" data-glightbox data-gallery="gallery"
+               href="assets/images/category/cab/4by3/03.jpg">
+              <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                <!-- Image -->
+                <img src="/assets/images/category/cab/4by3/03.jpg" class="rounded-3" alt="">
+                <!-- Full screen button -->
+                <div class="hover-element w-100 h-100">
+                  <i
+                    class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Image item -->
+          <div>
+            <a class="w-100 h-100" data-glightbox data-gallery="gallery"
+               href="assets/images/category/cab/4by3/04.jpg">
+              <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                <!-- Image -->
+                <img src="/assets/images/category/cab/4by3/04.jpg" class="rounded-3" alt="">
+                <!-- Full screen button -->
+                <div class="hover-element w-100 h-100">
+                  <i
+                    class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Image item -->
+          <div>
+            <a class="w-100 h-100" data-glightbox data-gallery="gallery"
+               href="assets/images/category/cab/4by3/05.jpg">
+              <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                <!-- Image -->
+                <img src="/assets/images/category/cab/4by3/05.jpg" class="rounded-3" alt="">
+                <!-- Full screen button -->
+                <div class="hover-element w-100 h-100">
+                  <i
+                    class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Slider END -->
+    </div>
+    <!-- Price -->
+  </div>
+</div>

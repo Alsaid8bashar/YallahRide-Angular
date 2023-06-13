@@ -24,8 +24,8 @@ export class TokenService {
     this.sessionService.removeItem(this.tokenKey);
   }
 
-  extractObjectFromToken(token: string, key: string) {
-    const tokenWithoutBearer = token.split('Bearer ')[1];
+  extractObjectFromToken(key: string) {
+    const tokenWithoutBearer = this.getToken().split('Bearer ')[1];
     const decodedToken: Record<string, any> = jwt_decode(tokenWithoutBearer);
     return decodedToken[key];
   }

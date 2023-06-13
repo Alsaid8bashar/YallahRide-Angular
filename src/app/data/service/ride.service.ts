@@ -22,6 +22,10 @@ export class RideService {
     return this.http.get<Ride>(`${this.apiURL}${id}`);
   }
 
+  findDriverRide(driverId: number): Observable<Ride []> {
+    return this.http.get<Ride[]>(`${this.apiURL}driver-rides/${driverId}`);
+  }
+
   findAllRide(): Observable<Ride[]> {
     return this.http.get<Ride[]>(`${this.apiURL}all`);
   }
@@ -42,10 +46,10 @@ export class RideService {
       .set("to", to)
       .set("date", formattedDate);
 
-    return this.http.get<Ride[]>(`${this.apiURL}searchForRide`, { params });
+    return this.http.get<Ride[]>(`${this.apiURL}searchForRide`, {params});
   }
 
-   formatRideDate(date: string): string {
+  formatRideDate(date: string): string {
     const dateObj = new Date(date);
     const year = String(dateObj.getFullYear());
     const month = String(dateObj.getMonth() + 1).padStart(2, "0");

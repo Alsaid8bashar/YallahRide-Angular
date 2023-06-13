@@ -40,7 +40,7 @@ export class LoginComponent implements OnDestroy {
             const authHeader = response.headers.get('Authorization');
             if (authHeader) {
               this.tokenService.setToken(authHeader);
-              const userId = +this.tokenService.extractObjectFromToken(authHeader, 'userId');
+              const userId = +this.tokenService.extractObjectFromToken('userId');
               this.userService.getUserById(userId)
                 .subscribe(
                   (user: User) => {

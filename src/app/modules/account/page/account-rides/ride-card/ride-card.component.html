@@ -1,0 +1,51 @@
+<!-- Card item START -->
+<div class="card border my-3">
+  <!-- Card header -->
+  <div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+    <!-- Icon and Title -->
+    <div class="d-flex align-items-center">
+      <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
+      <!-- Title -->
+      <div class="ms-2">
+        <h6 class="card-title mb-0">{{ride.from}} to {{ride.to}}</h6>
+        <ul class="nav nav-divider small">
+          <li class="nav-item">Ride ID: {{ride.id}}</li>
+          <li class="nav-item">{{ride.car.make}}</li>
+          <li class="nav-item">{{ride.car.model}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4  text-center align-items-end" *ngIf="ride.rideStatus==RideStatus.Active">
+      <a href="account-ride-details.html" class="btn btn-outline-primary">View</a>
+      <a href="account-ride-requests.html" class="btn btn-outline-secondary">Ride Requests</a>
+    </div>
+    <div class="mt-2 mt-md-0" *ngIf="ride.rideStatus==RideStatus.Completed">
+      <p href="#" class="btn btn-success btn-sm mb-0" style="pointer-events: none;">Completed</p>
+    </div>
+    <div class="mt-2 mt-md-0" *ngIf="ride.rideStatus==RideStatus.Canceled">
+      <p href="#" class="btn btn-danger btn-sm mb-0" style="pointer-events: none;">Cancelled</p>
+    </div>
+  </div>
+
+  <!-- Card body -->
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-sm-6 col-md-4">
+        <span>Pickup address</span>
+        <h6 class="mb-0">Al Nassem Intersection</h6>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <span>Drop address</span>
+        <h6 class="mb-0">Tabarbor Bus Station</h6>
+      </div>
+
+      <div class="col-md-4">
+        <span>Ride Date</span>
+        <h6 class="mb-0">{{ride.date}}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Card item END -->
