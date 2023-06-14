@@ -38,15 +38,7 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    this.http.delete(`${this.apiURL}delete/${id}`)
-      .subscribe(
-        () => {
-          console.log('User deleted successfully');
-        },
-        (error) => {
-          console.log('Error:', error);
-        }
-      );
+   return  this.http.delete(`${this.apiURL}delete/${id}`);
   }
 
   getNumberOfUsers(): Observable<number> {

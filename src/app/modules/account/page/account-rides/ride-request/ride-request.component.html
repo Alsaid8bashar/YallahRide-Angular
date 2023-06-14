@@ -1,0 +1,106 @@
+<!-- Main content START -->
+<div class="col-lg-8 col-xl-9">
+
+  <!-- Offcanvas menu button -->
+  <div class="d-grid mb-0 d-lg-none w-100">
+    <button class="btn btn-primary mb-4" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+      <i class="fas fa-sliders-h"></i> Menu
+    </button>
+  </div>
+
+  <!-- Title START -->
+  <div class="d-flex align-items-center mb-2 mx-1">
+    <!-- Icon -->
+    <h1 class="display-4 mb-0"><i class="fa-solid fa-cab rtl-flip"></i></h1>
+
+    <!-- Title and content START -->
+    <div class="ms-3">
+      <!-- Title -->
+      <ul class="list-inline mb-2">
+        <li class="list-inline-item me-2">
+          <h3 class="mb-0">{{from}}</h3>
+        </li>
+        <li class="list-inline-item me-2">
+          <h3 class="mb-0"><i class="bi bi-arrow-right"></i></h3>
+        </li>
+        <li class="list-inline-item me-0">
+          <h3 class="mb-0">{{to}}</h3>
+        </li>
+      </ul>
+
+      <!-- List -->
+      <ul class="nav nav-divider h6 fw-normal text-body mb-0">
+        <li class="nav-item">{{date}}</li>
+      </ul>
+    </div>
+    <!-- Title and content END -->
+  </div>
+  <!-- Title END -->
+  <!-- Ride request START -->
+  <div class="card border bg-transparent">
+    <!-- Card header -->
+    <div class="card-header bg-transparent border-bottom">
+      <h4 class="card-header-title">Ride Request</h4>
+    </div>
+
+    <!-- Card body START -->
+    <div class="card-body vstack gap-4">
+      <!-- Ride request item START -->
+      <div class="card shadow p-2" *ngFor="let passengerRequest of passengersRequest">
+        <div class="row g-0 align-items-center">
+          <!-- Card img -->
+          <div class="col-md-3 text-center">
+            <div class="avatar avatar-xl">
+              <img class="avatar-img rounded" src="/assets/images/avatar/09.jpg" alt="avatar">
+            </div>
+          </div>
+
+          <!-- Card body -->
+          <div class="col-md-6">
+            <div class="card-body py-md-2 d-flex flex-column h-100">
+
+              <!-- Title -->
+              <h5 class="card-title mb-1"><a
+                href="hotel-detail.html">{{passengerRequest.user.firstName}} {{passengerRequest.user.lastName}}</a></h5>
+              <!-- Rating and buttons -->
+              <div class="d-flex justify-content-between align-items-center">
+                <ul class="list-inline small mb-0">
+                  <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+                  <li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+                  <li class="list-inline-item">
+                    <p>4.5</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3  text-center align-items-end">
+            <button type="button" (click)="acceptPassenger(passengerRequest.id)" class="btn btn-outline-success">Accept</button>
+            <button type="button" (click)="rejectPassenger(passengerRequest.id)" class="btn btn-outline-danger">Reject</button>
+          </div>
+        </div>
+      </div>
+      <!-- Ride request item END -->
+
+
+    </div>
+    <!-- Card body END -->
+
+
+
+  </div>
+  <!-- Ride request END -->
+
+
+</div>
+<!-- Main content END -->
+<link rel="stylesheet" type="text/css" href="/assets/vendor/font-awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="/assets/vendor/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/assets/vendor/flatpickr/css/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/vendor/choices/css/choices.min.css">

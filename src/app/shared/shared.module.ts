@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {ControlMessagesComponent} from "./component/control-messages/control-messages.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {SpinnerComponent} from "./component/spinner/spinner.component";
 
 
 @NgModule({

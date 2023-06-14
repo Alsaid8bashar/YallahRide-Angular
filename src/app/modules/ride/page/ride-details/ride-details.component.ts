@@ -22,20 +22,21 @@ export class RideDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.spinner.show();
-      this.rideService.findRideById(id).subscribe(
-        ride => {
-          this.ride = ride;
-          this.spinner.hide();
-        },
-        error => {
-          console.log(error);
-          this.spinner.hide();
-        }
-      );
+      this.getRide(id);
     });
   }
 
 
-
-
+  private getRide(id: number) {
+    this.rideService.findRideById(id).subscribe(
+      ride => {
+        this.ride = ride;
+        this.spinner.hide();
+      },
+      error => {
+        console.log(error);
+        this.spinner.hide();
+      }
+    );
+  }
 }

@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RideService} from "../../../../data/service/ride.service";
 import {Ride} from "../../../../data/schema/ride";
-import {finalize, Subscription, tap} from "rxjs";
-import {SessionStorageService} from "../../../../shared/service/session.service";
+import {Subscription, tap} from "rxjs";
 import {UserService} from "../../../../data/service/user.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {RideStatus} from "../../../../data/schema/Enum/RideStatus";

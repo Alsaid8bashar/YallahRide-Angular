@@ -16,6 +16,9 @@ import { RideDetailsCardComponent } from './page/ride-details-card/ride-details-
     RideCardComponent,
     RideDetailsCardComponent
   ],
+  exports: [
+    RideDetailsCardComponent
+  ],
   imports: [
     CommonModule,
     RideRoutingModule,

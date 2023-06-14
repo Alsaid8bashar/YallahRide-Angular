@@ -31,7 +31,7 @@ export class RideService {
   }
 
   deleteRideById(id: number): Observable<any> {
-    return this.http.delete(`${this.apiURL}delete${id}`);
+    return this.http.delete(`${this.apiURL}delete/${id}`);
   }
 
   deleteAllRide(): Observable<any> {

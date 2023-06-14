@@ -8,6 +8,8 @@ import {AccountRidesComponent} from "./page/account-rides/account-rides.componen
 import {
   AccountTravelPreferencesComponent
 } from "./page/account-travel-preferences/account-travel-preferences.component";
+import {RideDetailsComponent} from "./page/account-rides/ride-details/ride-details.component";
+import {RideRequestComponent} from "./page/account-rides/ride-request/ride-request.component";
 
 
 const routes: Routes = [
@@ -39,6 +41,15 @@ const routes: Routes = [
         path: 'rides',
         component: AccountRidesComponent,
       },
+      {
+        path: 'rides/details/:id',
+        component: RideDetailsComponent
+      },
+      {
+        path: 'rides/requests',
+        component: RideRequestComponent
+      },
+
       {
         path: 'travel-preferences',
         component: AccountTravelPreferencesComponent,

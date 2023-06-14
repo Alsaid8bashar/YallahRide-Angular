@@ -1,7 +1,7 @@
 import {User} from "./user";
 import {Ride} from "./ride";
 
-export default interface Passenger{
+export class Passenger {
   user?: User
 
   ride?: Ride
@@ -9,4 +9,10 @@ export default interface Passenger{
   id?: number
 
   isAccepted?: boolean
+
+
+  constructor(user: User, ride: Ride) {
+    this.user = user;
+    this.ride = ride;
+  }
 }

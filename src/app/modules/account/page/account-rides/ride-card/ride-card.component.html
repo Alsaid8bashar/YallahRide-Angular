@@ -17,8 +17,8 @@
     </div>
 
     <div class="col-md-4  text-center align-items-end" *ngIf="ride.rideStatus==RideStatus.Active">
-      <a href="account-ride-details.html" class="btn btn-outline-primary">View</a>
-      <a href="account-ride-requests.html" class="btn btn-outline-secondary">Ride Requests</a>
+      <a (click)="displayRideDetails()"  class="btn btn-outline-primary">View</a>
+      <a (click)="displayRideRequests()" class="btn btn-outline-secondary">Ride Requests</a>
     </div>
     <div class="mt-2 mt-md-0" *ngIf="ride.rideStatus==RideStatus.Completed">
       <p href="#" class="btn btn-success btn-sm mb-0" style="pointer-events: none;">Completed</p>
@@ -49,3 +49,9 @@
   </div>
 </div>
 <!-- Card item END -->
+<!-- Plugins CSS -->
+<link rel="stylesheet" type="text/css" href="/assets/vendor/font-awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
