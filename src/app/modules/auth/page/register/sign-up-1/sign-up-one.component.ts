@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {emailExistsValidator, phoneExistsValidator} from "./emailExistence.validator";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CustomValidators} from "./customValidators";
 import {AccountService} from "../../../../../data/service/account.service";
 import {StorageService} from "../../../../../shared/service/storage.service";
 import {Account} from "../../../../../data/schema/account";
@@ -24,7 +24,7 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
 
 
   constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private userService: UserService, private phoneNumberService: PhoneNumberVerificationService,
-              public spinner: NgxSpinnerService) {
+              public spinner: NgxSpinnerService, private customValidators:CustomValidators) {
     this.buildForm();
   }
 
@@ -71,10 +71,10 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
 
   private buildForm(): void {
     this.register = new FormGroup({
-      phoneNumber: new FormControl('', [Validators.required,], [phoneExistsValidator(this.accountService)]),
+      phoneNumber: new FormControl('', [Validators.required,], [this.customValidators.phoneExistsValidator()]),
       passwordHash: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]),
       confirmPassword: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email,], [emailExistsValidator(this.accountService)])
+      email: new FormControl('', [Validators.required, Validators.email,], [this.customValidators.emailExistsValidator()])
     });
   }
 

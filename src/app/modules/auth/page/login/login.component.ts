@@ -26,7 +26,6 @@ export class LoginComponent implements OnDestroy {
   }
 
   onSubmit() {
-    debugger;
     if (this.loginForm.valid) {
       this.spinner.show();
       const credentials = this.loginForm.value;

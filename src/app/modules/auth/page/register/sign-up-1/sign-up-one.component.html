@@ -34,7 +34,7 @@
                       *ngIf="register.controls['phoneNumber'].hasError('required')&& register.controls['phoneNumber'].touched">
                       phone number is <strong>required</strong></mat-error>
                     <mat-error
-                      *ngIf="register.controls['phoneNumber'].hasError('phoneExists')&& register.controls['email'].touched">
+                      *ngIf="register.controls['phoneNumber'].hasError('phoneExists')&& register.controls['phoneNumber'].touched">
                       Phone number already <strong>exist</strong></mat-error>
                   </div>
                 </div>

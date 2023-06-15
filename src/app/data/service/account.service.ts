@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {BehaviorSubject, Observable} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Account} from "../schema/account";
 import {environment} from 'src/environments/environment';
 
@@ -24,13 +24,24 @@ export class AccountService {
   }
 
   checkPhoneNumberExistence(phoneNumber: string) {
-    const url = 'http://localhost:8080/account/is-phoneNumber-exist';
-    return this.http.get<boolean>(url, {params: {phone: phoneNumber}});
+    return this.http.get<boolean>(`${this.apiURL}is-phoneNumber-exist`, {params: {phone: phoneNumber}});
   }
 
   checkEmailExistence(email: string) {
-    const url = this.apiURL + 'is-email-exist';
-    return this.http.get<boolean>(url, {params: {email: email}});
+    return this.http.get<boolean>(`${this.apiURL}is-email-exist`, {params: {email: email}});
+  }
+
+  confirmPassword(hashPassword: string, id: number) {
+    const requestBody = {
+      hashPassword: hashPassword,
+      id: id
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<boolean>(`${this.apiURL}confirm-password`, requestBody, httpOptions);
   }
 
   getAccountByID(id: number): Observable<Account> {
@@ -41,26 +52,44 @@ export class AccountService {
     return this.http.post<Account>(`${this.apiURL}register`, account);
   }
 
+  updateAccount(account: Account): Observable<Account> {
+    console.log(JSON.stringify(account));
+    return this.http.put<Account>(`${this.apiURL}update`, account);
+  }
+
+  updatePassword(hashPassword: string, id: number) {
+    const requestBody = {
+      hashPassword: hashPassword,
+      id: id
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put<Account>(`${this.apiURL}update-password`, requestBody, httpOptions);
+  }
+
   deleteAccount(id: number) {
     this.http.delete(`${this.apiURL}delete/${id}`)
       .subscribe(
-      () => {
-        console.log('Account deleted successfully');
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
+        () => {
+          console.log('Account deleted successfully');
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
   }
 
   getNumberOfAccounts(): Observable<number> {
     return this.http.get<number>(`${this.apiURL}statistics`);
   }
 
-  findAccountByPhoneNumber(phoneNumber: number){
+  findAccountByPhoneNumber(phoneNumber: number) {
     const url = 'http://localhost:8080/account/find-by-phone';
-    const params = { phone: phoneNumber };
-    return this.http.get<Account>(url, {  params  });
+    const params = {phone: phoneNumber};
+    return this.http.get<Account>(url, {params});
   }
 
   ngOnDestroy(): void {

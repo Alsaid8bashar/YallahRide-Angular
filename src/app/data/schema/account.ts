@@ -5,7 +5,7 @@ export class Account {
 
   email?: string
 
-  phoneNumber?: string
+  phoneNumber: string
 
   passwordHash?: string
 
