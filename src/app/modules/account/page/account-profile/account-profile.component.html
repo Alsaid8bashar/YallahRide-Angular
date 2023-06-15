@@ -112,7 +112,7 @@
         <!-- Date of birth -->
         <div class="col-md-6">
           <label class="form-label">Date of Birth<span class="text-danger">*</span></label>
-          <input type="text" class="form-control" value="{{accountObject.date}}" placeholder="Creation date"
+          <input type="text" class="form-control" value="{{accountCreationDate}}" placeholder="Creation date"
                  disabled>
         </div>
 
@@ -120,8 +120,8 @@
         <div class="col-md-6">
           <label class="form-label">Select Gender<span class="text-danger">*</span></label>
           <select formControlName="gender" class="form-select" name="gender" id="gender">
-            <option value="Male" >Male</option>
-            <option value="Female" >Female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>
         </div>
 
@@ -134,7 +134,7 @@
 
         <!-- Button -->
         <div class="col-12 text-end">
-          <button  class="btn btn-primary mb-0">Save Changes</button>
+          <button class="btn btn-primary mb-0" [disabled]="!userForm.valid">Save Changes</button>
         </div>
       </form>
       <!-- Form END -->
@@ -153,14 +153,33 @@
 
     <!-- Card body START -->
     <div class="card-body">
-      <form>
+      <form [formGroup]="emailForm" (ngSubmit)="onEmailChangesSubmit()">
         <!-- Email -->
         <label class="form-label">Enter your new email id<span class="text-danger">*</span></label>
-        <input type="email" class="form-control" placeholder="Enter your email id">
+        <input formControlName="email" type="email" class="form-control" placeholder="Enter your email id">
 
-        <div class="text-end mt-3">
-          <a href="#" class="btn btn-primary mb-0">Save Email</a>
+        <div class="row">
+          <div class="col-4 align-self-center">
+            <div>
+              <mat-error
+                *ngIf="emailForm.controls['email'].hasError('required')&& emailForm.controls['email'].touched">
+                email is <strong>required</strong></mat-error>
+              <mat-error
+                *ngIf="emailForm.controls['email'].hasError('email')&& emailForm.controls['email'].touched">
+                enter a <strong>valid</strong> email address
+              </mat-error>
+              <mat-error
+                *ngIf="emailForm.controls['email'].hasError('emailExists')&& emailForm.controls['email'].touched">
+                email address already <strong>exist</strong></mat-error>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="text-end mt-3">
+              <button class="btn btn-primary mb-0" [disabled]="!emailForm.valid">Save Email</button>
+            </div>
+          </div>
         </div>
+
       </form>
     </div>
     <!-- Card body END -->
@@ -177,13 +196,26 @@
 
     <!-- Card body START -->
     <div class="card-body">
-      <form>
+      <form [formGroup]="phoneNumberForm" (ngSubmit)="onPhoneNumberChangesSubmit()">
         <!-- Email -->
         <label class="form-label">Enter your new phone number<span class="text-danger">*</span></label>
-        <input type="email" class="form-control" placeholder="e.g +962 79 9999 999">
-
-        <div class="text-end mt-3">
-          <a href="#" class="btn btn-primary mb-0">Save Phone Number</a>
+        <input formControlName="phoneNumber" type="text" class="form-control" placeholder="e.g +962 79 9999 999">
+        <div class="row">
+          <div class="col-4 align-self-center">
+            <div>
+              <mat-error
+                *ngIf="phoneNumberForm.controls['phoneNumber'].hasError('required')&& phoneNumberForm.controls['phoneNumber'].touched">
+                phone number is <strong>required</strong></mat-error>
+              <mat-error
+                *ngIf="phoneNumberForm.controls['phoneNumber'].hasError('phoneExists')&& phoneNumberForm.controls['phoneNumber'].touched">
+                Phone number already <strong>exist</strong></mat-error>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="text-end mt-3">
+              <button class="btn btn-primary mb-0" [disabled]="!phoneNumberForm.valid">Save Phone Number</button>
+            </div>
+          </div>
         </div>
       </form>
     </div>
@@ -199,31 +231,67 @@
     </div>
 
     <!-- Card body START -->
-    <form class="card-body">
+    <form class="card-body" [formGroup]="passwordForm" (ngSubmit)="onPasswordChangesSubmit()">
       <!-- Current password -->
       <div class="mb-3">
-        <label class="form-label">Current password</label>
-        <input class="form-control" type="password" placeholder="Enter current password">
+        <label class="form-label">Current password<span class="text-danger">*</span></label>
+        <input formControlName="currentPassword" class="form-control" type="password"
+               placeholder="Enter current password">
+        <div class="my-2">
+          <mat-error
+            *ngIf="passwordForm.controls['currentPassword'].hasError('required') && passwordForm.controls['currentPassword'].touched">
+            current password is <strong>required</strong></mat-error>
+          <mat-error
+            *ngIf="passwordForm.controls['currentPassword'].hasError('confirmPassword')&& passwordForm.controls['currentPassword'].touched">
+            password is <strong>incorrect</strong></mat-error>
+        </div>
       </div>
       <!-- New password -->
       <div class="mb-3">
-        <label class="form-label"> Enter new password</label>
+        <label class="form-label"> Enter new password<span class="text-danger">*</span></label>
         <div class="input-group">
-          <input class="form-control fakepassword" placeholder="Enter new password" type="password"
+          <input formControlName="newPassword" class="form-control fakepassword" placeholder="Enter new password"
+                 type="password"
                  id="psw-input">
           <span class="input-group-text p-0 bg-transparent">
 										<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 									</span>
         </div>
+        <div class="my-2">
+          <mat-error
+            *ngIf="passwordForm.controls['newPassword'].hasError('required')&& passwordForm.controls['newPassword'].touched">
+            new password is <strong>required</strong></mat-error>
+          <mat-error
+            *ngIf="passwordForm.controls['newPassword'].hasError('phoneExists')&& passwordForm.controls['newPassword'].touched">
+            Phone number already <strong>exist</strong></mat-error>
+        </div>
       </div>
       <!-- Confirm -->
       <div class="mb-3">
-        <label class="form-label">Confirm new password</label>
-        <input class="form-control" type="password" placeholder="Confirm new password">
+        <label class="form-label">Confirm new password<span class="text-danger">*</span></label>
+        <input formControlName="confirmPassword" class="form-control" type="password"
+               placeholder="Confirm new password">
+        <div class="my-2">
+          <mat-error
+            *ngIf="passwordForm.controls['confirmPassword'].hasError('required')&& passwordForm.controls['confirmPassword'].touched">
+            confirm password is <strong>required</strong></mat-error>
+          <mat-error
+            *ngIf="passwordForm.controls['confirmPassword'].hasError('phoneExists')&& passwordForm.controls['confirmPassword'].touched">
+            Phone number already <strong>exist</strong></mat-error>
+        </div>
       </div>
+      <div class="row">
+        <div class="col-4 align-self-center">
+          <mat-error *ngIf="passwordForm.hasError('passwordMismatch', ['confirmPassword'])">
+            Passwords do not <strong>match</strong>
+          </mat-error>
+        </div>
 
-      <div class="text-end">
-        <a href="#" class="btn btn-primary mb-0">Change Password</a>
+        <div class="col-8">
+          <div class="text-end">
+            <button class="btn btn-primary mb-0" [disabled]="!passwordForm.valid">Change Password</button>
+          </div>
+        </div>
       </div>
     </form>
     <!-- Card body END -->
