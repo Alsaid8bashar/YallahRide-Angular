@@ -1,6 +1,6 @@
 import {User} from "./user";
 
-export interface TravelPreference{
+export class TravelPreference{
   id?: number
 
   description?: string

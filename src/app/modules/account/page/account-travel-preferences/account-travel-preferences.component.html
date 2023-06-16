@@ -18,16 +18,15 @@
     <!-- Form START -->
     <form class="row g-3">
 
-      <!-- Chattiness -->
       <div class="col-md-6">
         <label class="form-label">Chattiness</label>
-        <select class="form-select js-choice">
-          <option value="" selected>Select a Travel Preference</option>
-          <option>I’m chatty when I feel comfortable</option>
-          <option >I’m a chatterbox!</option>
-          <option>I'm the quiet type</option>
+        <select class="form-select js-choice" >
+          <option *ngFor="let preference of musicTravelPreferences" [value]="preference.id">
+            {{ preference.description }}
+          </option>
         </select>
       </div>
+
 
       <!-- Music -->
       <div class="col-md-6">
