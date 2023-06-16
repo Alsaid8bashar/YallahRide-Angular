@@ -14,9 +14,9 @@ export class RideService {
   constructor(private http: HttpClient) {
   }
 
-  createRide(ride: Ride): Observable<Ride> {
-    return this.http.post<Ride>(`${this.apiURL}create`, ride);
-  }
+    createRide(ride: Ride): Observable<Ride> {
+      return this.http.post<Ride>(`${this.apiURL}create`, ride);
+    }
 
   findRideById(id: number): Observable<Ride> {
     return this.http.get<Ride>(`${this.apiURL}${id}`);

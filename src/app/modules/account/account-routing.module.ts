@@ -10,6 +10,8 @@ import {
 } from "./page/account-travel-preferences/account-travel-preferences.component";
 import {RideDetailsComponent} from "./page/account-rides/ride-details/ride-details.component";
 import {RideRequestComponent} from "./page/account-rides/ride-request/ride-request.component";
+import {AddRideComponent} from "./page/account-rides/add-ride/add-ride.component";
+import {AccountLayoutComponent} from "../../layout/account-layout/account-layout.component";
 
 
 const routes: Routes = [
@@ -20,6 +22,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: AccountLayoutComponent,
     children: [
       {
         path: 'profile',
@@ -49,7 +52,6 @@ const routes: Routes = [
         path: 'rides/requests',
         component: RideRequestComponent
       },
-
       {
         path: 'travel-preferences',
         component: AccountTravelPreferencesComponent,
@@ -60,6 +62,12 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'add-ride',
+    component: AddRideComponent
+  },
+
+
 ];
 
 @NgModule({

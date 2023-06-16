@@ -5,6 +5,8 @@ import {Subscription, tap} from "rxjs";
 import {UserService} from "../../../../data/service/user.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {RideStatus} from "../../../../data/schema/Enum/RideStatus";
+import {CarService} from "../../../../data/service/car.service";
+
 
 @Component({
   selector: 'app-account-rides',
@@ -16,16 +18,21 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
   protected rides: Ride[];
   protected ridesSubscription: Subscription;
 
-  constructor(private rideService: RideService, private userService: UserService, private spinner: NgxSpinnerService) {
+  constructor(private rideService: RideService, private userService: UserService, private spinner: NgxSpinnerService, private carService: CarService) {
   }
 
-  getRidesByStatus(status: string):number {
+  getRidesByStatus(status: string): number {
     return this.rides.filter(ride => ride.rideStatus === status).length;
   }
 
   ngOnInit(): void {
     this.spinner.show();
-    this.ridesSubscription = this.rideService.findDriverRide(this.userService.getUserSubject().id)
+    this.getDriverRide(this.userService.getUserSubject().id);
+    this.getUserCars(this.userService.getUserSubject().id);
+  }
+
+  getDriverRide(id: number) {
+    this.ridesSubscription = this.rideService.findDriverRide(id)
       .pipe(tap(rides => {
           this.rides = rides;
         })
@@ -43,6 +50,15 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
       );
   }
 
+  getUserCars(id: number): void {
+    this.carService.getUserCars(id).subscribe(
+      cars => {
+        this.carService.setCars(cars);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 
   ngOnDestroy(): void {
     this.ridesSubscription.unsubscribe();

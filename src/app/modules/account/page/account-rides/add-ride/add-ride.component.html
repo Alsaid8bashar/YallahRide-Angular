@@ -1,0 +1,300 @@
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+  <!-- =======================
+Page Banner START -->
+  <section class="pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1 class="fs-2 mb-2">Add New Ride</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- =======================
+Page Banner END -->
+
+  <!-- =======================
+Steps START -->
+  <section>
+    <div class="container">
+      <div id="stepper" class="bs-stepper stepper-outline">
+        <!-- Step Buttons START -->
+        <div class="bs-stepper-header" role="tablist">
+          <!-- Step 1 -->
+          <div class="step" data-target="#step-1">
+            <div class="text-center">
+              <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                      id="steppertrigger1" aria-controls="step-1">
+                <span class="bs-stepper-circle">1</span>
+              </button>
+              <h6 class="bs-stepper-label d-none d-md-block">Where are you leaving from?</h6>
+            </div>
+          </div>
+          <div class="line"></div>
+
+          <!-- Step 2 -->
+          <div class="step" data-target="#step-2">
+            <div class="text-center">
+              <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                      id="steppertrigger2" aria-controls="step-2">
+                <span class="bs-stepper-circle">2</span>
+              </button>
+            </div>
+            <h6 class="bs-stepper-label d-none d-md-block">Where are you heading?</h6>
+          </div>
+          <div class="line"></div>
+
+          <!-- Step 3 -->
+          <div class="step" data-target="#step-3">
+            <div class="text-center">
+              <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                      id="steppertrigger3" aria-controls="step-3">
+                <span class="bs-stepper-circle">3</span>
+              </button>
+            </div>
+            <h6 class="bs-stepper-label d-none d-md-block">Price & Policy</h6>
+          </div>
+        </div>
+        <!-- Step Buttons END -->
+
+        <!-- Step content START -->
+        <div class="bs-stepper-content p-0 pt-4 pt-md-5">
+          <div class="row g-4">
+
+            <!-- Main content START -->
+            <div class="col-12">
+              <form [formGroup]="rideFrom" (ngSubmit)="onSubmit()">
+
+                <!-- Step 1 content START -->
+                <div id="step-1" role="tabpanel" class="content fade"
+                     aria-labelledby="steppertrigger1">
+                  <div class="vstack gap-4">
+
+                    <!-- Listing location START -->
+                    <div class="card shadow">
+
+                      <!-- Card body START -->
+                      <div class="card-body">
+                        <div class="row g-3">
+                          <!-- Country type -->
+                          <div class="col-md-4">
+                            <label class="form-label">City *</label>
+                            <select class="form-select js-choice" formControlName="from">
+                              <option value="">Select City</option>
+                              <option value="Amman">Amman</option>
+                              <option value="Balqa">Balqa</option>
+                              <option value="Madaba">Madaba</option>
+                              <option value="Zarqa">Zarqa</option>
+                              <option value="Ajlun">Ajlun</option>
+                              <option value="Irbid">Irbid</option>
+                              <option value="Jarash">Jarash</option>
+                              <option value="Mafraq">Mafraq</option>
+                              <option value="Aqaba">Aqaba</option>
+                              <option value="Karak">Karak</option>
+                              <option value="Ma'an">Ma'an</option>
+                              <option value="Tafilah">Tafilah</option>
+                            </select>
+                          </div>
+
+
+                          <!-- Date -->
+                          <div class="col-md-4">
+                            <div class="form-fs-lg form-control-transparent">
+                              <label class="form-label small">Pickup Date</label>
+                              <input type="text" id="pickup-date" class="form-control flatpickr"
+                                     placeholder="Select date" formControlName="date" data-date-format="Y-m-d">
+                            </div>
+                          </div>
+
+                          <!-- Time -->
+                          <div class="col-md-4">
+                            <div class="form-fs-lg form-control-transparent">
+                              <label class="form-label small">Pickup Time</label>
+                              <input type="text" class="form-control flatpickr" data-enableTime="true"
+                                     data-noCalendar="true"
+                                     placeholder="Select time" formControlName="departureTime">
+                            </div>
+                          </div>
+
+
+                          <!-- Detailed address -->
+                          <div class="col-12">
+                            <iframe class="w-100 h-300px grayscale rounded"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
+                                    height="500" style="border:0;" aria-hidden="false"
+                                    tabindex="0"></iframe>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card body END -->
+                    </div>
+                    <!-- Listing location END -->
+
+
+                    <!-- Step 1 button -->
+                    <div class="text-end">
+                      <button class="btn btn-primary next-btn mb-0">Next</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 1 content END -->
+
+                <!-- Step 2 content START -->
+                <div id="step-2" role="tabpanel" class="content fade"
+                     aria-labelledby="steppertrigger2">
+                  <div class="vstack gap-4">
+
+                    <!-- Listing location START -->
+                    <div class="card shadow">
+
+                      <!-- Card body START -->
+                      <div class="card-body">
+                        <div class="row g-3">
+                          <!-- Country type -->
+                          <div class="col-md-4">
+                            <label class="form-label">City *</label>
+                            <select class="form-select js-choice" formControlName="to">
+                              <option value="">Select City</option>
+                              <option value="Amman">Amman</option>
+                              <option value="Balqa">Balqa</option>
+                              <option value="Madaba">Madaba</option>
+                              <option value="Zarqa">Zarqa</option>
+                              <option value="Ajlun">Ajlun</option>
+                              <option value="Irbid">Irbid</option>
+                              <option value="Jarash">Jarash</option>
+                              <option value="Mafraq">Mafraq</option>
+                              <option value="Aqaba">Aqaba</option>
+                              <option value="Karak">Karak</option>
+                              <option value="Ma'an">Ma'an</option>
+                              <option value="Tafilah">Tafilah</option>
+                            </select>
+                          </div>
+                          <!-- Detailed address -->
+                          <div class="col-12">
+                            <iframe class="w-100 h-300px grayscale rounded"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
+                                    height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card body END -->
+                    </div>
+                    <!-- Listing location END -->
+
+                    <!-- Step 2 button -->
+                    <div class="hstack gap-2 flex-wrap justify-content-between">
+                      <button class="btn btn-secondary prev-btn mb-0">Previous</button>
+                      <button class="btn btn-primary next-btn mb-0">Next</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 2 content END -->
+
+                <!-- Step 3 content START -->
+                <div id="step-3" role="tabpanel" class="content fade"
+                     aria-labelledby="steppertrigger3">
+                  <div class="vstack gap-4">
+                    <!-- Title -->
+                    <h4 class="mb-0">Price & Policy</h4>
+
+                    <!-- Listing price START -->
+                    <div class="card shadow">
+                      <!-- Card header -->
+                      <div class="card-header border-bottom">
+                        <h5 class="mb-0">Listing Price</h5>
+                      </div>
+
+                      <!-- Card body START -->
+                      <div class="card-body">
+                        <div class="row g-4">
+                          <!-- Currency -->
+                          <div class="col-md-6">
+                            <label class="form-label">Currency</label>
+                            <select
+                              class="form-select js-choice border-0 z-index-9 bg-transparent" disabled>
+                              <option selected>JOD</option>
+                            </select>
+                          </div>
+
+                          <!-- Base Price -->
+                          <div class="col-md-6">
+                            <label class="form-label">Base Price<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control"
+                                   placeholder="Enter price" formControlName="price">
+                          </div>
+
+
+                          <!-- Vehicle -->
+                          <!--                          <div class="col-md-6">-->
+                          <!--                            <label class="form-label">Vehicle<span class="text-danger">*</span></label>-->
+                          <!--                            <select class="form-select js-choice border-0 z-index-9 bg-transparent"-->
+                          <!--                                    formControlName="car">-->
+                          <!--                              <option *ngFor="let car of rideFrom.get('car').value"-->
+                          <!--                                      [value]="car.id">{{ car.model }}</option>-->
+                          <!--                            </select>-->
+                          <!--                          </div>-->
+                          <!-- Vehicle -->
+                          <div class="col-md-6">
+                            <label class="form-label">Vehicle<span class="text-danger">*</span></label>
+                            <select id="mySelect" class="form-select js-choice border-0 z-index-9 bg-transparent"
+                                    formControlName="car">
+                              <option>Select a Vehicle</option>
+                            </select>
+                          </div>
+
+
+                          <!-- Instance booking -->
+                          <div class="col-md-6">
+                            <label class="form-label">Instance booking<span class="text-danger">*</span></label>
+                            <select class="form-select js-choice border-0 z-index-9 bg-transparent"
+                                    formControlName="isInstantBooking">
+                              <option>Select an Option</option>
+                              <option value="true">Yes</option>
+                              <option value="false">No</option>
+                            </select>
+                          </div>
+
+                        </div>
+                      </div>
+                      <!-- Card body END -->
+                    </div>
+                    <!-- Listing price END -->
+
+
+                    <!-- Step 3 button -->
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-secondary prev-btn mb-0">Previous</button>
+                      <button type="submit" class="btn btn-success mb-0">Add
+                        Ride
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 3 content END -->
+
+              </form>
+            </div>
+            <!-- Main content END -->
+
+          </div>
+        </div>
+        <!-- Step content END -->
+      </div>
+    </div>
+  </section>
+  <!-- =======================
+Steps END -->
+
+</main>
+
+<script>
+  // Initialize flatpickr
+  flatpickr("#pickup-date", {
+    onChange: function (selectedDates, dateStr) {
+      document.getElementById("pickup-date").value = dateStr;
+    }
+  });
+</script>
+<!-- **************** MAIN CONTENT END **************** -->
