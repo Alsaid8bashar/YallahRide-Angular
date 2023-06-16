@@ -16,20 +16,29 @@
   <!-- Card body START -->
   <div class="card-body">
     <!-- Leave review START -->
-    <form class="mb-5" disabled>
+    <form class="mb-5" [formGroup]="feedbackForm" (ngSubmit)="onFeedbackSubmit()">
       <!-- Rating -->
       <div class="form-control-bg-light mb-3">
-        <select class="form-select js-choice">
-          <option selected="">★★★★★ (5/5)</option>
-          <option>★★★★☆ (4/5)</option>
-          <option>★★★☆☆ (3/5)</option>
-          <option>★★☆☆☆ (2/5)</option>
-          <option>★☆☆☆☆ (1/5)</option>
+        <select class="form-select js-choice" formControlName="stars">
+          <option value="5" selected="">★★★★★ (5/5)</option>
+          <option value="4">★★★★☆ (4/5)</option>
+          <option value="3">★★★☆☆ (3/5)</option>
+          <option value="2">★★☆☆☆ (2/5)</option>
+          <option value="1">★☆☆☆☆ (1/5)</option>
         </select>
       </div>
       <!-- Message -->
       <div class="form-control-bg-light mb-3">
-        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review" rows="3" formControlName="feedback"></textarea>
+        <div class="mt-2">
+          <mat-error
+            *ngIf="feedbackForm.controls['feedback'].hasError('required') && feedbackForm.controls['feedback'].touched">
+            Feedback must not be <strong>empty</strong></mat-error>
+
+          <mat-error
+            *ngIf="feedbackForm.controls['feedback'].hasError('pattern')">
+            Feedback must not contain <strong>special characters</strong></mat-error>
+        </div>
       </div>
       <div class="text-center mt-5">
         <!-- Button -->
