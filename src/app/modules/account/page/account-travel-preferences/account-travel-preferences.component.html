@@ -20,10 +20,8 @@
 
       <div class="col-md-6">
         <label class="form-label">Chattiness</label>
-        <select class="form-select js-choice" >
-          <option *ngFor="let preference of musicTravelPreferences" [value]="preference.id">
-            {{ preference.description }}
-          </option>
+        <select id="mySelect" class="form-select js-choice" >
+
         </select>
       </div>
 
@@ -73,4 +71,47 @@
   <!-- Card body END -->
 </div>
 <!-- travel preferences info END -->
+
+<script>
+  var element = document.getElementById("mySelect");
+  const example = new Choices(element);
+
+
+
+  example.setChoices(
+    [
+      {
+        label: 'Group one',
+        id: 1,
+        disabled: false,
+        choices: [
+          { value: 'Child One', label: 'Child One', selected: true },
+          { value: 'Child Two', label: 'Child Two', disabled: true },
+          { value: 'Child Three', label: 'Child Three' },
+        ],
+      },
+      {
+        label: 'Group two',
+        id: 2,
+        disabled: false,
+        choices: [
+          { value: 'Child Four', label: 'Child Four', disabled: true },
+          { value: 'Child Five', label: 'Child Five' },
+          {
+            value: 'Child Six',
+            label: 'Child Six',
+            customProperties: {
+              description: 'Custom description about child six',
+              random: 'Another random custom property',
+            },
+          },
+        ],
+      },
+    ],
+    'value',
+    'label',
+    false,
+  );
+
+</script>
 
