@@ -28,7 +28,7 @@ export class RideCardComponent {
         id: this.ride.id,
         from: this.ride.from,
         to: this.ride.to,
-        date: this.ride.date
+        date: this.ride.departureDate
       }
     });
   }

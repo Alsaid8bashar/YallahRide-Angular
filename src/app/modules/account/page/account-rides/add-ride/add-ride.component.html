@@ -104,7 +104,7 @@ Steps START -->
                             <div class="form-fs-lg form-control-transparent">
                               <label class="form-label small">Pickup Date</label>
                               <input type="text" id="pickup-date" class="form-control flatpickr"
-                                     placeholder="Select date" formControlName="date" data-date-format="Y-m-d">
+                                     placeholder="Select date" formControlName="departureDate" data-date-format="Y-m-d">
                             </div>
                           </div>
 
@@ -135,7 +135,10 @@ Steps START -->
 
                     <!-- Step 1 button -->
                     <div class="text-end">
-                      <button class="btn btn-primary next-btn mb-0">Next</button>
+                      <button class="btn btn-primary next-btn mb-0"
+                              [disabled]="!rideFrom.controls['from'].valid || !rideFrom.controls['departureTime'].valid || !rideFrom.controls['departureDate'].valid">
+                        Next
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -171,11 +174,33 @@ Steps START -->
                               <option value="Tafilah">Tafilah</option>
                             </select>
                           </div>
-                          <!-- Detailed address -->
-                          <div class="col-12">
-                            <iframe class="w-100 h-300px grayscale rounded"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
-                                    height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>
+
+                          <!-- Date -->
+                          <div class="col-md-4">
+                            <div class="form-fs-lg form-control-transparent">
+                              <label class="form-label small">Pickup Date</label>
+                              <input type="text" id="pickup-date" class="form-control flatpickr"
+                                     placeholder="Select date" formControlName="arrivalDate" data-date-format="Y-m-d">
+                            </div>
+                          </div>
+
+                          <!-- Time -->
+                          <div class="col-md-4">
+                            <div class="form-fs-lg form-control-transparent">
+                              <label class="form-label small">Pickup Time</label>
+                              <input type="text" class="form-control flatpickr" data-enableTime="true"
+                                     data-noCalendar="true"
+                                     placeholder="Select time" formControlName="arrivalTime">
+                            </div>
+                          </div>
+                          <div class="row g-3">
+                            <!-- Detailed address -->
+                            <div class="col-12">
+                              <iframe class="w-100 h-300px grayscale rounded"
+                                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
+                                      height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+
                           </div>
                         </div>
                       </div>
@@ -186,7 +211,10 @@ Steps START -->
                     <!-- Step 2 button -->
                     <div class="hstack gap-2 flex-wrap justify-content-between">
                       <button class="btn btn-secondary prev-btn mb-0">Previous</button>
-                      <button class="btn btn-primary next-btn mb-0">Next</button>
+                      <button class="btn btn-primary next-btn mb-0"
+                              [disabled]="!rideFrom.controls['to'].valid || !rideFrom.controls['arrivalTime'].valid || !rideFrom.controls['arrivalDate'].valid">
+                        Next
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -222,7 +250,7 @@ Steps START -->
                           <div class="col-md-6">
                             <label class="form-label">Base Price<span class="text-danger">*</span></label>
                             <input type="text" class="form-control"
-                                   placeholder="Enter price" formControlName="price">
+                                   placeholder="Enter price" formControlName="cost">
                           </div>
 
 
@@ -266,7 +294,7 @@ Steps START -->
                     <!-- Step 3 button -->
                     <div class="d-flex justify-content-between">
                       <button class="btn btn-secondary prev-btn mb-0">Previous</button>
-                      <button type="submit" class="btn btn-success mb-0">Add
+                      <button type="submit" class="btn btn-success mb-0"   [disabled]="!rideFrom.controls['cost'].valid || !rideFrom.controls['car'].valid || !rideFrom.controls['isInstantBooking'].valid">Add
                         Ride
                       </button>
                     </div>
@@ -297,4 +325,5 @@ Steps END -->
     }
   });
 </script>
+
 <!-- **************** MAIN CONTENT END **************** -->

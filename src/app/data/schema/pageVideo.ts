@@ -1,11 +1,44 @@
-import Page from "./page";
+import {Page} from "./page";
 
-export interface PageVideo{
-  multipartFile?: any
+export class PageVideo{
+  private _multipartFile?: any
 
-  id?: number
+  private _id?: number
 
-  videoPath?: string
+  private _videoPath?: string
 
-  page?: Page
+  private _page?: Page
+
+
+  get multipartFile(): any {
+    return this._multipartFile;
+  }
+
+  set multipartFile(value: any) {
+    this._multipartFile = value;
+  }
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get videoPath(): string {
+    return this._videoPath;
+  }
+
+  set videoPath(value: string) {
+    this._videoPath = value;
+  }
+
+  get page(): Page {
+    return this._page;
+  }
+
+  set page(value: Page) {
+    this._page = value;
+  }
 }

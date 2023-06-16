@@ -8,4 +8,7 @@ export interface CarImage{
   imagePath?: string
 
   car?: Car
+
+
+
 }

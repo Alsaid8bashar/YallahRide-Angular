@@ -17,7 +17,7 @@ export class RideCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const rideDate = new Date(this.ride.date);
+    const rideDate = new Date(this.ride.departureDate);
     const formattedTime = rideDate.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
     this.time = formattedTime;
   }

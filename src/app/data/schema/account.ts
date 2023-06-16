@@ -1,26 +1,82 @@
 import {User} from "./user";
 
 export class Account {
-  id?: number
+  private _id?: number
 
-  email?: string
+  private _email?: string
 
-  phoneNumber: string
+  private _phoneNumber: string
 
-  passwordHash?: string
+  private _passwordHash?: string
 
-  date?: string
+  private _date?: string
 
-  user?: User
+  private _user?: User
 
-  isActive?: boolean
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get phoneNumber(): string {
+    return this._phoneNumber;
+  }
+
+  set phoneNumber(value: string) {
+    this._phoneNumber = value;
+  }
+
+  get passwordHash(): string {
+    return this._passwordHash;
+  }
+
+  set passwordHash(value: string) {
+    this._passwordHash = value;
+  }
+
+  get date(): string {
+    return this._date;
+  }
+
+  set date(value: string) {
+    this._date = value;
+  }
+
+  get user(): User {
+    return this._user;
+  }
+
+  set user(value: User) {
+    this._user = value;
+  }
+
+  get isActive(): boolean {
+    return this._isActive;
+  }
+
+  set isActive(value: boolean) {
+    this._isActive = value;
+  }
+
+  private _isActive?: boolean
 
 
 
   constructor(email: string, phoneNumber: string, passwordHash: string) {
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.passwordHash = passwordHash;
+    this._email = email;
+    this._phoneNumber = phoneNumber;
+    this._passwordHash = passwordHash;
   }
 
 }
