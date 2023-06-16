@@ -4,46 +4,57 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Car} from "../schema/car";
 import {CarImage} from "../schema/carImage";
-import { map } from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
 
-  private _CarSubject: BehaviorSubject<Car>;
-  apiURL = environment.serverUrl + '/Car/';
-  private _carImageSubject = new BehaviorSubject<CarImage>(null);
+  apiURL = environment.serverUrl + 'car/';
+  private cars: Car[];
 
+
+  setCars(cars: Car[]): void {
+    this.cars = cars;
+  }
+
+  getCars(): Car[] {
+    return this.cars;
+  }
   constructor(private http: HttpClient) {
-    this._CarSubject = new BehaviorSubject<Car>(new Car());
   }
 
   getCarByID(id: number): Observable<Car> {
-    this.http.get<Car>(`${this.apiURL}/${id}`).subscribe(
-      (car: Car) => {
-        this._CarSubject.next(car);
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-    return this._CarSubject.asObservable();
+    return this.http.get<Car>(`${this.apiURL}${id}`);
+  }
+
+  getUserCars(id: number): Observable<Car[]> {
+    return this.http.get<Car[]>(`${this.apiURL}user/${id}`);
+  }
+
+  saveCar(car: Car): Observable<Car> {
+    return this.http.post<Car>(`${this.apiURL}create`, car);
+  }
+
+  // addCarImage(carId: number, carImage: CarImage): Observable<Car> {
+  //   return this.http.post<Car>(`${this.apiURL}create`, car);
+  // }
+
+  getCarImage(id: number): Observable<CarImage []> {
+    return this.http.get<CarImage[]>(`${this.apiURL}all/images/${id}`);
+  }
+
+  deleteCarImage(imageId: number) {
+    return this.http.delete(`${this.apiURL}delete-image/${imageId}`);
   }
 
   deleteCar(id: number) {
-    this.http.delete(`${this.apiURL}/delete/${id}`).subscribe(
-      () => {
-        console.log('Car deleted successfully');
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
+    return this.http.delete(`${this.apiURL}delete/${id}`);
   }
 
   getNumberOfCars(): Observable<number> {
-    return this.http.get<number>(`${this.apiURL}/statistics`);
+    return this.http.get<number>(`${this.apiURL}statistics`);
   }
 
 }

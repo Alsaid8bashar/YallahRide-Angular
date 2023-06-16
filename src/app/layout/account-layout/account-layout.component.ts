@@ -7,8 +7,8 @@ import {DynamicScriptLoaderService} from "../../shared/service/dynamic-script-lo
   templateUrl: './account-layout.component.html',
   styleUrls: ['./account-layout.component.css']
 })
-export class AccountLayoutComponent implements OnInit,AfterViewInit {
-  constructor(private router: Router,private dynamicScriptLoader: DynamicScriptLoaderService) {
+export class AccountLayoutComponent implements OnInit, AfterViewInit {
+  constructor(private router: Router, private dynamicScriptLoader: DynamicScriptLoaderService) {
 
   }
 
@@ -26,15 +26,18 @@ export class AccountLayoutComponent implements OnInit,AfterViewInit {
   }
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox','functions','aos').then(data => {console.log(data)
-    }).catch(error => console.log(error));
-  }
-  private unloadScripts() {
-    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox','functions','aos').then(data => {console.log(data)
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox', 'functions', 'aos', 'bs-stepper', 'quill', 'dropzone').then(data => {
+      console.log(data)
     }).catch(error => console.log(error));
   }
 
-  private load(){
+  private unloadScripts() {
+    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'flatpickr', 'glightbox', 'functions', 'aos', 'bs-stepper', 'quill', 'dropzone').then(data => {
+      console.log(data)
+    }).catch(error => console.log(error));
+  }
+
+  private load() {
     this.unloadScripts();
     this.loadScripts();
   }

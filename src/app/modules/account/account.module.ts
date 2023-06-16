@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {AccountProfileComponent} from './page/account-profile/account-profile.component';
 import {AccountRidesComponent} from './page/account-rides/account-rides.component';
 import {AccountBookingsComponent} from './page/account-bookings/account-bookings.component';
@@ -18,6 +18,8 @@ import {RideDetailsComponent} from './page/account-rides/ride-details/ride-detai
 import {RideModule} from "../ride/ride.module";
 import {RideRequestComponent} from './page/account-rides/ride-request/ride-request.component';
 import {SpinnerComponent} from "../../shared/component/spinner/spinner.component";
+import {AddRideComponent} from './page/account-rides/add-ride/add-ride.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -32,14 +34,17 @@ import {SpinnerComponent} from "../../shared/component/spinner/spinner.component
     RideCardComponent,
     RideDetailsComponent,
     RideRequestComponent,
+    AddRideComponent,
   ],
   imports: [
+    MatSelectModule,
     CommonModule,
     AccountRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
     RideModule,
+    NgOptimizedImage,
   ]
 })
 export class AccountModule {

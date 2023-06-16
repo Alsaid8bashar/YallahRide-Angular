@@ -1,121 +1,119 @@
-<section class="pt-3">
-  <div class="container">
-    <div class="row">
+<main>
+  <section class="pt-3">
+    <div class="container">
+      <div class="row">
 
-      <!-- Sidebar START -->
-      <!-- Sidebar END -->
+        <!-- Sidebar START -->
+        <!-- Sidebar END -->
 
-      <!-- Main content START -->
-      <div class="col-lg-8 col-xl-9">
-
-
-        <div class="container position-relative" data-sticky-container>
-          <div class="row g-4">
-            <!-- Left Content START -->
-            <div class="col-xl-12">
-              <div class="vstack gap-4">
-
-                <app-ride-details-card [ride]="ride"></app-ride-details-card>
+        <!-- Main content START -->
+        <div class="col-lg-8 col-xl-9">
 
 
-                <!-- Ride request START -->
-                <div class="card border bg-transparent">
-                  <!-- Card header -->
-                  <div class="card-header bg-transparent border-bottom">
-                    <h4 class="card-header-title">Passengers</h4>
-                  </div>
+          <div class="container position-relative" data-sticky-container>
+            <div class="row g-4">
+              <!-- Left Content START -->
+              <div class="col-xl-12">
+                <div class="vstack gap-4">
 
-                  <!-- Card body START -->
-                  <div class="card-body vstack gap-4" *ngFor="let passenger of passengers">
-                    <!-- Ride request item START -->
-                    <div class="card shadow p-2">
-                      <div class="row g-0 align-items-center">
-                        <!-- Card img -->
-                        <div class="col-md-3 text-center">
-                          <div class="avatar avatar-xl">
-                            <img class="avatar-img rounded"
-                                 src="/assets/images/avatar/09.jpg" alt="avatar">
-                          </div>
-                        </div>
+                  <app-ride-details-card [ride]="ride"></app-ride-details-card>
 
-                        <!-- Card body -->
-                        <div class="col-md-6">
-                          <div class="card-body py-md-2 d-flex flex-column h-100">
 
-                            <!-- Title -->
-                            <h5 class="card-title mb-1"><a
-                              href="hotel-detail.html">{{passenger.firstName}} {{passenger.lastName}}</a></h5>
-                            <!-- Rating and buttons -->
-                            <div
-                              class="d-flex justify-content-between align-items-center">
-                              <ul class="list-inline small mb-0">
-                                <li class="list-inline-item me-0"><i
-                                  class="fa-solid fa-star text-warning"></i>
-                                </li>
-                                <li class="list-inline-item me-0"><i
-                                  class="fa-solid fa-star text-warning"></i>
-                                </li>
-                                <li class="list-inline-item me-0"><i
-                                  class="fa-solid fa-star text-warning"></i>
-                                </li>
-                                <li class="list-inline-item me-0"><i
-                                  class="fa-solid fa-star text-warning"></i>
-                                </li>
-                                <li class="list-inline-item"><i
-                                  class="fa-solid fa-star-half-alt text-warning"></i>
-                                </li>
-                                <li class="list-inline-item">
-                                  <p>4.5</p>
-                                </li>
-                              </ul>
+                  <!-- Ride request START -->
+                  <div class="card border bg-transparent">
+                    <!-- Card header -->
+                    <div class="card-header bg-transparent border-bottom">
+                      <h4 class="card-header-title">Passengers</h4>
+                    </div>
+
+                    <!-- Card body START -->
+                    <div class="card-body vstack gap-4" *ngFor="let passenger of passengers">
+                      <!-- Ride request item START -->
+                      <div class="card shadow p-2">
+                        <div class="row g-0 align-items-center">
+                          <!-- Card img -->
+                          <div class="col-md-3 text-center">
+                            <div class="avatar avatar-xl">
+                              <img class="avatar-img rounded"
+                                   ngSrc="/assets/images/avatar/09.jpg" alt="avatar" height="200" width="200">
                             </div>
                           </div>
+
+                          <!-- Card body -->
+                          <div class="col-md-6">
+                            <div class="card-body py-md-2 d-flex flex-column h-100">
+
+                              <!-- Title -->
+                              <h5 class="card-title mb-1"><a
+                                href="hotel-detail.html">{{passenger.firstName}} {{passenger.lastName}}</a></h5>
+                              <!-- Rating and buttons -->
+                              <div
+                                class="d-flex justify-content-between align-items-center">
+                                <ul class="list-inline small mb-0">
+                                  <li class="list-inline-item me-0"><i
+                                    class="fa-solid fa-star text-warning"></i>
+                                  </li>
+                                  <li class="list-inline-item me-0"><i
+                                    class="fa-solid fa-star text-warning"></i>
+                                  </li>
+                                  <li class="list-inline-item me-0"><i
+                                    class="fa-solid fa-star text-warning"></i>
+                                  </li>
+                                  <li class="list-inline-item me-0"><i
+                                    class="fa-solid fa-star text-warning"></i>
+                                  </li>
+                                  <li class="list-inline-item"><i
+                                    class="fa-solid fa-star-half-alt text-warning"></i>
+                                  </li>
+                                  <li class="list-inline-item">
+                                    <p>4.5</p>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
-
                       </div>
+                      <!-- Ride request item END -->
+
+
                     </div>
-                    <!-- Ride request item END -->
+                    <!-- Card body END -->
 
 
                   </div>
-                  <!-- Card body END -->
+                  <!-- Ride request END -->
+                  <!-- Card START -->
+                  <div class="card border">
+                    <!-- Card header -->
+                    <div class="card-header border-bottom">
+                      <h4 class="card-header-title">Delete Ride</h4>
+                    </div>
+                    <!-- Card body START -->
+                    <div class="card-body">
+                      <div class="form-check form-check-md mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck"
+                               [(ngModel)]="isChecked">
+                        <label class="form-check-label" for="deleteaccountCheck">Yes, I'd like to delete my
+                          ride</label>
+                      </div>
+                      <a class="btn btn-danger btn-sm mb-0" (click)="deleteRide()">Delete my ride</a>
+                    </div>
+                    <!-- Card body END -->
+                  </div>
+                  <!-- Card END -->
 
 
                 </div>
-                <!-- Ride request END -->
-                <!-- Card START -->
-                <div class="card border">
-                  <!-- Card header -->
-                  <div class="card-header border-bottom">
-                    <h4 class="card-header-title">Delete Ride</h4>
-                  </div>
-                  <!-- Card body START -->
-                  <div class="card-body">
-                    <div class="form-check form-check-md mb-3">
-                      <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck" [(ngModel)]="isChecked">
-                      <label class="form-check-label" for="deleteaccountCheck">Yes, I'd like to delete my
-                        ride</label>
-                    </div>
-                    <a  class="btn btn-danger btn-sm mb-0" (click)="deleteRide()">Delete my ride</a>
-                  </div>
-                  <!-- Card body END -->
-                </div>
-                <!-- Card END -->
-
-
               </div>
+              <!-- Left Content END -->
             </div>
-            <!-- Left Content END -->
           </div>
         </div>
       </div>
-    </div>
-    <!-- Main content END -->
+      <!-- Main content END -->
 
-  </div>
-</section>
-<link rel="stylesheet" type="text/css" href="/assets/vendor/font-awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/tiny-slider/tiny-slider.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/glightbox/css/glightbox.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendor/flatpickr/css/flatpickr.min.css">
+    </div>
+  </section>
+</main>

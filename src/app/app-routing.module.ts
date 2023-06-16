@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AccountLayoutComponent,
+    // component: AccountLayoutComponent,
     loadChildren: () =>
       import('./modules/account/account.module').then((m) => m.AccountModule),
   },

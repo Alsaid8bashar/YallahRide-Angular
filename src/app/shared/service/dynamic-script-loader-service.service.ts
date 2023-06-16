@@ -14,7 +14,11 @@ export const ScriptStore: Scripts[] = [
   {name: 'choices', src: './assets/vendor/choices/js/choices.min.js'},
   {name: 'aos', src: './assets/vendor/aos/aos.js'},
   {name: 'sticky', src: './assets/vendor/sticky-js/sticky.min.js'},
+  {name: 'dropzone', src: './assets/vendor/dropzone/js/dropzone.js'},
+  {name: 'quill', src: './assets/vendor/quill/js/quill.min.js'},
+  {name: 'bs-stepper', src: './assets/vendor/stepper/js/bs-stepper.min.js'},
   {name: 'nouislider', src: './assets/vendor/nouislider/nouislider.min.js'},
+
 ];
 declare var document: any;
 
@@ -85,12 +89,12 @@ export class DynamicScriptLoaderService {
           const script = scriptElements[i];
           if (script.src.includes(this.scripts[name].src)) {
             script.remove();
-            resolve({ script: name, loaded: false, status: 'Unloaded' });
+            resolve({script: name, loaded: false, status: 'Unloaded'});
             return;
           }
         }
       }
-      resolve({ script: name, loaded: false, status: 'Not Found' });
+      resolve({script: name, loaded: false, status: 'Not Found'});
     });
   }
 
