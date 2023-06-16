@@ -40,7 +40,7 @@ export class RideDetailsCardComponent implements OnInit, OnDestroy {
   }
 
   get formattedDate(): string {
-    return this.datePipe.transform(this.ride.date, 'dd MMM yyyy');
+    return this.datePipe.transform(this.ride.departureDate, 'dd MMM yyyy');
   }
 
   private loadScripts() {

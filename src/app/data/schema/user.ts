@@ -1,31 +1,112 @@
 import {TravelPreference} from "./travelPreference";
 import {Role} from "./role";
 
-export class User{
-  multipartFile?: any
+export class User {
+  private _multipartFile?: any
 
-  id?: number
+  private _id?: number
 
-  firstName?: string
+  private _firstName?: string
 
-  lastName?: string
+  private _lastName?: string
 
-  imagePath?: string
+  private _imagePath?: string
 
-  about?: string
+  private _about?: string
 
-  isActive?: boolean
+  private _isActive?: boolean
 
-  gender?: string
+  private _gender?: string
 
-  travelPreferences?: TravelPreference[]
+  private _travelPreferences?: TravelPreference[]
 
-  roles?: Role[]
+  private _roles?: Role[]
 
 
   constructor(firstName: string, lastName: string, gender: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.gender = gender;
+    this._firstName = firstName;
+    this._lastName = lastName;
+    this._gender = gender;
+  }
+
+
+  get multipartFile(): any {
+    return this._multipartFile;
+  }
+
+  set multipartFile(value: any) {
+    this._multipartFile = value;
+  }
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get firstName(): string {
+    return this._firstName;
+  }
+
+  set firstName(value: string) {
+    this._firstName = value;
+  }
+
+  get lastName(): string {
+    return this._lastName;
+  }
+
+  set lastName(value: string) {
+    this._lastName = value;
+  }
+
+  get imagePath(): string {
+    return this._imagePath;
+  }
+
+  set imagePath(value: string) {
+    this._imagePath = value;
+  }
+
+  get about(): string {
+    return this._about;
+  }
+
+  set about(value: string) {
+    this._about = value;
+  }
+
+  get isActive(): boolean {
+    return this._isActive;
+  }
+
+  set isActive(value: boolean) {
+    this._isActive = value;
+  }
+
+  get gender(): string {
+    return this._gender;
+  }
+
+  set gender(value: string) {
+    this._gender = value;
+  }
+
+  get travelPreferences(): TravelPreference[] {
+    return this._travelPreferences;
+  }
+
+  set travelPreferences(value: TravelPreference[]) {
+    this._travelPreferences = value;
+  }
+
+  get roles(): Role[] {
+    return this._roles;
+  }
+
+  set roles(value: Role[]) {
+    this._roles = value;
   }
 }

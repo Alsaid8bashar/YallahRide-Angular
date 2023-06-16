@@ -39,6 +39,10 @@
               "src/assets/vendor/choices/js/choices.min.js",
               "src/assets/vendor/aos/aos.js",
               "src/assets/vendor/sticky-js/sticky.min.js",
+              "src/assets/vendor/nouislider/nouislider.min.js",
+              "src/assets/vendor/dropzone/js/dropzone.js",
+              "src/assets/vendor/quill/js/quill.min.js",
+              "src/assets/vendor/stepper/js/bs-stepper.min.js",
               "src/assets/vendor/nouislider/nouislider.min.js"
             ]
           },

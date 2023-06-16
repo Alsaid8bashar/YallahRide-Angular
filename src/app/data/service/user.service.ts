@@ -38,7 +38,7 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-   return  this.http.delete(`${this.apiURL}delete/${id}`);
+    return this.http.delete(`${this.apiURL}delete/${id}`);
   }
 
   getNumberOfUsers(): Observable<number> {
@@ -46,13 +46,13 @@ export class UserService {
   }
 
 
-  activateUserById(id: number): Observable<User> {
+  activateUserById(id: number): Observable<any> {
     return this.http.delete(`${this.apiURL}activate/${id}`)
   }
 
-  deactivateUserById(id: number): Observable<User> {
-    return this.http.delete(`${this.apiURL}deactivate/${id}`)
-  }
+  // deactivateUserById(id: number): Observable<any> {
+  //   return this.http.put(`${this.apiURL}deactivate/${id}`)
+  // }
 
 
 }
