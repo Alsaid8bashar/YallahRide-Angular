@@ -1,11 +1,22 @@
 import {User} from "./user";
 
-export class TravelPreference{
+export class TravelPreference {
   private _id?: number
 
   private _description?: string
 
   private _users?: User[]
+
+
+  private _category: string;
+
+  get category(): string {
+    return this._category;
+  }
+
+  set category(value: string) {
+    this._category = value;
+  }
 
   get id(): number {
     return this._id;

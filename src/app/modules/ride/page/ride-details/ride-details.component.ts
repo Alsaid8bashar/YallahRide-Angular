@@ -4,18 +4,17 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {RideService} from "../../../../data/service/ride.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
-import {DatePipe} from '@angular/common';
 
 
 @Component({
   selector: 'app-ride-details',
   templateUrl: './ride-details.component.html'
 })
-export class RideDetailsComponent implements OnInit {
+export class RideDetailsComponent implements OnInit, OnDestroy {
 
   ride: Ride;
 
-  constructor(private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private datePipe: DatePipe) {
+  constructor(private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
   }
 
   ngOnInit() {
@@ -24,6 +23,8 @@ export class RideDetailsComponent implements OnInit {
       this.spinner.show();
       this.getRide(id);
     });
+    this.unloadScripts();
+    this.loadScripts();
   }
 
 
@@ -31,6 +32,7 @@ export class RideDetailsComponent implements OnInit {
     this.rideService.findRideById(id).subscribe(
       ride => {
         this.ride = ride;
+        console.error(ride)
         this.spinner.hide();
       },
       error => {
@@ -39,4 +41,20 @@ export class RideDetailsComponent implements OnInit {
       }
     );
   }
+
+  private loadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  private unloadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  ngOnDestroy() {
+    this.unloadScripts();
+  }
+
+
 }

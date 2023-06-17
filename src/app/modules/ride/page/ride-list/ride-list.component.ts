@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Ride} from "../../../../data/schema/ride";
 import {RideService} from "../../../../data/service/ride.service";
 import {ActivatedRoute} from "@angular/router";
@@ -27,13 +27,13 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.unloadScripts();
-    this.loadScripts();
     this.route.queryParams.subscribe(params => {
       this.to = params['drop'];
       this.date = params['date'];
       this.from = params['pickup'];
     });
+    this.unloadScripts();
+    this.loadScripts();
     this.buildForm();
     this.loadFilteredRides();
   }
@@ -69,11 +69,10 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   buildForm(): void {
-    console.log(this.date);
     this.searchForRideFrom = new FormGroup({
       to: new FormControl(this.to, Validators.required),
       from: new FormControl(this.from, Validators.required),
-      date: new FormControl(this.date, Validators.required),
+      date: new FormControl(this.date.toString(), Validators.required),
     });
   }
 

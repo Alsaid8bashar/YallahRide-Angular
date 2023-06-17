@@ -16,7 +16,6 @@ export class Ride {
 
   private _isInstantBooking?: boolean
 
-  private _departureDate?: Date
 
   private _seats?: number
 
@@ -27,13 +26,15 @@ export class Ride {
   private _reports?: Report[]
 
   private _car: Car
+  private _departureDate?: Date
 
-  private _arrivalTime: Date
+  private _arrivalTime: string
 
-  private _departureTime: Date
+  private _departureTime: string
+  private _arrivalDate?: Date
+
 
   private _rideStatus: RideStatus;
-  private _arrivalDate?: Date
 
   constructor(from: string, to: string, seats: number, cost: number, driver: User) {
     this._from = from;
@@ -131,19 +132,20 @@ export class Ride {
     this._car = value;
   }
 
-  get arrivalTime(): Date {
+
+  get arrivalTime(): string {
     return this._arrivalTime;
   }
 
-  set arrivalTime(value: Date) {
+  set arrivalTime(value: string) {
     this._arrivalTime = value;
   }
 
-  get departureTime(): Date {
+  get departureTime(): string {
     return this._departureTime;
   }
 
-  set departureTime(value: Date) {
+  set departureTime(value: string) {
     this._departureTime = value;
   }
 

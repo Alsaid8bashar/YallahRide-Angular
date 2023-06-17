@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {Passenger} from "../schema/passenger";
-import {Ride} from "../schema/ride";
-import {User} from "../schema/user";
 import {RideStatus} from "../schema/Enum/RideStatus";
 
 @Injectable({
