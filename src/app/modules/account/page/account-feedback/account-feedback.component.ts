@@ -17,15 +17,19 @@ export class AccountFeedbackComponent implements OnInit,OnDestroy{
   public feedbackObj:Feedback;
   public userObj:User;
   private sub = new Subscription();
+  hasUserFeedback:boolean;
   feedbackForm: FormGroup;
 
   constructor(private feedbackService:FeedbackService, private userService:UserService,private tokenService: TokenService) {
-    this.buildFeedbackForm();
+
   }
 
   ngOnInit(): void {
     this.userObj = this.userService.getUserSubject();
+    this.buildFeedbackForm();
+    this.getUserFeedback();
   }
+
 
   private buildFeedbackForm(){
     this.feedbackForm = new FormGroup({
@@ -34,15 +38,27 @@ export class AccountFeedbackComponent implements OnInit,OnDestroy{
     });
   }
 
-  private getUserFeedback(){
+  private getUserFeedback(): void {
     this.sub = this.feedbackService.findFeedbackByUserId(+this.tokenService.extractObjectFromToken('userId')).subscribe(
-      data =>{
+      data => {
         this.feedbackObj = data;
-      }, error => {
-        console.log(error);
+        if (this.feedbackObj) {
+          this.hasUserFeedback = true;
+          this.feedbackForm.patchValue({
+            feedback: this.feedbackObj.feedback,
+            stars: String(this.feedbackObj.starts) // Convert to string to match option values
+          });
+        }
+      },
+      error => {
+        this.hasUserFeedback = false;
+        console.log('Error retrieving user feedback:', error.status);
       }
-    )
+    );
   }
+
+
+
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
@@ -56,7 +72,11 @@ export class AccountFeedbackComponent implements OnInit,OnDestroy{
     // console.log(selectedRating)
     let feedbackObj:Feedback = new Feedback(feedback,selectedRating,this.userObj);
     console.log(feedbackObj);
-    this.sub = this.feedbackService.saveFeedback(feedback).subscribe();
+    this.sub = this.feedbackService.saveFeedback(feedbackObj).subscribe(data=> {
+      console.log(data)
+    }, error => {
+      console.log(error)
+    });
   }
 }
 

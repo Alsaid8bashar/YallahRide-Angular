@@ -13,13 +13,14 @@ import {AccountRoutingModule} from "./account-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
 import {RideCardComponent} from './page/account-rides/ride-card/ride-card.component';
-import {HomeRoutingModule} from "../home/home-routing.module";
 import {RideDetailsComponent} from './page/account-rides/ride-details/ride-details.component';
 import {RideModule} from "../ride/ride.module";
 import {RideRequestComponent} from './page/account-rides/ride-request/ride-request.component';
-import {SpinnerComponent} from "../../shared/component/spinner/spinner.component";
 import {AddRideComponent} from './page/account-rides/add-ride/add-ride.component';
 import {MatSelectModule} from "@angular/material/select";
+import {VehiclesDetailsComponent} from './page/account-vehicles/vehicles-details/vehicles-details.component';
+import { AddVehicleComponent } from './page/account-vehicles/add-vehicle/add-vehicle.component';
+import { ManageVehicleComponent } from './page/account-vehicles/manage-vehicle/manage-vehicle.component';
 
 
 @NgModule({
@@ -35,6 +36,9 @@ import {MatSelectModule} from "@angular/material/select";
     RideDetailsComponent,
     RideRequestComponent,
     AddRideComponent,
+    VehiclesDetailsComponent,
+    AddVehicleComponent,
+    ManageVehicleComponent,
   ],
   imports: [
     MatSelectModule,
@@ -48,4 +52,5 @@ import {MatSelectModule} from "@angular/material/select";
   ]
 })
 export class AccountModule {
+
 }
