@@ -18,9 +18,11 @@ import {RideModule} from "../ride/ride.module";
 import {RideRequestComponent} from './page/account-rides/ride-request/ride-request.component';
 import {AddRideComponent} from './page/account-rides/add-ride/add-ride.component';
 import {MatSelectModule} from "@angular/material/select";
+
 import {VehiclesDetailsComponent} from './page/account-vehicles/vehicles-details/vehicles-details.component';
 import { AddVehicleComponent } from './page/account-vehicles/add-vehicle/add-vehicle.component';
 import { ManageVehicleComponent } from './page/account-vehicles/manage-vehicle/manage-vehicle.component';
+import { PassengerCardComponent } from './page/account-bookings/passenger-card/passenger-card.component';
 
 
 @NgModule({
@@ -36,9 +38,13 @@ import { ManageVehicleComponent } from './page/account-vehicles/manage-vehicle/m
     RideDetailsComponent,
     RideRequestComponent,
     AddRideComponent,
+
     VehiclesDetailsComponent,
     AddVehicleComponent,
     ManageVehicleComponent,
+
+    PassengerCardComponent,
+
   ],
   imports: [
     MatSelectModule,

@@ -9,10 +9,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./ride-card.component.css']
 })
 export class RideCardComponent {
-
+  @Input()
+  isDriver: boolean;
   @Input()
   ride: Ride
+  @Input()
+  passengerStatus:RideStatus;
   protected readonly RideStatus = RideStatus;
+
 
   constructor(private router: Router) {
   }
@@ -22,7 +26,6 @@ export class RideCardComponent {
   }
 
   displayRideRequests() {
-    console.log("he")
     this.router.navigate(['account/rides/requests'], {
       queryParams: {
         id: this.ride.id,
