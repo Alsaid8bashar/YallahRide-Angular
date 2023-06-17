@@ -56,6 +56,7 @@ export class AddRideComponent implements OnInit, OnDestroy {
       ride.car = this.getCarById(this.rideFrom.value.car);
       ride.driver = this.userService.getUserSubject();
       ride.rideStatus = RideStatus.Active;
+
       console.error(ride)
       this.createRide(ride);
     }
