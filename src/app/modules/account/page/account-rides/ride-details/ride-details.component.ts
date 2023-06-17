@@ -5,7 +5,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {RideService} from "../../../../../data/service/ride.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {PassengerService} from "../../../../../data/service/passenger.service";
-import {User} from "../../../../../data/schema/user";
+import {UserService} from "../../../../../data/service/user.service";
+import {Passenger} from "../../../../../data/schema/passenger";
+import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
 
 @Component({
   selector: 'app-ride-details',
@@ -14,13 +16,14 @@ import {User} from "../../../../../data/schema/user";
 })
 export class RideDetailsComponent implements OnInit, OnDestroy {
   ride: Ride;
-  passengers: User [];
+  passengers: Passenger [];
   protected ridesSubscription: Subscription;
   protected passengerSubscription: Subscription;
-  protected isChecked: boolean = false;
+  protected isDeleteChecked: boolean = false;
+  protected isCanselChecked: boolean = false;
+  protected isDriver: boolean;
 
-
-  constructor(private router: Router, private route: ActivatedRoute, private rideService: RideService, private passengerService: PassengerService, private spinner: NgxSpinnerService) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private passengerService: PassengerService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -30,7 +33,15 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
       this.getRide(id);
       this.getRidePassenger(id);
     });
+  }
 
+  checkDriver() {
+    this.isDriver = this.ride.driver.id == this.userService.getUserSubject().id;
+  }
+
+  getPassengerIdByUserId(id: number) {
+    const passenger = this.passengers.find(passenger => passenger.user.id == id);
+    return passenger ? passenger.id : null;
   }
 
   private hideSpinner() {
@@ -41,6 +52,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
     this.ridesSubscription = this.rideService.findRideById(id).subscribe(
       ride => {
         this.ride = ride;
+        this.checkDriver();
         this.checkSpinner();
       },
       error => {
@@ -78,20 +90,31 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   }
 
   deleteRide() {
-    if (this.isChecked) {
-      this.spinner.show();
-      this.rideService.deleteRideById(this.ride.id).subscribe(
-        () => {
-          this.spinner.hide();
-          this.router.navigate(['account', 'rides',]);
-        },
-        error => {
-          console.log('Error deleting ride:', error);
-          this.spinner.hide();
+    this.spinner.show();
+    this.rideService.deleteRideById(this.ride.id).subscribe(
+      () => {
+        this.spinner.hide();
+        this.router.navigate(['account', 'rides',]);
+      },
+      error => {
+        console.log('Error deleting ride:', error);
+        this.spinner.hide();
 
-        }
-      );
-    }
+      }
+    );
   }
 
+  cancelRide() {
+    this.spinner.show();
+    this.passengerService.changeBookingStatus(this.getPassengerIdByUserId(this.userService.getUserSubject().id), RideStatus.Canceled).subscribe(
+      () => {
+        this.spinner.hide();
+        this.router.navigate(['account', 'bookings',]);
+      },
+      error => {
+        console.log('Error canceling ride:', error);
+        this.spinner.hide();
+      }
+    );
+  }
 }

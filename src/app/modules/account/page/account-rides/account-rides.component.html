@@ -43,7 +43,7 @@
         <h6>Upcoming Rides ({{getRidesByStatus(RideStatus.Active)}})</h6>
         <!-- Card item START -->
         <ng-container *ngFor="let ride of rides">
-          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Active" [ride]="ride"></app-ride-card>
+          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Active" [isDriver]="true" [ride]="ride"></app-ride-card>
         </ng-container>
         <!-- Card item END -->
       </div>
@@ -55,7 +55,7 @@
         <h6>Cancelled booking ({{getRidesByStatus(RideStatus.Canceled)}})</h6>
 
         <ng-container *ngFor="let ride of rides">
-          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Canceled" [ride]="ride"></app-ride-card>
+          <app-ride-card *ngIf="ride.rideStatus==RideStatus.Canceled" [isDriver]="true"  [ride]="ride"></app-ride-card>
         </ng-container>
 
       </div>

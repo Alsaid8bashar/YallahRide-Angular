@@ -7,23 +7,23 @@
       <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
       <!-- Title -->
       <div class="ms-2">
-        <h6 class="card-title mb-0">{{ride.from}} to {{ride.to}}</h6>
+        <h6 class="card-title mb-0">{{passenger.ride.from}} to {{passenger.ride.to}}</h6>
         <ul class="nav nav-divider small">
-          <li class="nav-item">Ride ID: {{ride.id}}</li>
-          <li class="nav-item">{{ride.car.make}}</li>
-          <li class="nav-item">{{ride.car.model}}</li>
+          <li class="nav-item">Ride ID: {{passenger.ride.id}}</li>
+          <li class="nav-item">{{passenger.ride.car.make}}</li>
+          <li class="nav-item">{{passenger.ride.car.model}}</li>
         </ul>
       </div>
     </div>
 
-    <div class="col-md-4  text-center align-items-end" *ngIf="ride.rideStatus==RideStatus.Active">
-      <a  *ngIf="isDriver" (click)="displayRideRequests()"  class="btn btn-outline-secondary">Ride Requests</a>
+    <div class="mt-2 mt-md-0" *ngIf="passenger.rideStatus==RideStatus.Active">
       <a (click)="displayRideDetails()" class="btn btn-outline-primary">View</a>
     </div>
-    <div class="mt-2 mt-md-0" *ngIf="ride.rideStatus==RideStatus.Completed" >
+    <div class="mt-2 mt-md-0" *ngIf="passenger.rideStatus==RideStatus.Completed">
       <p href="#" class="btn btn-success btn-sm mb-0" style="pointer-events: none;">Completed</p>
     </div>
-    <div class="mt-2 mt-md-0" *ngIf="ride.rideStatus==RideStatus.Canceled || passengerStatus==RideStatus.Completed" >
+    <div class="mt-2 mt-md-0"
+         *ngIf="passenger.rideStatus==RideStatus.Canceled">
       <p href="#" class="btn btn-danger btn-sm mb-0" style="pointer-events: none;">Cancelled</p>
     </div>
   </div>
@@ -43,7 +43,7 @@
 
       <div class="col-md-4">
         <span>Ride Date</span>
-        <h6 class="mb-0">{{ride.departureDate}}</h6>
+        <h6 class="mb-0">{{passenger.ride.departureDate}}</h6>
       </div>
     </div>
   </div>
