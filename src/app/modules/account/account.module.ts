@@ -20,6 +20,7 @@ import {RideRequestComponent} from './page/account-rides/ride-request/ride-reque
 import {SpinnerComponent} from "../../shared/component/spinner/spinner.component";
 import {AddRideComponent} from './page/account-rides/add-ride/add-ride.component';
 import {MatSelectModule} from "@angular/material/select";
+import { PassengerCardComponent } from './page/account-bookings/passenger-card/passenger-card.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {MatSelectModule} from "@angular/material/select";
     RideDetailsComponent,
     RideRequestComponent,
     AddRideComponent,
+    PassengerCardComponent,
   ],
   imports: [
     MatSelectModule,

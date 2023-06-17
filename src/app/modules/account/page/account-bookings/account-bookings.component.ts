@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Ride} from "../../../../data/schema/ride";
+import {Subscription, tap} from "rxjs";
+import {UserService} from "../../../../data/service/user.service";
+import {NgxSpinnerService} from "ngx-spinner";
+import {CarService} from "../../../../data/service/car.service";
+import {PassengerService} from "../../../../data/service/passenger.service";
+import {RideStatus} from "../../../../data/schema/Enum/RideStatus";
+import {Passenger} from "../../../../data/schema/passenger";
 
 @Component({
   selector: 'app-account-bookings',
@@ -7,4 +15,42 @@ import { Component } from '@angular/core';
 })
 export class AccountBookingsComponent {
 
+  protected passengerRide: Passenger[];
+  protected bookingSubscription: Subscription;
+
+  constructor(private passengerService: PassengerService, private userService: UserService, private spinner: NgxSpinnerService, private carService: CarService) {
+  }
+
+  getRideByStatus(status: string): Passenger[] {
+    return this.passengerRide.filter(passenger => passenger.rideStatus == status);
+  }
+
+  ngOnInit(): void {
+    this.spinner.show();
+    this.getUserBooks(this.userService.getUserSubject().id);
+  }
+
+  getUserBooks(id: number) {
+    this.spinner.show();
+    this.bookingSubscription = this.passengerService.getPassengerByUserId(id)
+      .subscribe(
+        data => {
+          this.passengerRide = data;
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 500);
+        },
+        error => {
+          console.error(error);
+          this.spinner.hide();
+        }
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.bookingSubscription.unsubscribe();
+  }
+
+  protected readonly RideStatus = RideStatus;
+  protected readonly length = length;
 }

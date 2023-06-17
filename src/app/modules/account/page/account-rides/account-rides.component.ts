@@ -64,6 +64,5 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
     this.ridesSubscription.unsubscribe();
   }
 
-
   protected readonly RideStatus = RideStatus;
 }
