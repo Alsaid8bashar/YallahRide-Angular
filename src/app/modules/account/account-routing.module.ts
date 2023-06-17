@@ -12,6 +12,10 @@ import {RideDetailsComponent} from "./page/account-rides/ride-details/ride-detai
 import {RideRequestComponent} from "./page/account-rides/ride-request/ride-request.component";
 import {AddRideComponent} from "./page/account-rides/add-ride/add-ride.component";
 import {AccountLayoutComponent} from "../../layout/account-layout/account-layout.component";
+import {AccountVehiclesComponent} from "./page/account-vehicles/account-vehicles.component";
+import {VehiclesDetailsComponent} from "./page/account-vehicles/vehicles-details/vehicles-details.component";
+import {AddVehicleComponent} from "./page/account-vehicles/add-vehicle/add-vehicle.component";
+import {ManageVehicleComponent} from "./page/account-vehicles/manage-vehicle/manage-vehicle.component";
 
 
 const routes: Routes = [
@@ -58,7 +62,19 @@ const routes: Routes = [
       },
       {
         path: 'vehicles',
-        component: AccountBookingsComponent,
+        component: AccountVehiclesComponent,
+      },
+      {
+        path: 'vehicle-details',
+        component: VehiclesDetailsComponent,
+      },
+      {
+        path: 'add-vehicle',
+        component: AddVehicleComponent,
+      },
+      {
+        path: 'manage-vehicle',
+        component: ManageVehicleComponent,
       },
     ],
   },

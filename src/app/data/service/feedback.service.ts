@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Feedback} from "../schema/feedback";
 
@@ -14,7 +14,8 @@ export class FeedbackService {
   }
 
   saveFeedback(feedback:Feedback){
-    return this.http.post<Feedback>(`${this.apiURL}save`, feedback);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<Feedback>(`${this.apiURL}save`, feedback, {headers});
   }
 
   findFeedbackById(id:number){

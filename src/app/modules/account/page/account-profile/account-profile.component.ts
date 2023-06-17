@@ -8,6 +8,9 @@ import { UserService } from '../../../../data/service/user.service';
 import { CustomValidators } from '../../../auth/page/register/sign-up-1/customValidators';
 import { TokenService } from '../../../../shared/service/token.service';
 import { SessionStorageService } from '../../../../shared/service/session.service';
+import {NgxSpinnerService} from "ngx-spinner";
+import {error} from "@angular/compiler-cli/src/transformers/util";
+import {CarJSONService} from "../../../../data/service/car-json.service";
 
 @Component({
   selector: 'app-account-profile',
@@ -18,19 +21,21 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
   accountObject: Account;
   userObject: User;
   accountCreationDate: string;
-  userForm: FormGroup;
   emailForm: FormGroup;
+  userForm: FormGroup;
   phoneNumberForm: FormGroup;
   passwordForm: FormGroup;
   accountId: number;
   private sub = new Subscription();
+
 
   constructor(
     private tokenService: TokenService,
     private userService: UserService,
     private accountService: AccountService,
     private sessionService: SessionStorageService,
-    private customValidators: CustomValidators
+    private customValidators: CustomValidators,
+    private spinner: NgxSpinnerService,
   ) {}
 
   ngOnInit(): void {
@@ -59,24 +64,44 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     this.userObject.gender = formValues.gender;
     this.userObject.about = formValues.about;
 
-    this.sub = this.userService.createUser(this.userObject).subscribe();
+    this.spinner.show();
+    this.sub = this.userService.createUser(this.userObject).subscribe(() => {
+      this.spinner.hide();
+    }, error => {
+      this.spinner.hide();
+    });
   }
 
   onPhoneNumberChangesSubmit(): void {
+    this.spinner.show();
     this.accountObject.phoneNumber = this.phoneNumberForm.value.phoneNumber;
-    this.sub = this.accountService.updateAccount(this.accountObject).subscribe();
+    this.sub = this.accountService.updateAccount(this.accountObject).subscribe( () =>{
+      this.spinner.hide();
+    }, error => {
+      this.spinner.hide();
+    });
   }
 
   onEmailChangesSubmit(): void {
+    this.spinner.show();
     const formValues = this.emailForm.value;
     this.accountObject.email = formValues.email;
-    this.sub = this.accountService.updateAccount(this.accountObject).subscribe();
+    this.sub = this.accountService.updateAccount(this.accountObject).subscribe(() => {
+      this.spinner.hide();
+    }, error => {
+      this.spinner.hide();
+    });
   }
 
   onPasswordChangesSubmit(): void {
     if (this.passwordForm.valid) {
+      this.spinner.show();
       const formValues = this.passwordForm.value;
-      this.sub = this.accountService.updatePassword(formValues.newPassword,this.accountObject.id).subscribe();
+      this.sub = this.accountService.updatePassword(formValues.newPassword,this.accountObject.id).subscribe(() => {
+        this.spinner.hide();
+      }, error => {
+        this.spinner.hide();
+      });
       this.passwordForm.reset();
     } else {
       this.passwordForm.markAllAsTouched();

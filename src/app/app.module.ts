@@ -8,8 +8,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthModule} from "./modules/auth/auth.module";
 import {DataModule} from "./data/data.module";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {TokenInterceptor} from "./core/interceptor/token.interceptor";
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
 import { SpinnerComponent } from './shared/component/spinner/spinner.component';
@@ -21,6 +19,7 @@ import {RideModule} from "./modules/ride/ride.module";
 import {HomeModule} from "./modules/home/home.module";
 import {DatePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {VehicleLayoutComponent} from "./layout/vehicle-layout/vehicle-layout.component";
 
 
 @NgModule({
@@ -32,6 +31,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FooterComponent,
     ContentLayoutComponent,
     AccountLayoutComponent,
+    VehicleLayoutComponent
   ],
   imports: [
     ToastrModule.forRoot(),
