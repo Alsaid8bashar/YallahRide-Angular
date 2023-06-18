@@ -1,18 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CarJSON} from "../../../../../data/schema/carJSON";
 import {TokenService} from "../../../../../shared/service/token.service";
 import {UserService} from "../../../../../data/service/user.service";
 import {AccountService} from "../../../../../data/service/account.service";
 import {SessionStorageService} from "../../../../../shared/service/session.service";
-import {CustomValidators} from "../../../../auth/page/register/sign-up-1/customValidators";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CarJSONService} from "../../../../../data/service/car-json.service";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {ModelSeries} from "../../../../../data/schema/modelJSON";
-import {map} from "rxjs/operators";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Car} from "../../../../../data/schema/car";
+import {FormControl, FormGroup} from "@angular/forms";
 import Choices from "choices.js";
+import * as Dropzone from 'dropzone';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -24,13 +22,16 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
 
   private sub = new Subscription();
   cars: CarJSON[] = [];
-  modelSeries: ModelSeries[] = [];
-  selectedMake: string | null = null;
   filteredModels: ModelSeries[] = [];
-  selectedModel: number | null = null;
   selectedCarId: number | null = null;
   carForm: FormGroup;
-  modelChoices:Choices;
+  modelChoices: Choices;
+
+  files: File[] = [];
+  dropzone: Dropzone;
+  @ViewChild('imageGallery') imageGalleryRef: ElementRef;
+
+
 
 
   constructor(
@@ -44,16 +45,51 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
 
   }
 
+  selectedImage: any; // Define the selectedImage variable in your component
+
+  showFullView(image: any) {
+    this.selectedImage = image;
+  }
+
+  closeFullView() {
+    this.selectedImage = null;
+  }
+
+
   ngOnInit(): void {
     this.modelChoices = new Choices(document.getElementById('mySelect'));
     this.buildCarForm();
     this.carJSON.fetchCarData().subscribe(data => {
       this.cars = data;
     });
+    // Access the Dropzone instance
+    const dropzoneElement = this.imageGalleryRef.nativeElement;
+    const dropzoneOptions = {
+      maxFiles: 5,
+      addRemoveLinks: false
+    };
+    const dropzone = new Dropzone(dropzoneElement, dropzoneOptions);
+
+    // Listen for the 'addedfile' event, which is triggered when a file is added to the gallery
+    dropzone.on('addedfile', (file: Dropzone.DropzoneFile) => {
+      // Access the file details
+      const fileName = file.name;
+      const fileSize = file.size;
+
+      // Log the file details
+      console.log('File added:', fileName);
+      console.log('File size:', fileSize);
+    });
+
+    // Listen for the 'removedfile' event, which is triggered when a file is removed from the gallery
+    dropzone.on('removedfile', (file: Dropzone.DropzoneFile) => {
+      // Access the file details
+      const fileName = file.name;
+
+      // Log the file removal
+      console.log('File removed:', fileName);
+    });
   }
-
-
-
 
 
   private buildCarForm() {
@@ -99,5 +135,15 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
 
   onAddCarSubmit() {
     console.log("Submitted")
+  }
+
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }
