@@ -12,9 +12,9 @@ export class Ride {
 
   private _to?: string
 
-  private _isMaxTwoInTheBook?: boolean
+  private _maxTwoInTheBook?: boolean
 
-  private _isInstantBooking?: boolean
+  private _instantBooking?: boolean
 
 
   private _seats?: number
@@ -70,20 +70,20 @@ export class Ride {
     this._to = value;
   }
 
-  get isMaxTwoInTheBook(): boolean {
-    return this._isMaxTwoInTheBook;
+  get maxTwoInTheBook(): boolean {
+    return this._maxTwoInTheBook;
   }
 
-  set isMaxTwoInTheBook(value: boolean) {
-    this._isMaxTwoInTheBook = value;
+  set maxTwoInTheBook(value: boolean) {
+    this._maxTwoInTheBook = value;
   }
 
-  get isInstantBooking(): boolean {
-    return this._isInstantBooking;
+  get instantBooking(): boolean {
+    return this._instantBooking;
   }
 
-  set isInstantBooking(value: boolean) {
-    this._isInstantBooking = value;
+  set instantBooking(value: boolean) {
+    this._instantBooking = value;
   }
 
   get departureDate(): Date {
