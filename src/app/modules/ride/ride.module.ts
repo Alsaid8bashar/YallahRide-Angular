@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 
-import { RideRoutingModule } from './ride-routing.module';
-import { RideListComponent } from './page/ride-list/ride-list.component';
-import { RideDetailsComponent } from './page/ride-details/ride-details.component';
-import { RideCardComponent } from './page/ride-card/ride-card.component';
+import {RideRoutingModule} from './ride-routing.module';
+import {RideListComponent} from './page/ride-list/ride-list.component';
+import {RideDetailsComponent} from './page/ride-details/ride-details.component';
+import {RideCardComponent} from './page/ride-card/ride-card.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RideDetailsCardComponent } from './page/ride-details-card/ride-details-card.component';
-import { BookingConfirmComponent } from './page/booking-confirm/booking-confirm.component';
+import {RideDetailsCardComponent} from './page/ride-details-card/ride-details-card.component';
+import {BookingConfirmComponent} from './page/booking-confirm/booking-confirm.component';
+import {NouisliderComponent, NouisliderModule} from "ng2-nouislider";
 
 
 @NgModule({
@@ -21,12 +22,15 @@ import { BookingConfirmComponent } from './page/booking-confirm/booking-confirm.
   exports: [
     RideDetailsCardComponent
   ],
-    imports: [
-        CommonModule,
-        RideRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgOptimizedImage
-    ]
+  imports: [
+    CommonModule,
+    RideRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    NouisliderComponent,
+    NouisliderModule
+  ]
 })
-export class RideModule { }
+export class RideModule {
+}
