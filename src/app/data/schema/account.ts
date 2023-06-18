@@ -1,6 +1,14 @@
 import {User} from "./user";
 
 export class Account {
+  get isVerified(): boolean {
+    return this._isVerified;
+  }
+
+  set isVerified(value: boolean) {
+    this._isVerified = value;
+  }
+
   private _id?: number
 
   private _email?: string
@@ -12,6 +20,7 @@ export class Account {
   private _date?: string
 
   private _user?: User
+  private _isVerified: boolean;
 
   get id(): number {
     return this._id;
@@ -70,7 +79,6 @@ export class Account {
   }
 
   private _isActive?: boolean
-
 
 
   constructor(email: string, phoneNumber: string, passwordHash: string) {

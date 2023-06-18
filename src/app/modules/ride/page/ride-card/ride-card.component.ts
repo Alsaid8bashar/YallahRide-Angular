@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Ride} from "../../../../data/schema/ride";
 import {Router} from "@angular/router";
+import moment from 'moment';
 
 @Component({
   selector: 'app-ride-card',
@@ -17,9 +18,10 @@ export class RideCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const rideDate = new Date(this.ride.departureDate);
+    const rideDate = moment(this.ride.departureTime, 'h:mm a').toDate();
     this.time = rideDate.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
   }
+
 
   displayRideDetails() {
     this.router.navigate(['ride/details', String(this.ride.id)]);

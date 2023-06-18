@@ -53,8 +53,12 @@ export class AccountService {
   }
 
   updateAccount(account: Account): Observable<Account> {
-    console.log(JSON.stringify(account));
     return this.http.put<Account>(`${this.apiURL}update`, account);
+  }
+
+  verifiedAccount(id: number): Observable<any> {
+    const requestBody = {};
+    return this.http.put<Account>(`${this.apiURL}verified/${id}`, requestBody);
   }
 
   updatePassword(hashPassword: string, id: number) {

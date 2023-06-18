@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-12">
           <!-- Booking from START -->
-          <form class="bg-mode border rounded position-relative px-4 pt-4 mb-4 mb-sm-0" [formGroup]="searchForRideFrom"
+          <form class="bg-mode border rounded position-relative px-4 pt-4 mb-4 mb-sm-0" [formGroup]="searchForRideForm"
                 (ngSubmit)="onSubmit()">
 
             <!-- Tab content START -->
@@ -71,12 +71,14 @@
                   <div class="col-lg-4">
                     <div class="form-border-transparent form-fs-lg bg-light rounded-3 h-100 p-3">
                       <label class="mb-1"><i class="bi bi-calendar me-2"></i>Departure</label>
-                      <input type="text" class="form-control flatpickr" data-date-format="d M Y" formControlName="date" placeholder="{{date}}" >
+                      <input type="text" class="form-control flatpickr" data-date-format="d M Y" formControlName="date"
+                             placeholder="{{date}}">
                     </div>
                   </div>
 
                   <div class="col-12 text-end pt-0">
-                    <button class="btn btn-primary mb-n4" type="submit">Find ticket <i class="bi bi-arrow-right ps-3"></i></button>
+                    <button class="btn btn-primary mb-n4" type="submit">Find ticket <i
+                      class="bi bi-arrow-right ps-3"></i></button>
                   </div>
                 </div>
               </div>
@@ -203,7 +205,7 @@
               </div>
               <!-- Offcanvas body -->
               <div class="offcanvas-body flex-column p-3 p-xl-0">
-                <form class="rounded-3 shadow">
+                <form class="rounded-3 shadow" [formGroup]="filterForm" (ngSubmit)="filterRides()">
                   <!-- Price START -->
                   <div class="card card-body rounded-0 p-4">
                     <!-- Title -->
@@ -212,8 +214,8 @@
                     <div class="position-relative">
                       <div class="noui-wrapper mb-2">
                         <div class="d-flex justify-content-between">
-                          <input type="text" class="text-body input-with-range-min" [(ngModel)]="minCapacity">
-                          <input type="text" class="text-body input-with-range-max" [(ngModel)]="maxCapacity">
+                          <input type="text" class="text-body input-with-range-min">
+                          <input type="text" class="text-body input-with-range-max">
                         </div>
                         <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='15'
                              data-range-selected-min='0'
@@ -233,11 +235,12 @@
                     <div class="position-relative">
                       <div class="noui-wrapper mb-2">
                         <div class="d-flex justify-content-between">
-                          <input type="text" class="text-body input-with-range-min" [(ngModel)]="minPrice" >
-                          <input type="text" class="text-body input-with-range-max" [(ngModel)]="maxPrice" >
+                          <input type="text" class="text-body input-with-range-min" formControlName="maxPrice">
+                          <input type="text" class="text-body input-with-range-max" formControlName="minPrice">
                         </div>
-                        <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='1000'
-                             data-range-selected-min='0' data-range-selected-max='1000'></div>
+                        <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='15'
+                             data-range-selected-min='0'
+                             data-range-selected-max='15'></div>
                       </div>
                     </div>
                   </div>
@@ -251,12 +254,14 @@
                     <h6 class="mb-2">Sort By</h6>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="earliestDeparture" [(ngModel)]="departureTime">
+                      <input class="form-check-input" type="checkbox" value="" id="earliestDeparture"
+                             formControlName="earliestDeparture">
                       <label class="form-check-label" for="earliestDeparture">Earliest departure</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lowestPrice" [(ngModel)]="lowestPrice">
+                      <input class="form-check-input" type="checkbox" value="" id="lowestPrice"
+                             formControlName="lowestPrice">
                       <label class="form-check-label" for="lowestPrice">Lowest price</label>
                     </div>
                   </div>
@@ -270,22 +275,23 @@
                     <h6 class="mb-2">Departure time</h6>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="before" [(ngModel)]="departureTime">
+                      <input class="form-check-input" type="checkbox" value="" id="before" formControlName="before">
                       <label class="form-check-label" for="before">Before 06:00</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="morning" [(ngModel)]="departureTime">
+                      <input class="form-check-input" type="checkbox" value="" id="morning" formControlName="morning">
                       <label class="form-check-label" for="morning">06:00 - 12:00</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="afternoon" [(ngModel)]="departureTime">
+                      <input class="form-check-input" type="checkbox" value="" id="afternoon"
+                             formControlName="afternoon">
                       <label class="form-check-label" for="afternoon">12:01 - 18:00</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="evening" [(ngModel)]="departureTime">
+                      <input class="form-check-input" type="checkbox" value="" id="evening" formControlName="evening">
                       <label class="form-check-label" for="evening">After 18:00</label>
                     </div>
                   </div>
@@ -298,41 +304,44 @@
                     <h6 class="mb-2">Amenities</h6>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1"><i class="bi bi-patch-check"></i> Verified
-                        Profile</label>
+                      <input class="form-check-input" type="checkbox" value="" id="Verified" formControlName="Verified">
+                      <label class="form-check-label" for="Verified"><i class="bi bi-patch-check"></i> Verified Profile</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1"><i class="bi bi-people"></i> Max. 2 in the back</label>
+                      <input class="form-check-input" type="checkbox" value="" id="Max2" formControlName="Max2">
+                      <label class="form-check-label" for="Max2"><i class="bi bi-people"></i> Max. 2 in the back</label>
                     </div>
 
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">Instant Booking</label>
+                      <input class="form-check-input" type="checkbox" value="" id="InstantBooking"
+                             formControlName="InstantBooking">
+                      <label class="form-check-label" for="InstantBooking">Instant Booking</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">Smoking allowed</label>
+                      <input class="form-check-input" type="checkbox" value="" id="Smokingallowed"
+                             formControlName="Smokingallowed">
+                      <label class="form-check-label" for="Smokingallowed">Smoking allowed</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">Pets allowed</label>
+                      <input class="form-check-input" type="checkbox" value="" id="Petsallowed"
+                             formControlName="Petsallowed">
+                      <label class="form-check-label" for="Petsallowed">Pets allowed</label>
                     </div>
+                  </div>
+                  <!-- Buttons -->
+                  <div class="d-flex justify-content-between p-2 p-xl-0 mt-xl-4">
+                    <button class="btn btn-link p-0 mb-0">Clear all</button>
+                    <button class="btn btn-primary mb-0" (click)="filterRides()">Filter Result</button>
                   </div>
                   <!-- Amenities END -->
                 </form><!-- Form End -->
               </div>
 
-              <!-- Buttons -->
-              <div class="d-flex justify-content-between p-2 p-xl-0 mt-xl-4">
-                <button class="btn btn-link p-0 mb-0">Clear all</button>
-                <button class="btn btn-primary mb-0" (click)="filterRides()">Filter Result</button>
-              </div>
+
             </div>
             <!-- Responsive offcanvas body END -->
           </div>
@@ -364,7 +373,7 @@
             </div>
             <!-- Alert box END -->
             <ng-container *ngIf="rides">
-              <app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
+              <app-ride-card *ngFor="let ride of tempRides" [ride]="ride"></app-ride-card>
             </ng-container>
             <!-- Pagination -->
             <nav class="d-flex justify-content-center" aria-label="navigation">
