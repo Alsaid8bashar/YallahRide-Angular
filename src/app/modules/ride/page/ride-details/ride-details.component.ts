@@ -4,6 +4,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {RideService} from "../../../../data/service/ride.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
+import {PassengerService} from "../../../../data/service/passenger.service";
+import {Passenger} from "../../../../data/schema/passenger";
+import {UserService} from "../../../../data/service/user.service";
+import {Subscription} from "rxjs";
+import {RideStatus} from "../../../../data/schema/Enum/RideStatus";
 
 
 @Component({
@@ -12,9 +17,11 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
 })
 export class RideDetailsComponent implements OnInit, OnDestroy {
 
-  ride: Ride;
+  protected ride: Ride;
+  private rideSub: Subscription;
+  private passengerSub: Subscription;
 
-  constructor(private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
+  constructor(private userService: UserService, private passengerService: PassengerService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
   }
 
   ngOnInit() {
@@ -29,10 +36,9 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
 
 
   private getRide(id: number) {
-    this.rideService.findRideById(id).subscribe(
+    this.rideSub = this.rideService.findRideById(id).subscribe(
       ride => {
         this.ride = ride;
-        console.error(ride)
         this.spinner.hide();
       },
       error => {
@@ -40,6 +46,26 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
         this.spinner.hide();
       }
     );
+  }
+
+
+  bookRide() {
+    let passenger: Passenger = new Passenger(this.userService.getUserSubject(), this.ride, RideStatus.Active);
+    this.savePassenger(passenger);
+  }
+
+  savePassenger(passenger: Passenger) {
+    this.spinner.show();
+    this.passengerSub = this.passengerService.savePassenger(passenger).subscribe(
+      response => {
+        this.router.navigate(['/booking-confirm', String(this.ride.id)]);
+        this.spinner.hide();
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    )
   }
 
   private loadScripts() {
@@ -54,7 +80,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.unloadScripts();
+    this.rideSub.unsubscribe();
+    this.passengerSub.unsubscribe();
   }
-
-
 }

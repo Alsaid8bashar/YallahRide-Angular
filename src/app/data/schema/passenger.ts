@@ -3,9 +3,9 @@ import {Ride} from "./ride";
 import {RideStatus} from "./Enum/RideStatus";
 
 export class Passenger {
-  private _user?: User
+  public _user?: User
 
-  private _ride?: Ride
+  public _ride?: Ride
 
   private _id?: number
 
@@ -14,17 +14,10 @@ export class Passenger {
   private _rideStatus: RideStatus;
 
 
-  constructor(user: User, ride: Ride) {
-    this._user = user;
-    this._ride = ride;
-  }
-
-  get rideStatus(): RideStatus {
-    return this._rideStatus;
-  }
-
-  set rideStatus(value: RideStatus) {
-    this._rideStatus = value;
+  constructor(_user: User, _ride: Ride, rideStatus: RideStatus) {
+    this.user = _user;
+    this.ride = _ride;
+    this.rideStatus = rideStatus;
   }
 
   get user(): User {
@@ -42,6 +35,15 @@ export class Passenger {
   set ride(value: Ride) {
     this._ride = value;
   }
+
+  get rideStatus(): RideStatus {
+    return this._rideStatus;
+  }
+
+  set rideStatus(value: RideStatus) {
+    this._rideStatus = value;
+  }
+
 
   get id(): number {
     return this._id;

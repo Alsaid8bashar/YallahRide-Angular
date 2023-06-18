@@ -212,8 +212,8 @@
                     <div class="position-relative">
                       <div class="noui-wrapper mb-2">
                         <div class="d-flex justify-content-between">
-                          <input type="text" class="text-body input-with-range-min">
-                          <input type="text" class="text-body input-with-range-max">
+                          <input type="text" class="text-body input-with-range-min" [(ngModel)]="minCapacity">
+                          <input type="text" class="text-body input-with-range-max" [(ngModel)]="maxCapacity">
                         </div>
                         <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='15'
                              data-range-selected-min='0'
@@ -233,8 +233,8 @@
                     <div class="position-relative">
                       <div class="noui-wrapper mb-2">
                         <div class="d-flex justify-content-between">
-                          <input type="text" class="text-body input-with-range-min">
-                          <input type="text" class="text-body input-with-range-max">
+                          <input type="text" class="text-body input-with-range-min" [(ngModel)]="minPrice" >
+                          <input type="text" class="text-body input-with-range-max" [(ngModel)]="maxPrice" >
                         </div>
                         <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='1000'
                              data-range-selected-min='0' data-range-selected-max='1000'></div>
@@ -251,13 +251,13 @@
                     <h6 class="mb-2">Sort By</h6>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">Earliest departure</label>
+                      <input class="form-check-input" type="checkbox" value="" id="earliestDeparture" [(ngModel)]="departureTime">
+                      <label class="form-check-label" for="earliestDeparture">Earliest departure</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">Lowest price</label>
+                      <input class="form-check-input" type="checkbox" value="" id="lowestPrice" [(ngModel)]="lowestPrice">
+                      <label class="form-check-label" for="lowestPrice">Lowest price</label>
                     </div>
                   </div>
                   <!-- Sort By END -->
@@ -270,27 +270,26 @@
                     <h6 class="mb-2">Departure time</h6>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">Before 06:00</label>
+                      <input class="form-check-input" type="checkbox" value="" id="before" [(ngModel)]="departureTime">
+                      <label class="form-check-label" for="before">Before 06:00</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">06:00 - 12:00</label>
+                      <input class="form-check-input" type="checkbox" value="" id="morning" [(ngModel)]="departureTime">
+                      <label class="form-check-label" for="morning">06:00 - 12:00</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">12:01 - 18:00</label>
+                      <input class="form-check-input" type="checkbox" value="" id="afternoon" [(ngModel)]="departureTime">
+                      <label class="form-check-label" for="afternoon">12:01 - 18:00</label>
                     </div>
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lauoverType1">
-                      <label class="form-check-label" for="lauoverType1">After 18:00</label>
+                      <input class="form-check-input" type="checkbox" value="" id="evening" [(ngModel)]="departureTime">
+                      <label class="form-check-label" for="evening">After 18:00</label>
                     </div>
                   </div>
                   <!-- Departure time END -->
-
                   <hr class="my-0"> <!-- Divider -->
 
                   <!-- Amenities START -->
@@ -332,7 +331,7 @@
               <!-- Buttons -->
               <div class="d-flex justify-content-between p-2 p-xl-0 mt-xl-4">
                 <button class="btn btn-link p-0 mb-0">Clear all</button>
-                <button class="btn btn-primary mb-0">Filter Result</button>
+                <button class="btn btn-primary mb-0" (click)="filterRides()">Filter Result</button>
               </div>
             </div>
             <!-- Responsive offcanvas body END -->
