@@ -28,7 +28,6 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.spinner.show();
     this.getDriverRide(this.userService.getUserSubject().id);
-    this.getUserCars(this.userService.getUserSubject().id);
   }
 
   getDriverRide(id: number) {
@@ -50,15 +49,7 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
       );
   }
 
-  getUserCars(id: number): void {
-    this.carService.getUserCars(id).subscribe(
-      cars => {
-        this.carService.setCars(cars);
-      },
-      error => {
-        console.log(error);
-      });
-  }
+
 
   ngOnDestroy(): void {
     this.ridesSubscription.unsubscribe();

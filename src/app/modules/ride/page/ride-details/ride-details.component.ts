@@ -4,18 +4,24 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {RideService} from "../../../../data/service/ride.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
-import {DatePipe} from '@angular/common';
+import {PassengerService} from "../../../../data/service/passenger.service";
+import {Passenger} from "../../../../data/schema/passenger";
+import {UserService} from "../../../../data/service/user.service";
+import {Subscription} from "rxjs";
+import {RideStatus} from "../../../../data/schema/Enum/RideStatus";
 
 
 @Component({
   selector: 'app-ride-details',
   templateUrl: './ride-details.component.html'
 })
-export class RideDetailsComponent implements OnInit {
+export class RideDetailsComponent implements OnInit, OnDestroy {
 
-  ride: Ride;
+  protected ride: Ride;
+  private rideSub: Subscription;
+  private passengerSub: Subscription;
 
-  constructor(private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private datePipe: DatePipe) {
+  constructor(private userService: UserService, private passengerService: PassengerService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
   }
 
   ngOnInit() {
@@ -24,11 +30,13 @@ export class RideDetailsComponent implements OnInit {
       this.spinner.show();
       this.getRide(id);
     });
+    this.unloadScripts();
+    this.loadScripts();
   }
 
 
   private getRide(id: number) {
-    this.rideService.findRideById(id).subscribe(
+    this.rideSub = this.rideService.findRideById(id).subscribe(
       ride => {
         this.ride = ride;
         this.spinner.hide();
@@ -38,5 +46,41 @@ export class RideDetailsComponent implements OnInit {
         this.spinner.hide();
       }
     );
+  }
+
+
+  bookRide() {
+    let passenger: Passenger = new Passenger(this.userService.getUserSubject(), this.ride, RideStatus.Active);
+    this.savePassenger(passenger);
+  }
+
+  savePassenger(passenger: Passenger) {
+    this.spinner.show();
+    this.passengerSub = this.passengerService.savePassenger(passenger).subscribe(
+      response => {
+        this.router.navigate(['/booking-confirm', String(this.ride.id)]);
+        this.spinner.hide();
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    )
+  }
+
+  private loadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  private unloadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  ngOnDestroy() {
+    this.unloadScripts();
+    this.rideSub.unsubscribe();
+    this.passengerSub.unsubscribe();
   }
 }

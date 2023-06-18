@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {Passenger} from "../schema/passenger";
-import {Ride} from "../schema/ride";
-import {User} from "../schema/user";
 import {RideStatus} from "../schema/Enum/RideStatus";
 
 @Injectable({
@@ -21,7 +19,7 @@ export class PassengerService {
     return this.http.get<Passenger>(`${this.apiURL}${id}`);
   }
 
-  savePassenger(passenger: Passenger): Observable<Passenger> {
+  savePassenger(passenger: Passenger): Observable<Passenger>{
     return this.http.post<Passenger>(`${this.apiURL}create`, passenger);
   }
 

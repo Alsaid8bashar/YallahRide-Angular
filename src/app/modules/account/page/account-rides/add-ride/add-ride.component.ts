@@ -8,11 +8,11 @@ import {Ride} from "../../../../../data/schema/ride";
 import {UserService} from "../../../../../data/service/user.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
-import Choices from 'src/assets/vendor/choices/js/choices.js';
 import {Car} from "../../../../../data/schema/car";
 import {DatePipe} from '@angular/common';
 import {Router} from "@angular/router";
 import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
+import Choices from "choices.js";
 
 @Component({
   selector: 'app-add-ride',
@@ -23,6 +23,7 @@ export class AddRideComponent implements OnInit, OnDestroy {
   private sub = new Subscription();
   rideFrom: FormGroup;
   userCars: Car[];
+  carChoices: Choices;
 
   constructor(private router: Router, private datePipe: DatePipe, private cdr: ChangeDetectorRef, private elementRef: ElementRef, private http: HttpClient, private rideService: RideService, private carService: CarService, private userService: UserService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
     this.unloadScripts();
@@ -31,32 +32,43 @@ export class AddRideComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.userCars = this.carService.getCars();
-    this.setChoices();
+    this.carChoices = new Choices(document.getElementById('mySelect'));
+    this.getUserCars(this.userService.getUserSubject().id);
     this.buildForm();
+  }
+
+  getUserCars(id: number): void {
+    this.carService.getUserCars(id).subscribe(
+      cars => {
+        this.userCars = cars;
+        this.setChoices(cars);
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   getCarById(carId: number): Car {
     return this.userCars.find(car => car.id == carId);
   }
 
-  private setChoices() {
-    const selectElement = document.getElementById('mySelect');
-    const choices = new Choices(selectElement);
-    const choicesArray = this.userCars.map((car: Car) => ({
+  private setChoices(cars: Car []) {
+    this.carChoices.clearChoices();
+    const choicesArray = cars.map((car: Car) => ({
       value: car.id,
       label: `${car.make} ${car.model}`
     }));
-    choices.setChoices(choicesArray, 'value', 'label', true);
+    this.carChoices.setChoices(choicesArray, 'value', 'label', true);
   }
+
 
   onSubmit() {
     if (this.rideFrom.valid) {
       let ride: Ride = this.rideFrom.value;
-      ride.car = this.getCarById(this.rideFrom.value.car);
+      console.error(this.rideFrom.value.car);
       ride.driver = this.userService.getUserSubject();
+      ride.car = this.getCarById(this.rideFrom.value.car);
       ride.rideStatus = RideStatus.Active;
-      console.error(ride)
       this.createRide(ride);
     }
   }
