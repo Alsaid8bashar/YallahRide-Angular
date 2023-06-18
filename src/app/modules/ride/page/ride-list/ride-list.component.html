@@ -235,8 +235,8 @@
                     <div class="position-relative">
                       <div class="noui-wrapper mb-2">
                         <div class="d-flex justify-content-between">
-                          <input type="text" class="text-body input-with-range-min" formControlName="maxPrice">
-                          <input type="text" class="text-body input-with-range-max" formControlName="minPrice">
+                          <input #maxPriceInput type="text" class="text-body input-with-range-min" formControlName="maxPrice">
+                          <input #minPriceInput type="text" class="text-body input-with-range-max" formControlName="minPrice">
                         </div>
                         <div class="noui-slider-range mt-2" data-range-min='0' data-range-max='15'
                              data-range-selected-min='0'

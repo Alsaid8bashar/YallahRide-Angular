@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Ride} from "../../../../data/schema/ride";
 import {RideService} from "../../../../data/service/ride.service";
 import {ActivatedRoute} from "@angular/router";
@@ -22,7 +22,7 @@ import {NouiFormatter} from "ng2-nouislider";
 
 
 
-export class RideListComponent implements OnInit, OnDestroy {
+export class RideListComponent implements OnInit, OnDestroy,AfterViewInit {
   rides: Ride[];
   tempRides: Ride[];
 
@@ -36,6 +36,9 @@ export class RideListComponent implements OnInit, OnDestroy {
   filterForm: FormGroup;
 
   lowestPrice: boolean;
+
+  @ViewChild('maxPriceInput') maxPriceInput: ElementRef;
+  @ViewChild('minPriceInput') minPriceInput: ElementRef;
 
   constructor(private decimalPipe: DecimalPipe
     , private rideService: RideService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private rideFilterService: RideFilterService) {
@@ -79,7 +82,12 @@ export class RideListComponent implements OnInit, OnDestroy {
   }
 
   filterRides() {
-    console.error(this.filterForm.value)
+    const maxPrice = this.maxPriceInput.nativeElement.value;
+    const minPrice = this.minPriceInput.nativeElement.value;
+
+    console.log('Max Price:', maxPrice);
+    console.log('Min Price:', minPrice);
+
     this.tempRides = this.rideFilterService.applyFilters(this.filterForm.value, this.rides);
   }
 
@@ -137,6 +145,15 @@ export class RideListComponent implements OnInit, OnDestroy {
       this.ridesSubscription.unsubscribe();
     }
     this.unloadScripts();
+  }
+
+  ngAfterViewInit(): void {
+    // Access the values of the inputs after they have been initialized
+    const maxPrice = this.maxPriceInput.nativeElement.value;
+    const minPrice = this.minPriceInput.nativeElement.value;
+
+    console.log('Max Price:', maxPrice);
+    console.log('Min Price:', minPrice);
   }
 
 

@@ -21,15 +21,21 @@
                   <option value="">Select your car make</option>
                   <option *ngFor="let car of cars" [value]="car.id">{{ car.name }}</option>
                 </select>
+                <mat-error *ngIf="carForm.controls['make'].value === 'default' && carForm.controls['year'].touched">
+                  Model must not be <strong>empty</strong>
+                </mat-error>
               </div>
 
 
               <!-- Model -->
               <div class="col-md-6">
                 <label class="form-label">Model<span class="text-danger">*</span></label>
-                <select class="form-select" formControlName="model" id="mySelect">
-                  <option value="" disabled>Select your car model</option>
+                <select class="form-select" formControlName="model" id="mySelect" #mySelect>
+                  <option value="default" disabled>Select your car model</option>
                 </select>
+                <mat-error *ngIf="carForm.controls['model'].value === 'default' && carForm.controls['model'].touched">
+                  Model must not be <strong>empty</strong>
+                </mat-error>
               </div>
 
 
@@ -38,7 +44,7 @@
                 <label class="form-label">Year of Manufacture<span
                   class="text-danger">*</span></label>
                 <select class="form-select js-choice" formControlName="year">
-                  <option value="" disabled>Select your car year model</option>
+                  <option value="default" selected>Select your car year model</option>
                   <option value="red">Red</option>
                   <option value="blue">Blue</option>
                   <option value="green">Green</option>
@@ -61,6 +67,9 @@
                   <option value="turquoise">Turquoise</option>
                   <option value="lime">Lime</option>
                 </select>
+                <mat-error *ngIf="carForm.controls['year'].value === 'default' && carForm.controls['year'].touched">
+                  Model must not be <strong>empty</strong>
+                </mat-error>
               </div>
 
               <!-- Color -->
@@ -90,47 +99,10 @@
                   <option value="turquoise">Turquoise</option>
                   <option value="lime">Lime</option>
                 </select>
+                <mat-error
+                  *ngIf="carForm.controls['color'].hasError('required') && carForm.controls['color'].touched">
+                  Color must not be <strong>empty</strong></mat-error>
               </div>
-
-<!--              &lt;!&ndash; Image Gallery &ndash;&gt;-->
-<!--              <div class="col-12">-->
-<!--                <label class="form-label">Upload image *</label>-->
-<!--                <div class="dropzone dropzone-custom"-->
-<!--                     data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>-->
-<!--                  <div class="dz-message needsclick">-->
-<!--                    <i class="bi bi-upload display-3"></i>-->
-<!--                    <p>Drop files here or click to upload.</p>-->
-<!--                  </div>-->
-<!--                  <div class="dz-preview row g-4">-->
-<!--                    <div class="col-xl-2 col-md-4 col-sm-6">-->
-<!--                      <div-->
-<!--                        class="card p-2 mb-0 shadow-none border position-relative h-100">-->
-<!--                        &lt;!&ndash; Image &ndash;&gt;-->
-<!--                        <img data-dz-thumbnail src="#" class="rounded bg-light"-->
-<!--                             alt="">-->
-<!--                        &lt;!&ndash; info &ndash;&gt;-->
-<!--                        <div class="mt-2">-->
-<!--                          <a href="javascript:void(0);" class="text-muted fw-bold"-->
-<!--                             data-dz-name></a>-->
-<!--                          <p class="mb-0 small" data-dz-size></p>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Close btn &ndash;&gt;-->
-<!--                        <div-->
-<!--                          class="position-absolute top-0 start-100 translate-middle">-->
-<!--                          <a href="#!"-->
-<!--                             class="btn btn-danger rounded-circle icon-sm p-0"-->
-<!--                             data-dz-remove>-->
-<!--                            <i class="fas fa-times"></i>-->
-<!--                          </a>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Our-->
-<!--                  suggested dimensions are 600px * 450px. The larger image will be cropped-->
-<!--                  to 4:3 to fit our thumbnails/previews.</p>-->
-<!--              </div>-->
 
 
               <div class="col-12">
