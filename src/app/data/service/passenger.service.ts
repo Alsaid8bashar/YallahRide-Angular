@@ -19,7 +19,7 @@ export class PassengerService {
     return this.http.get<Passenger>(`${this.apiURL}${id}`);
   }
 
-  savePassenger(passenger: Passenger): Observable<Passenger> {
+  savePassenger(passenger: Passenger): Observable<Passenger>{
     return this.http.post<Passenger>(`${this.apiURL}create`, passenger);
   }
 

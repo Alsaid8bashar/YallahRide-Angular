@@ -6,6 +6,7 @@ import {finalize, Subscription, tap} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import moment from 'moment';
 
 
 @Component({
@@ -23,6 +24,20 @@ export class RideListComponent implements OnInit, OnDestroy {
   searchForRideFrom: FormGroup;
 
 
+  minCapacity: number;
+  maxCapacity: number;
+  minPrice: number;
+  maxPrice: number;
+  departureTime: boolean;
+  lowestPrice: boolean;
+
+
+  minPassengerCapacity: number = 0;
+  maxPassengerCapacity: number = 15;
+
+  private earliestDeparture: any;
+  arrivalTime: string = '';
+
   constructor(private rideService: RideService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
   }
 
@@ -36,6 +51,33 @@ export class RideListComponent implements OnInit, OnDestroy {
     this.loadScripts();
     this.buildForm();
     this.loadFilteredRides();
+  }
+
+  filterByCapacity() {
+    return this.rides.filter(item => {
+      return item.seats >= this.minCapacity && item.seats <= this.maxCapacity;
+    });
+  }
+
+  filterByPrice() {
+   return  this.rides.filter(item => {
+      return item.cost >= this.minPrice && item.cost <= this.maxPrice;
+    });
+  }
+
+  filterByLowestPrice() {
+    if (this.lowestPrice) {
+      this.rides.sort((a, b) => {
+        return a.cost - b.cost;
+      });
+    }
+  }
+
+  filterRides() {
+    let filteredRides = this.rides;
+
+
+    this.rides = filteredRides;
   }
 
 
@@ -80,18 +122,18 @@ export class RideListComponent implements OnInit, OnDestroy {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
+
   private unloadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions','sticky').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
-
 
 
   ngOnDestroy() {
     if (this.ridesSubscription) {
       this.ridesSubscription.unsubscribe();
     }
-      this.unloadScripts();
+    this.unloadScripts();
   }
 
 }

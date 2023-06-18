@@ -36,12 +36,14 @@ export class Ride {
 
   private _rideStatus: RideStatus;
 
-  constructor(from: string, to: string, seats: number, cost: number, driver: User) {
+  constructor(from: string, to: string, seats: number, cost: number, driver: User, rideStatus: RideStatus,car:Car) {
     this._from = from;
     this._to = to;
     this._seats = seats;
     this._cost = cost;
     this._driver = driver;
+    this._rideStatus = rideStatus;
+    this._car=car;
   }
 
   get id(): number {
