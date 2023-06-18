@@ -23,6 +23,16 @@ import {VehiclesDetailsComponent} from './page/account-vehicles/vehicles-details
 import { AddVehicleComponent } from './page/account-vehicles/add-vehicle/add-vehicle.component';
 import { ManageVehicleComponent } from './page/account-vehicles/manage-vehicle/manage-vehicle.component';
 import { PassengerCardComponent } from './page/account-bookings/passenger-card/passenger-card.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import {DROPZONE_CONFIG, DropzoneConfigInterface} from "ngx-dropzone-wrapper";
+
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  url: 'https://httpbin.org/post',
+  maxFilesize: 50,
+  acceptedFiles: 'image/*'
+};
 
 
 @NgModule({
@@ -55,6 +65,13 @@ import { PassengerCardComponent } from './page/account-bookings/passenger-card/p
     SharedModule,
     RideModule,
     NgOptimizedImage,
+    NgxDropzoneModule,
+  ],
+  providers: [
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
+    }
   ]
 })
 export class AccountModule {
