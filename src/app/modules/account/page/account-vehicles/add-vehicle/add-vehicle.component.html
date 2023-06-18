@@ -16,23 +16,21 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Make<span class="text-danger">*</span></label>
-                <select class="form-select js-choice" [(ngModel)]="selectedCarId" (change)="onMakeSelection()" formControlName="make">
-                  <option value="" >Select your car make</option>
+                <select class="form-select js-choice" [(ngModel)]="selectedCarId" (change)="onMakeSelection()"
+                        formControlName="make">
+                  <option value="">Select your car make</option>
                   <option *ngFor="let car of cars" [value]="car.id">{{ car.name }}</option>
                 </select>
               </div>
 
 
-
-
               <!-- Model -->
               <div class="col-md-6">
                 <label class="form-label">Model<span class="text-danger">*</span></label>
-                <select class="form-select"  formControlName="model" id="mySelect">
+                <select class="form-select" formControlName="model" id="mySelect">
                   <option value="" disabled>Select your car model</option>
                 </select>
               </div>
-
 
 
               <!-- Model Year -->
@@ -94,45 +92,72 @@
                 </select>
               </div>
 
-              <!-- Image Gallery -->
+<!--              &lt;!&ndash; Image Gallery &ndash;&gt;-->
+<!--              <div class="col-12">-->
+<!--                <label class="form-label">Upload image *</label>-->
+<!--                <div class="dropzone dropzone-custom"-->
+<!--                     data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>-->
+<!--                  <div class="dz-message needsclick">-->
+<!--                    <i class="bi bi-upload display-3"></i>-->
+<!--                    <p>Drop files here or click to upload.</p>-->
+<!--                  </div>-->
+<!--                  <div class="dz-preview row g-4">-->
+<!--                    <div class="col-xl-2 col-md-4 col-sm-6">-->
+<!--                      <div-->
+<!--                        class="card p-2 mb-0 shadow-none border position-relative h-100">-->
+<!--                        &lt;!&ndash; Image &ndash;&gt;-->
+<!--                        <img data-dz-thumbnail src="#" class="rounded bg-light"-->
+<!--                             alt="">-->
+<!--                        &lt;!&ndash; info &ndash;&gt;-->
+<!--                        <div class="mt-2">-->
+<!--                          <a href="javascript:void(0);" class="text-muted fw-bold"-->
+<!--                             data-dz-name></a>-->
+<!--                          <p class="mb-0 small" data-dz-size></p>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Close btn &ndash;&gt;-->
+<!--                        <div-->
+<!--                          class="position-absolute top-0 start-100 translate-middle">-->
+<!--                          <a href="#!"-->
+<!--                             class="btn btn-danger rounded-circle icon-sm p-0"-->
+<!--                             data-dz-remove>-->
+<!--                            <i class="fas fa-times"></i>-->
+<!--                          </a>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Our-->
+<!--                  suggested dimensions are 600px * 450px. The larger image will be cropped-->
+<!--                  to 4:3 to fit our thumbnails/previews.</p>-->
+<!--              </div>-->
+
+
               <div class="col-12">
                 <label class="form-label">Upload image *</label>
-                <div class="dropzone dropzone-custom"
-                     data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>
-                  <div class="dz-message needsclick">
-                    <i class="bi bi-upload display-3"></i>
-                    <p>Drop files here or click to upload.</p>
-                  </div>
-                  <div class="dz-preview row g-4">
-                    <div class="col-xl-2 col-md-4 col-sm-6">
-                      <div
-                        class="card p-2 mb-0 shadow-none border position-relative h-100">
-                        <!-- Image -->
-                        <img data-dz-thumbnail src="#" class="rounded bg-light"
-                             alt="">
-                        <!-- info -->
-                        <div class="mt-2">
-                          <a href="javascript:void(0);" class="text-muted fw-bold"
-                             data-dz-name></a>
-                          <p class="mb-0 small" data-dz-size></p>
-                        </div>
-                        <!-- Close btn -->
-                        <div
-                          class="position-absolute top-0 start-100 translate-middle">
-                          <a href="#!"
-                             class="btn btn-danger rounded-circle icon-sm p-0"
-                             data-dz-remove>
-                            <i class="fas fa-times"></i>
-                          </a>
-                        </div>
-                      </div>
+                <ngx-dropzone [processDirectoryDrop]="true" (change)="onSelect($event)"  [expandable]="true">
+                  <ngx-dropzone-label>
+                    <div class="dz-message needsclick">
+                      <i class="bi bi-upload display-3"></i>
+                      <p>Drop files here or click to upload.</p>
                     </div>
-                  </div>
-                </div>
+                  </ngx-dropzone-label>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                                              [removable]="true" (removed)="onRemove(f)">
+                    <ngx-dropzone-label><p class="mb-0 small text-white bg-dark" data-dz-size></p></ngx-dropzone-label>
+                    <div class="hover-element w-100 h-100">
+                      <i
+                        class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                    </div>
+                  </ngx-dropzone-image-preview>
+                </ngx-dropzone>
                 <p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Our
                   suggested dimensions are 600px * 450px. The larger image will be cropped
                   to 4:3 to fit our thumbnails/previews.</p>
+
               </div>
+
+
             </div>
           </div>
         </div>
