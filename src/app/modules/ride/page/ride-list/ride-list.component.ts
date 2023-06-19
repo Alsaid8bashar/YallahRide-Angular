@@ -7,9 +7,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RideFilterService} from "../../../../shared/service/ride-filter.service";
-import {PipeTransform} from '@angular/core';
 import {DecimalPipe} from "@angular/common";
-import {NouiFormatter} from "ng2-nouislider";
 
 
 @Component({
@@ -21,8 +19,7 @@ import {NouiFormatter} from "ng2-nouislider";
 })
 
 
-
-export class RideListComponent implements OnInit, OnDestroy,AfterViewInit {
+export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
   rides: Ride[];
   tempRides: Ride[];
 
@@ -84,11 +81,13 @@ export class RideListComponent implements OnInit, OnDestroy,AfterViewInit {
   filterRides() {
     const maxPrice = this.maxPriceInput.nativeElement.value;
     const minPrice = this.minPriceInput.nativeElement.value;
-
-    console.log('Max Price:', maxPrice);
-    console.log('Min Price:', minPrice);
-
-    this.tempRides = this.rideFilterService.applyFilters(this.filterForm.value, this.rides);
+    const values = {
+      ...this.filterForm.value,
+      maxPrice,
+      minPrice
+    }
+    debugger
+    this.tempRides = this.rideFilterService.applyFilters(values, this.rides);
   }
 
   onSubmit() {
@@ -107,7 +106,6 @@ export class RideListComponent implements OnInit, OnDestroy,AfterViewInit {
       date: new FormControl(this.date.toString(), Validators.required),
     });
   }
-
 
 
   buildFilterForm(): void {

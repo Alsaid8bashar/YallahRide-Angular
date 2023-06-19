@@ -5,6 +5,8 @@ import {RideService} from "../../../../data/service/ride.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
 import {DatePipe} from "@angular/common";
+import {RateService} from "../../../../data/service/rate.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-ride-details-card',
@@ -14,8 +16,33 @@ import {DatePipe} from "@angular/common";
 export class RideDetailsCardComponent implements OnInit, OnDestroy {
   @Input()
   ride: Ride;
+  @Input()
+  driverId: number;
+  protected userRate: number;
+  private rateSub: Subscription;
 
-  constructor(private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private datePipe: DatePipe) {
+  constructor(private rateService: RateService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private datePipe: DatePipe) {
+  }
+
+  ngOnInit(): void {
+    this.unloadScripts();
+    this.loadScripts();
+    this.spinner.show();
+    this.getUserRate();
+  }
+
+  private getUserRate() {
+    this.rateSub = this.rateService.getUserRate(this.driverId).subscribe(
+      rate => {
+        this.userRate = rate;
+        this.spinner.hide();
+      },
+      error => {
+        console.log(":ef")
+        console.error(error);
+        this.spinner.hide();
+      }
+    )
   }
 
   getRideTime(): string {
@@ -56,9 +83,5 @@ export class RideDetailsCardComponent implements OnInit, OnDestroy {
     this.unloadScripts();
   }
 
-  ngOnInit(): void {
-    this.unloadScripts();
-    this.loadScripts();
-  }
 
 }

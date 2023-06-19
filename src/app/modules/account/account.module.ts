@@ -25,6 +25,7 @@ import { ManageVehicleComponent } from './page/account-vehicles/manage-vehicle/m
 import { PassengerCardComponent } from './page/account-bookings/passenger-card/passenger-card.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {DROPZONE_CONFIG, DropzoneConfigInterface} from "ngx-dropzone-wrapper";
+import {UserModule} from "../user/user.module";
 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
@@ -66,6 +67,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     RideModule,
     NgOptimizedImage,
     NgxDropzoneModule,
+    UserModule,
   ],
   providers: [
     {

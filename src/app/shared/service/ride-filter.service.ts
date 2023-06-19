@@ -90,66 +90,73 @@ export class RideFilterService {
       return driverPreferenceIds.includes(7) || driverPreferenceIds.includes(8);
     });
   }
+
   filterRidesByIsPetsAllowed() {
     return this.rides.filter(ride => {
       const driverPreferenceIds = ride.driver.travelPreferences.map(pref => pref.id);
       return driverPreferenceIds.includes(10) || driverPreferenceIds.includes(11);
     });
   }
-  // filterRidesByIsDriverVerified() {
-  //   return this.rides.filter(ride => {
-  //     return ride.driver. == true;
-  //   });
-  // }
 
-  applyFilters(formValues: any, rides: Ride[]) {
+  filterRidesByIsDriverVerified() {
+    return this.rides.filter(ride => {
+      return ride.driver.isVerified == true;
+    });
+  }
+
+
+  applyFilters(values: any, rides: Ride[]) {
     this.rides = rides;
 
-    if (formValues.earliestDeparture) {
+    if (values.earliestDeparture) {
       this.rides = this.filterByEarliestDeparture();
     }
 
-    if (formValues.lowestPrice) {
+    debugger
+    if (values.maxPrice && values.minPrice) {
+      this.rides = this.filterByPrice(values.minPrice, values.maxPrice );
+    }
+
+
+    if (values.lowestPrice) {
       this.rides = this.filterByLowestPrice();
     }
 
-    if (formValues.before) {
+    if (values.before) {
       this.rides = this.filterRidesBeforeSixAM();
     }
 
-    if (formValues.morning) {
+    if (values.morning) {
       this.rides = this.filterRidesSixAMToTwelvePM();
     }
 
-    if (formValues.afternoon) {
+    if (values.afternoon) {
       this.rides = this.filterRidesTwelvePMToSixPM();
     }
 
-    if (formValues.evening) {
+    if (values.evening) {
       this.rides = this.filterRidesAfterSixPM();
     }
 
-    // if (formValues.Verified) {
-    //   // Apply the filterRidesByMaxCapacity function here
-    //   this.rides = this.filterRidesByMaxCapacity();
-    // }
+    if (values.Verified) {
+      this.rides = this.filterRidesByIsDriverVerified();
+    }
 
-    if (formValues.Max2) {
+    if (values.Max2) {
       this.rides = this.filterRidesByMaxCapacity();
     }
 
-    if (formValues.InstantBooking) {
+    if (values.InstantBooking) {
       this.rides = this.filterRidesByInstantBooking();
     }
 
-    if (formValues.Smokingallowed) {
+    if (values.Smokingallowed) {
       this.rides = this.filterRidesByIsSmokingAllowed();
     }
 
-    if (formValues.Petsallowed) {
+    if (values.Petsallowed) {
       this.rides = this.filterRidesByIsPetsAllowed();
     }
-
     return this.rides;
   }
 }
