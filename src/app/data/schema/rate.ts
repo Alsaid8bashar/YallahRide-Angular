@@ -12,6 +12,17 @@ export class Rate {
 
   private _subject?: User
 
+  private _description;
+
+
+  get description() {
+    return this._description;
+  }
+
+  set description(value) {
+    this._description = value;
+  }
+
   get id(): number {
     return this._id;
   }

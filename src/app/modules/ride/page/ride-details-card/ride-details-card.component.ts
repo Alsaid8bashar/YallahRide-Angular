@@ -38,7 +38,6 @@ export class RideDetailsCardComponent implements OnInit, OnDestroy {
         this.spinner.hide();
       },
       error => {
-        console.log(":ef")
         console.error(error);
         this.spinner.hide();
       }
