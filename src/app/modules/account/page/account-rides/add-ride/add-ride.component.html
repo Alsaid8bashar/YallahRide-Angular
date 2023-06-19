@@ -254,24 +254,20 @@ Steps START -->
                           </div>
 
 
-                          <!-- Vehicle -->
-                          <!--                          <div class="col-md-6">-->
-                          <!--                            <label class="form-label">Vehicle<span class="text-danger">*</span></label>-->
-                          <!--                            <select class="form-select js-choice border-0 z-index-9 bg-transparent"-->
-                          <!--                                    formControlName="car">-->
-                          <!--                              <option *ngFor="let car of rideFrom.get('car').value"-->
-                          <!--                                      [value]="car.id">{{ car.model }}</option>-->
-                          <!--                            </select>-->
-                          <!--                          </div>-->
-                          <!-- Vehicle -->
                           <div class="col-md-6">
                             <label class="form-label">Vehicle<span class="text-danger">*</span></label>
                             <select id="mySelect" class="form-select js-choice border-0 z-index-9 bg-transparent"
-                                    formControlName="car">
+                                    formControlName="car" (change)="onMakeSelection()" >
                               <option>Select a Vehicle</option>
                             </select>
                           </div>
-
+                          <div class="col-md-6">
+                            <label class="form-label">Seats<span class="text-danger">*</span></label>
+                            <select id="Seats" class="form-select js-choice border-0 z-index-9 bg-transparent"
+                                    formControlName="Seats">
+                              <option>Select number of seats</option>
+                            </select>
+                          </div>
 
                           <!-- Instance booking -->
                           <div class="col-md-6">

@@ -1,7 +1,7 @@
 import {CarImage} from "./carImage";
 import {User} from "./user";
 
-export class Car{
+export class Car {
   private _id?: number
 
   private _color?: string
@@ -17,6 +17,16 @@ export class Car{
   private _user?: User
 
   private _carImages?: CarImage[]
+  private _seats: number;
+
+
+  get seats(): number {
+    return this._seats;
+  }
+
+  set seats(value: number) {
+    this._seats = value;
+  }
 
   get id(): number {
     return this._id;
