@@ -1,6 +1,6 @@
 import {Car} from "./car";
 
-export interface CarImage{
+export class CarImage{
   multipartFile?: File
 
   id?: number
