@@ -22,6 +22,7 @@ export class User {
 
   private _roles?: Role[]
 
+  private _isVerified: boolean;
 
   constructor(firstName: string, lastName: string, gender: string) {
     this._firstName = firstName;
@@ -29,6 +30,14 @@ export class User {
     this._gender = gender;
   }
 
+
+  get isVerified(): boolean {
+    return this._isVerified;
+  }
+
+  set isVerified(value: boolean) {
+    this._isVerified = value;
+  }
 
   get multipartFile(): any {
     return this._multipartFile;

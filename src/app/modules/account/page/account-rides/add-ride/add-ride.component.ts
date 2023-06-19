@@ -13,6 +13,7 @@ import {DatePipe} from '@angular/common';
 import {Router} from "@angular/router";
 import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
 import Choices from "choices.js";
+import {ModelSeries} from "../../../../../data/schema/modelJSON";
 
 @Component({
   selector: 'app-add-ride',
@@ -24,6 +25,7 @@ export class AddRideComponent implements OnInit, OnDestroy {
   rideFrom: FormGroup;
   userCars: Car[];
   carChoices: Choices;
+  seatsChoices: Choices;
 
   constructor(private router: Router, private datePipe: DatePipe, private cdr: ChangeDetectorRef, private elementRef: ElementRef, private http: HttpClient, private rideService: RideService, private carService: CarService, private userService: UserService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
     this.unloadScripts();
@@ -33,6 +35,7 @@ export class AddRideComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.carChoices = new Choices(document.getElementById('mySelect'));
+    this.seatsChoices = new Choices(document.getElementById('Seats'));
     this.getUserCars(this.userService.getUserSubject().id);
     this.buildForm();
   }
@@ -50,6 +53,25 @@ export class AddRideComponent implements OnInit, OnDestroy {
 
   getCarById(carId: number): Car {
     return this.userCars.find(car => car.id == carId);
+  }
+  onMakeSelection(): void {
+    this.seatsChoices.clearChoices();
+    this.seatsChoices._addChoice({
+      value: 'default',
+      label: 'Select number of seats',
+      isSelected: true,
+      isDisabled: true
+    });
+    this.setSeatsChoices(this.getCarById(this.rideFrom.value.car).seats);
+  }
+
+  private setSeatsChoices(numberOfSeats: number) {
+    console.error(numberOfSeats);
+    let choicesArray = [];
+    for (let seat = 1; seat <= numberOfSeats; seat++) {
+      choicesArray.push({value: seat, label:`${seat}`});
+    }
+    this.seatsChoices.setChoices(choicesArray, 'value', 'label', true);
   }
 
   private setChoices(cars: Car []) {
@@ -115,6 +137,7 @@ export class AddRideComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
     this.unloadScripts();
   }
+
 
 
 }

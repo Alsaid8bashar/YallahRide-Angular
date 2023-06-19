@@ -27,57 +27,9 @@
                     </div>
 
                     <!-- Card body START -->
-                    <div class="card-body vstack gap-4" *ngFor="let passenger of passengers">
-                      <!-- Ride request item START -->
-                      <div class="card shadow p-2">
-                        <div class="row g-0 align-items-center">
-                          <!-- Card img -->
-                          <div class="col-md-3 text-center">
-                            <div class="avatar avatar-xl">
-                              <img class="avatar-img rounded"
-                                   ngSrc="/assets/images/avatar/09.jpg" alt="avatar" height="200" width="200">
-                            </div>
-                          </div>
-                          <!-- Card body -->
-                          <div class="col-md-6">
-                            <div class="card-body py-md-2 d-flex flex-column h-100">
-                              <!-- Title -->
-                              <h5 class="card-title mb-1"><a
-                                href="hotel-detail.html">{{passenger._user.firstName}} {{passenger._user.lastName}}</a>
-                              </h5>
-                              <!-- Rating and buttons -->
-                              <div
-                                class="d-flex justify-content-between align-items-center">
-                                <ul class="list-inline small mb-0">
-                                  <li class="list-inline-item me-0"><i
-                                    class="fa-solid fa-star text-warning"></i>
-                                  </li>
-                                  <li class="list-inline-item me-0"><i
-                                    class="fa-solid fa-star text-warning"></i>
-                                  </li>
-                                  <li class="list-inline-item me-0"><i
-                                    class="fa-solid fa-star text-warning"></i>
-                                  </li>
-                                  <li class="list-inline-item me-0"><i
-                                    class="fa-solid fa-star text-warning"></i>
-                                  </li>
-                                  <li class="list-inline-item"><i
-                                    class="fa-solid fa-star-half-alt text-warning"></i>
-                                  </li>
-                                  <li class="list-inline-item">
-                                    <p>4.5</p>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                      <!-- Ride request item END -->
-
-
-                    </div>
+                    <ng-container *ngFor="let passenger of passengers">
+                      <app-user-card [user]="passenger._user"></app-user-card>
+                    </ng-container>
                     <!-- Card body END -->
 
 
@@ -92,7 +44,8 @@
                     <!-- Card body START -->
                     <div class="card-body">
                       <div class="form-check form-check-md mb-3">
-                        <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck" [(ngModel)]="!isDeleteChecked">
+                        <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck"
+                               [(ngModel)]="!isDeleteChecked">
                         <label class="form-check-label" for="deleteaccountCheck">Yes, I'd like to delete my
                           ride</label>
                       </div>

@@ -31,7 +31,7 @@ import {VehicleLayoutComponent} from "./layout/vehicle-layout/vehicle-layout.com
     FooterComponent,
     ContentLayoutComponent,
     AccountLayoutComponent,
-    VehicleLayoutComponent
+    VehicleLayoutComponent,
   ],
   imports: [
     ToastrModule.forRoot(),
