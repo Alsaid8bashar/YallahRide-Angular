@@ -13,7 +13,6 @@ import {DatePipe} from '@angular/common';
 import {Router} from "@angular/router";
 import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
 import Choices from "choices.js";
-import {ModelSeries} from "../../../../../data/schema/modelJSON";
 
 @Component({
   selector: 'app-add-ride',
@@ -119,7 +118,8 @@ export class AddRideComponent implements OnInit, OnDestroy {
       isInstantBooking: new FormControl('', Validators.required),
       car: new FormControl('', Validators.required),
       arrivalDate: new FormControl('', Validators.required),
-      arrivalTime: new FormControl('', Validators.required)
+      arrivalTime: new FormControl('', Validators.required),
+      seats: new FormControl('', Validators.required)
     });
   }
 

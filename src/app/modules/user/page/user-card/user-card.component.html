@@ -16,8 +16,8 @@
         <div class="card-body py-md-2 d-flex flex-column h-100">
 
           <!-- Title -->
-          <h5 class="card-title mb-1"><a
-            href="hotel-detail.html">{{user.firstName}} {{user.lastName}}</a></h5>
+          <h5 class="card-title mb-1">
+            <a routerLink="/user/details/{{user.id}}">{{user.firstName}} {{user.lastName}}</a></h5>
           <!-- Rating and buttons -->
           <div class="d-flex justify-content-between align-items-center">
             <ul class="list-inline small mb-0">

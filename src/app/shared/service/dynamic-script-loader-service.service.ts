@@ -18,6 +18,8 @@ export const ScriptStore: Scripts[] = [
   {name: 'quill', src: './assets/vendor/quill/js/quill.min.js'},
   {name: 'bs-stepper', src: './assets/vendor/stepper/js/bs-stepper.min.js'},
   {name: 'nouislider', src: './assets/vendor/nouislider/nouislider.min.js'},
+  {name: 'overlayscrollbars', src: './assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js'},
+
 
 ];
 declare var document: any;

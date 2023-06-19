@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   searchForRideFrom: FormGroup;
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private rideService: RideService, private router: Router,private userService:UserService) {
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private rideService: RideService, private router: Router) {
   }
 
   private loadScripts() {

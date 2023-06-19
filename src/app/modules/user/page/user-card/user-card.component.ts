@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../../../data/schema/user";
 import {RateService} from "../../../../data/service/rate.service";
 import {Subscription} from "rxjs";
-import {NgxSpinnerService} from "ngx-spinner";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-card',
@@ -15,11 +15,10 @@ export class UserCardComponent implements OnInit {
   protected userRate: number;
   private rateSub: Subscription;
 
-  constructor(private rateService: RateService, private spinner: NgxSpinnerService) {
+  constructor(private router: Router, private rateService: RateService) {
   }
 
   ngOnInit(): void {
-    this.spinner.show();
     this.getUserRate();
   }
 
@@ -27,11 +26,9 @@ export class UserCardComponent implements OnInit {
     this.rateSub = this.rateService.getUserRate(this.user.id).subscribe(
       rate => {
         this.userRate = rate;
-        this.spinner.hide();
       },
       error => {
         console.error(error);
-        this.spinner.hide();
       }
     )
   }
@@ -44,6 +41,7 @@ export class UserCardComponent implements OnInit {
   hasHalfStar(): boolean {
     return this.userRate - Math.floor(this.userRate) >= 0.5;
   }
+
 
 
 }
