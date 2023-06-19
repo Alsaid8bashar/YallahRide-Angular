@@ -1,0 +1,26 @@
+{
+  "car": {
+    "make": "1",
+    "model": "Santana",
+    "year": "blue",
+    "color": "blue",
+    "licensePlate": "19-898989",
+    "user": {
+      "id": 94,
+      "firstName": "Hasan",
+      "lastName": "Al Shannag",
+      "imagePath": null,
+      "about": "tets",
+      "gender": "Male",
+      "travelPreferences": [],
+      "active": false
+    }
+  },
+  "carImages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ]
+}
