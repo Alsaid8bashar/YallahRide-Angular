@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
-import {ContentLayoutComponent} from "./layout/content-layout/content-layout.component";
 import {ErrorComponent} from "./core/error/error.component";
+import {ContentLayoutComponent} from "./layout/layout-user/content-layout/content-layout.component";
+import {AdminContentLayout} from "./layout/layout-admin/admin-content-layout/admin-content-layout.component";
 
 const routes: Routes = [
   {
@@ -18,32 +18,43 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./modules/home/home.module').then(m => m.HomeModule)
+          import('./modules-user/home/home.module').then(m => m.HomeModule)
+      },
+      {
+
+        path: 'ride',
+        loadChildren: () =>
+          import('./modules-user/ride/ride.module').then(m => m.RideModule)
       },
       {
         path: 'user',
         loadChildren: () =>
-          import('./modules/user/user.module').then(m => m.UserModule)
+          import('./modules-user/user/user.module').then(m => m.UserModule)
       },
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminContentLayout,
+    children: [
       {
-        path: 'ride',
+        path: 'dashboard',
         loadChildren: () =>
-          import('./modules/ride/ride.module').then(m => m.RideModule)
+          import('./modules-admin/dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
       },
 
     ]
   },
   {
     path: 'auth',
-    component: AuthLayoutComponent,
     loadChildren: () =>
-      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      import('./modules-user/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'account',
     // component: AccountLayoutComponent,
     loadChildren: () =>
-      import('./modules/account/account.module').then((m) => m.AccountModule),
+      import('./modules-user/account/account.module').then((m) => m.AccountModule),
   },
   {
     path: '**',

@@ -43,7 +43,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	}
 /******/
 /******/
-/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	// expose the modules-user object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
 /******/
 /******/ 	// expose the module cache
@@ -60,7 +60,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		}
 /******/ 	};
 /******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules-user
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
 /******/ 			function getDefault() { return module['default']; } :
@@ -178,7 +178,7 @@ function create(input, value) {
         throw new ParchmentError("Unable to create " + input + " blot");
     }
     var BlotClass = match;
-    var node = 
+    var node =
     // @ts-ignore
     input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
     return new BlotClass(node, value);
@@ -1620,7 +1620,7 @@ function expandConfig(container, userConfig) {
   });
   var moduleNames = Object.keys(themeConfig.modules).concat(Object.keys(userConfig.modules));
   var moduleConfig = moduleNames.reduce(function (config, name) {
-    var moduleClass = Quill.import('modules/' + name);
+    var moduleClass = Quill.import('modules-user/' + name);
     if (moduleClass == null) {
       debug.error('Cannot load ' + name + ' module. Are you sure you registered it?');
     } else {
@@ -6126,7 +6126,7 @@ var Theme = function () {
   }, {
     key: 'addModule',
     value: function addModule(name) {
-      var moduleClass = this.quill.constructor.import('modules/' + name);
+      var moduleClass = this.quill.constructor.import('modules-user/' + name);
       this.modules[name] = new moduleClass(this.quill, this.options.modules[name] || {});
       return this.modules[name];
     }

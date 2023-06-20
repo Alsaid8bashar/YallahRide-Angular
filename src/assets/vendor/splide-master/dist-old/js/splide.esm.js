@@ -1860,7 +1860,7 @@ var Splide = /*#__PURE__*/function () {
 });
 ;// CONCATENATED MODULE: ./src/js/constants/directions.js
 /**
- * Export layout modes.
+ * Export layout-user modes.
  *
  * @author    Naotoshi Fujita
  * @copyright Naotoshi Fujita. All rights reserved.
@@ -3231,9 +3231,9 @@ var abs = Math.abs;
 
   return Clones;
 });
-;// CONCATENATED MODULE: ./src/js/components/layout/directions/horizontal.js
+;// CONCATENATED MODULE: ./src/js/components/layout-user/directions/horizontal.js
 /**
- * The resolver component for horizontal layout.
+ * The resolver component for horizontal layout-user.
  *
  * @author    Naotoshi Fujita
  * @copyright Naotoshi Fujita. All rights reserved.
@@ -3242,7 +3242,7 @@ var abs = Math.abs;
 
 
 /**
- * The resolver component for horizontal layout.
+ * The resolver component for horizontal layout-user.
  *
  * @param {Splide} Splide     - A Splide instance.
  * @param {Object} Components - An object containing components.
@@ -3390,9 +3390,9 @@ var abs = Math.abs;
 
   };
 });
-;// CONCATENATED MODULE: ./src/js/components/layout/directions/vertical.js
+;// CONCATENATED MODULE: ./src/js/components/layout-user/directions/vertical.js
 /**
- * The resolver component for vertical layout.
+ * The resolver component for vertical layout-user.
  *
  * @author    Naotoshi Fujita
  * @copyright Naotoshi Fujita. All rights reserved.
@@ -3401,7 +3401,7 @@ var abs = Math.abs;
 
 
 /**
- * The resolver component for vertical layout.
+ * The resolver component for vertical layout-user.
  *
  * @param {Splide} Splide     - A Splide instance.
  * @param {Object} Components - An object containing components.
@@ -3634,7 +3634,7 @@ function createInterval(callback, interval, progress) {
     }
   };
 }
-;// CONCATENATED MODULE: ./src/js/components/layout/index.js
+;// CONCATENATED MODULE: ./src/js/components/layout-user/index.js
 /**
  * The component for handing slide layouts and their sizes.
  *
@@ -5849,7 +5849,7 @@ var module_Splide = /*#__PURE__*/function (_Core) {
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -5862,14 +5862,14 @@ var module_Splide = /*#__PURE__*/function (_Core) {
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -5882,12 +5882,12 @@ var module_Splide = /*#__PURE__*/function (_Core) {
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -5898,7 +5898,7 @@ var module_Splide = /*#__PURE__*/function (_Core) {
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup

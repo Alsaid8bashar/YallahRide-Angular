@@ -7646,7 +7646,7 @@
     /******/ 	/* webpack/runtime/compat get default export */
     /******/
     !function () {
-      /******/ 		// getDefaultExport function for compatibility with non-harmony modules
+      /******/ 		// getDefaultExport function for compatibility with non-harmony modules-user
       /******/
       __webpack_require__.n = function (module) {
         /******/
@@ -7718,7 +7718,7 @@
     /******/
     /************************************************************************/
     var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules-user in the chunk.
     !function () {
       /* harmony import */
       var _scripts_choices__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(373);

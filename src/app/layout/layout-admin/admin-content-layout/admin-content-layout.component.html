@@ -1,0 +1,70 @@
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+  <!-- Sidebar START -->
+  <nav class="navbar sidebar navbar-expand-xl navbar-light">
+    <!-- Navbar brand for xl START -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand" href="../../../../index.html">
+        <img class="light-mode-item navbar-brand-item" src="../../../../assets/images/logo.svg" alt="logo">
+        <img class="dark-mode-item navbar-brand-item" src="../../../../assets/images/logo-light.svg" alt="logo">
+      </a>
+    </div>
+    <!-- Navbar brand for xl END -->
+
+    <div class="offcanvas offcanvas-start flex-row custom-scrollbar h-100" data-bs-backdrop="true" tabindex="-1"
+         id="offcanvasSidebar">
+      <div class="offcanvas-body sidebar-content d-flex flex-column pt-4">
+
+        <!-- Sidebar menu START -->
+        <ul class="navbar-nav flex-column" id="navbar-sidebar">
+          <!-- Menu item -->
+          <li class="nav-item"><a href="admin-dashboard.html" class="nav-link active">Dashboard</a></li>
+
+          <!-- Title -->
+          <li class="nav-item ms-2 my-2">Pages</li>
+
+          <!-- Menu item -->
+          <li class="nav-item"> <a class="nav-link" href="admin-user-list.html">Users</a></li>
+
+          <!-- Menu item -->
+          <li class="nav-item"> <a class="nav-link" href="admin-rides-list.html">Rides</a></li>
+
+          <!-- Menu item -->
+          <li class="nav-item"> <a class="nav-link" href="admin-reviews.html">Member Reports</a></li>
+
+          <!-- Menu item -->
+          <li class="nav-item"> <a class="nav-link" href="admin-reviews.html">Ride Reports</a></li>
+
+          <!-- Menu item -->
+          <li class="nav-item"> <a class="nav-link" href="admin-settings.html">Admin Settings</a></li>
+
+          <!-- Menu item -->
+          <li class="nav-item"> <a class="nav-link" href="admin-settings.html">Manage Pages</a></li>
+
+        </ul>
+        <!-- Sidebar menu end -->
+
+        <!-- Sidebar footer START -->
+        <div class="d-flex align-items-center justify-content-between text-primary-hover mt-auto p-3">
+          <a class="h6 fw-light mb-0 text-body" href="sign-in.html" data-bs-toggle="tooltip"
+             data-bs-placement="top" aria-label="Sign out">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out
+          </a>
+
+        </div>
+        <!-- Sidebar footer END -->
+
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar END -->
+
+  <!-- Page content START -->
+  <div class="page-content">
+    <app-admin-header></app-admin-header>
+    <router-outlet></router-outlet>
+    <app-admin-side-bar></app-admin-side-bar>
+  </div>
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
