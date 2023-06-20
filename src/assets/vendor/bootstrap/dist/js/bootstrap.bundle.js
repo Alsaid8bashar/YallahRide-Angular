@@ -1816,7 +1816,7 @@
         });
       });
     };
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const applyStyles$1 = {
@@ -2132,7 +2132,7 @@
     }
 
     state.elements.arrow = arrowElement;
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const arrow$1 = {
@@ -2301,7 +2301,7 @@
     state.attributes.popper = Object.assign({}, state.attributes.popper, {
       'data-popper-placement': state.placement
     });
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const computeStyles$1 = {
@@ -2348,7 +2348,7 @@
         window.removeEventListener('resize', instance.update, passive);
       }
     };
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const eventListeners = {
@@ -2854,7 +2854,7 @@
       state.placement = firstFittingPlacement;
       state.reset = true;
     }
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const flip$1 = {
@@ -2916,7 +2916,7 @@
       'data-popper-reference-hidden': isReferenceHidden,
       'data-popper-escaped': hasPopperEscaped
     });
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const hide$1 = {
@@ -2968,7 +2968,7 @@
     }
 
     state.modifiersData[name] = data;
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const offset$1 = {
@@ -2992,7 +2992,7 @@
       strategy: 'absolute',
       placement: state.placement
     });
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const popperOffsets$1 = {
@@ -3127,7 +3127,7 @@
     }
 
     state.modifiersData[name] = data;
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disable-next-line import/no-unused-modules-user
 
 
   const preventOverflow$1 = {
@@ -3159,7 +3159,7 @@
     var scaleY = round(rect.height) / element.offsetHeight || 1;
     return scaleX !== 1 || scaleY !== 1;
   } // Returns the composite rect of an element relative to its offsetParent.
-  // Composite means it takes into account transforms as well as layout.
+  // Composite means it takes into account transforms as well as layout-user.
 
 
   function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
@@ -3468,17 +3468,17 @@
       return instance;
     };
   }
-  var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules
+  var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules-user
 
   var defaultModifiers$1 = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1];
   var createPopper$1 = /*#__PURE__*/popperGenerator({
     defaultModifiers: defaultModifiers$1
-  }); // eslint-disable-next-line import/no-unused-modules
+  }); // eslint-disable-next-line import/no-unused-modules-user
 
   var defaultModifiers = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1, offset$1, flip$1, preventOverflow$1, arrow$1, hide$1];
   var createPopper = /*#__PURE__*/popperGenerator({
     defaultModifiers: defaultModifiers
-  }); // eslint-disable-next-line import/no-unused-modules
+  }); // eslint-disable-next-line import/no-unused-modules-user
 
   const Popper = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
     __proto__: null,

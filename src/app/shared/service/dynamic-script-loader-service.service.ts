@@ -19,6 +19,7 @@ export const ScriptStore: Scripts[] = [
   {name: 'bs-stepper', src: './assets/vendor/stepper/js/bs-stepper.min.js'},
   {name: 'nouislider', src: './assets/vendor/nouislider/nouislider.min.js'},
   {name: 'overlayscrollbars', src: './assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js'},
+  {name: 'overlayscrollbars', src: './assets/vendor/apexcharts/js/apexcharts.min.js'},
 
 
 ];

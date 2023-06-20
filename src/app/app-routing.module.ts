@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
-import {ContentLayoutComponent} from "./layout/content-layout/content-layout.component";
-import {AccountLayoutComponent} from "./layout/account-layout/account-layout.component";
+import {AuthLayoutComponent} from "./layout/layout-user/auth-layout/auth-layout.component";
+import {ContentLayoutComponent} from "./layout/layout-user/content-layout/content-layout.component";
+import {AdminContentLayout} from "./layout/layout-admin/admin-content-layout/admin-content-layout.component";
 
 const routes: Routes = [
   {
@@ -18,31 +18,41 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./modules/home/home.module').then(m => m.HomeModule)
+          import('./modules-user/home/home.module').then(m => m.HomeModule)
       },
       {
         path: 'ride',
         loadChildren: () =>
-          import('./modules/ride/ride.module').then(m => m.RideModule)
+          import('./modules-user/ride/ride.module').then(m => m.RideModule)
       },
       {
         path: 'user',
         loadChildren: () =>
-          import('./modules/user/user.module').then(m => m.UserModule)
+          import('./modules-user/user/user.module').then(m => m.UserModule)
+      },
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminContentLayout,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules-admin/dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
       },
     ]
   },
   {
     path: 'auth',
-    component: AuthLayoutComponent,
     loadChildren: () =>
-      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      import('./modules-user/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'account',
     // component: AccountLayoutComponent,
     loadChildren: () =>
-      import('./modules/account/account.module').then((m) => m.AccountModule),
+      import('./modules-user/account/account.module').then((m) => m.AccountModule),
   },
 ];
 

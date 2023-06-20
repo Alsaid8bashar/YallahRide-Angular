@@ -8,7 +8,7 @@
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
@@ -21,12 +21,12 @@
 /******/ 			}
 /******/ 		};
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	!function() {
 /******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	!function() {
 /******/ 		// define __esModule on exports
@@ -37,7 +37,7 @@
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	}();
-/******/ 	
+/******/
 /************************************************************************/
 
 // UNUSED EXPORTS: Splide
@@ -1873,7 +1873,7 @@ var Splide = /*#__PURE__*/function () {
 });
 ;// CONCATENATED MODULE: ./src/js/constants/directions.js
 /**
- * Export layout modes.
+ * Export layout-user modes.
  *
  * @author    Naotoshi Fujita
  * @copyright Naotoshi Fujita. All rights reserved.
@@ -3244,9 +3244,9 @@ var abs = Math.abs;
 
   return Clones;
 });
-;// CONCATENATED MODULE: ./src/js/components/layout/directions/horizontal.js
+;// CONCATENATED MODULE: ./src/js/components/layout-user/directions/horizontal.js
 /**
- * The resolver component for horizontal layout.
+ * The resolver component for horizontal layout-user.
  *
  * @author    Naotoshi Fujita
  * @copyright Naotoshi Fujita. All rights reserved.
@@ -3255,7 +3255,7 @@ var abs = Math.abs;
 
 
 /**
- * The resolver component for horizontal layout.
+ * The resolver component for horizontal layout-user.
  *
  * @param {Splide} Splide     - A Splide instance.
  * @param {Object} Components - An object containing components.
@@ -3403,9 +3403,9 @@ var abs = Math.abs;
 
   };
 });
-;// CONCATENATED MODULE: ./src/js/components/layout/directions/vertical.js
+;// CONCATENATED MODULE: ./src/js/components/layout-user/directions/vertical.js
 /**
- * The resolver component for vertical layout.
+ * The resolver component for vertical layout-user.
  *
  * @author    Naotoshi Fujita
  * @copyright Naotoshi Fujita. All rights reserved.
@@ -3414,7 +3414,7 @@ var abs = Math.abs;
 
 
 /**
- * The resolver component for vertical layout.
+ * The resolver component for vertical layout-user.
  *
  * @param {Splide} Splide     - A Splide instance.
  * @param {Object} Components - An object containing components.
@@ -3647,7 +3647,7 @@ function createInterval(callback, interval, progress) {
     }
   };
 }
-;// CONCATENATED MODULE: ./src/js/components/layout/index.js
+;// CONCATENATED MODULE: ./src/js/components/layout-user/index.js
 /**
  * The component for handing slide layouts and their sizes.
  *

@@ -117,7 +117,7 @@
 
 // Horizontal
 //
-// Change the layout of list group items from vertical (default) to horizontal.
+// Change the layout-user of list group items from vertical (default) to horizontal.
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
