@@ -34,6 +34,7 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
     this.ridesSubscription = this.rideService.findDriverRide(id)
       .pipe(tap(rides => {
           this.rides = rides;
+          this.spinner.hide();
         })
       )
       .subscribe(
@@ -48,7 +49,6 @@ export class AccountRidesComponent implements OnInit, OnDestroy {
         }
       );
   }
-
 
 
   ngOnDestroy(): void {

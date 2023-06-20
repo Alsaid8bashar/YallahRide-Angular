@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthLayoutComponent} from "./layout/layout-user/auth-layout/auth-layout.component";
+import {ErrorComponent} from "./core/error/error.component";
 import {ContentLayoutComponent} from "./layout/layout-user/content-layout/content-layout.component";
 import {AdminContentLayout} from "./layout/layout-admin/admin-content-layout/admin-content-layout.component";
 
@@ -21,6 +21,7 @@ const routes: Routes = [
           import('./modules-user/home/home.module').then(m => m.HomeModule)
       },
       {
+
         path: 'ride',
         loadChildren: () =>
           import('./modules-user/ride/ride.module').then(m => m.RideModule)
@@ -41,6 +42,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules-admin/dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
       },
+
     ]
   },
   {
@@ -54,6 +56,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules-user/account/account.module').then((m) => m.AccountModule),
   },
+  {
+    path: '**',
+    component: ErrorComponent
+  }
 ];
 
 @NgModule({

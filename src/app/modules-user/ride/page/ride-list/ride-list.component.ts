@@ -36,6 +36,8 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('maxPriceInput') maxPriceInput: ElementRef;
   @ViewChild('minPriceInput') minPriceInput: ElementRef;
+  @ViewChild('maxCapacityInput') maxCapacityInput: ElementRef;
+  @ViewChild('minCapacityInput') minCapacityInput: ElementRef;
 
   constructor(private decimalPipe: DecimalPipe
     , private rideService: RideService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private rideFilterService: RideFilterService) {
@@ -81,10 +83,14 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
   filterRides() {
     const maxPrice = this.maxPriceInput.nativeElement.value;
     const minPrice = this.minPriceInput.nativeElement.value;
+    const maxCapacity = this.maxCapacityInput.nativeElement.value;
+    const minCapacity = this.minCapacityInput.nativeElement.value;
     const values = {
       ...this.filterForm.value,
       maxPrice,
-      minPrice
+      minPrice,
+      maxCapacity,
+      minCapacity
     }
     debugger
     this.tempRides = this.rideFilterService.applyFilters(values, this.rides);

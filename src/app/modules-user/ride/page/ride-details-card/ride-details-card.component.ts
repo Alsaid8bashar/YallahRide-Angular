@@ -13,7 +13,7 @@ import {Subscription} from "rxjs";
   templateUrl: './ride-details-card.component.html',
   styleUrls: ['./ride-details-card.component.css']
 })
-export class RideDetailsCardComponent implements OnInit, OnDestroy {
+export class RideDetailsCardComponent implements OnInit  {
   @Input()
   ride: Ride;
   @Input()
@@ -25,8 +25,6 @@ export class RideDetailsCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.unloadScripts();
-    this.loadScripts();
     this.spinner.show();
     this.getUserRate();
   }
@@ -68,19 +66,12 @@ export class RideDetailsCardComponent implements OnInit, OnDestroy {
     return this.datePipe.transform(this.ride.departureDate, 'dd MMM yyyy');
   }
 
-  private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky', 'nouislider').then(data => {
-    }).catch(error => console.log(error));
+
+
+
+
+
+  displayDriverDetails() {
+    this.router.navigate(['/user/UserDetails/41']);
   }
-
-  private unloadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky', 'nouislider').then(data => {
-    }).catch(error => console.log(error));
-  }
-
-  ngOnDestroy() {
-    this.unloadScripts();
-  }
-
-
 }

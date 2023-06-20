@@ -10,7 +10,8 @@ import {DataModule} from "./data/data.module";
 import {AuthLayoutComponent} from "./layout/layout-user/auth-layout/auth-layout.component";
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
-import { SpinnerComponent } from './shared/component/spinner/spinner.component';
+import {SpinnerComponent} from './shared/component/spinner/spinner.component';
+
 import { HeaderComponent } from './layout/layout-user/header/header.component';
 import { FooterComponent } from './layout/layout-user/footer/footer.component';
 import { ContentLayoutComponent } from './layout/layout-user/content-layout/content-layout.component';
@@ -23,6 +24,7 @@ import { AdminContentLayout } from './layout/layout-admin/admin-content-layout/a
 import { AdminSideBarComponent } from './layout/layout-admin/admin-side-bar/admin-side-bar.component';
 import {AccountLayoutComponent} from "./layout/layout-user/account-layout/account-layout.component";
 import {AdminDashboardModule} from "./modules-admin/dashboard/admin-dashboard.module";
+import {UserModule} from "./modules-user/user/user.module";
 
 
 @NgModule({
@@ -34,16 +36,18 @@ import {AdminDashboardModule} from "./modules-admin/dashboard/admin-dashboard.mo
     HeaderComponent,
     FooterComponent,
     ContentLayoutComponent,
+    AccountLayoutComponent,
     AdminContentLayout,
     AdminHeaderComponent,
     AdminContentLayout,
     AdminSideBarComponent,
   ],
   imports: [
+    AppRoutingModule,
     ToastrModule.forRoot(),
     ToastNoAnimationModule.forRoot(),
     BrowserModule,
-    AppRoutingModule,
+    UserModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
     AuthModule,
@@ -54,6 +58,7 @@ import {AdminDashboardModule} from "./modules-admin/dashboard/admin-dashboard.mo
     ReactiveFormsModule,
     FormsModule
   ],
+
   providers: [
     DatePipe
   ],
