@@ -39,7 +39,8 @@ export class AccountBookingsComponent {
           setTimeout(() => {
             this.spinner.hide();
           }, 500);
-        },
+          this.spinner.hide();
+          },
         error => {
           console.error(error);
           this.spinner.hide();

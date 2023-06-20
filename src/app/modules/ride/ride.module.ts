@@ -9,6 +9,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RideDetailsCardComponent} from './page/ride-details-card/ride-details-card.component';
 import {BookingConfirmComponent} from './page/booking-confirm/booking-confirm.component';
 import {NouisliderComponent, NouisliderModule} from "ng2-nouislider";
+import {UserRoutingModule} from "../user/user-routing.module";
+import {UserModule} from "../user/user.module";
+import {User} from "../../data/schema/user";
 
 
 @NgModule({
@@ -17,7 +20,7 @@ import {NouisliderComponent, NouisliderModule} from "ng2-nouislider";
     RideDetailsComponent,
     RideCardComponent,
     RideDetailsCardComponent,
-    BookingConfirmComponent
+    BookingConfirmComponent,
   ],
   exports: [
     RideDetailsCardComponent

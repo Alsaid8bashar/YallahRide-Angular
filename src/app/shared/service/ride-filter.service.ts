@@ -72,6 +72,12 @@ export class RideFilterService {
     });
   }
 
+  filterByPassengerCapacity(minCapacity: number, maxCapacity: number) {
+    return this.rides.filter(item => {
+      return item.seats >= minCapacity && item.seats <= maxCapacity;
+    });
+  }
+
   filterRidesByMaxCapacity() {
     return this.rides.filter(ride => {
       return ride.seats >= 2;
@@ -112,11 +118,14 @@ export class RideFilterService {
       this.rides = this.filterByEarliestDeparture();
     }
 
-    debugger
     if (values.maxPrice && values.minPrice) {
-      this.rides = this.filterByPrice(values.minPrice, values.maxPrice );
+      this.rides = this.filterByPrice(values.minPrice, values.maxPrice);
     }
-
+    debugger
+    if (values.maxCapacity && values.minCapacity) {
+      debugger
+      this.rides = this.filterByPassengerCapacity(values.minCapacity, values.maxCapacity);
+    }
 
     if (values.lowestPrice) {
       this.rides = this.filterByLowestPrice();

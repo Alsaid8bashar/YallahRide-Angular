@@ -21,6 +21,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   private rideSub: Subscription;
   private passengerSub: Subscription;
 
+
   constructor(private userService: UserService, private passengerService: PassengerService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService) {
   }
 
@@ -30,8 +31,6 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
       this.spinner.show();
       this.getRide(id);
     });
-    this.unloadScripts();
-    this.loadScripts();
   }
 
 
@@ -79,8 +78,6 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.unloadScripts();
-    this.rideSub.unsubscribe();
-    this.passengerSub.unsubscribe();
+
   }
 }

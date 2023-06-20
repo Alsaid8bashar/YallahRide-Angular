@@ -83,4 +83,7 @@ export class RideDetailsCardComponent implements OnInit, OnDestroy {
   }
 
 
+  displayDriverDetails() {
+    this.router.navigate(['/user/UserDetails/41']);
+  }
 }

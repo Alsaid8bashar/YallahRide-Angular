@@ -10,16 +10,16 @@ import {DataModule} from "./data/data.module";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
-import { SpinnerComponent } from './shared/component/spinner/spinner.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-import { AccountLayoutComponent } from './layout/account-layout/account-layout.component';
+import {SpinnerComponent} from './shared/component/spinner/spinner.component';
+import {HeaderComponent} from './layout/header/header.component';
+import {FooterComponent} from './layout/footer/footer.component';
+import {ContentLayoutComponent} from './layout/content-layout/content-layout.component';
+import {AccountLayoutComponent} from './layout/account-layout/account-layout.component';
 import {RideModule} from "./modules/ride/ride.module";
 import {HomeModule} from "./modules/home/home.module";
 import {DatePipe} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {VehicleLayoutComponent} from "./layout/vehicle-layout/vehicle-layout.component";
+import {UserModule} from "./modules/user/user.module";
 
 
 @NgModule({
@@ -31,13 +31,13 @@ import {VehicleLayoutComponent} from "./layout/vehicle-layout/vehicle-layout.com
     FooterComponent,
     ContentLayoutComponent,
     AccountLayoutComponent,
-    VehicleLayoutComponent,
   ],
   imports: [
+    AppRoutingModule,
     ToastrModule.forRoot(),
     ToastNoAnimationModule.forRoot(),
     BrowserModule,
-    AppRoutingModule,
+    UserModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
     AuthModule,
@@ -47,6 +47,7 @@ import {VehicleLayoutComponent} from "./layout/vehicle-layout/vehicle-layout.com
     ReactiveFormsModule,
     FormsModule
   ],
+
   providers: [
     // {
     //   provide: HTTP_INTERCEPTORS,

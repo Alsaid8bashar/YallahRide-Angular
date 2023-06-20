@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {ContentLayoutComponent} from "./layout/content-layout/content-layout.component";
-import {AccountLayoutComponent} from "./layout/account-layout/account-layout.component";
+import {ErrorComponent} from "./core/error/error.component";
 
 const routes: Routes = [
   {
@@ -21,15 +21,16 @@ const routes: Routes = [
           import('./modules/home/home.module').then(m => m.HomeModule)
       },
       {
-        path: 'ride',
-        loadChildren: () =>
-          import('./modules/ride/ride.module').then(m => m.RideModule)
-      },
-      {
         path: 'user',
         loadChildren: () =>
           import('./modules/user/user.module').then(m => m.UserModule)
       },
+      {
+        path: 'ride',
+        loadChildren: () =>
+          import('./modules/ride/ride.module').then(m => m.RideModule)
+      },
+
     ]
   },
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/account/account.module').then((m) => m.AccountModule),
   },
+  {
+    path: '**',
+    component: ErrorComponent
+  }
 ];
 
 @NgModule({

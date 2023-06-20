@@ -2,9 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DynamicScriptLoaderService} from "../../../shared/service/dynamic-script-loader-service.service";
 import {RideService} from "../../../data/service/ride.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../../data/schema/user";
 import {Router} from "@angular/router";
-import {UserService} from "../../../data/service/user.service";
 
 @Component({
   selector: 'app-home',
