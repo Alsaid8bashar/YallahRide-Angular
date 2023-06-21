@@ -9,7 +9,11 @@ export const environment = {
   production: false,
   version: env.npm_package_version + '-dev',
   serverUrl: 'http://localhost:8080/',
-  envName: 'DEV'
+  envName: 'DEV',
+  secretAccessKey:'lQeE9acVybMiezfh3hAlzAKJseeGExwB2I0j6jWH',
+  accessKeyId:'AKIAU5G37O2QXJPQSWVO',
+  BucketName:'yallah-ride-bucket',
+  region:'eu-central-1'
 };
 
 /*

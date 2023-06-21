@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Ride} from "../schema/ride";
 import {SessionStorageService} from "../../shared/service/session.service";
+import {FileStorageService} from "../../shared/service/file-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,26 @@ export class UserService {
   apiURL = environment.serverUrl + 'user/';
 
 
-  constructor(private http: HttpClient, private sessionService: SessionStorageService) {
+  constructor(private fileStorageService: FileStorageService, private http: HttpClient, private sessionService: SessionStorageService) {
     this.setUserObject();
   }
 
   private setUserObject() {
     this._userSubject = JSON.parse(this.sessionService.getItem('user')) as User;
+    this.setUserImage();
   }
 
+  setUserImage() {
+    const fileName = this.getUserSubject().imagePath;
+    this.fileStorageService.getFileUrl(fileName).subscribe(
+      imageUrl => {
+        this.getUserSubject().imagePath = imageUrl;
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
 
   getUserSubject(): User {
     return this._userSubject;
