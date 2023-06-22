@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../../../../data/service/user.service";
 import {User} from "../../../../data/schema/user";
 import {TokenService} from "../../../../shared/service/token.service";
+import {FileStorageService} from "../../../../shared/service/files-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnDestroy {
   loginForm: FormGroup;
 
 
-  constructor( private authService: AuthService, private spinner: NgxSpinnerService, private sessionService: SessionStorageService, private router: Router, private userService: UserService, private tokenService: TokenService) {
+  constructor(private fileStorage: FileStorageService, private authService: AuthService, private spinner: NgxSpinnerService, private sessionService: SessionStorageService, private router: Router, private userService: UserService, private tokenService: TokenService) {
     this.buildForm();
   }
 
@@ -67,9 +68,9 @@ export class LoginComponent implements OnDestroy {
     this.userService.getUserById(userId)
       .subscribe(
         (user: User) => {
-
-          this.saveUserInSession(user);
+          this.saveUserInSession(user)
           this.spinner.hide();
+
         },
         (getUserError: any) => {
           console.error('Failed to fetch user data:', getUserError);
@@ -78,7 +79,13 @@ export class LoginComponent implements OnDestroy {
       );
   }
 
-
+  fetchUserImageUrl(user: User): void {
+    this.fileStorage.getObjectUrl(user.imagePath).subscribe(response => {
+      user.multipartFile = response.url;
+    }, error => {
+      console.error(error)
+    });
+  }
 
   private saveUserInSession(user: User): void {
     this.sessionService.setItem('user', JSON.stringify(user));

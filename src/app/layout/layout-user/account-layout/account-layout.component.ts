@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {DynamicScriptLoaderService} from "../../../shared/service/dynamic-script-loader-service.service";
+import {UserService} from "../../../data/service/user.service";
+import {User} from "../../../data/schema/user";
 
 @Component({
   selector: 'app-account-layout-user',
@@ -8,7 +10,9 @@ import {DynamicScriptLoaderService} from "../../../shared/service/dynamic-script
   styleUrls: ['./account-layout.component.css']
 })
 export class AccountLayoutComponent implements OnInit, AfterViewInit {
-  constructor(private router: Router, private dynamicScriptLoader: DynamicScriptLoaderService) {
+  user: User;
+
+  constructor(private router: Router, private dynamicScriptLoader: DynamicScriptLoaderService, private userService: UserService) {
 
   }
 
@@ -41,6 +45,7 @@ export class AccountLayoutComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.user = this.userService.getUserSubject();
     this.load();
   }
 }

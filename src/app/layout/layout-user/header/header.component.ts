@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../data/service/user.service";
-import {FileStorageService} from "../../../shared/service/files-storage.service";
-import {HttpResponse} from "@angular/common/http";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {User} from "../../../data/schema/user";
+
+
+
 
 @Component({
   selector: 'app-header',
@@ -11,26 +12,14 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 })
 export class HeaderComponent implements OnInit {
 
-  displayedFileUrl: SafeUrl;
+  user: User;
 
-  constructor(private userService: UserService, private fileService: FileStorageService, private sanitizer: DomSanitizer) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.getUserImage();
+    this.user=this.userService.getUserSubject();
   }
 
 
-  getUserImage() {
-    const userImage = this.userService.getUserSubject().imagePath;
-    console.error(userImage);
-    this.fileService.getFile(userImage).subscribe(
-      (response: HttpResponse<Blob>) => {
-        this.displayedFileUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(response.body));
-      },
-      error => {
-        console.log('Error fetching file:', error);
-      }
-    );
-  }
 }

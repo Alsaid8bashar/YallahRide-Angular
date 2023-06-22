@@ -33,11 +33,11 @@
                   <div class="text-center mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xl mb-2">
-                      <img class="avatar-img rounded-circle border border-2 border-white"
-                           src="../../../../assets/images/avatar/01.jpg" alt="">
+                      <img class="avatar-img rounded-circle border border-2 border-white" [src]="user.imagePath || '/assets/images/avatar/13.jpg'" alt="">
+
                     </div>
-                    <h6 class="mb-0">Jacqueline Miller</h6>
-                    <a href="#" class="text-reset text-primary-hover small">hello@gmail.com</a>
+                    <h6 class="mb-0">{{user.firstName}} {{user.lastName}}</h6>
+<!--                    <a href="#" class="text-reset text-primary-hover small">hello@gmail.com</a>-->
                     <hr>
                   </div>
 
@@ -90,7 +90,7 @@
         <!-- Sidebar END -->
         <!-- Main content START -->
         <div class="col-lg-8 col-xl-9">
-        <router-outlet></router-outlet>
+          <router-outlet></router-outlet>
         </div>
 
       </div>

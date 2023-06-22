@@ -7,13 +7,14 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
 import {DatePipe} from "@angular/common";
 import {RateService} from "../../../../data/service/rate.service";
 import {Subscription} from "rxjs";
+import {FileStorageService} from "../../../../shared/service/files-storage.service";
 
 @Component({
   selector: 'app-ride-details-card',
   templateUrl: './ride-details-card.component.html',
   styleUrls: ['./ride-details-card.component.css']
 })
-export class RideDetailsCardComponent implements OnInit  {
+export class RideDetailsCardComponent implements OnInit {
   @Input()
   ride: Ride;
   @Input()
@@ -21,7 +22,7 @@ export class RideDetailsCardComponent implements OnInit  {
   protected userRate: number;
   private rateSub: Subscription;
 
-  constructor(private rateService: RateService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private datePipe: DatePipe) {
+  constructor(private fileStorage: FileStorageService, private rateService: RateService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -41,6 +42,8 @@ export class RideDetailsCardComponent implements OnInit  {
       }
     )
   }
+
+
 
   getRideTime(): string {
     if (!this.ride.arrivalDate || !this.ride.departureDate || !this.ride.arrivalTime || !this.ride.departureTime) {
@@ -65,10 +68,6 @@ export class RideDetailsCardComponent implements OnInit  {
   get formattedDate(): string {
     return this.datePipe.transform(this.ride.departureDate, 'dd MMM yyyy');
   }
-
-
-
-
 
 
   displayDriverDetails() {

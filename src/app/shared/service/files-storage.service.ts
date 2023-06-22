@@ -17,6 +17,11 @@ export class FileStorageService {
     const url = `${this.apiURL}/${key}`;
     return this.http.get(url, {observe: 'response', responseType: 'blob'});
   }
+  getObjectUrl(key: string): Observable<any> {
+    const url = `${this.apiURL}/url/${key}`;
+    return this.http.get<any>(url);
+  }
+
 
   uploadFile(file: File): Observable<HttpResponse<string>> {
     const url = `${this.apiURL}/upload`;

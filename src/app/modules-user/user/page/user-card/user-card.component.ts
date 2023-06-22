@@ -3,6 +3,7 @@ import {User} from "../../../../data/schema/user";
 import {RateService} from "../../../../data/service/rate.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
+import {FileStorageService} from "../../../../shared/service/files-storage.service";
 
 @Component({
   selector: 'app-user-card',
@@ -15,11 +16,12 @@ export class UserCardComponent implements OnInit {
   protected userRate: number;
   private rateSub: Subscription;
 
-  constructor(private router: Router, private rateService: RateService) {
+  constructor(private fileStorage: FileStorageService, private router: Router, private rateService: RateService) {
   }
 
   ngOnInit(): void {
     this.getUserRate();
+    // this.fetchUserImageUrl();
   }
 
   private getUserRate() {
@@ -33,6 +35,14 @@ export class UserCardComponent implements OnInit {
     )
   }
 
+  fetchUserImageUrl(): void {
+    this.fileStorage.getObjectUrl(this.user.imagePath).subscribe(response => {
+      this.user.multipartFile = response.url;
+    }, error => {
+      console.error(error)
+    });
+  }
+
   getFullStars(): number[] {
     const fullStars = Math.floor(this.userRate);
     return Array(fullStars).fill(0);
@@ -41,7 +51,6 @@ export class UserCardComponent implements OnInit {
   hasHalfStar(): boolean {
     return this.userRate - Math.floor(this.userRate) >= 0.5;
   }
-
 
 
 }

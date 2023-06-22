@@ -15,7 +15,7 @@
             <div class="card-body text-center">
               <!-- Avatar Image -->
               <div class="avatar avatar-xl flex-shrink-0 mb-3">
-                <img class="avatar-img rounded-circle" src="/assets/images/avatar/05.jpg"
+                <img class="avatar-img rounded-circle" src="{{userDto.user.imagePath}}"
                      alt="avatar">
               </div>
               <!-- Title -->
@@ -179,7 +179,7 @@
                 <div class="d-flex align-items-center">
                   <!-- Avatar -->
                   <div class="avatar avatar-xl me-2 flex-shrink-0">
-                    <img class="avatar-img rounded-circle" src="/assets/images/avatar/09.jpg" alt="avatar">
+                    <img class="avatar-img rounded-circle" src="{{rate.rater.imagePath || '/assets/images/avatar/13.jpg' }}" alt="avatar">
                   </div>
                   <!-- Info -->
                   <div class="ms-2">
