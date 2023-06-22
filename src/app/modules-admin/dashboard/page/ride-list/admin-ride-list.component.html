@@ -1,0 +1,152 @@
+<!-- Page main content START -->
+<div class="page-content-wrapper p-xxl-4">
+
+  <!-- Title -->
+  <div class="row">
+    <div class="col-12 mb-4 mb-sm-5">
+      <div class="d-sm-flex justify-content-between align-items-center">
+        <h1 class="h3 mb-3 mb-sm-0">Ride List</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search and select START -->
+  <div class="row g-3 align-items-center justify-content-between mb-5">
+    <!-- Search -->
+    <div class="col-md-8">
+      <form class="rounded position-relative">
+        <input class="form-control pe-5" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn border-0 px-3 py-0 position-absolute top-50 end-0 translate-middle-y"
+                type="submit"><i class="fas fa-search fs-6"></i></button>
+      </form>
+    </div>
+
+    <!-- Select option -->
+    <div class="col-md-3">
+      <!-- Short by filter -->
+      <form>
+        <select class="form-select js-choice" aria-label=".form-select-sm">
+          <option value="">Sort by</option>
+          <option>Newest</option>
+          <option>Oldest</option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <!-- Search and select END -->
+
+  <!-- agent list START -->
+  <div class="row g-4">
+    <!-- Ride item -->
+    <div class="col-lg-6">
+      <div class="card shadow p-3">
+        <div class="row g-4">
+          <!-- Card body -->
+          <div class="col-md-12">
+            <div class="card-body position-relative d-flex flex-column p-0 h-100">
+
+              <!-- Card body -->
+              <div class="card-body p-4 pb-0">
+                <!-- Ticket item START -->
+                <div class="row g-4 justify-content-center mb-4">
+                  <!-- Airport detail -->
+                  <div class="col-sm-4 col-md-3">
+                    <div class="text-center">
+                      <h4>07:35</h4>
+                      <h6 class="mb-0">Irbid</h6>
+                    </div>
+                  </div>
+
+                  <!-- Time -->
+                  <div class="col-sm-4 col-md-6 my-sm-auto text-center">
+                    <!-- Time -->
+                    <h5>9hr 50min</h5>
+                    <div class="position-relative my-4">
+                      <!-- Line -->
+                      <hr class="bg-primary opacity-5 position-relative">
+                      <!-- Icon -->
+                      <div
+                        class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
+                        <i class="bi bi-car-front-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Airport detail -->
+                  <div class="col-sm-4 col-md-3  align-items-center justify-content-center">
+                    <div class="text-center">
+                      <h4>07:35</h4>
+                      <h6 class="mb-0">Amman</h6>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- Ticket item END -->
+              </div>
+
+              <!-- Card footer START -->
+              <div class="card-footer border-top p-0 pt-3 ">
+                <div class="container">
+                  <div class="row mt-3 align-items-center">
+                    <div class="col-md-6 text-md-center">
+                      <!-- Rating Star -->
+                      <ul class="list-inline">
+                        <div class="avatar">
+                          <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg"
+                               alt="avatar">
+                        </div>
+                        <li class="list-inline-item me-0 mx-2"><i
+                          class="fa-solid fa-star text-warning"></i></li>
+                        <li class="list-inline-item h6 fw-normal me-1 mb-0">4.5</li>
+                        <li class="list-inline-item h6 fw-normal me-1 mb-0">
+                          <p> | Hasan</p>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-6 text-md-center">
+                      <!-- Price -->
+                      <h4>5.50 JOD</h4>
+                      <a href="flight-detail.html" class="btn btn-dark mb-0 mb-sm-2">Book Now</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Price -->
+              </div>
+              <!-- card footer END -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="_rides">
+      <app-ride-card *ngFor="let ride of _rides" [ride]="ride"></app-ride-card>
+    </ng-container>
+  <!-- agent list END -->
+
+  <!-- Pagination START -->
+  <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4">
+    <!-- Content -->
+    <p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
+    <!-- Pagination -->
+    <nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
+      <ul class="pagination pagination-sm pagination-primary-soft mb-0">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Prev</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">..</a></li>
+        <li class="page-item"><a class="page-link" href="#">15</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Pagination END -->
+
+</div>
+<!-- Page main content END -->
+</div>

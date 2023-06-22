@@ -23,7 +23,8 @@ import {User} from "../../data/schema/user";
     BookingConfirmComponent,
   ],
   exports: [
-    RideDetailsCardComponent
+    RideDetailsCardComponent,
+    RideCardComponent
   ],
   imports: [
     CommonModule,

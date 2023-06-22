@@ -1,7 +1,7 @@
 import {Account} from "./account";
 import {Ride} from "./ride";
 import ReportUser from "./reportUser";
-import ReportRide from "./reportRide";
+import {ReportRide} from "./reportRide";
 
 export default class AdminDTO {
   private _accounts?: Account[]

@@ -50,6 +50,11 @@ export class UserService {
     return this.http.delete(`${this.apiURL}activate/${id}`)
   }
 
+  // Method to retrieve all users
+  findAllUsers() {
+    return this.http.get<User[]>(`${this.apiURL}all`);
+  }
+
   // deactivateUserById(id: number): Observable<any> {
   //   return this.http.put(`${this.apiURL}deactivate/${id}`)
   // }
