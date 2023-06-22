@@ -7,6 +7,9 @@ import {AdminUsersListComponent} from "./page/users-list/admin-users-list.compon
 import {AdminUserDetailsComponent} from "./page/user-details/admin-user-details.component";
 import {AdminDashboardRoutingModule} from "./admin-dashboard-routing.module";
 import {SharedModule} from "../../shared/shared.module";
+import {RideModule} from "../../modules-user/ride/ride.module";
+import { AdminRideListComponent } from './page/ride-list/admin-ride-list.component';
+import { UserCardComponent } from './page/users-list/user-card/user-card.component';
 
 
 @NgModule({
@@ -15,12 +18,15 @@ import {SharedModule} from "../../shared/shared.module";
     AdminHomeComponent,
     AdminReportDetailsComponent,
     AdminUsersListComponent,
-    AdminUserDetailsComponent
+    AdminUserDetailsComponent,
+    AdminRideListComponent,
+    UserCardComponent
   ],
   imports: [
     CommonModule,
     AdminDashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    RideModule
   ]
 })
 export class AdminDashboardModule {

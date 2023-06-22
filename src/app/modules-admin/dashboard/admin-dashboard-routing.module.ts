@@ -6,6 +6,7 @@ import {AdminAccountSettingsComponent} from "./page/admin-account-settings/admin
 import {AdminReportDetailsComponent} from "./page/report-details/admin-report-details.component";
 import {AdminUsersListComponent} from "./page/users-list/admin-users-list.component";
 import {AdminUserDetailsComponent} from "./page/user-details/admin-user-details.component";
+import {AdminRideListComponent} from "./page/ride-list/admin-ride-list.component";
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'users/list',
         component: AdminUsersListComponent,
+      },
+      {
+        path: 'rides/list',
+        component: AdminRideListComponent,
       },
       {
         path: 'users/details',

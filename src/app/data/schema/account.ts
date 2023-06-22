@@ -21,6 +21,8 @@ export class Account {
 
   private _user?: User
   private _isVerified: boolean;
+  private _isDeleted?: boolean
+  private _isActive?: boolean
 
   get id(): number {
     return this._id;
@@ -78,8 +80,14 @@ export class Account {
     this._isActive = value;
   }
 
-  private _isActive?: boolean
 
+  get isDeleted(): boolean {
+    return this._isDeleted;
+  }
+
+  set isDeleted(value: boolean) {
+    this._isDeleted = value;
+  }
 
   constructor(email: string, phoneNumber: string, passwordHash: string) {
     this._email = email;

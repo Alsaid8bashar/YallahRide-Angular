@@ -69,6 +69,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgxDropzoneModule,
     UserModule,
   ],
+  exports: [
+
+  ],
   providers: [
     {
       provide: DROPZONE_CONFIG,

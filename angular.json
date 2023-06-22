@@ -33,6 +33,7 @@
             ],
             "scripts": [
               "src/assets/js/functions.js",
+              "src/assets/js/trafficRoomChart.js",
               "src/assets/vendor/tiny-slider/tiny-slider.js",
               "src/assets/vendor/flatpickr/js/flatpickr.min.js",
               "src/assets/vendor/glightbox/js/glightbox.js",
