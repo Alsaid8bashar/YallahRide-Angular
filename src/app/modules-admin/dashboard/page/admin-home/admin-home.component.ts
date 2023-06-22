@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
+import {UserService} from "../../../../data/service/user.service";
+import {RideService} from "../../../../data/service/ride.service";
 
 @Component({
   selector: 'app-admin-home',
@@ -9,12 +11,11 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
 export class AdminHomeComponent implements OnInit{
 
 
-  // totalRide:number;
-  // totalRide:number;
-  // totalRide:number;
-  // totalRide:number;
+  totalRides:number;
+  totalUsers:number;
+  totalReports:number;
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService) {
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private userService:UserService, private rideService:RideService) {
   }
   private loadScripts() {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'overlayscrollbars', 'apexcharts', 'functions').then(data => {

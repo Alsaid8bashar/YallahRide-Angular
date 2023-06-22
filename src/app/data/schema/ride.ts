@@ -1,7 +1,7 @@
 import {User} from "./user";
-import {Report} from "./report";
 import {Car} from "./car";
 import {RideStatus} from './Enum/RideStatus';
+import {ReportRide} from "./reportRide";
 
 export class Ride {
 
@@ -23,7 +23,7 @@ export class Ride {
 
   private _driver?: User
 
-  private _reports?: Report[]
+  private _reports?: ReportRide[]
 
   private _car: Car
   private _departureDate?: Date
@@ -118,11 +118,11 @@ export class Ride {
     this._driver = value;
   }
 
-  get reports(): Report[] {
+  get reports(): ReportRide[] {
     return this._reports;
   }
 
-  set reports(value: Report[]) {
+  set reports(value: ReportRide[]) {
     this._reports = value;
   }
 
