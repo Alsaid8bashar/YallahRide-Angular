@@ -1112,8 +1112,8 @@ var e = {
       if (e.isVariableDefined(cpv)) {
         // CHART: Page Views
         var options = {
-          series: [70, 30],
-          labels: ['Sold Out', 'Available'],
+          series: [70, 30,50],
+          labels: ['Canceled', 'Completed', 'Upcoming'],
           chart: {
             height: 300,
             width: 300,
@@ -1125,7 +1125,8 @@ var e = {
           },
           colors: [
             ThemeColor.getCssVariableValue('--bs-danger'),
-            ThemeColor.getCssVariableValue('--bs-success')
+            ThemeColor.getCssVariableValue('--bs-success'),
+            ThemeColor.getCssVariableValue('--bs-primary'),
           ],
           tooltip: {
             theme: "dark"

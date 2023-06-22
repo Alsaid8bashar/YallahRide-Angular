@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {AddRideComponent} from "../../modules-user/account/page/account-rides/add-ride/add-ride.component";
-import {AdminContentLayout} from "../../layout/layout-admin/admin-content-layout/admin-content-layout.component";
 import {AdminHomeComponent} from "./page/admin-home/admin-home.component";
 import {AdminAccountSettingsComponent} from "./page/admin-account-settings/admin-account-settings.component";
 import {AdminReportDetailsComponent} from "./page/report-details/admin-report-details.component";
@@ -12,7 +11,7 @@ import {AdminUserDetailsComponent} from "./page/user-details/admin-user-details.
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard/home',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
   {
