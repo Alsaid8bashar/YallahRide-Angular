@@ -8,6 +8,7 @@ import {PassengerService} from "../../../../../data/service/passenger.service";
 import {UserService} from "../../../../../data/service/user.service";
 import {Passenger} from "../../../../../data/schema/passenger";
 import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
+import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
 
 @Component({
   selector: 'app-ride-details',
@@ -23,13 +24,14 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   protected isCanselChecked: boolean = false;
   protected isDriver: boolean;
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private passengerService: PassengerService, private spinner: NgxSpinnerService) {
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private userService: UserService, private router: Router, private route: ActivatedRoute, private rideService: RideService, private passengerService: PassengerService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
+    this.unloadScripts()
+    this.loadScripts();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
-      this.spinner.show();
       this.getRide(id);
       this.getRidePassenger(id);
     });
@@ -49,6 +51,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getRide(id: number) {
+    this.spinner.show();
     this.ridesSubscription = this.rideService.findRideById(id).subscribe(
       ride => {
         this.ride = ride;
@@ -87,6 +90,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.ridesSubscription.unsubscribe();
     this.passengerSubscription.unsubscribe();
+    this.unloadScripts()
   }
 
   deleteRide() {
@@ -99,7 +103,6 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
       error => {
         console.log('Error deleting ride:', error);
         this.spinner.hide();
-
       }
     );
   }
@@ -117,4 +120,15 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  private loadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  private unloadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    }).catch(error => console.log(error));
+  }
+
 }

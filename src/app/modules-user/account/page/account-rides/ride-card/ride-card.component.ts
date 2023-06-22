@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 
 @Component({
-  selector: 'app-ride-card',
+  selector: 'app-account-ride-card',
   templateUrl: './ride-card.component.html',
   styleUrls: ['./ride-card.component.css']
 })
