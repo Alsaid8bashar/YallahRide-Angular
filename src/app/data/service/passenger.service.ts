@@ -19,7 +19,7 @@ export class PassengerService {
     return this.http.get<Passenger>(`${this.apiURL}${id}`);
   }
 
-  savePassenger(passenger: Passenger): Observable<Passenger>{
+  savePassenger(passenger: Passenger): Observable<Passenger> {
     return this.http.post<Passenger>(`${this.apiURL}create`, passenger);
   }
 
@@ -43,8 +43,8 @@ export class PassengerService {
     return this.http.get<Passenger[]>(`${this.apiURL}ride-passengers/${id}`);
   }
 
-  changeBookingStatus(passengerId: number, rideStatus: RideStatus): Observable<any> {
-    const url = `${this.apiURL}change-booking-status/${passengerId}`;
+  changeBookingStatus(passengerId: number, rideId: number, rideStatus: RideStatus): Observable<any> {
+    const url = `${this.apiURL}change-booking-status/${passengerId}/${rideId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

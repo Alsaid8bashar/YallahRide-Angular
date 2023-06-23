@@ -1,5 +1,6 @@
 // Import the necessary modules-user
 import {Injectable} from '@angular/core';
+import {UserService} from "../../data/service/user.service";
 
 @Injectable({
   providedIn: 'root'

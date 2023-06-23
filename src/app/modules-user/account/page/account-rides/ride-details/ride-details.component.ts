@@ -30,6 +30,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.unloadScripts()
     this.loadScripts();
+    this.spinner.show();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.getRide(id);
@@ -42,8 +43,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   }
 
   getPassengerIdByUserId(id: number) {
-    const passenger = this.passengers.find(passenger => passenger.user.id == id);
-    return passenger ? passenger.id : null;
+    return this.passengers.find(passenger => passenger._user.id == id);
   }
 
   private hideSpinner() {
@@ -109,7 +109,8 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
 
   cancelRide() {
     this.spinner.show();
-    this.passengerService.changeBookingStatus(this.getPassengerIdByUserId(this.userService.getUserSubject().id), RideStatus.Canceled).subscribe(
+    let passenger: Passenger = this.getPassengerIdByUserId(this.userService.getUserSubject().id);
+    this.passengerService.changeBookingStatus(passenger.id, passenger._ride.id, RideStatus.Canceled).subscribe(
       () => {
         this.spinner.hide();
         this.router.navigate(['account', 'bookings',]);

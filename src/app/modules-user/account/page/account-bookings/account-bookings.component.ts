@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Ride} from "../../../../data/schema/ride";
 import {Subscription, tap} from "rxjs";
 import {UserService} from "../../../../data/service/user.service";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -22,7 +21,8 @@ export class AccountBookingsComponent {
   }
 
   getRideByStatus(status: string): Passenger[] {
-    return this.passengerRide.filter(passenger => passenger.rideStatus == status);
+    let passengers = this.passengerRide.filter(passenger => passenger._rideStatus == status);
+    return passengers;
   }
 
   ngOnInit(): void {
@@ -36,11 +36,9 @@ export class AccountBookingsComponent {
       .subscribe(
         data => {
           this.passengerRide = data;
-          setTimeout(() => {
-            this.spinner.hide();
-          }, 500);
+          console.warn(data);
           this.spinner.hide();
-          },
+        },
         error => {
           console.error(error);
           this.spinner.hide();

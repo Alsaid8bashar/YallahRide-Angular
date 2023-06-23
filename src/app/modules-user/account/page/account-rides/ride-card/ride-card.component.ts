@@ -15,9 +15,8 @@ export class RideCardComponent {
   @Input()
   ride: Ride
   @Input()
-  passengerStatus:RideStatus;
+  passengerStatus: RideStatus;
   protected readonly RideStatus = RideStatus;
-
 
   constructor(private router: Router, private datePipe: DatePipe) {
   }
@@ -40,4 +39,6 @@ export class RideCardComponent {
       }
     });
   }
+
+
 }

@@ -36,7 +36,8 @@ export class TwoFactorAuthComponent {
     this.storageService.removeObject("phoneNumber");
     debugger;
     if (isVerified) {
-      this.router.navigate(["/login"])
+      
+      this.router.navigate(["auth/login"])
     }
   }
 }

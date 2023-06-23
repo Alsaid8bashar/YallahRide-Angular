@@ -65,7 +65,7 @@ const routes: Routes = [
         component: AccountVehiclesComponent,
       },
       {
-        path: 'vehicle-details',
+        path: 'vehicle-details/:id',
         component: VehiclesDetailsComponent,
       },
       {

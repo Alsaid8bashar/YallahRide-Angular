@@ -7,23 +7,26 @@
       <div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>
       <!-- Title -->
       <div class="ms-2">
-        <h6 class="card-title mb-0">{{passenger.ride.from}} to {{passenger.ride.to}}</h6>
+        <h6 class="card-title mb-0">{{passenger._ride.from}} to {{passenger._ride.to}}</h6>
         <ul class="nav nav-divider small">
-          <li class="nav-item">Ride ID: {{passenger.ride.id}}</li>
-          <li class="nav-item">{{passenger.ride.car.make}}</li>
-          <li class="nav-item">{{passenger.ride.car.model}}</li>
+          <li class="nav-item">Ride ID: {{passenger._ride.id}}</li>
+          <li class="nav-item">{{passenger._ride.car.make}}</li>
+          <li class="nav-item">{{passenger._ride.car.model}}</li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-2 mt-md-0" *ngIf="passenger.rideStatus==RideStatus.Active">
+    <div class="mt-2 mt-md-0" *ngIf="passenger._rideStatus==RideStatus.Active">
       <a (click)="displayRideDetails()" class="btn btn-outline-primary">View</a>
+
     </div>
-    <div class="mt-2 mt-md-0" *ngIf="passenger.rideStatus==RideStatus.Completed">
-      <p href="#" class="btn btn-success btn-sm mb-0" style="pointer-events: none;">Completed</p>
+    <div class="mt-2 mt-md-0" *ngIf="passenger._rideStatus==RideStatus.Completed">
+      <a  class="btn btn-outline-success" style="pointer-events: none;">Completed</a>
+      <a (click)="reportRide()" class="btn btn-outline-secondary">Report </a>
+
     </div>
     <div class="mt-2 mt-md-0"
-         *ngIf="passenger.rideStatus==RideStatus.Canceled">
+         *ngIf="passenger._rideStatus==RideStatus.Canceled">
       <p href="#" class="btn btn-danger btn-sm mb-0" style="pointer-events: none;">Cancelled</p>
     </div>
   </div>

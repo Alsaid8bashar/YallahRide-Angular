@@ -134,16 +134,14 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices','nouislider',  'flatpickr', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
 
   private unloadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices','nouislider',  'flatpickr', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
-
-
   ngOnDestroy() {
     if (this.ridesSubscription) {
       this.ridesSubscription.unsubscribe();

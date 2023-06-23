@@ -46,6 +46,7 @@ export class AccountLayoutComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUserSubject();
+    console.error(this.user)
     this.load();
   }
 }

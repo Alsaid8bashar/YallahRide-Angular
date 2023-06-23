@@ -31,6 +31,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules-user/user/user.module').then(m => m.UserModule)
       },
+      {
+        path: 'report',
+        loadChildren: () =>
+          import('./modules-user/report/report.module').then(m => m.ReportModule)
+      },
+      {
+        path: 'account',
+        loadChildren: () =>
+          import('./modules-user/account/account.module').then((m) => m.AccountModule),
+      },
     ]
   },
   {
@@ -45,17 +55,14 @@ const routes: Routes = [
 
     ]
   },
+
+
   {
     path: 'auth',
     loadChildren: () =>
       import('./modules-user/auth/auth.module').then((m) => m.AuthModule),
   },
-  {
-    path: 'account',
-    // component: AccountLayoutComponent,
-    loadChildren: () =>
-      import('./modules-user/account/account.module').then((m) => m.AccountModule),
-  },
+
   {
     path: '**',
     component: ErrorComponent

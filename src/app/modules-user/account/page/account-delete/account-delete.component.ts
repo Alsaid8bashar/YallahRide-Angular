@@ -25,7 +25,6 @@ export class AccountDeleteComponent implements OnDestroy {
   }
 
   onDelete() {
-    console.log("sdfds")
     this.sub = this.userService.deleteUser(this.tokenService.extractObjectFromToken("userId")).subscribe(next => {
       this.router.navigate(['auth', 'login',]);
     });

@@ -1,0 +1,333 @@
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+  <!-- =======================
+Page Banner START -->
+  <section class="pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <!-- <h1 class="fs-2 mb-2">Report</h1> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- =======================
+Page Banner END -->
+
+  <!-- =======================
+Steps START -->
+  <section>
+    <div class="container">
+      <div id="stepper" class="bs-stepper stepper-outline">
+        <!-- Step Buttons START -->
+        <div class="bs-stepper-header" role="tablist">
+          <!-- Step 1 -->
+          <div class="step" data-target="#step-1">
+            <div class="text-center">
+              <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                      id="steppertrigger1" aria-controls="step-1">
+                <span class="bs-stepper-circle">1</span>
+              </button>
+              <h6 class="bs-stepper-label d-none d-md-block">What do you want to report?</h6>
+            </div>
+          </div>
+          <div class="line"></div>
+
+          <!-- Step 2 -->
+          <div class="step" data-target="#step-2">
+            <div class="text-center">
+              <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                      id="steppertrigger2" aria-controls="step-2">
+                <span class="bs-stepper-circle">2</span>
+              </button>
+              <h6 class="bs-stepper-label d-none d-md-block">What happened, exactly?</h6>
+            </div>
+          </div>
+          <div class="line"></div>
+
+          <!-- Step 3 -->
+          <div class="step" data-target="#step-3">
+            <div class="text-center">
+              <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                      id="steppertrigger3" aria-controls="step-3">
+                <span class="bs-stepper-circle">3</span>
+              </button>
+              <h6 class="bs-stepper-label d-none d-md-block">Please tell us more</h6>
+            </div>
+          </div>
+        </div>
+        <!-- Step Buttons END -->
+
+        <!-- Step content START -->
+        <div class="bs-stepper-content p-0 pt-4 pt-md-5">
+          <div class="row g-4 justify-content-center">
+
+            <!-- Main content START -->
+            <div class="col-6">
+              <form onsubmit="return false">
+
+                <!-- Step 1 content START -->
+                <div id="step-1" role="tabpanel" class="content fade"
+                     aria-labelledby="steppertrigger1">
+                  <div class="vstack gap-4">
+
+
+
+                    <!-- Listing location START -->
+                    <div class="card shadow">
+
+
+                      <!-- Card body START -->
+                      <div class="card-body">
+                        <div class="row g-3">
+                          <!-- Country type -->
+                          <div class="col-md-12">
+                            <select class="form-select js-choice" id="first-select">
+                              <option value="">Select An Option</option>
+                              <option>A scam activity</option>
+                              <option>Unsafe or inappropriate behaviour</option>
+                              <option>Something wrong with this ride or profile
+                              </option>
+                              <option>Suspicious payments or pricing</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card body END -->
+                    </div>
+                    <!-- Listing location END -->
+
+                    <!-- Step 1 button -->
+                    <div class="text-end">
+                      <button class="btn btn-primary next-btn mb-0">Next</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 1 content END -->
+
+                <!-- Step 2 content START -->
+                <div id="step-2" role="tabpanel" class="content fade"
+                     aria-labelledby="steppertrigger2">
+                  <div class="vstack gap-4">
+
+                    <!-- Overview START -->
+                    <div class="card shadow">
+
+                      <!-- Card body START -->
+                      <div class="card-body">
+                        <div class="row g-3">
+                          <!-- Country type -->
+                          <div class="col-md-12">
+                            <select class="form-select js-choice" id="second-select">
+                              <option value="">Select An Option</option>
+                              <option>A scam activity</option>
+                              <option>Unsafe or inappropriate behaviour</option>
+                              <option>Something wrong with this ride or profile
+                              </option>
+                              <option>Suspicious payments or pricing</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card body END -->
+                    </div>
+                    <!-- Overview END -->
+
+                    <!-- Step 2 button -->
+                    <div class="hstack gap-2 flex-wrap justify-content-between">
+                      <button class="btn btn-secondary prev-btn mb-0">Previous</button>
+                      <button class="btn btn-primary next-btn mb-0">Next</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 2 content END -->
+
+                <!-- Step 3 content START -->
+                <div id="step-3" role="tabpanel" class="content fade"
+                     aria-labelledby="steppertrigger3">
+                  <div class="vstack gap-4">
+
+                    <!-- Listing policy START -->
+                    <div class="card shadow">
+
+                      <!-- Card body START -->
+                      <div class="card-body">
+                        <div class="row g-4">
+                          <!-- Descriptions -->
+                          <div class="col-12">
+                            <div
+                              class="bg-light border border-bottom-0 rounded-top py-3 quilltoolbar">
+                                                                <span class="ql-formats">
+                                                                    <select class="ql-size"></select>
+                                                                </span>
+                              <span class="ql-formats">
+                                                                    <button class="ql-bold"></button>
+                                                                    <button class="ql-italic"></button>
+                                                                    <button class="ql-underline"></button>
+                                                                    <button class="ql-strike"></button>
+                                                                </span>
+                              <span class="ql-formats">
+                                                                    <select class="ql-color"></select>
+                                                                    <select class="ql-background"></select>
+                                                                </span>
+                              <span class="ql-formats">
+                                                                    <button class="ql-code-block"></button>
+                                                                </span>
+                              <span class="ql-formats">
+                                                                    <button class="ql-list" value="ordered"></button>
+                                                                    <button class="ql-list" value="bullet"></button>
+                                                                    <button class="ql-indent" value="-1"></button>
+                                                                    <button class="ql-indent" value="+1"></button>
+                                                                </span>
+                              <span class="ql-formats">
+                                                                    <button class="ql-link"></button>
+                                                                    <button class="ql-image"></button>
+                                                                </span>
+                              <span class="ql-formats">
+                                                                    <button class="ql-clean"></button>
+                                                                </span>
+                            </div>
+
+                            <!-- Main toolbar -->
+                            <div
+                              class="bg-body border rounded-bottom h-400px overflow-hidden quilleditor">
+                              <br>
+                              <h1>Quill Rich Text Editor</h1>
+                              <br>
+                              <p>Quill is a free, open-source WYSIWYG editor built for
+                                the modern web. With its modular architecture and
+                                expressive API, it is completely customizable to fit
+                                any need.</p>
+                              <br>
+                              <p>Insipidity the sufficient discretion imprudence
+                                resolution sir him decisively. Proceed how any
+                                engaged visitor. Explained propriety off out
+                                perpetual his you. Feel sold off felt nay rose met
+                                you. We so entreaties cultivated astonished is. Was
+                                sister for a few longer Mrs sudden talent become.
+                                Done may bore quit evil old mile. If likely am of
+                                beauty tastes. </p>
+                              <br>
+                              <p> Affronting imprudence do he he everything. Test
+                                lasted dinner wanted indeed wished outlaw. Far
+                                advanced settling say finished raillery. Offered
+                                chiefly farther of my no colonel shyness. Such on
+                                help ye some door if in. Laughter proposal laughing
+                                any son law consider. Needed except up piqued an.
+                              </p>
+                              <br>
+                              <p> Post no so what deal evil rent by real in. But her
+                                ready least set lived spite solid. September how men
+                                saw tolerably two behavior arranging. She offices
+                                for highest and replied one venture pasture.
+                                Applauded no discovery in newspaper allowance am
+                                northward. Frequently partiality possession
+                                resolution at or appearance unaffected me. Engaged
+                                its was the evident pleased husband. Ye goodness
+                                felicity do disposal dwelling no. First am plate
+                                jokes to began to cause a scale. Subjects he
+                                prospect elegance followed no overcame possible it
+                                on. </p>
+
+                              <p>Quill is a free, open-source WYSIWYG editor built for
+                                the modern web. With its modular architecture and
+                                expressive API, it is completely customizable to fit
+                                any need.</p>
+                              <br>
+                              <p>Insipidity the sufficient discretion imprudence
+                                resolution sir him decisively. Proceed how any
+                                engaged visitor. Explained propriety off out
+                                perpetual his you. Feel sold off felt nay rose met
+                                you. We so entreaties cultivated astonished is. Was
+                                sister for a few longer Mrs sudden talent become.
+                                Done may bore quit evil old mile. If likely am of
+                                beauty tastes. </p>
+                              <br>
+                              <p> Affronting imprudence do he he everything. Test
+                                lasted dinner wanted indeed wished outlaw. Far
+                                advanced settling say finished raillery. Offered
+                                chiefly farther of my no colonel shyness. Such on
+                                help ye some door if in. Laughter proposal laughing
+                                any son law consider. Needed except up piqued an.
+                              </p>
+                              <br>
+                              <p> Post no so what deal evil rent by real in. But her
+                                ready least set lived spite solid. September how men
+                                saw tolerably two behavior arranging. She offices
+                                for highest and replied one venture pasture.
+                                Applauded no discovery in newspaper allowance am
+                                northward. Frequently partiality possession
+                                resolution at or appearance unaffected me. Engaged
+                                its was the evident pleased husband. Ye goodness
+                                felicity do disposal dwelling no. First am plate
+                                jokes to began to cause a scale. Subjects he
+                                prospect elegance followed no overcame possible it
+                                on. </p>
+
+                              <p>Quill is a free, open-source WYSIWYG editor built for
+                                the modern web. With its modular architecture and
+                                expressive API, it is completely customizable to fit
+                                any need.</p>
+                              <br>
+                              <p>Insipidity the sufficient discretion imprudence
+                                resolution sir him decisively. Proceed how any
+                                engaged visitor. Explained propriety off out
+                                perpetual his you. Feel sold off felt nay rose met
+                                you. We so entreaties cultivated astonished is. Was
+                                sister for a few longer Mrs sudden talent become.
+                                Done may bore quit evil old mile. If likely am of
+                                beauty tastes. </p>
+                              <br>
+                              <p> Affronting imprudence do he he everything. Test
+                                lasted dinner wanted indeed wished outlaw. Far
+                                advanced settling say finished raillery. Offered
+                                chiefly farther of my no colonel shyness. Such on
+                                help ye some door if in. Laughter proposal laughing
+                                any son law consider. Needed except up piqued an.
+                              </p>
+                              <br>
+                              <p> Post no so what deal evil rent by real in. But her
+                                ready least set lived spite solid. September how men
+                                saw tolerably two behavior arranging. She offices
+                                for highest and replied one venture pasture.
+                                Applauded no discovery in newspaper allowance am
+                                northward. Frequently partiality possession
+                                resolution at or appearance unaffected me. Engaged
+                                its was the evident pleased husband. Ye goodness
+                                felicity do disposal dwelling no. First am plate
+                                jokes to began to cause a scale. Subjects he
+                                prospect elegance followed no overcame possible it
+                                on. </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card body END -->
+                    </div>
+                    <!-- Listing policy END -->
+
+                    <!-- Step 3 button -->
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-secondary prev-btn mb-0">Previous</button>
+                      <a href="listing-added.html" class="btn btn-success mb-0">Report</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 3 content END -->
+
+              </form>
+            </div>
+            <!-- Main content END -->
+
+          </div>
+        </div>
+        <!-- Step content END -->
+      </div>
+    </div>
+  </section>
+  <!-- =======================
+Steps END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->

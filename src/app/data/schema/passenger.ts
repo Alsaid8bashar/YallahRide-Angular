@@ -7,11 +7,11 @@ export class Passenger {
 
   public _ride?: Ride
 
-  private _id?: number
+  public _id?: number
 
-  private _isAccepted?: boolean
+  public _isAccepted?: boolean
 
-  private _rideStatus: RideStatus;
+  public _rideStatus: RideStatus;
 
 
   constructor(_user: User, _ride: Ride, rideStatus: RideStatus) {

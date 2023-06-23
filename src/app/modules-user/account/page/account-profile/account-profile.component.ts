@@ -1,16 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { Account } from '../../../../data/schema/account';
-import { User } from '../../../../data/schema/user';
-import { AccountService } from '../../../../data/service/account.service';
-import { UserService } from '../../../../data/service/user.service';
-import { CustomValidators } from '../../../auth/page/register/sign-up-1/customValidators';
-import { TokenService } from '../../../../shared/service/token.service';
-import { SessionStorageService } from '../../../../shared/service/session.service';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {Account} from '../../../../data/schema/account';
+import {User} from '../../../../data/schema/user';
+import {AccountService} from '../../../../data/service/account.service';
+import {UserService} from '../../../../data/service/user.service';
+import {CustomValidators} from '../../../auth/page/register/sign-up-1/customValidators';
+import {TokenService} from '../../../../shared/service/token.service';
+import {SessionStorageService} from '../../../../shared/service/session.service';
 import {NgxSpinnerService} from "ngx-spinner";
-import {error} from "@angular/compiler-cli/src/transformers/util";
-import {CarJSONService} from "../../../../data/service/car-json.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account-profile',
@@ -26,8 +25,9 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
   phoneNumberForm: FormGroup;
   passwordForm: FormGroup;
   accountId: number;
-  private sub = new Subscription();
-
+  image: File;
+  private sub: Subscription;
+  private userSub: Subscription;
 
   constructor(
     private tokenService: TokenService,
@@ -36,7 +36,10 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     private sessionService: SessionStorageService,
     private customValidators: CustomValidators,
     private spinner: NgxSpinnerService,
-  ) {}
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {
+  }
 
   ngOnInit(): void {
     this.setUserObject();
@@ -58,24 +61,29 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
   // Public methods
 
   onUserChangesSubmit(): void {
+    this.spinner.show();
+    debugger;
+
     const formValues = this.userForm.value;
     this.userObject.firstName = formValues.firstName;
     this.userObject.lastName = formValues.lastName;
     this.userObject.gender = formValues.gender;
     this.userObject.about = formValues.about;
-
-    this.spinner.show();
-    this.sub = this.userService.createUser(this.userObject).subscribe(() => {
-      this.spinner.hide();
-    }, error => {
-      this.spinner.hide();
-    });
+    this.userSub = this.userService.createUser(this.userObject, this.image).subscribe(
+      data => {
+        this.userService.userSubject = data;
+        this.cdr.detectChanges();
+        this.spinner.hide();
+      }, error => {
+        console.error(error)
+        this.spinner.hide();
+      });
   }
 
   onPhoneNumberChangesSubmit(): void {
     this.spinner.show();
     this.accountObject.phoneNumber = this.phoneNumberForm.value.phoneNumber;
-    this.sub = this.accountService.updateAccount(this.accountObject).subscribe( () =>{
+    this.sub = this.accountService.updateAccount(this.accountObject).subscribe(() => {
       this.spinner.hide();
     }, error => {
       this.spinner.hide();
@@ -97,7 +105,7 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     if (this.passwordForm.valid) {
       this.spinner.show();
       const formValues = this.passwordForm.value;
-      this.sub = this.accountService.updatePassword(formValues.newPassword,this.accountObject.id).subscribe(() => {
+      this.sub = this.accountService.updatePassword(formValues.newPassword, this.accountObject.id).subscribe(() => {
         this.spinner.hide();
       }, error => {
         this.spinner.hide();
@@ -114,7 +122,6 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     this.userObject = JSON.parse(this.sessionService.getItem('user')) as User;
     this.sub = this.userService.getUserById(this.userObject.id).subscribe(
       (data) => {
-        console.log(data);
         this.userObject = data;
         this.buildUserForm();
       },
@@ -180,7 +187,7 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     const newPassword = control.root.get('newPassword');
     const confirmPassword = control.value;
     if (newPassword && confirmPassword !== newPassword.value) {
-      return { passwordMismatch: true };
+      return {passwordMismatch: true};
     }
     return null;
   }
@@ -194,5 +201,9 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     };
     const dateFormatter = new Intl.DateTimeFormat('en-US', options);
     return dateFormatter.format(date);
+  }
+
+  onFileSelected(event: any) {
+    this.image = event.target.files[0];
   }
 }

@@ -4,7 +4,7 @@ import {Role} from "./role";
 export class User {
   private _multipartFile?: any
 
-  private _id?: number
+  public _id?: number
 
   private _firstName?: string
 

@@ -59,7 +59,7 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
     this.spinner.show();
     this.passengerSub = this.passengerService.savePassenger(passenger).subscribe(
       response => {
-        this.router.navigate(['/booking-confirm', String(this.ride.id)]);
+        this.router.navigate(['ride/booking-confirm', String(this.ride.id)]);
         this.spinner.hide();
       },
       error => {

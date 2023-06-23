@@ -70,7 +70,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     UserModule,
   ],
   exports: [
-
+    AccountProfileComponent
   ],
   providers: [
     {

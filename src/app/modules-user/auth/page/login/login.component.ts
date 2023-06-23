@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../shared/service/auth.service";
 import {Subscription, tap} from "rxjs";
@@ -9,20 +9,21 @@ import {UserService} from "../../../../data/service/user.service";
 import {User} from "../../../../data/schema/user";
 import {TokenService} from "../../../../shared/service/token.service";
 import {FileStorageService} from "../../../../shared/service/files-storage.service";
+import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-script-loader-service.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnDestroy, OnInit {
 
   private sub = new Subscription();
   errorMessage: string;
   loginForm: FormGroup;
 
 
-  constructor(private fileStorage: FileStorageService, private authService: AuthService, private spinner: NgxSpinnerService, private sessionService: SessionStorageService, private router: Router, private userService: UserService, private tokenService: TokenService) {
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fileStorage: FileStorageService, private authService: AuthService, private spinner: NgxSpinnerService, private sessionService: SessionStorageService, private router: Router, private userService: UserService, private tokenService: TokenService) {
     this.buildForm();
   }
 
@@ -43,6 +44,12 @@ export class LoginComponent implements OnDestroy {
     }
   }
 
+
+
+  ngOnInit() {
+    this.unloadScripts();
+    this.loadScripts();
+  }
 
   private buildForm():
     void {
@@ -79,15 +86,8 @@ export class LoginComponent implements OnDestroy {
       );
   }
 
-  fetchUserImageUrl(user: User): void {
-    this.fileStorage.getObjectUrl(user.imagePath).subscribe(response => {
-      user.multipartFile = response.url;
-    }, error => {
-      console.error(error)
-    });
-  }
-
   private saveUserInSession(user: User): void {
+    this.userService.userSubject = user;
     this.sessionService.setItem('user', JSON.stringify(user));
   }
 
@@ -96,9 +96,18 @@ export class LoginComponent implements OnDestroy {
     console.error('Failed to make the request:', error);
     this.spinner.hide();
   }
+  private loadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
+    }).catch(error => console.log(error));
+  }
 
-  ngOnDestroy():
-    void {
+  private unloadScripts() {
+    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
+    }).catch(error => console.log(error));
+  }
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
+    this.unloadScripts();
+
   }
 }

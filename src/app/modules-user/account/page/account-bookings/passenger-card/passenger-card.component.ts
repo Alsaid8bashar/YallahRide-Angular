@@ -17,10 +17,10 @@ export class PassengerCardComponent {
   }
 
   displayRideDetails() {
-    this.router.navigate(['account', 'rides', 'details', String(this.passenger.ride.id)]);
+    this.router.navigate(['account', 'rides', 'details', String(this.passenger._ride.id)]);
   }
   get formattedDate(): string {
-    return this.datePipe.transform(this.passenger.ride.departureDate, 'dd MMM yyyy');
+    return this.datePipe.transform(this.passenger._ride.departureDate, 'dd MMM yyyy');
   }
   displayRideRequests() {
     this.router.navigate(['account/rides/requests'], {
@@ -32,6 +32,8 @@ export class PassengerCardComponent {
       }
     });
   }
-
+  reportRide() {
+    this.router.navigate(['/report']);
+  }
   protected readonly RideStatus = RideStatus;
 }

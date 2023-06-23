@@ -10,23 +10,28 @@ import {SharedModule} from "../../shared/shared.module";
 import {RideModule} from "../../modules-user/ride/ride.module";
 import { AdminRideListComponent } from './page/ride-list/admin-ride-list.component';
 import { UserCardComponent } from './page/users-list/user-card/user-card.component';
+import {AccountModule} from "../../modules-user/account/account.module";
 
 
 @NgModule({
-  declarations: [
-    AdminAccountSettingsComponent,
-    AdminHomeComponent,
-    AdminReportDetailsComponent,
-    AdminUsersListComponent,
-    AdminUserDetailsComponent,
-    AdminRideListComponent,
-    UserCardComponent
-  ],
+    declarations: [
+        AdminAccountSettingsComponent,
+        AdminHomeComponent,
+        AdminReportDetailsComponent,
+        AdminUsersListComponent,
+        AdminUserDetailsComponent,
+        AdminRideListComponent,
+        UserCardComponent
+    ],
+    exports: [
+        UserCardComponent
+    ],
   imports: [
     CommonModule,
     AdminDashboardRoutingModule,
     SharedModule,
-    RideModule
+    RideModule,
+    AccountModule
   ]
 })
 export class AdminDashboardModule {

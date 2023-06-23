@@ -11,6 +11,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {User} from "../../../../../data/schema/user";
 import {of, Subscription, switchMap} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
 
 @Component({
   selector: 'app-sign-up-1',
@@ -23,12 +24,14 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
   private sub = new Subscription();
 
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private userService: UserService, private phoneNumberService: PhoneNumberVerificationService,
-              public spinner: NgxSpinnerService, private customValidators:CustomValidators) {
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private router: Router, private accountService: AccountService, private storageService: StorageService, private userService: UserService, private phoneNumberService: PhoneNumberVerificationService,
+              public spinner: NgxSpinnerService, private customValidators: CustomValidators) {
     this.buildForm();
   }
 
   ngOnInit(): void {
+    this.unloadScripts();
+    this.loadScripts();
     this.register.controls['confirmPassword'].setValidators([Validators.required, this.passwordMatchValidator.bind(this)]);
   }
 
@@ -64,7 +67,7 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
     ).subscribe((response: User | null) => {
       this.spinner.hide();
       if (response) {
-        this.router.navigate(['/two-factor-authentication']);
+        this.router.navigate(['/auth/two-factor-authentication']);
       }
     });
   }
@@ -105,8 +108,20 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
     return false;
   }
 
+  private loadScripts() {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
+    }).catch(error => console.log(error));
+  }
+
+  private unloadScripts() {
+    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
+    }).catch(error => console.log(error));
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+    this.unloadScripts();
+
   }
 
 }

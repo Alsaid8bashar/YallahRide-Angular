@@ -36,12 +36,13 @@ export class CarService {
   }
 
   saveCar(car: Car, carImages:File[]): Observable<Car> {
+    console.error(carImages);
     const formData: FormData = new FormData();
     formData.append('car', new Blob([JSON.stringify(car)], {
       type: "application/json"
     }));
     for (let i = 0; i < carImages.length; i++) {
-      formData.append('carImages', carImages[i], carImages[i].name); // Include the filename
+      formData.append('multipartFiles', carImages[i], carImages[i].name); // Include the filename
     }
     return this.http.post<Car>(`${this.apiURL}create`, formData);
   }

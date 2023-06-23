@@ -10,7 +10,6 @@ import {DataModule} from "./data/data.module";
 import {AuthLayoutComponent} from "./layout/layout-user/auth-layout/auth-layout.component";
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule, ToastNoAnimationModule} from 'ngx-toastr';
-import {SpinnerComponent} from './shared/component/spinner/spinner.component';
 
 import { HeaderComponent } from './layout/layout-user/header/header.component';
 import { FooterComponent } from './layout/layout-user/footer/footer.component';
@@ -25,6 +24,7 @@ import { AdminSideBarComponent } from './layout/layout-admin/admin-side-bar/admi
 import {AccountLayoutComponent} from "./layout/layout-user/account-layout/account-layout.component";
 import {AdminDashboardModule} from "./modules-admin/dashboard/admin-dashboard.module";
 import {UserModule} from "./modules-user/user/user.module";
+import {SharedModule} from "./shared/shared.module";
 
 
 @NgModule({
@@ -32,7 +32,6 @@ import {UserModule} from "./modules-user/user/user.module";
     AppComponent,
     AuthLayoutComponent,
     AccountLayoutComponent,
-    SpinnerComponent,
     HeaderComponent,
     FooterComponent,
     ContentLayoutComponent,
@@ -56,7 +55,8 @@ import {UserModule} from "./modules-user/user/user.module";
     RideModule,
     DataModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
 
   providers: [
