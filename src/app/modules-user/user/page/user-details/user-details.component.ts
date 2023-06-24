@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UserDto} from "../../../../data/schema/UserDto";
@@ -16,7 +16,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   private userSub: Subscription;
 
-  protected userDto: UserDto;
+  @Input()
+  public userDto: UserDto;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private userDtoService: UserDtoService, private datePipe: DatePipe) {
   }

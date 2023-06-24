@@ -15,36 +15,20 @@ Main Banner START -->
 
             <!-- Card header -->
             <div class="card-header border-bottom p-3 p-sm-4">
-              <h5 class="card-title mb-0">Book Your Online Cab</h5>
+              <h5 class="card-title mb-0">Find a ride</h5>
             </div>
 
             <!-- Card body START -->
             <form class="card-body form-control-border p-3 p-sm-4" [formGroup]="searchForRideFrom" (ngSubmit)="onSubmit()">
-              <!-- Tabs START -->
-              <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <div class="form-check form-check-inline active" id="cab2-one-way-tab" data-bs-toggle="pill"
-                     data-bs-target="#cab2-one-way" role="tab" aria-controls="cab2-one-way" aria-selected="true">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cabRadio1" value="option1"
-                         checked>
-                  <label class="form-check-label" for="cabRadio1">One Way</label>
-                </div>
-                <div class="form-check form-check-inline" id="cab2-round-way-tab" data-bs-toggle="pill"
-                     data-bs-target="#cab2-round-way" role="tab" aria-controls="cab2-round-way" aria-selected="false">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cabRadio2" value="option2">
-                  <label class="form-check-label" for="cabRadio2">Round Trip</label>
-                </div>
-              </div>
-              <!-- Tabs END -->
-
               <!-- Tabs content START -->
-              <div class="tab-content my-4" id="pills-tabContent">
+              <div class="tab-content mb-4" id="pills-tabContent">
                 <!-- One way START -->
                 <div class="tab-pane fade show active" id="cab2-one-way" role="tabpanel"
                      aria-labelledby="cab2-one-way-tab">
-                  <div class="row g-2 g-md-4">
+                  <div class="row g-2 g-md-4 justify-content-center">
                     <!-- Pickup -->
                     <div class="col-md-6 position-relative">
-                      <div class="form-fs-lg form-control-transparent">
+                      <div class="form-fs-lg form-control-transparent text-center">
                         <label class="form-label small">Pickup</label>
                         <select class="form-select js-choice" data-search-enabled="true" formControlName="pickup">
                           <option value="">Select location</option>
@@ -62,17 +46,11 @@ Main Banner START -->
                           <option value="Tafilah">Tafilah</option>
                         </select>
                       </div>
-
-                      <!-- Auto fill button -->
-                      <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
-                        <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i>
-                        </button>
-                      </div>
                     </div>
 
                     <!-- Drop -->
                     <div class="col-md-6 text-md-end">
-                      <div class="form-fs-lg form-control-transparent">
+                      <div class="form-fs-lg form-control-transparent text-center">
                         <label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
                         <select class="form-select js-choice" data-search-enabled="true" formControlName="drop">
                           <option value="">Select Location</option>
@@ -93,97 +71,15 @@ Main Banner START -->
                     </div>
 
                     <!-- Date -->
-                    <div class="col-md-6">
-                      <div class="form-fs-lg form-control-transparent">
+                    <div class="col-md-6 ">
+                      <div class="form-fs-lg form-control-transparent text-center">
                         <label class="form-label small">Pickup Date</label>
-                        <input type="text" class="form-control flatpickr" placeholder="Select date" data-date-format="F j, Y"  formControlName="date">
+                        <input type="text" class="form-control flatpickr text-center" placeholder="Select date" data-date-format="F j, Y"  formControlName="date">
                       </div>
                     </div>
-
-                    <!-- Time -->
-                    <div class="col-md-6 text-md-end">
-                      <div class="form-fs-lg form-control-transparent">
-                        <label class="form-label small ms-3 ms-md-0 me-md-3">Pickup time</label>
-                        <input type="text" class="form-control flatpickr text-md-end" data-enableTime="true"
-                               data-noCalendar="true" placeholder="Select time">
-                      </div>
-                    </div>
-
                   </div>
                 </div>
                 <!-- One way END -->
-
-                <!-- Round trip START -->
-                <div class="tab-pane fade" id="cab2-round-way" role="tabpanel" aria-labelledby="cab2-round-way-tab">
-                  <div class="row g-2 g-md-4">
-                    <!-- Pickup -->
-                    <div class="col-md-6 position-relative">
-                      <label class="form-label small">Pickup</label>
-                      <div class="form-fs-lg form-control-transparent">
-                        <select class="form-select js-choice" data-search-enabled="true">
-                          <option value="">Select Location</option>
-                          <option>New York</option>
-                          <option>Canada</option>
-                          <option>Paris</option>
-                        </select>
-                      </div>
-
-                      <!-- Auto fill button -->
-                      <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
-                        <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i>
-                        </button>
-                      </div>
-                    </div>
-
-                    <!-- Drop -->
-                    <div class="col-sm-6 text-sm-end">
-                      <label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
-                      <div class="form-fs-lg form-control-transparent">
-                        <select class="form-select js-choice" data-search-enabled="true">
-                          <option value="">Select Location</option>
-                          <option>Canada</option>
-                          <option>New York</option>
-                          <option>Paris</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <!-- Date -->
-                    <div class="col-sm-6">
-                      <div class="form-fs-lg form-control-transparent">
-                        <label class="form-label small">Pickup Date</label>
-                        <input type="text" class="form-control flatpickr" placeholder="Select date">
-                      </div>
-                    </div>
-
-                    <!-- Time -->
-                    <div class="col-sm-6 text-sm-end">
-                      <div class="form-fs-lg form-control-transparent">
-                        <label class="form-label small ms-3 ms-md-0 me-md-3">Pickup time</label>
-                        <input type="text" class="form-control flatpickr text-sm-end" data-enableTime="true"
-                               data-noCalendar="true" placeholder="Select time">
-                      </div>
-                    </div>
-
-                    <!-- Date -->
-                    <div class="col-sm-6">
-                      <div class="form-fs-lg form-control-transparent">
-                        <label class="form-label small">Return Date</label>
-                        <input type="text" class="form-control flatpickr" placeholder="Select date">
-                      </div>
-                    </div>
-
-                    <!-- Time -->
-                    <div class="col-sm-6 text-sm-end">
-                      <div class="form-fs-lg form-control-transparent">
-                        <label class="form-label small ms-3 ms-md-0 me-md-3">Return time</label>
-                        <input type="text" class="form-control flatpickr text-sm-end" data-enableTime="true"
-                               data-noCalendar="true" placeholder="Select time">
-                      </div>
-                    </div>
-                  </div> <!-- Row END -->
-                </div>
-                <!-- Round trip END -->
               </div>
               <!-- Tabs content END -->
 

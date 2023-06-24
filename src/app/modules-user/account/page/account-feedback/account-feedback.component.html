@@ -19,7 +19,7 @@
     <form class="mb-5" [formGroup]="feedbackForm" (ngSubmit)="onFeedbackSubmit()">
       <!-- Rating -->
       <div class="form-control-bg-light mb-3">
-        <select class="form-select" formControlName="stars" >
+        <select class="form-select js-choice" formControlName="stars" >
           <option value="" disabled>Select rating</option>
           <option value="5">★★★★★ (5/5)</option>
           <option value="4">★★★★☆ (4/5)</option>

@@ -16,54 +16,64 @@
   <!-- Card body START -->
   <div class="card-body">
     <!-- Form START -->
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="travelPreferencesFrom" (ngSubmit)="onSubmit()">
 
       <div class="col-md-6">
         <label class="form-label">Chattiness</label>
-        <select id="mySelect" class="form-select js-choice" >
-
+        <select id="Chattiness" class="form-select " formControlName="chattinessTravelPreferencesChoice">
+          <option value="" selected>Select Chattiness Travel Preference</option>
         </select>
+        <mat-error
+          *ngIf="travelPreferencesFrom.controls['chattinessTravelPreferencesChoice'].hasError('required') &&
+           travelPreferencesFrom.controls['chattinessTravelPreferencesChoice'].touched">
+          First name must not be <strong>empty</strong>
+        </mat-error>
       </div>
 
 
       <!-- Music -->
       <div class="col-md-6">
         <label class="form-label">Music</label>
-        <select class="form-select js-choice">
-          <option value="" selected>Select a Travel Preference</option>
-          <option>It’s all about the playlist!</option>
-          <option >I’ll jam depending on the mood</option>
-          <option>Silence is golden</option>
+        <select id="Music" class="form-select " formControlName="musicTravelPreferencesChoice">
+          <option value="" selected>Select Music Travel Preference</option>
         </select>
+        <mat-error
+          *ngIf="travelPreferencesFrom.controls['musicTravelPreferencesChoice'].hasError('required') &&
+           travelPreferencesFrom.controls['musicTravelPreferencesChoice'].touched">
+          First name must not be <strong>empty</strong>
+        </mat-error>
       </div>
 
       <!-- Smoking -->
       <div class="col-md-6">
         <label class="form-label">Smoking</label>
-        <select class="form-select js-choice">
-          <option value="" selected>Select a Travel Preference</option>
-          <option>I’m fine with smoking</option>
-          <option >Cigarette breaks outside the car are ok</option>
-          <option>Please, no smoking in the car</option>
+        <select id="Smoking" class="form-select " formControlName="smokingTravelPreferencesChoice">
+          <option value="" selected>Select Smoking Travel Preference</option>
         </select>
+        <mat-error
+          *ngIf="travelPreferencesFrom.controls['smokingTravelPreferencesChoice'].hasError('required') &&
+           travelPreferencesFrom.controls['smokingTravelPreferencesChoice'].touched">
+          First name must not be <strong>empty</strong>
+        </mat-error>
       </div>
 
       <!-- Pets -->
       <div class="col-md-6">
         <label class="form-label">Pets</label>
-        <select class="form-select js-choice">
-          <option value="" selected>Select a Travel Preference</option>
-          <option>I love pets. Woof!</option>
-          <option >I’ll travel with pets depending on the animal</option>
-          <option>Sorry, not a pet person</option>
+        <select id="Pets" class="form-select " formControlName="petTravelPreferencesChoice">
+          <option value="" selected>Select Pets Travel Preference</option>
         </select>
+        <mat-error
+          *ngIf="travelPreferencesFrom.controls['petTravelPreferencesChoice'].hasError('required') &&
+           travelPreferencesFrom.controls['petTravelPreferencesChoice'].touched">
+          First name must not be <strong>empty</strong>
+        </mat-error>
       </div>
-
 
 
       <!-- Button -->
       <div class="col-12 text-end">
-        <a href="#" class="btn btn-primary mb-0">Save Changes</a>
+        <button class="btn btn-primary mb-0" [disabled]="!travelPreferencesFrom.valid">Save Changes</button>
       </div>
     </form>
     <!-- Form END -->
@@ -71,47 +81,3 @@
   <!-- Card body END -->
 </div>
 <!-- travel preferences info END -->
-
-<script>
-  var element = document.getElementById("mySelect");
-  const example = new Choices(element);
-
-
-
-  example.setChoices(
-    [
-      {
-        label: 'Group one',
-        id: 1,
-        disabled: false,
-        choices: [
-          { value: 'Child One', label: 'Child One', selected: true },
-          { value: 'Child Two', label: 'Child Two', disabled: true },
-          { value: 'Child Three', label: 'Child Three' },
-        ],
-      },
-      {
-        label: 'Group two',
-        id: 2,
-        disabled: false,
-        choices: [
-          { value: 'Child Four', label: 'Child Four', disabled: true },
-          { value: 'Child Five', label: 'Child Five' },
-          {
-            value: 'Child Six',
-            label: 'Child Six',
-            customProperties: {
-              description: 'Custom description about child six',
-              random: 'Another random custom property',
-            },
-          },
-        ],
-      },
-    ],
-    'value',
-    'label',
-    false,
-  );
-
-</script>
-
