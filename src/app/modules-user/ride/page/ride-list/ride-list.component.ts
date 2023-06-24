@@ -54,7 +54,7 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.date = params['date'];
       this.from = params['pickup'];
     });
-    this.userId = this.userService.getUserSubject()._id;
+    this.userId = this.userService.getUserSubject().id;
     this.buildForm();
     this.buildFilterForm();
     this.loadFilteredRides();
@@ -63,11 +63,14 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   loadFilteredRides() {
     this.spinner.show();
+    debugger;
+    this.userId;
     this.ridesSubscription = this.rideService.searchRidesByFromAndToAndDate(this.from, this.to, this.date)
       .pipe(tap(rides => {
-          rides = rides.filter(ride => ride.driver._id != this.userId);
+          rides = rides.filter(ride => ride.driver.id != this.userId && ride.seats != 0);
           this.rides = rides
           this.tempRides = rides;
+          console.error(rides);
           this.availableRide = rides.length;
         }),
         finalize(() => {

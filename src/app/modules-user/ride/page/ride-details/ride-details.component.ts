@@ -52,21 +52,34 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
 
   bookRide() {
     let passenger: Passenger = new Passenger(this.userService.getUserSubject(), this.ride, RideStatus.Active);
+    this.spinner.show();
     this.savePassenger(passenger);
+    this.editRide(this.ride);
   }
 
   savePassenger(passenger: Passenger) {
-    this.spinner.show();
     this.passengerSub = this.passengerService.savePassenger(passenger).subscribe(
       response => {
         this.router.navigate(['ride/booking-confirm', String(this.ride.id)]);
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+
+  editRide(ride: Ride) {
+    ride.seats--;
+    this.rideService.createRide(ride).subscribe(
+      response => {
+        this.ride = response;
         this.spinner.hide();
       },
       error => {
         console.error(error);
         this.spinner.hide();
       }
-    )
+    );
   }
 
   private loadScripts() {
