@@ -27,9 +27,9 @@ import {AccountModule} from "../../modules-user/account/account.module";
         UserCardComponent
     ],
   imports: [
+    SharedModule,
     CommonModule,
     AdminDashboardRoutingModule,
-    SharedModule,
     RideModule,
     AccountModule
   ]

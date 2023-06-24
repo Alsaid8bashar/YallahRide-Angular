@@ -11,7 +11,6 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {User} from "../../../../../data/schema/user";
 import {of, Subscription, switchMap} from "rxjs";
 import {catchError} from "rxjs/operators";
-import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
 
 @Component({
   selector: 'app-sign-up-1',
@@ -24,14 +23,12 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
   private sub = new Subscription();
 
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private router: Router, private accountService: AccountService, private storageService: StorageService, private userService: UserService, private phoneNumberService: PhoneNumberVerificationService,
+  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private userService: UserService, private phoneNumberService: PhoneNumberVerificationService,
               public spinner: NgxSpinnerService, private customValidators: CustomValidators) {
     this.buildForm();
   }
 
   ngOnInit(): void {
-    this.unloadScripts();
-    this.loadScripts();
     this.register.controls['confirmPassword'].setValidators([Validators.required, this.passwordMatchValidator.bind(this)]);
   }
 
@@ -41,35 +38,24 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
       const account: Account = this.register.value;
       account.user = this.storageService.getObject("user");
       this.spinner.show();
-      this.apiCalls(account);
+      this.createAccount(account);
     } else {
       this.register.markAllAsTouched();
     }
   }
 
-  private apiCalls(account: Account) {
-
-    this.sub = this.userService.createUser(account.user).pipe(
-      switchMap((response: User) => {
-        return this.accountService.registerAccount(account).pipe(
-          switchMap(() => {
-            // this.phoneNumberService.generateTOTP(account.phoneNumber).subscribe();
-            this.storageService.removeObject('user');
-            this.storageService.saveObject('phoneNumber', account.phoneNumber);
-            return of(response);
-          }),
-          catchError((error) => {
-            console.log('Error:', error);
-            return of(null);
-          })
-        );
-      })
-    ).subscribe((response: User | null) => {
-      this.spinner.hide();
-      if (response) {
-        this.router.navigate(['/auth/two-factor-authentication']);
+  private createAccount(account: Account) {
+    this.sub = this.accountService.registerAccount(account).subscribe(
+      response => {
+        this.storageService.removeObject('user');
+        this.spinner.hide();
+        this.router.navigate(['auth/two-factor-authentication']);
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide();
       }
-    });
+    )
   }
 
   private buildForm(): void {
@@ -108,20 +94,8 @@ export class SignUpOneComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
-    }).catch(error => console.log(error));
-  }
-
-  private unloadScripts() {
-    this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
-    }).catch(error => console.log(error));
-  }
-
   ngOnDestroy(): void {
     this.sub.unsubscribe();
-    this.unloadScripts();
-
   }
 
 }
