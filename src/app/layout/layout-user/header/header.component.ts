@@ -3,8 +3,6 @@ import {UserService} from "../../../data/service/user.service";
 import {User} from "../../../data/schema/user";
 
 
-
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,7 +16,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user=this.userService.getUserSubject();
+    this.userService.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 
 

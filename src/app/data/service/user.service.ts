@@ -1,9 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../schema/user";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Ride} from "../schema/ride";
 import {SessionStorageService} from "../../shared/service/session.service";
 import {Car} from "../schema/car";
 import {TravelPreference} from "../schema/travelPreference";
@@ -16,8 +15,20 @@ export class UserService implements OnInit {
   private _userSubject: User;
   apiURL = environment.serverUrl + 'user/';
 
+  private userBehaviorSubject: BehaviorSubject<User>;
+  public user$: Observable<User>;
+
   constructor(private http: HttpClient, private sessionService: SessionStorageService) {
     this.setUserObject();
+    const storedUser = localStorage.getItem('user');
+    this.userBehaviorSubject =new BehaviorSubject<User>(storedUser ? JSON.parse(storedUser) : null);
+    this.user$ = this.userBehaviorSubject.asObservable();
+  }
+
+  public updateUser(user: User): void {
+    this.userBehaviorSubject.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+
   }
 
   public setUserObject() {
@@ -26,7 +37,6 @@ export class UserService implements OnInit {
 
 
   getUserSubject(): User {
-
     return this._userSubject;
   }
 
