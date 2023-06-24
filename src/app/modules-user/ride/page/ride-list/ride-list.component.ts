@@ -8,6 +8,7 @@ import {DynamicScriptLoaderService} from "../../../../shared/service/dynamic-scr
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RideFilterService} from "../../../../shared/service/ride-filter.service";
 import {DecimalPipe} from "@angular/common";
+import {UserService} from "../../../../data/service/user.service";
 
 
 @Component({
@@ -31,6 +32,7 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
   ridesSubscription: Subscription;
   searchForRideForm: FormGroup;
   filterForm: FormGroup;
+  private userId: number;
 
   lowestPrice: boolean;
 
@@ -39,8 +41,8 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('maxCapacityInput') maxCapacityInput: ElementRef;
   @ViewChild('minCapacityInput') minCapacityInput: ElementRef;
 
-  constructor(private decimalPipe: DecimalPipe
-    , private rideService: RideService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private rideFilterService: RideFilterService) {
+
+  constructor(private userService: UserService, private decimalPipe: DecimalPipe, private rideService: RideService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private dynamicScriptLoader: DynamicScriptLoaderService, private rideFilterService: RideFilterService) {
   }
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.date = params['date'];
       this.from = params['pickup'];
     });
-
+    this.userId = this.userService.getUserSubject()._id;
     this.buildForm();
     this.buildFilterForm();
     this.loadFilteredRides();
@@ -63,7 +65,8 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.spinner.show();
     this.ridesSubscription = this.rideService.searchRidesByFromAndToAndDate(this.from, this.to, this.date)
       .pipe(tap(rides => {
-          this.rides = rides;
+          rides = rides.filter(ride => ride.driver._id != this.userId);
+          this.rides = rides
           this.tempRides = rides;
           this.availableRide = rides.length;
         }),
@@ -134,14 +137,15 @@ export class RideListComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices','nouislider',  'flatpickr', 'functions', 'sticky').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'nouislider', 'flatpickr', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
 
   private unloadScripts() {
-    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices','nouislider',  'flatpickr', 'functions', 'sticky').then(data => {
+    this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'nouislider', 'flatpickr', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
+
   ngOnDestroy() {
     if (this.ridesSubscription) {
       this.ridesSubscription.unsubscribe();

@@ -4,6 +4,8 @@ import {User} from "../../../../../data/schema/user";
 import {StorageService} from "../../../../../shared/service/storage.service";
 import {Router} from "@angular/router";
 import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
+import {UserService} from "../../../../../data/service/user.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-sign-up-2',
@@ -13,19 +15,33 @@ import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-
 export class SignUpTwoComponent implements OnInit {
   userInfoForm: FormGroup;
 
-  constructor(private storageService: StorageService, private router: Router, private dynamicScriptLoader: DynamicScriptLoaderService,) {
+  constructor(private spinner: NgxSpinnerService, private userService: UserService, private storageService: StorageService, private router: Router, private dynamicScriptLoader: DynamicScriptLoaderService,) {
     this.buildForm();
   }
 
 
   onSubmit() {
     if (this.userInfoForm.valid) {
+      this.spinner.show();
       const user: User = this.userInfoForm.value;
-      this.storageService.saveObject("user", user)
-      this.router.navigate(['/auth/sign-up'])
+      this.createUser(user);
     } else {
       this.userInfoForm.markAllAsTouched();
     }
+  }
+
+  createUser(user: User) {
+    this.userService.createUser(user,null).subscribe(
+      response => {
+        this.storageService.saveObject('user', response);
+        this.router.navigate(['/auth/sign-up'])
+        this.spinner.hide();
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    )
   }
 
   ngOnInit(): void {
