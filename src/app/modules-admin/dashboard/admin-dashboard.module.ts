@@ -11,6 +11,7 @@ import {RideModule} from "../../modules-user/ride/ride.module";
 import { AdminRideListComponent } from './page/ride-list/admin-ride-list.component';
 import { UserCardComponent } from './page/users-list/user-card/user-card.component';
 import {AccountModule} from "../../modules-user/account/account.module";
+import {UserModule} from "../../modules-user/user/user.module";
 
 
 @NgModule({
@@ -26,13 +27,14 @@ import {AccountModule} from "../../modules-user/account/account.module";
     exports: [
         UserCardComponent
     ],
-  imports: [
-    CommonModule,
-    AdminDashboardRoutingModule,
-    SharedModule,
-    RideModule,
-    AccountModule
-  ]
+    imports: [
+        CommonModule,
+        AdminDashboardRoutingModule,
+        SharedModule,
+        RideModule,
+        AccountModule,
+        UserModule
+    ]
 })
 export class AdminDashboardModule {
 
