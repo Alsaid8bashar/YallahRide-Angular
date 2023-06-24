@@ -142,8 +142,10 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
     const formValues = this.carForm.value;
     const car: Car = formValues;
     car.licensePlate = (formValues.code + '-' + formValues.number);
+    debugger;
     car.user = this.userObject;
     this.spinner.show();
+
     this.sub = this.carService.saveCar(car, this.files).subscribe(() => {
       this.spinner.hide();
     }, error => {

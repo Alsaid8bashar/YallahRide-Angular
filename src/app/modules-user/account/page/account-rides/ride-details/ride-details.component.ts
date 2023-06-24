@@ -110,9 +110,13 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   cancelRide() {
     this.spinner.show();
     let passenger: Passenger = this.getPassengerIdByUserId(this.userService.getUserSubject().id);
-    this.passengerService.changeBookingStatus(passenger.id, passenger._ride.id, RideStatus.Canceled).subscribe(
+    this.changePassengerStatus(passenger.id, passenger._ride.id, RideStatus.Canceled);
+  }
+
+  changePassengerStatus(passengerId: number, rideId: number, status: RideStatus) {
+    this.passengerService.changeBookingStatus(passengerId, rideId, status).subscribe(
       () => {
-        this.spinner.hide();
+        this.editRide(this.ride);
         this.router.navigate(['account', 'bookings',]);
       },
       error => {
@@ -121,6 +125,21 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  editRide(ride: Ride) {
+    ride.seats++;
+    this.rideService.createRide(ride).subscribe(
+      response => {
+        this.ride = response;
+        this.spinner.hide();
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    );
+  }
+
 
   private loadScripts() {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
