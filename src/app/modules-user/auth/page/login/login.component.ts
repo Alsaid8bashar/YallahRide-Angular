@@ -45,7 +45,6 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
 
-
   ngOnInit() {
     this.unloadScripts();
     this.loadScripts();
@@ -76,8 +75,8 @@ export class LoginComponent implements OnDestroy, OnInit {
       .subscribe(
         (user: User) => {
           this.saveUserInSession(user)
+          this.userService.updateUser(user);
           this.spinner.hide();
-
         },
         (getUserError: any) => {
           console.error('Failed to fetch user data:', getUserError);
@@ -87,7 +86,6 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
   private saveUserInSession(user: User): void {
-    this.userService.userSubject = user;
     this.sessionService.setItem('user', JSON.stringify(user));
   }
 
@@ -96,6 +94,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     console.error('Failed to make the request:', error);
     this.spinner.hide();
   }
+
   private loadScripts() {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
     }).catch(error => console.log(error));
@@ -105,6 +104,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     this.dynamicScriptLoader.unload('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions').then(data => {
     }).catch(error => console.log(error));
   }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
     this.unloadScripts();

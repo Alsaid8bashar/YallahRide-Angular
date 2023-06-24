@@ -62,8 +62,6 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
 
   onUserChangesSubmit(): void {
     this.spinner.show();
-    debugger;
-
     const formValues = this.userForm.value;
     this.userObject.firstName = formValues.firstName;
     this.userObject.lastName = formValues.lastName;
@@ -71,8 +69,8 @@ export class AccountProfileComponent implements OnInit, OnDestroy {
     this.userObject.about = formValues.about;
     this.userSub = this.userService.createUser(this.userObject, this.image).subscribe(
       data => {
-        this.userService.userSubject = data;
-        this.cdr.detectChanges();
+        this.userService.updateUser(data);
+        window.location.reload();
         this.spinner.hide();
       }, error => {
         console.error(error)
