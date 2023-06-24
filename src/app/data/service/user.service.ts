@@ -44,7 +44,9 @@ export class UserService implements OnInit {
     formData.append('user', new Blob([JSON.stringify(user)], {
       type: "application/json"
     }));
-    formData.append('multipartFiles', image, image.name);
+    if (image != null) {
+      formData.append('multipartFiles', image, image.name);
+    }
     return this.http.post<User>(`${this.apiURL}create`, formData);
   }
 
