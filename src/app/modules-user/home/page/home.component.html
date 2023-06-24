@@ -20,16 +20,15 @@ Main Banner START -->
 
             <!-- Card body START -->
             <form class="card-body form-control-border p-3 p-sm-4" [formGroup]="searchForRideFrom" (ngSubmit)="onSubmit()">
-
               <!-- Tabs content START -->
-              <div class="tab-content my-4" id="pills-tabContent">
+              <div class="tab-content mb-4" id="pills-tabContent">
                 <!-- One way START -->
                 <div class="tab-pane fade show active" id="cab2-one-way" role="tabpanel"
                      aria-labelledby="cab2-one-way-tab">
-                  <div class="row g-2 g-md-4">
+                  <div class="row g-2 g-md-4 justify-content-center">
                     <!-- Pickup -->
                     <div class="col-md-6 position-relative">
-                      <div class="form-fs-lg form-control-transparent">
+                      <div class="form-fs-lg form-control-transparent text-center">
                         <label class="form-label small">Pickup</label>
                         <select class="form-select js-choice" data-search-enabled="true" formControlName="pickup">
                           <option value="">Select location</option>
@@ -47,17 +46,11 @@ Main Banner START -->
                           <option value="Tafilah">Tafilah</option>
                         </select>
                       </div>
-
-                      <!-- Auto fill button -->
-                      <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
-                        <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i>
-                        </button>
-                      </div>
                     </div>
 
                     <!-- Drop -->
                     <div class="col-md-6 text-md-end">
-                      <div class="form-fs-lg form-control-transparent">
+                      <div class="form-fs-lg form-control-transparent text-center">
                         <label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
                         <select class="form-select js-choice" data-search-enabled="true" formControlName="drop">
                           <option value="">Select Location</option>
@@ -78,14 +71,12 @@ Main Banner START -->
                     </div>
 
                     <!-- Date -->
-                    <div class="col-md-6">
-                      <div class="form-fs-lg form-control-transparent">
+                    <div class="col-md-6 ">
+                      <div class="form-fs-lg form-control-transparent text-center">
                         <label class="form-label small">Pickup Date</label>
-                        <input type="text" class="form-control flatpickr" placeholder="Select date" data-date-format="F j, Y"  formControlName="date">
+                        <input type="text" class="form-control flatpickr text-center" placeholder="Select date" data-date-format="F j, Y"  formControlName="date">
                       </div>
                     </div>
-
-
                   </div>
                 </div>
                 <!-- One way END -->

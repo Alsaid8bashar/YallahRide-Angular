@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {Ride} from "../schema/ride";
 import {SessionStorageService} from "../../shared/service/session.service";
 import {Car} from "../schema/car";
+import {TravelPreference} from "../schema/travelPreference";
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,17 @@ export class UserService implements OnInit {
   ngOnInit(): void {
     this.setUserObject();
   }
+
+  saveUserTravelPreferences(travelPreferences: TravelPreference[], id: number): Observable<User> {
+    const body = {
+      travelPreferences: travelPreferences,
+      id: id
+    };
+
+    console.log(travelPreferences);
+    return this.http.post<User>(`${this.apiURL}save-travel-preferences`, body);
+  }
+
 
   // deactivateUserById(id: number): Observable<any> {
   //   return this.http.put(`${this.apiURL}deactivate/${id}`)
