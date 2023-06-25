@@ -3,10 +3,11 @@ import {RouterModule, Routes} from "@angular/router";
 import {AddRideComponent} from "../../modules-user/account/page/account-rides/add-ride/add-ride.component";
 import {AdminHomeComponent} from "./page/admin-home/admin-home.component";
 import {AdminAccountSettingsComponent} from "./page/admin-account-settings/admin-account-settings.component";
-import {AdminReportDetailsComponent} from "./page/report-details/admin-report-details.component";
+import {AdminReportDetailsComponent} from "./page/report/report-details/admin-report-details.component";
 import {AdminUsersListComponent} from "./page/users-list/admin-users-list.component";
 import {AdminUserDetailsComponent} from "./page/user-details/admin-user-details.component";
 import {AdminRideListComponent} from "./page/ride-list/admin-ride-list.component";
+import {MemberReportComponent} from "./page/report/member-report/member-report.component";
 
 
 const routes: Routes = [
@@ -30,6 +31,9 @@ const routes: Routes = [
         path: 'reports/details',
         component: AdminReportDetailsComponent,
       },
+
+      {path: 'reports/users', component: MemberReportComponent, data: {routeName: 'users'}},
+      {path: 'reports/rides', component: MemberReportComponent, data: {routeName: 'rides'}},
       {
         path: 'users/list',
         component: AdminUsersListComponent,
