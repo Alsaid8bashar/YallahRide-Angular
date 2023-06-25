@@ -16,7 +16,7 @@ export class ReportRideService {
 
 
   getReportRide(id: number): Observable<ReportRide> {
-    return this.http.get<ReportRide>(`${this.apiURL}/${id}`);
+    return this.http.get<ReportRide>(`${this.apiURL}${id}`);
   }
 
   saveReportRide(reportRide: ReportRide): Observable<ReportRide> {

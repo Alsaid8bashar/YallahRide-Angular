@@ -1,1 +1,8 @@
-<p>report works!</p>
+<div *ngIf="ridesReports !=null; else userReport">
+  <app-report-table [ridesReports]="ridesReports"></app-report-table>
+</div>
+
+<ng-template #userReport>
+  <app-report-table [usersReports]="userReports"></app-report-table>
+</ng-template>
+

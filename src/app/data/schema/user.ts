@@ -23,6 +23,15 @@ export class User {
   private _roles?: Role[]
 
   private _isVerified: boolean;
+  private _warnings: number;
+
+  get warnings(): number {
+    return this._warnings;
+  }
+
+  set warnings(value: number) {
+    this._warnings = value;
+  }
 
   constructor(firstName: string, lastName: string, gender: string) {
     this._firstName = firstName;

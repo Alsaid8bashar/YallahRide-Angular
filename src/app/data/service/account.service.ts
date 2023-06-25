@@ -56,6 +56,10 @@ export class AccountService {
     return this.http.put<Account>(`${this.apiURL}update`, account);
   }
 
+  deactivateUserById(userId:number): Observable<any> {
+    return this.http.put<any>(`${this.apiURL}deactivate/${userId}`, null);
+  }
+
   verifiedAccount(id: number): Observable<any> {
     const requestBody = {};
     return this.http.put<Account>(`${this.apiURL}verified/${id}`, requestBody);

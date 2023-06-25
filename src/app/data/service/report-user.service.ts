@@ -14,7 +14,7 @@ export class ReportUserService {
   }
 
   getReportUser(id: number): Observable<ReportUser> {
-    return this.http.get<ReportUser>(`${this.apiURL}/${id}`);
+    return this.http.get<ReportUser>(`${this.apiURL}${id}`);
   }
 
   saveReportUser(reportUser: ReportUser): Observable<ReportUser> {
