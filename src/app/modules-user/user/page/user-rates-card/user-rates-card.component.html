@@ -1,0 +1,103 @@
+<div class="card bg-transparent">
+  <!-- Card header -->
+  <div class="card-header border-bottom bg-transparent px-0 pt-0">
+    <h3 class="card-title mb-0">Customer Review</h3>
+  </div>
+
+  <!-- Card body START -->
+  <div class="card-body pt-4 p-0">
+
+    <div class="row g-4 g-xl-5 mb-5 justify-content-center">
+      <!-- Growth -->
+      <div class="col-md-6 col-lg-6">
+        <div class="bg-light p-4 rounded text-center">
+          <h6 class="fw-normal">Total Reviews</h6>
+          <div class="d-flex align-items-center justify-content-center">
+            <h2 class="mb-0 me-2">{{rates.length}}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Average rating -->
+      <div class="col-md-6 col-lg-6">
+        <div class="bg-light p-4 rounded text-center">
+          <h6 class="fw-normal">Average Rating</h6>
+          <div class="d-flex align-items-center justify-content-center">
+            <h2 class="mb-0 me-2">{{userRate}}</h2>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item me-0" *ngFor="let star of getFullStars(userRate)">
+                <i class="fa-solid fa-star text-warning"></i>
+              </li>
+              <li class="list-inline-item" *ngIf="hasHalfStar(userRate)">
+                <i class="fa-solid fa-star-half-alt text-warning"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Progress bar and rating END -->
+
+    <!-- Leave review START -->
+    <form class="mb-5">
+      <!-- Rating -->
+      <div class="form-control-bg-light mb-3">
+        <select class="form-select js-choice">
+          <option selected="">★★★★★ (5/5)</option>
+          <option>★★★★☆ (4/5)</option>
+          <option>★★★☆☆ (3/5)</option>
+          <option>★★☆☆☆ (2/5)</option>
+          <option>★☆☆☆☆ (1/5)</option>
+        </select>
+      </div>
+      <!-- Message -->
+      <div class="form-control-bg-light mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review"
+                          rows="3"></textarea>
+      </div>
+      <!-- Button -->
+      <button type="submit" class="btn btn-lg btn-primary mb-0">Post review <i
+        class="bi fa-fw bi-arrow-right ms-2"></i></button>
+    </form>
+    <!-- Leave review END -->
+
+    <!-- review-item.component.html -->
+    <ng-container *ngFor="let rate of rates">
+      <div class="d-md-flex my-4">
+        <!-- Avatar -->
+        <div class="avatar avatar-lg me-3 flex-shrink-0">
+          <img class="avatar-img rounded-circle" [src]="rate.rater.imagePath" alt="avatar">
+        </div>
+        <!-- Text -->
+        <div>
+          <div class="d-flex justify-content-between mt-1 mt-md-0">
+            <div>
+              <h6 class="me-3 mb-0">{{ rate.rater.firstName }}</h6>
+              <!-- Info -->
+              <ul class="nav nav-divider small mb-2">
+                <li class="nav-item">{{getFormattedDate(rate.date)}}</li>
+              </ul>
+            </div>
+            <!-- Review star -->
+            <div class="icon-md rounded text-bg-warning fs-6">{{ rate.rate }}</div>
+          </div>
+
+          <p class="mb-2">{{ rate.description }}</p>
+        </div>
+      </div>
+      <hr>
+    </ng-container>
+
+    <!-- Divider -->
+    <hr>
+    <!-- Review item END -->
+
+    <!-- Button -->
+    <div class="text-center">
+      <a href="#" class="btn btn-primary-soft mb-0">Load more</a>
+    </div>
+  </div>
+  <!-- Card body END -->
+</div>
+<!-- Customer Review END -->
+
