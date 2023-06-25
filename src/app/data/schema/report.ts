@@ -3,9 +3,9 @@ export class Report{
 
   report?: any
 
-  titleFk?: number
+  title?: number
 
-  categoryFk?: number
+  category?: number
 
   description?: string
 

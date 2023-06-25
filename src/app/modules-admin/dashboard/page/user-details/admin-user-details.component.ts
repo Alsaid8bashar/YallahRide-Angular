@@ -20,17 +20,22 @@ export class AdminUserDetailsComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
-    this.sub =     this.route.paramMap.subscribe(params => {
+    this.spinner.show();
+    this.sub =   this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
-      console.error(id)
-      this.spinner.show();
+      console.log(id);
+      this.spinner.hide();
       this.getUserDto(id);
+    }, error => {
+      this.spinner.hide();
+      console.log(error)
     });
   }
 
   getUserDto(id: number) {
     this.sub = this.userDtoService.getUserDto(id).subscribe(
       value => {
+        console.log(value);
         this.userDto = value;
         this.spinner.hide();
       },

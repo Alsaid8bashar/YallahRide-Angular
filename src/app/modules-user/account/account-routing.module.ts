@@ -82,8 +82,6 @@ const routes: Routes = [
     path: 'add-ride',
     component: AddRideComponent
   },
-
-
 ];
 
 @NgModule({

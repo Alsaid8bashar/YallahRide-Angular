@@ -25,10 +25,13 @@ export class AdminUsersListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load();
+    this.spinner.show()
     this.sub = this.userService.findAllUsers().subscribe(data => {
       this.userList = data;
       this.isLoaded = true;
+      this.spinner.hide()
     }, error => {
+      this.spinner.hide()
       console.log(error);
     })
   }
