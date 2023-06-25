@@ -15,6 +15,8 @@ import {CarJSONService} from "../../../../../data/service/car-json.service";
 import {CarService} from "../../../../../data/service/car.service";
 import {Car} from "../../../../../data/schema/car";
 import {ActivatedRoute} from "@angular/router";
+import {FileStorageService} from "../../../../../shared/service/files-storage.service";
+import {CarImage} from "../../../../../data/schema/carImage";
 
 @Component({
   selector: 'app-manage-vehicle',
@@ -37,10 +39,12 @@ export class ManageVehicleComponent {
   yearChoices: Choices;
   seatsChoices: Choices;
   files: File[] = [];
+  newFiles: File[] = [];
   dropzone: Dropzone;
   currentYear = new Date().getFullYear();
   startYear = 1900;
   carObject: Car;
+  uniqueImages = new Set<File>();
 
   constructor(
     private tokenService: TokenService,
@@ -50,7 +54,8 @@ export class ManageVehicleComponent {
     private spinner: NgxSpinnerService,
     private carJSON: CarJSONService,
     private carService: CarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fileStorageService: FileStorageService
   ) {
 
   }
@@ -62,6 +67,25 @@ export class ManageVehicleComponent {
     this.setYearsChoices();
     this.setCarObject();
     this.buildCarForm();
+  }
+
+  private prePopulateCarImages(carImages: CarImage[]) {
+    carImages.forEach((carImage: CarImage) => {
+      this.sub = this.fileStorageService.getFile(carImage.key).subscribe(response => {
+        const data: Blob = response.body;
+        const file = new File([data], 'filename.jpg', {type: 'image/jpeg'});
+        this.files.push(file);
+      });
+    });
+  }
+
+  private test(){
+    this.files.forEach((file: File) => {
+      this.uniqueImages.add(file);
+    });
+    this.uniqueImages.forEach((file: File) => {
+      console.log(file);
+    });
   }
 
   ngOnDestroy(): void {
@@ -76,7 +100,7 @@ export class ManageVehicleComponent {
     this.seatsChoices = new Choices(document.getElementById('seatChoices'));
   }
 
-  private getCarsList(){
+  private getCarsList() {
     this.carJSON.fetchCarData().subscribe(data => {
       this.cars = data;
       this.setMakeChoices(data);
@@ -114,6 +138,7 @@ export class ManageVehicleComponent {
       data => {
         this.carObject = data;
         this.setDefaultChoices();
+        this.prePopulateCarImages(data.carImages)
         this.spinner.hide();
       },
       error => {
@@ -156,19 +181,20 @@ export class ManageVehicleComponent {
   }
 
   onAddCarSubmit() {
-    const formValues = this.carForm.value;
-    console.log(formValues);
-    const car: Car = formValues;
-    car.licensePlate = (formValues.code + '-' + formValues.number);
-    debugger;
-    car.user = this.userObject;
-    this.spinner.show();
-    this.sub = this.carService.saveCar(car, this.files).subscribe(() => {
-      this.spinner.hide();
-    }, error => {
-      console.log(error)
-      this.spinner.hide();
-    });
+    this.test();
+    // const formValues = this.carForm.value;
+    // console.log(formValues);
+    // const car: Car = formValues;
+    // car.licensePlate = (formValues.code + '-' + formValues.number);
+    // car.user = this.userObject;
+    // car.id = this.carObject.id;
+    // this.spinner.show();
+    // this.sub = this.carService.saveCar(car, this.newFiles).subscribe(() => {
+    //   this.spinner.hide();
+    // }, error => {
+    //   console.log(error)
+    //   this.spinner.hide();
+    // });
   }
 
   onMakeSelection(): void {

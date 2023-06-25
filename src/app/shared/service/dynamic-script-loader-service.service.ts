@@ -20,8 +20,6 @@ export const ScriptStore: Scripts[] = [
   {name: 'nouislider', src: './assets/vendor/nouislider/nouislider.min.js'},
   {name: 'overlayscrollbars', src: './assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js'},
   {name: 'overlayscrollbars', src: './assets/vendor/apexcharts/js/apexcharts.min.js'},
-
-
 ];
 declare var document: any;
 

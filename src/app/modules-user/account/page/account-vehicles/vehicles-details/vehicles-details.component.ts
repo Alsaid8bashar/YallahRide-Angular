@@ -22,7 +22,7 @@ export class VehiclesDetailsComponent {
   }
 
   ngOnInit(): void {
-
+    // this.load();
     this.spinner.show();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
@@ -68,6 +68,12 @@ export class VehiclesDetailsComponent {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
+
+  private load(){
+    this.unloadScripts();
+    this.load();
+  }
+
 
 
 }

@@ -6,6 +6,7 @@ export class CarImage{
   id?: number
 
   imagePath?: string
+  key?:string
 
   car?: Car
 
