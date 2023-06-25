@@ -1,26 +1,25 @@
-{
-  "car": {
-    "make": "1",
-    "model": "Santana",
-    "year": "blue",
-    "color": "blue",
-    "licensePlate": "19-898989",
-    "user": {
-      "id": 94,
-      "firstName": "Hasan",
-      "lastName": "Al Shannag",
-      "imagePath": null,
-      "about": "tets",
-      "gender": "Male",
-      "travelPreferences": [],
-      "active": false
-    }
-  },
-  "carImages": [
-    {},
-    {},
-    {},
-    {},
-    {}
-  ]
-}
+[Log] Array (93) (main.js, line 6683)
+0 {id: 1, name: "VW", model_series: Array}
+1 {id: 2, name: "Opel", model_series: Array}
+2 {id: 3, name: "Mercedes", model_series: Array}
+3 {id: 4, name: "Ford", model_series: Array}
+4 {id: 5, name: "Audi", model_series: Array}
+5 {id: 6, name: "BMW", model_series: Array}
+6 {id: 7, name: "Skoda", model_series: Array}
+7 {id: 8, name: "Renault", model_series: Array}
+8 {id: 9, name: "Toyota", model_series: Array}
+9 {id: 10, name: "Peugeot", model_series: Array}
+10 {id: 11, name: "Fiat", model_series: Array}
+11 {id: 12, name: "Hyundai", model_series: Array}
+12 {id: 13, name: "SEAT", model_series: Array}
+13 {id: 14, name: "CUPRA", model_series: [{name: "Born"}, {name: "Ateca"}, {name: "Formentor"}, {name: "Leon"}]}
+14 {id: 15, name: "Nissan", model_series: Array}
+15 {id: 16, name: "Mazda", model_series: Array}
+16 {id: 17, name: "Citroen", model_series: Array}
+17 {id: 18, name: "VW Nutzfahrzeuge", model_series: Array}
+18 {id: 19, name: "KIA", model_series: Array}
+19 {id: 20, name: "Honda", model_series: Array}
+20 {id: 21, name: "Suzuki", model_series: Array}
+21 {id: 22, name: "Volvo", model_series: Array}
+22 {id: 23, name: "Mitsubishi", model_series: Array}
+23 {id: 24, name: "smart", model_series: [{name: "fortwo"}, {name: "forfour"}, {name: "roadster"}]}

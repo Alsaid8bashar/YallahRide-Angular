@@ -73,7 +73,7 @@ const routes: Routes = [
         component: AddVehicleComponent,
       },
       {
-        path: 'manage-vehicle',
+        path: 'manage-vehicle/:id',
         component: ManageVehicleComponent,
       },
     ],

@@ -22,9 +22,9 @@ import { AdminHeaderComponent } from './layout/layout-admin/admin-header/admin-h
 import { AdminContentLayout } from './layout/layout-admin/admin-content-layout/admin-content-layout.component';
 import { AdminSideBarComponent } from './layout/layout-admin/admin-side-bar/admin-side-bar.component';
 import {AccountLayoutComponent} from "./layout/layout-user/account-layout/account-layout.component";
-import {AdminDashboardModule} from "./modules-admin/dashboard/admin-dashboard.module";
 import {UserModule} from "./modules-user/user/user.module";
 import {SharedModule} from "./shared/shared.module";
+import {AdminDashboardModule} from "./modules-admin/dashboard/admin-dashboard.module";
 
 
 @NgModule({

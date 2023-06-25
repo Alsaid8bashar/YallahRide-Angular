@@ -16,23 +16,18 @@
   <!-- Card body START -->
   <div class="card-body">
     <!-- Leave review START -->
-    <form class="mb-5" [formGroup]="feedbackForm" (ngSubmit)="onFeedbackSubmit()">
+    <form class="mb-2" [formGroup]="feedbackForm" (ngSubmit)="onFeedbackSubmit()">
       <!-- Rating -->
       <div class="form-control-bg-light mb-3">
-        <select class="form-select js-choice" formControlName="stars" >
+        <select id="rating" class="form-select" formControlName="stars">
           <option value="" disabled>Select rating</option>
-          <option value="5">★★★★★ (5/5)</option>
-          <option value="4">★★★★☆ (4/5)</option>
-          <option value="3">★★★☆☆ (3/5)</option>
-          <option value="2">★★☆☆☆ (2/5)</option>
-          <option value="1">★☆☆☆☆ (1/5)</option>
         </select>
       </div>
 
       <!-- Message -->
       <div class="form-control-bg-light mb-3">
         <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review" rows="3"
-                  formControlName="feedback">
+                  formControlName="feedback" [readOnly]="flag">
 
         </textarea>
         <div class="mt-2">
@@ -45,10 +40,10 @@
             Feedback must not contain <strong>special characters</strong></mat-error>
         </div>
       </div>
-      <div class="text-center mt-5">
+      <div  class="text-center mt-2">
         <!-- Button -->
-        <button type="submit" class="btn btn-lg btn-primary mb-0" [disabled]="!feedbackForm.valid"
-                *ngIf="feedbackObj === null">Post review
+        <button [disabled]="flag" type="submit" class="btn btn-lg btn-primary mb-0"
+        >Post review
         </button>
       </div>
     </form>
