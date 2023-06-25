@@ -1,0 +1,64 @@
+{
+  "subject": {
+    "id": 41,
+    "firstName": "Bashar",
+    "lastName": "Ahmad",
+    "imagePath": "https://yallah-ride-bucket.s3.eu-central-1.amazonaws.com/68aa660a-172d-49ec-a60f-45e1f8cc11a2DRB_7715.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230625T161519Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAU5G37O2QXJPQSWVO%2F20230625%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=d37f3f5255734e8b23edd1dfe5e30548db4377d4ad8c1b6e1d3488327b573815",
+    "about": "With training from Atypon and Tahaluf Al Emarat Technical, I am a skilled software engineer with extensive knowledge in Java, object-oriented programming, data structures, and algorithms. My expertise also includes implementing design patterns to develop reusable and maintainable code while following SOLID principles.",
+    "gender": "Male",
+    "travelPreferences": [],
+    "active": false,
+    "verified": false
+  },
+  "report": {
+    "id": 145,
+    "firstName": "Hasan",
+    "lastName": "al Shannag",
+    "imagePath": "https://yallah-ride-bucket.s3.eu-central-1.amazonaws.com/bd2fa804-4e72-483a-b341-bce9a9105ff3IMG_3120-2-2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230625T144644Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAU5G37O2QXJPQSWVO%2F20230625%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=7dbdbcdca89583e4be8d767c172fc4535e8b1e3c655a4c7b0cdcb38e5799f5d6",
+    "about": null,
+    "gender": "Female",
+    "travelPreferences": [
+      {
+        "id": 11,
+        "description": "I’ll travel with pets depending on the animal",
+        "category": "Pets"
+      },
+      {
+        "id": 5,
+        "description": "I’ll jam depending on the mood",
+        "category": "Music"
+      },
+      {
+        "id": 2,
+        "description": "I’m a chatterbox!",
+        "category": "Chattiness"
+      },
+      {
+        "id": 8,
+        "description": "Cigarette breaks outside the car are ok",
+        "category": "Smoking"
+      }
+    ],
+    "active": false,
+    "verified": false
+  },
+  "title": {
+    "id": 11,
+    "title": "Duplicate profiles",
+    "reportCategory": {
+      "id": 3,
+      "category": "Something wrong with this ride or profile",
+      "userReport": true
+    }
+  },
+  "category": {
+    "id": 3,
+    "category": "Something wrong with this ride or profile",
+    "userReport": true
+  },
+  "description": {
+    "category": "3",
+    "title": "11",
+    "description": "kjhjk"
+  }
+}

@@ -6,17 +6,13 @@ import {ModelSeries} from "../../../../../data/schema/modelJSON";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Choices from "choices.js";
 import * as Dropzone from 'dropzone';
-import {TokenService} from "../../../../../shared/service/token.service";
 import {UserService} from "../../../../../data/service/user.service";
-import {AccountService} from "../../../../../data/service/account.service";
-import {SessionStorageService} from "../../../../../shared/service/session.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CarJSONService} from "../../../../../data/service/car-json.service";
 import {CarService} from "../../../../../data/service/car.service";
 import {Car} from "../../../../../data/schema/car";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -54,16 +50,12 @@ export class ManageVehicleComponent {
   uniqueImages = new Set<File>();
 
   constructor(
-    private tokenService: TokenService,
     private userService: UserService,
-    private accountService: AccountService,
-    private sessionService: SessionStorageService,
     private spinner: NgxSpinnerService,
     private carJSON: CarJSONService,
     private carService: CarService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private _sanitizer: DomSanitizer,
     private router: Router,
     private fileStorageService: FileStorageService
   ) {

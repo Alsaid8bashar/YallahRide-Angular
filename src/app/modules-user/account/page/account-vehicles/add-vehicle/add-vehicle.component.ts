@@ -39,9 +39,7 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
   startYear = 1900;
 
   constructor(
-    private tokenService: TokenService,
     private userService: UserService,
-    private accountService: AccountService,
     private sessionService: SessionStorageService,
     private spinner: NgxSpinnerService,
     private carJSON: CarJSONService,
