@@ -9,7 +9,7 @@ import {ReportRide} from "../schema/reportRide";
 })
 export class ReportRideService {
 
-  apiURL = environment.serverUrl + 'report-user/';
+  apiURL = environment.serverUrl + 'report-ride/';
 
   constructor(private http: HttpClient) {
   }

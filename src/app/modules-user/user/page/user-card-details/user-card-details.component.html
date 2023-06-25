@@ -6,7 +6,7 @@
       <div class="card-body text-center">
         <!-- Avatar Image -->
         <div class="avatar avatar-xl flex-shrink-0 mb-3">
-          <img class="avatar-img rounded-circle" src="{{userDto.user.imagePath}}"
+          <img class="avatar-img rounded-circle" src="{{userDto.user.imagePath || '/assets/images/avatar/13.jpg' }} "
                alt="avatar">
         </div>
         <!-- Title -->

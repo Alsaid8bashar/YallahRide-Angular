@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AdminAccountSettingsComponent} from "./page/admin-account-settings/admin-account-settings.component";
 import {AdminHomeComponent} from "./page/admin-home/admin-home.component";
-import {AdminReportDetailsComponent} from "./page/report-details/admin-report-details.component";
+import {AdminReportDetailsComponent} from "./page/report/report-details/admin-report-details.component";
 import {AdminUsersListComponent} from "./page/users-list/admin-users-list.component";
 import {AdminUserDetailsComponent} from "./page/user-details/admin-user-details.component";
 import {AdminDashboardRoutingModule} from "./admin-dashboard-routing.module";
@@ -12,6 +12,9 @@ import { AdminRideListComponent } from './page/ride-list/admin-ride-list.compone
 import { UserCardComponent } from './page/users-list/user-card/user-card.component';
 import {UserModule} from "../../modules-user/user/user.module";
 import {AccountModule} from "../../modules-user/account/account.module";
+import { ReportComponent } from './page/report/report.component';
+import { MemberReportComponent } from './page/report/member-report/member-report.component';
+import { ReportTableComponent } from './page/report/report-table/report-table.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import {AccountModule} from "../../modules-user/account/account.module";
         AdminUsersListComponent,
         AdminUserDetailsComponent,
         AdminRideListComponent,
-        UserCardComponent
+        UserCardComponent,
+        ReportComponent,
+        MemberReportComponent,
+        ReportTableComponent
     ],
     exports: [
         UserCardComponent
