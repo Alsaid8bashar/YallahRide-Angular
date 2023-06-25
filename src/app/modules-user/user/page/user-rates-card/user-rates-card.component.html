@@ -39,7 +39,7 @@
     <!-- Progress bar and rating END -->
 
     <!-- Leave review START -->
-    <form class="mb-5" [formGroup]="rateForm" (ngSubmit)="onSubmit()">
+    <form class="mb-5" [formGroup]="rateForm" (ngSubmit)="onSubmit()" *ngIf="!flag">
       <!-- Rating -->
       <div class="form-control-bg-light mb-3">
         <select class="form-select js-choice" formControlName="rate">

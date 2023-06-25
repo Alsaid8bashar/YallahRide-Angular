@@ -6,7 +6,8 @@
       <app-user-card-details [userDto]="userDto"></app-user-card-details>
 
       <!-- Reviews START -->
-      <app-user-rates-card [rates]="userDto.rates" [userRate]="userDto.userRate"></app-user-rates-card>
+      <app-user-rates-card [rates]="userDto.rates" [userRate]="userDto.userRate"
+                           [subject]="userDto.user"></app-user-rates-card>
       <!-- Reviews END -->
       <!-- Page main content END -->
     </div>

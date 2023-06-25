@@ -1,15 +1,19 @@
+import ReportCategory from "./reportCategory";
+import ReportTitle from "./reportTitle";
+import {User} from "./user";
+
 export class Report{
   reportPk?: number
 
-  report?: any
+  report?: User
 
-  title?: number
+  title?: ReportTitle
 
-  category?: number
+  category?: ReportCategory
 
   description?: string
 
   isSolved?: boolean
 
-  date?: any
+  date?: Date
 }
