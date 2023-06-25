@@ -43,5 +43,9 @@ export class ReportCategoryService {
     return this.http.get<ReportCategory[]>(`${this.apiURL}all/user-report`);
   }
 
+  getAllReportCategories() : Observable<ReportCategory[]>{
+     return this.http.get<ReportCategory[]>(`${this.apiURL}all`);
+  }
+
 
 }

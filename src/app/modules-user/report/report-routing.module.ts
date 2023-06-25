@@ -4,10 +4,15 @@ import {ReportComponent} from "./Page/report.component";
 
 const routes: Routes = [
   {
-    path: '',
-    component: ReportComponent,
+    path: 'user/:id',
+    component: ReportComponent, data: {routeName: 'users'}
+  },
+  {
+    path: 'ride/:id',
+    component: ReportComponent, data: {routeName: 'rides'}
   },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

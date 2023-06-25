@@ -55,8 +55,6 @@ const routes: Routes = [
 
     ]
   },
-
-
   {
     path: 'auth',
     loadChildren: () =>

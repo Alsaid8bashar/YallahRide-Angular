@@ -6,7 +6,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-user-card',
+  selector: 'admin-app-user-card',
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.css']
 })

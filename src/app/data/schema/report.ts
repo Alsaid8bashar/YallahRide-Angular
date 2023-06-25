@@ -16,4 +16,8 @@ export class Report{
   isSolved?: boolean
 
   date?: Date
+
+
+
+
 }

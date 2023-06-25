@@ -116,7 +116,7 @@ var e = {
         e.parallaxBG(),
         e.overlayScrollbars(),
         e.trafficsplineChart(),
-        e.trafficroomChart();
+        e.trafficroomChart()
 
     },
     isVariableDefined: function (el) {
@@ -1104,51 +1104,6 @@ var e = {
         chart.render();
       }
     },
-    // END: Traffic Chart 3
-
-    // // START: 28 Traffic Chart 4
-    // trafficroomChart: function () {
-    //   var cpv = e.select('#ChartTrafficRooms');
-    //   if (e.isVariableDefined(cpv)) {
-    //     // CHART: Page Views
-    //     var options = {
-    //       series: [70, 30,50],
-    //       labels: ['Canceled', 'Completed', 'Upcoming'],
-    //       chart: {
-    //         height: 300,
-    //         width: 300,
-    //         offsetX: 0,
-    //         type: 'donut',
-    //         sparkline: {
-    //           enabled: !0
-    //         }
-    //       },
-    //       colors: [
-    //         ThemeColor.getCssVariableValue('--bs-danger'),
-    //         ThemeColor.getCssVariableValue('--bs-success'),
-    //         ThemeColor.getCssVariableValue('--bs-primary'),
-    //       ],
-    //       tooltip: {
-    //         theme: "dark"
-    //       },
-    //       responsive: [{
-    //         breakpoint: 480,
-    //         options: {
-    //           chart: {
-    //             width: 200,
-    //             height: 200,
-    //           },
-    //           legend: {
-    //             position: 'bottom'
-    //           }
-    //         }
-    //       }]
-    //     };
-    //     var chart = new ApexCharts(document.querySelector("#ChartTrafficRooms"), options);
-    //     chart.render();
-    //   }
-    // },
-    // // END: Traffic Chart 4
 
 };
 e.init();

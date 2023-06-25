@@ -3,5 +3,5 @@ export default class ReportCategory{
 
   category?: string
 
-  isUserReport?: boolean
+  userReport?: boolean
 }
