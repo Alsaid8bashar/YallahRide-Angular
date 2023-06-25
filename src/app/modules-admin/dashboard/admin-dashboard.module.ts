@@ -10,8 +10,8 @@ import {SharedModule} from "../../shared/shared.module";
 import {RideModule} from "../../modules-user/ride/ride.module";
 import { AdminRideListComponent } from './page/ride-list/admin-ride-list.component';
 import { UserCardComponent } from './page/users-list/user-card/user-card.component';
-import {AccountModule} from "../../modules-user/account/account.module";
 import {UserModule} from "../../modules-user/user/user.module";
+import {AccountModule} from "../../modules-user/account/account.module";
 
 
 @NgModule({

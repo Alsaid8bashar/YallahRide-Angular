@@ -9,6 +9,7 @@ import {UserService} from "../../../../../data/service/user.service";
 import {Passenger} from "../../../../../data/schema/passenger";
 import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
 import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-ride-details',
@@ -21,6 +22,8 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   protected ridesSubscription: Subscription;
   protected passengerSubscription: Subscription;
   protected isDeleteChecked: boolean = false;
+  protected isCompletedCheck: boolean = false;
+  protected isCanselCheckedDriver: boolean = false;
   protected isCanselChecked: boolean = false;
   protected isDriver: boolean;
 
@@ -126,6 +129,31 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
+  completeRide() {
+    this.spinner.show();
+    this.changeRideStatus(this.ride.id, RideStatus.Completed);
+  }
+
+  canselDriverRide() {
+    this.spinner.show();
+    this.changeRideStatus(this.ride.id, RideStatus.Canceled);
+  }
+
+  changeRideStatus(rideId: number, status: RideStatus) {
+    debugger
+    this.rideService.changeRideStatus(rideId, status).subscribe(
+      data => {
+        this.spinner.hide();
+        this.router.navigate(['account', 'rides',]);
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    )
+  }
+
+
   editRide(ride: Ride) {
     ride.seats++;
     this.rideService.createRide(ride).subscribe(
@@ -150,5 +178,6 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'choices', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {
     }).catch(error => console.log(error));
   }
+
 
 }

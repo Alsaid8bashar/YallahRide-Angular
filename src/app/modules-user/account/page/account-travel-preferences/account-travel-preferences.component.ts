@@ -35,14 +35,14 @@ export class AccountTravelPreferencesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log("RELOAD")
+    this.setUserObject();
     this.musicTravelPreferencesChoices = new Choices(document.getElementById('Music'));
     this.chattinessTravelPreferencesChoices = new Choices(document.getElementById('Chattiness'));
     this.smokingTravelPreferencesChoices = new Choices(document.getElementById('Smoking'));
     this.petTravelPreferencesChoices = new Choices(document.getElementById('Pets'));
     this.spinner.show();
     this.buildTravelPreferencesForm();
-    this.setUserObject();
+
     this.setMusicTravelPreferences();
     this.setChattinessTravelPreferences();
     this.setSmokingTravelPreferences();
@@ -70,25 +70,24 @@ export class AccountTravelPreferencesComponent implements OnInit, OnDestroy {
     travelPreferences.push(this.findTravelPreferenceById(this.smokingTravelPreferences, formValues.smokingTravelPreferencesChoice));
     travelPreferences.push(this.findTravelPreferenceById(this.musicTravelPreferences, formValues.musicTravelPreferencesChoice));
     travelPreferences.push(this.findTravelPreferenceById(this.chattinessTravelPreferences, formValues.chattinessTravelPreferencesChoice));
+    this.spinner.show();
     this.sub = this.userService.saveUserTravelPreferences(travelPreferences, this.userObject.id).subscribe(
       data => {
-        location.reload();
+        console.log(data)
+        this.userObject = data;
+        this.userService.updateUser(data);
+        this.spinner.hide();
       }, error => {
         console.log(error);
+        this.spinner.hide();
       }
     );
   }
 
   private setUserObject(): void {
-    this.userObject = JSON.parse(this.sessionService.getItem('user')) as User;
-    this.sub = this.userService.getUserById(this.userObject.id).subscribe(
-      (data) => {
-        this.userObject = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.sub = this.userService.user$.subscribe(data => {
+      this.userObject = data;
+    });
   }
 
 
@@ -131,6 +130,7 @@ export class AccountTravelPreferencesComponent implements OnInit, OnDestroy {
   private setTravelPreferencesChoices(travelPreferences: TravelPreference [], choice: Choices) {
     travelPreferences.forEach((preference: TravelPreference) => {
       if (this.userObject.travelPreferences.find(data => data.id === preference.id)) {
+        console.log(preference)
         choice._addChoice({value: preference.id.toString(), label: `${preference.description}`, isSelected: true});
         this.updateFormValue(travelPreferences, preference);
       } else {

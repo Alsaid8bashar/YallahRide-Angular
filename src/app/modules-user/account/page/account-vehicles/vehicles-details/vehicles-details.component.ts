@@ -18,15 +18,12 @@ import Choices from "choices.js";
 export class VehiclesDetailsComponent {
   protected carSubscription: Subscription;
   car: Car;
-  modelChoices: Choices;
-  files: File[] = [];
-  @ViewChild('imageGallery') imageGalleryRef: ElementRef;
+
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private carService: CarService, private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
-    this.modelChoices = new Choices(document.getElementById('mySelect'));
     this.spinner.show();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');

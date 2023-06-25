@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 mx-auto">
-      <form class="vstack gap-4">
+      <form class="vstack gap-4" [formGroup]="carForm" (ngSubmit)="onAddCarSubmit()">
 
 
         <!-- Cab Detail START -->
@@ -16,283 +16,186 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Make<span class="text-danger">*</span></label>
-                <select class="form-select js-choice">
-                  <option value="">Select your vehicle make</option>
-                  <option value="Audi">Audi</option>
-                  <option value="BMW">BMW</option>
-                  <option value="Buick">Buick</option>
-                  <option value="Cadillac">Cadillac</option>
-                  <option value="Chevrolet">Chevrolet</option>
-                  <option value="Chrysler">Chrysler</option>
-                  <option value="Dodge">Dodge</option>
-                  <option value="Ferrari">Ferrari</option>
-                  <option value="Ford">Ford</option>
-                  <option value="GM">GM</option>
-                  <option value="GEM">GEM</option>
-                  <option value="GMC">GMC</option>
-                  <option value="Honda">Honda</option>
-                  <option value="Hummer">Hummer</option>
-                  <option value="Hyundai">Hyundai</option>
-                  <option value="Infiniti">Infiniti</option>
-                  <option value="Isuzu">Isuzu</option>
-                  <option value="Jaguar">Jaguar</option>
-                  <option value="Jeep">Jeep</option>
-                  <option value="Kia">Kia</option>
-                  <option value="Lamborghini">Lamborghini</option>
-                  <option value="Land Rover">Land Rover</option>
-                  <option value="Lexus">Lexus</option>
-                  <option value="Lincoln">Lincoln</option>
-                  <option value="Lotus">Lotus</option>
-                  <option value="Mazda">Mazda</option>
-                  <option value="Mercedes-Benz">Mercedes-Benz</option>
-                  <option value="Mercury">Mercury</option>
-                  <option value="Mitsubishi">Mitsubishi</option>
-                  <option value="Nissan">Nissan</option>
-                  <option value="Oldsmobile">Oldsmobile</option>
-                  <option value="Peugeot">Peugeot</option>
-                  <option value="Pontiac">Pontiac</option>
-                  <option value="Porsche">Porsche</option>
-                  <option value="Regal">Regal</option>
-                  <option value="Saab">Saab</option>
-                  <option value="Saturn">Saturn</option>
-                  <option value="Subaru">Subaru</option>
-                  <option value="Suzuki">Suzuki</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Volvo">Volvo</option>
+                <select id="makeChoices" class="form-select" [(ngModel)]="selectedCarId" (change)="onMakeSelection()"
+                        formControlName="make">
+                  <option value="" disabled>Select your car make</option>
                 </select>
+                <mat-error
+                  *ngIf="carForm.controls['make'].hasError('required') && carForm.controls['make'].touched">
+                  Last name must not be <strong>empty</strong></mat-error>
               </div>
+
 
               <!-- Model -->
               <div class="col-md-6">
                 <label class="form-label">Model<span class="text-danger">*</span></label>
-                <select class="form-select js-choice">
-                  <option value="">Select your vehicle model</option>
-                  <option value="Audi">Audi</option>
-                  <option value="BMW">BMW</option>
-                  <option value="Buick">Buick</option>
-                  <option value="Cadillac">Cadillac</option>
-                  <option value="Chevrolet">Chevrolet</option>
-                  <option value="Chrysler">Chrysler</option>
-                  <option value="Dodge">Dodge</option>
-                  <option value="Ferrari">Ferrari</option>
-                  <option value="Ford">Ford</option>
-                  <option value="GM">GM</option>
-                  <option value="GEM">GEM</option>
-                  <option value="GMC">GMC</option>
-                  <option value="Honda">Honda</option>
-                  <option value="Hummer">Hummer</option>
-                  <option value="Hyundai">Hyundai</option>
-                  <option value="Infiniti">Infiniti</option>
-                  <option value="Isuzu">Isuzu</option>
-                  <option value="Jaguar">Jaguar</option>
-                  <option value="Jeep">Jeep</option>
-                  <option value="Kia">Kia</option>
-                  <option value="Lamborghini">Lamborghini</option>
-                  <option value="Land Rover">Land Rover</option>
-                  <option value="Lexus">Lexus</option>
-                  <option value="Lincoln">Lincoln</option>
-                  <option value="Lotus">Lotus</option>
-                  <option value="Mazda">Mazda</option>
-                  <option value="Mercedes-Benz">Mercedes-Benz</option>
-                  <option value="Mercury">Mercury</option>
-                  <option value="Mitsubishi">Mitsubishi</option>
-                  <option value="Nissan">Nissan</option>
-                  <option value="Oldsmobile">Oldsmobile</option>
-                  <option value="Peugeot">Peugeot</option>
-                  <option value="Pontiac">Pontiac</option>
-                  <option value="Porsche">Porsche</option>
-                  <option value="Regal">Regal</option>
-                  <option value="Saab">Saab</option>
-                  <option value="Saturn">Saturn</option>
-                  <option value="Subaru">Subaru</option>
-                  <option value="Suzuki">Suzuki</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Volvo">Volvo</option>
+                <select class="form-select" formControlName="model" id="modelChoices">
+                  <option value="" disabled>Select your car model</option>
                 </select>
+                <mat-error
+                  *ngIf="carForm.controls['model'].hasError('required') && carForm.controls['model'].touched">
+                  Last name must not be <strong>empty</strong></mat-error>
               </div>
 
-
-              <!-- Model Year -->
               <div class="col-md-6">
                 <label class="form-label">Year of Manufacture<span class="text-danger">*</span></label>
-                <select class="form-select js-choice">
-                  <option value="">Select your model year</option>
-                  <option value="Audi">Audi</option>
-                  <option value="BMW">BMW</option>
-                  <option value="Buick">Buick</option>
-                  <option value="Cadillac">Cadillac</option>
-                  <option value="Chevrolet">Chevrolet</option>
-                  <option value="Chrysler">Chrysler</option>
-                  <option value="Dodge">Dodge</option>
-                  <option value="Ferrari">Ferrari</option>
-                  <option value="Ford">Ford</option>
-                  <option value="GM">GM</option>
-                  <option value="GEM">GEM</option>
-                  <option value="GMC">GMC</option>
-                  <option value="Honda">Honda</option>
-                  <option value="Hummer">Hummer</option>
-                  <option value="Hyundai">Hyundai</option>
-                  <option value="Infiniti">Infiniti</option>
-                  <option value="Isuzu">Isuzu</option>
-                  <option value="Jaguar">Jaguar</option>
-                  <option value="Jeep">Jeep</option>
-                  <option value="Kia">Kia</option>
-                  <option value="Lamborghini">Lamborghini</option>
-                  <option value="Land Rover">Land Rover</option>
-                  <option value="Lexus">Lexus</option>
-                  <option value="Lincoln">Lincoln</option>
-                  <option value="Lotus">Lotus</option>
-                  <option value="Mazda">Mazda</option>
-                  <option value="Mercedes-Benz">Mercedes-Benz</option>
-                  <option value="Mercury">Mercury</option>
-                  <option value="Mitsubishi">Mitsubishi</option>
-                  <option value="Nissan">Nissan</option>
-                  <option value="Oldsmobile">Oldsmobile</option>
-                  <option value="Peugeot">Peugeot</option>
-                  <option value="Pontiac">Pontiac</option>
-                  <option value="Porsche">Porsche</option>
-                  <option value="Regal">Regal</option>
-                  <option value="Saab">Saab</option>
-                  <option value="Saturn">Saturn</option>
-                  <option value="Subaru">Subaru</option>
-                  <option value="Suzuki">Suzuki</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Volvo">Volvo</option>
+                <select id="yearChoices" class="form-select js-choice" formControlName="modelYear">
+                  <option value="default" disabled>Select your car year model</option>
                 </select>
               </div>
+
 
               <!-- Color -->
               <div class="col-md-6">
-                <label class="form-label">Color<span class="text-danger">*</span></label>
-                <select class="form-select js-choice">
-                  <option value="">Select your vehicle color</option>
-                  <option value="Audi">Audi</option>
-                  <option value="BMW">BMW</option>
-                  <option value="Buick">Buick</option>
-                  <option value="Cadillac">Cadillac</option>
-                  <option value="Chevrolet">Chevrolet</option>
-                  <option value="Chrysler">Chrysler</option>
-                  <option value="Dodge">Dodge</option>
-                  <option value="Ferrari">Ferrari</option>
-                  <option value="Ford">Ford</option>
-                  <option value="GM">GM</option>
-                  <option value="GEM">GEM</option>
-                  <option value="GMC">GMC</option>
-                  <option value="Honda">Honda</option>
-                  <option value="Hummer">Hummer</option>
-                  <option value="Hyundai">Hyundai</option>
-                  <option value="Infiniti">Infiniti</option>
-                  <option value="Isuzu">Isuzu</option>
-                  <option value="Jaguar">Jaguar</option>
-                  <option value="Jeep">Jeep</option>
-                  <option value="Kia">Kia</option>
-                  <option value="Lamborghini">Lamborghini</option>
-                  <option value="Land Rover">Land Rover</option>
-                  <option value="Lexus">Lexus</option>
-                  <option value="Lincoln">Lincoln</option>
-                  <option value="Lotus">Lotus</option>
-                  <option value="Mazda">Mazda</option>
-                  <option value="Mercedes-Benz">Mercedes-Benz</option>
-                  <option value="Mercury">Mercury</option>
-                  <option value="Mitsubishi">Mitsubishi</option>
-                  <option value="Nissan">Nissan</option>
-                  <option value="Oldsmobile">Oldsmobile</option>
-                  <option value="Peugeot">Peugeot</option>
-                  <option value="Pontiac">Pontiac</option>
-                  <option value="Porsche">Porsche</option>
-                  <option value="Regal">Regal</option>
-                  <option value="Saab">Saab</option>
-                  <option value="Saturn">Saturn</option>
-                  <option value="Subaru">Subaru</option>
-                  <option value="Suzuki">Suzuki</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Volvo">Volvo</option>
+                <label class="form-label">Color<span
+                  class="text-danger">*</span></label>
+                <select id="colorChoices" class="form-select" formControlName="color">
+                  <option value="" selected>Select your car color</option>
+                  <option value="red">Red</option>
+                  <option value="blue">Blue</option>
+                  <option value="green">Green</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="black">Black</option>
+                  <option value="white">White</option>
+                  <option value="silver">Silver</option>
+                  <option value="gray">Gray</option>
+                  <option value="orange">Orange</option>
+                  <option value="purple">Purple</option>
+                  <option value="pink">Pink</option>
+                  <option value="brown">Brown</option>
+                  <option value="gold">Gold</option>
+                  <option value="bronze">Bronze</option>
+                  <option value="teal">Teal</option>
+                  <option value="maroon">Maroon</option>
+                  <option value="navy">Navy</option>
+                  <option value="olive">Olive</option>
+                  <option value="plum">Plum</option>
+                  <option value="turquoise">Turquoise</option>
+                  <option value="lime">Lime</option>
                 </select>
               </div>
 
-              <!-- Image Gallery -->
+
+              <!-- Seats -->
+              <div class="col-md-6">
+                <label class="form-label">Number of Seats<span class="text-danger">*</span></label>
+                <select id="seatChoices" class="form-select" formControlName="seats">
+                  <option value="default">Select number of car seats</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+
+              <!--  -->
+              <div class="col-md-6">
+                <label class="form-label">License Plate<span class="text-danger">* </span><i
+                  class="bi bi-info-circle"></i></label>
+                <div class="row">
+                  <div class="col-3">
+                    <input type="text" class="form-control" formControlName="code"
+                           placeholder="XX">
+                  </div>
+
+                  <div class="col-9">
+                    <input type="text" class="form-control" formControlName="number"
+                           placeholder="XXXXX">
+                  </div>
+
+                </div>
+              </div>
+
+
               <div class="col-12">
                 <label class="form-label">Upload image *</label>
-                <div class="dropzone dropzone-custom"
-                     data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>
-                  <div class="dz-message needsclick">
-                    <i class="bi bi-upload display-3"></i>
-                    <p>Drop files here or click to upload.</p>
-                  </div>
-                  <div class="dz-preview row g-4">
-                    <div class="col-xl-2 col-md-4 col-sm-6">
-                      <div class="card p-2 mb-0 shadow-none border position-relative h-100">
-                        <!-- Image -->
-                        <img data-dz-thumbnail src="#" class="rounded bg-light" alt="">
-                        <!-- info -->
-                        <div class="mt-2">
-                          <a href="javascript:void(0);" class="text-muted fw-bold"
-                             data-dz-name></a>
-                          <p class="mb-0 small" data-dz-size></p>
-                        </div>
-                        <!-- Close btn -->
-                        <div class="position-absolute top-0 start-100 translate-middle">
-                          <a href="#!" class="btn btn-danger rounded-circle icon-sm p-0"
-                             data-dz-remove>
-                            <i class="fas fa-times"></i>
-                          </a>
-                        </div>
-                      </div>
+                <ngx-dropzone #dropzone [processDirectoryDrop]="true" (change)="onSelect($event)" [expandable]="true">
+                  <ngx-dropzone-label>
+                    <div class="dz-message needsclick">
+                      <i class="bi bi-upload display-3"></i>
+                      <p>Drop files here or click to upload.</p>
                     </div>
-                  </div>
-                </div>
+                  </ngx-dropzone-label>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                                              [removable]="true" (removed)="onRemove(f)">
+                    <ngx-dropzone-label>
+                      <p class="mb-0 small text-white bg-dark" data-dz-size></p>
+                    </ngx-dropzone-label>
+                    <div class="hover-element w-100 h-100">
+                      <i
+                        class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                    </div>
+                  </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+
                 <p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Our
                   suggested dimensions are 600px * 450px. The larger image will be cropped
                   to 4:3 to fit our thumbnails/previews.</p>
+                <div *ngIf="!isCarFormValid">
+                  <p class="small mb-0 mt-2 text-danger"><b
+                    class="text-danger">Error:</b> {{errorMessage}}</p>
+                </div>
               </div>
+
+
             </div>
           </div>
         </div>
         <!-- Cab Detail END -->
+
+
+        <!-- Button -->
+        <div class="text-end">
+          <button class="btn btn-primary mb-0">save change</button>
+        </div>
       </form>
     </div>
   </div>
-</div>
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-lg-10 mx-auto">
-      <form class="vstack gap-4">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <form class="vstack gap-4">
 
 
-        <!-- Cab Detail START -->
-        <div class="card shadow">
-          <!-- Card header -->
-          <div class="card-header border-bottom">
-            <h5 class="mb-0">Delete Vehicle</h5>
-          </div>
+          <!-- Cab Detail START -->
+          <div class="card shadow">
+            <!-- Card header -->
+            <div class="card-header border-bottom">
+              <h5 class="mb-0">Delete Vehicle</h5>
+            </div>
 
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row g-3">
-              <!-- Model -->
-              <div class="col-md-6">
-                <div class="form-check form-check-md mb-3">
-                  <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck">
-                  <label class="form-check-label" for="deleteaccountCheck">Yes, I'd
-                    like to delete my
-                    vehicle</label>
+            <!-- Card body -->
+            <div class="card-body">
+              <div class="row g-3">
+                <!-- Model -->
+                <div class="col-md-6">
+                  <div class="form-check form-check-md mb-3">
+                    <input class="form-check-input" type="checkbox" value=""
+                           id="cancelCheck" [(ngModel)]="isDeleteCarChecked">
+                    <label class="form-check-label" for="cancelCheck">Yes, I'd
+                      like to delete my
+                      vehicle</label>
+                  </div>
+                  <button class="btn btn-danger btn-sm mb-0" (click)="deleteCar()" [disabled]="isDeleteCarChecked">delete my
+                    vehicle
+                  </button>
+
                 </div>
-                <a href="#" class="btn btn-danger btn-sm mb-0">delete my vehicle</a>
-              </div>
 
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Cab Detail END -->
+          <!-- Cab Detail END -->
 
 
-
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>

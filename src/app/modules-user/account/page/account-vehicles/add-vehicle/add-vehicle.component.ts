@@ -11,7 +11,6 @@ import {ModelSeries} from "../../../../../data/schema/modelJSON";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Choices from "choices.js";
 import * as Dropzone from 'dropzone';
-import {CarImage} from "../../../../../data/schema/carImage";
 import {Car} from "../../../../../data/schema/car";
 import {User} from "../../../../../data/schema/user";
 import {CarService} from "../../../../../data/service/car.service";
@@ -38,8 +37,6 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
   dropzone: Dropzone;
   currentYear = new Date().getFullYear();
   startYear = 1900;
-  @ViewChild('imageGallery') imageGalleryRef: ElementRef;
-
 
   constructor(
     private tokenService: TokenService,
