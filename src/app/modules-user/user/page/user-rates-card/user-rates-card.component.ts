@@ -1,17 +1,21 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Rate} from "../../../../data/schema/rate";
 import {DatePipe} from "@angular/common";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-rates-card',
   templateUrl: './user-rates-card.component.html',
   styleUrls: ['./user-rates-card.component.css']
 })
-export class UserRatesCardComponent {
+export class UserRatesCardComponent implements OnInit {
   @Input()
   rates: Rate[];
   @Input()
   userRate: number;
+
+  rateForm: FormGroup;
+
 
   constructor(private datePipe: DatePipe) {
   }
@@ -27,5 +31,20 @@ export class UserRatesCardComponent {
 
   hasHalfStar(rate: number): boolean {
     return rate - Math.floor(rate) >= 0.5;
+  }
+
+  private buildForm(): void {
+    this.rateForm = new FormGroup({
+      rate: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
+    })
+  }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  onSubmit() {
+
   }
 }

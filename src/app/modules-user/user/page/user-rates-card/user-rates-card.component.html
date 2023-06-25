@@ -39,21 +39,21 @@
     <!-- Progress bar and rating END -->
 
     <!-- Leave review START -->
-    <form class="mb-5">
+    <form class="mb-5" [formGroup]="rateForm" (ngSubmit)="onSubmit()">
       <!-- Rating -->
       <div class="form-control-bg-light mb-3">
-        <select class="form-select js-choice">
-          <option selected="">★★★★★ (5/5)</option>
-          <option>★★★★☆ (4/5)</option>
-          <option>★★★☆☆ (3/5)</option>
-          <option>★★☆☆☆ (2/5)</option>
-          <option>★☆☆☆☆ (1/5)</option>
+        <select class="form-select js-choice" formControlName="rate">
+          <option selected="" value="5">★★★★★ (5/5)</option>
+          <option value="4">★★★★☆ (4/5)</option>
+          <option value="3">★★★☆☆ (3/5)</option>
+          <option value="2">★★☆☆☆ (2/5)</option>
+          <option value="1">★☆☆☆☆ (1/5)</option>
         </select>
       </div>
       <!-- Message -->
       <div class="form-control-bg-light mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review"
-                          rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review" rows="3"
+                  formControlName="description"></textarea>
       </div>
       <!-- Button -->
       <button type="submit" class="btn btn-lg btn-primary mb-0">Post review <i
@@ -62,31 +62,9 @@
     <!-- Leave review END -->
 
     <!-- review-item.component.html -->
-    <ng-container *ngFor="let rate of rates">
-      <div class="d-md-flex my-4">
-        <!-- Avatar -->
-        <div class="avatar avatar-lg me-3 flex-shrink-0">
-          <img class="avatar-img rounded-circle" [src]="rate.rater.imagePath" alt="avatar">
-        </div>
-        <!-- Text -->
-        <div>
-          <div class="d-flex justify-content-between mt-1 mt-md-0">
-            <div>
-              <h6 class="me-3 mb-0">{{ rate.rater.firstName }}</h6>
-              <!-- Info -->
-              <ul class="nav nav-divider small mb-2">
-                <li class="nav-item">{{getFormattedDate(rate.date)}}</li>
-              </ul>
-            </div>
-            <!-- Review star -->
-            <div class="icon-md rounded text-bg-warning fs-6">{{ rate.rate }}</div>
-          </div>
-
-          <p class="mb-2">{{ rate.description }}</p>
-        </div>
-      </div>
-      <hr>
-    </ng-container>
+    <div *ngFor="let rate of rates">
+      <app-rater-card [rate]="rate"></app-rater-card>
+    </div>
 
     <!-- Divider -->
     <hr>

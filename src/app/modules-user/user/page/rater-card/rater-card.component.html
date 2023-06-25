@@ -1,0 +1,18 @@
+  <!-- Avatar -->
+  <div class="avatar avatar-lg me-3 flex-shrink-0">
+    <img class="avatar-img rounded-circle" [src]="rate.rater.imagePath || '/assets/images/avatar/13.jpg' " alt="avatar">
+  </div>
+  <!-- Text -->
+  <div>
+    <div class="d-flex justify-content-between mt-1 mt-md-0">
+      <div>
+        <h6 class="me-3 mb-0">{{rate.rater.firstName}} {{rate.rater.lastName}}</h6>
+        <!-- Info -->
+        <ul class="nav nav-divider small mb-2">
+          <li class="nav-item">{{getFormattedDate(rate.date)}}</li>
+        </ul>
+      </div>
+      <div class="icon-md rounded text-bg-warning fs-6">{{rate.rate}}</div>
+    </div>
+    <p class="mb-2 ">{{ rate.description }}</p></div>
+<hr>
