@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs";
 import {CarJSON} from "../../../../../data/schema/carJSON";
 import {User} from "../../../../../data/schema/user";
@@ -14,7 +14,16 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {CarJSONService} from "../../../../../data/service/car-json.service";
 import {CarService} from "../../../../../data/service/car.service";
 import {Car} from "../../../../../data/schema/car";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {CarImage} from "../../../../../data/schema/carImage";
+import items from "choices.js/public/types/src/scripts/reducers/items";
+import {HttpClient} from "@angular/common/http";
+import {HttpHeaders, HttpResponse} from '@angular/common/http';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {error} from "@angular/compiler-cli/src/transformers/util";
+
 
 @Component({
   selector: 'app-manage-vehicle',
@@ -22,6 +31,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./manage-vehicle.component.css']
 })
 export class ManageVehicleComponent {
+  @ViewChild('dropzone', {static: false}) dropzoneComponent: Dropzone;
 
   private sub = new Subscription();
   cars: CarJSON[] = [];
@@ -41,6 +51,7 @@ export class ManageVehicleComponent {
   currentYear = new Date().getFullYear();
   startYear = 1900;
   carObject: Car;
+  isDeleteCarChecked = false;
 
   constructor(
     private tokenService: TokenService,
@@ -50,12 +61,16 @@ export class ManageVehicleComponent {
     private spinner: NgxSpinnerService,
     private carJSON: CarJSONService,
     private carService: CarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private _sanitizer: DomSanitizer,
+    private router: Router
   ) {
 
   }
 
   ngOnInit(): void {
+
     this.getCarsList()
     this.setUserObject();
     this.initializeChoices();
@@ -76,7 +91,7 @@ export class ManageVehicleComponent {
     this.seatsChoices = new Choices(document.getElementById('seatChoices'));
   }
 
-  private getCarsList(){
+  private getCarsList() {
     this.carJSON.fetchCarData().subscribe(data => {
       this.cars = data;
       this.setMakeChoices(data);
@@ -107,6 +122,28 @@ export class ManageVehicleComponent {
     this.userObject = this.userService.getUserSubject();
   }
 
+  setFiles(carImages: CarImage[]) {
+    carImages.forEach(item => {
+      this.getImageFile(item.imagePath)
+        .subscribe(file => {
+          this.files.push(file);
+        });
+    });
+    // carImages.forEach(item => {
+    //   this.files.push(item.multipartFile)
+    // })
+  }
+
+  getImageFile(url: string): Observable<File> {
+    return this.http.get(url, {responseType: 'blob'})
+      .pipe(
+        map((blob: Blob) => {
+          return new File([blob], 'image');
+        })
+      );
+  }
+
+
   setCarObject(): void {
     const carId = +this.route.snapshot.paramMap.get('id');
     this.spinner.show();
@@ -114,6 +151,7 @@ export class ManageVehicleComponent {
       data => {
         this.carObject = data;
         this.setDefaultChoices();
+        this.setFiles(data.carImages);
         this.spinner.hide();
       },
       error => {
@@ -122,6 +160,7 @@ export class ManageVehicleComponent {
       }
     );
   }
+
 
   private setDefaultChoices() {
     this.makeChoices._findAndSelectChoiceByValue(this.carObject.make);
@@ -240,5 +279,19 @@ export class ManageVehicleComponent {
 
   onRemove(event) {
     this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  deleteCar() {
+    this.spinner.show();
+    this.carService.deleteCar(this.carObject.id).subscribe(
+      data => {
+        this.spinner.hide()
+        this.router.navigate(['account', 'vehicles',]);
+      },
+      error => {
+        console.error(error);
+        this.spinner.hide()
+      }
+    )
   }
 }

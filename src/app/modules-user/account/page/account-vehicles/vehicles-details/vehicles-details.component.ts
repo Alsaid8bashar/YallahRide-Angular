@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
 import {UserService} from "../../../../../data/service/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,6 +8,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {CarService} from "../../../../../data/service/car.service";
 import {Subscription} from "rxjs";
 import {Car} from "../../../../../data/schema/car";
+import Choices from "choices.js";
 
 @Component({
   selector: 'app-vehicles-details',
@@ -18,11 +19,11 @@ export class VehiclesDetailsComponent {
   protected carSubscription: Subscription;
   car: Car;
 
+
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private carService: CarService, private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
-
     this.spinner.show();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
@@ -42,22 +43,7 @@ export class VehiclesDetailsComponent {
         this.spinner.hide();
       }
     )
-
   }
-
-//   <!-- Back to top -->
-// <div class="back-top"></div>
-//
-//     <!-- Bootstrap JS -->
-//     <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-//
-//     <!-- Vendors -->
-//     <script src="assets/vendor/sticky-js/sticky.min.js"></script>
-//     <script src="assets/vendor/glightbox/js/glightbox.js"></script>
-//     <script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
-//     <script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
-//
-//   <!-- ThemeFunctions -->
 
   private loadScripts() {
     this.dynamicScriptLoader.load('bootstrap.bundle.min', 'tiny-slider', 'flatpickr', 'glightbox', 'functions', 'sticky').then(data => {

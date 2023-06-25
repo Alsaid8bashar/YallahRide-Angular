@@ -28,14 +28,14 @@ import {AccountModule} from "../../modules-user/account/account.module";
         UserCardComponent
     ],
 
-    imports: [
-        SharedModule,
-        CommonModule,
-        AdminDashboardRoutingModule,
-        RideModule,
-        AccountModule,
-        UserModule
-    ]
+  imports: [
+    SharedModule,
+    CommonModule,
+    AdminDashboardRoutingModule,
+    RideModule,
+    AccountModule,
+    UserModule
+  ]
 })
 export class AdminDashboardModule {
 

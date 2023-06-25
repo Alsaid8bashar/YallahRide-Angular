@@ -101,7 +101,7 @@
                 <div class="row">
                   <div class="col-3">
                     <input type="text" class="form-control" formControlName="code"
-                           placeholder="XX" >
+                           placeholder="XX">
                   </div>
 
                   <div class="col-9">
@@ -115,7 +115,7 @@
 
               <div class="col-12">
                 <label class="form-label">Upload image *</label>
-                <ngx-dropzone [processDirectoryDrop]="true" (change)="onSelect($event)" [expandable]="true">
+                <ngx-dropzone #dropzone [processDirectoryDrop]="true" (change)="onSelect($event)" [expandable]="true">
                   <ngx-dropzone-label>
                     <div class="dz-message needsclick">
                       <i class="bi bi-upload display-3"></i>
@@ -124,13 +124,16 @@
                   </ngx-dropzone-label>
                   <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
                                               [removable]="true" (removed)="onRemove(f)">
-                    <ngx-dropzone-label><p class="mb-0 small text-white bg-dark" data-dz-size></p></ngx-dropzone-label>
+                    <ngx-dropzone-label>
+                      <p class="mb-0 small text-white bg-dark" data-dz-size></p>
+                    </ngx-dropzone-label>
                     <div class="hover-element w-100 h-100">
                       <i
                         class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
                     </div>
                   </ngx-dropzone-image-preview>
                 </ngx-dropzone>
+
                 <p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Our
                   suggested dimensions are 600px * 450px. The larger image will be cropped
                   to 4:3 to fit our thumbnails/previews.</p>
@@ -149,9 +152,50 @@
 
         <!-- Button -->
         <div class="text-end">
-          <button class="btn btn-primary mb-0">Add Car</button>
+          <button class="btn btn-primary mb-0">save change</button>
         </div>
       </form>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <form class="vstack gap-4">
+
+
+          <!-- Cab Detail START -->
+          <div class="card shadow">
+            <!-- Card header -->
+            <div class="card-header border-bottom">
+              <h5 class="mb-0">Delete Vehicle</h5>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body">
+              <div class="row g-3">
+                <!-- Model -->
+                <div class="col-md-6">
+                  <div class="form-check form-check-md mb-3">
+                    <input class="form-check-input" type="checkbox" value=""
+                           id="cancelCheck" [(ngModel)]="isDeleteCarChecked">
+                    <label class="form-check-label" for="cancelCheck">Yes, I'd
+                      like to delete my
+                      vehicle</label>
+                  </div>
+                  <button class="btn btn-danger btn-sm mb-0" (click)="deleteCar()" [disabled]="isDeleteCarChecked">delete my
+                    vehicle
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Cab Detail END -->
+
+
+        </form>
+      </div>
     </div>
   </div>
 </div>
