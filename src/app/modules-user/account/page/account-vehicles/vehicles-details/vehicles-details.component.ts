@@ -55,5 +55,11 @@ export class VehiclesDetailsComponent {
     }).catch(error => console.log(error));
   }
 
+  private load(){
+    this.unloadScripts();
+    this.load();
+  }
+
+
 
 }
