@@ -73,7 +73,7 @@
               <!-- Avatar -->
               <div class="avatar avatar-xs flex-shrink-0">
                 <img class="avatar-img rounded-circle"
-                     src="{{report.report.imagePath  || '/assets/images/avatar/13.jpg' }} " alt="avatar">
+                     src="{{report.report.imagePath  || '/assets/images/avatar/13.jpg' }}" alt="avatar">
               </div>
               <!-- Info -->
               <div class="ms-2">
@@ -117,13 +117,12 @@
           </div>
 
           <!-- Data item -->
-          <div class="col"><a href="#" class="btn btn-sm btn-light mb-0">View</a></div>
+          <div class="col"><a routerLink="/admin/dashboard/report/user/details/{{report.reportPk}}" class="btn btn-sm btn-light mb-0">View</a></div>
         </div>
         </ng-container>
       </ng-container>
 
       <ng-template #ridesContainer>
-        <ng-container>
           <ng-container *ngFor="let report of ridesReports">
             <div class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
               <!-- Data item -->
@@ -177,11 +176,9 @@
               </div>
 
               <!-- Data item -->
-              <div class="col"><a href="#" class="btn btn-sm btn-light mb-0">View</a></div>
+              <div class="col"><a routerLink="/admin/dashboard/report/ride/details/{{report.reportPk}}" class="btn btn-sm btn-light mb-0">View</a></div>
             </div>
-
           </ng-container>
-        </ng-container>
       </ng-template>
     </div>
     <!-- Card body END -->

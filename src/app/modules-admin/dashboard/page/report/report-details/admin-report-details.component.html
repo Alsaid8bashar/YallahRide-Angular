@@ -1,1 +1,153 @@
-<p>admin-report-details works!</p>
+<!-- Page main content START -->
+<div class="page-content-wrapper p-xxl-4">
+
+  <div class="container mb-4">
+
+
+    <div class="row justify-content-between">
+      <!-- Card item -->
+      <div class="col-md-6 col-lg-4 col-xxl-3">
+        <div class="card border bg-success bg-opacity-10 border border-suc border-opacity-25 p-4 h-100">
+          <!-- Dropdown button -->
+          <div class="dropdown position-absolute top-0 end-0 m-3">
+            <a href="#" class="btn btn-sm btn-light btn-round small mb-0" role="button" id="dropdownShare1"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots fa-fw"></i>
+            </a>
+            <!-- dropdown button -->
+            <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+                aria-labelledby="dropdownShare1">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-trash fa-fw me-2"></i>Remove</a></li>
+            </ul>
+          </div>
+          <!-- Card body -->
+          <div class="card-body text-center pb-0">
+            <h6>Reporter</h6>
+            <!-- Avatar Image -->
+            <div class="avatar avatar-xl flex-shrink-0 mb-3">
+              <img class="avatar-img rounded-circle" src="{{report.report.imagePath ||'/assets/images/avatar/13.jpg' }}"
+                   alt="avatar">
+            </div>
+            <!-- Title -->
+            <h5 class="mb-1">{{report.report.firstName}} {{report.report.lastName}}</h5>
+            <!-- Info and rating -->
+            <div class="d-flex justify-content-center mt-3">
+              <h6 class="mb-0 small">{{reporterRate}}<i class="fa-solid fa-star text-warning ms-1"></i></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card item -->
+      <div class="col-md-6 col-lg-4 col-xxl-3">
+        <div
+          class="card border card border bg-danger bg-opacity-10 border border-danger border-opacity-25 p-4 h-100 h-100">
+          <!-- Dropdown button -->
+          <div class="dropdown position-absolute top-0 end-0 m-3">
+            <a href="#" class="btn btn-sm btn-light btn-round small mb-0" role="button" id="dropdownShare2"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots fa-fw"></i>
+            </a>
+            <!-- dropdown button -->
+            <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+                aria-labelledby="dropdownShare2">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-trash fa-fw me-2"></i>Remove</a></li>
+            </ul>
+          </div>
+          <!-- Card body -->
+          <div class="card-body text-center pb-0">
+            <h6>Subject</h6>
+            <!-- Avatar Image -->
+            <div class="avatar avatar-xl flex-shrink-0 mb-3">
+              <img class="avatar-img rounded-circle" src="{{subject.imagePath ||'/assets/images/avatar/13.jpg' }}"
+                   alt="avatar">
+            </div>
+            <!-- Title -->
+            <h5 class="mb-1">{{subject.firstName}} {{subject.lastName}}</h5>
+            <!-- Info and rating -->
+            <div class="d-flex justify-content-center mt-3">
+              <h6 class="mb-0 small">{{subjectRate}}<i class="fa-solid fa-star text-warning ms-1"></i></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- Personal info START -->
+  <div class="card border">
+    <!-- Card header -->
+    <div class="card-header border-bottom">
+      <h4 class="card-header-title">Report Information</h4>
+    </div>
+
+    <!-- Card body START -->
+    <div class="card-body">
+      <!-- Form START -->
+      <form class="row g-3">
+        <!-- Report -->
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Report Category</label>
+          <input type="email" class="form-control" value="{{report.category.category}}" disabled>
+        </div>
+
+        <!-- Title -->
+        <div class="col-md-6">
+          <label class="form-label fw-bold">title</label>
+          <input type="email" class="form-control" value="{{report.title.title}}" disabled>
+        </div>
+
+        <!-- Date -->
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Date</label>
+          <input type="email" class="form-control" value="{{getFormattedDate(report.date) }}" disabled>
+        </div>
+
+        <!-- Subject Warnings -->
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Subject Warnings</label>
+          <input type="text" class="form-control" value="{{subject.warnings}}" disabled>
+        </div>
+
+
+        <!-- Address -->
+        <div class="col-12">
+          <label class="form-label fw-bold">description</label>
+          <textarea class="form-control" rows="5" spellcheck="false" disabled>{{report.description}}</textarea>
+        </div>
+      </form>
+      <!-- Form END -->
+    </div>
+    <!-- Card body END -->
+  </div>
+  <!-- Personal info END -->
+
+  <!-- Personal info START -->
+  <div class="card border mt-4">
+    <!-- Card header -->
+    <div class="card-header border-bottom">
+      <h4 class="card-header-title">Actions</h4>
+    </div>
+
+    <!-- Card body START -->
+    <div class="card-body">
+
+      <div class="container">
+        <div class="row ">
+          <div class="col-12 text-center">
+            <button type="button" class="btn btn-warning" (click)="warnUser()">Warn User</button>
+            <button type="button" class="btn btn-danger" (click)="terminateUser()">Terminate User</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Card body END -->
+  </div>
+  <!-- Personal info END -->
+
+</div>
+<!-- Page main content END -->

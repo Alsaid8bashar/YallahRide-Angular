@@ -7,7 +7,7 @@ import {AdminReportDetailsComponent} from "./page/report/report-details/admin-re
 import {AdminUsersListComponent} from "./page/users-list/admin-users-list.component";
 import {AdminUserDetailsComponent} from "./page/user-details/admin-user-details.component";
 import {AdminRideListComponent} from "./page/ride-list/admin-ride-list.component";
-import {MemberReportComponent} from "./page/report/member-report/member-report.component";
+import {ReportComponent} from "./page/report/report.component";
 
 
 const routes: Routes = [
@@ -28,12 +28,21 @@ const routes: Routes = [
         component: AdminAccountSettingsComponent,
       },
       {
-        path: 'reports/details',
-        component: AdminReportDetailsComponent,
+        path: 'report/user/details/:id',
+        component: AdminReportDetailsComponent, data: {routeName: 'users'}
       },
-
-      {path: 'reports/users', component: MemberReportComponent, data: {routeName: 'users'}},
-      {path: 'reports/rides', component: MemberReportComponent, data: {routeName: 'rides'}},
+      {
+        path: 'report/ride/details/:id',
+        component: AdminReportDetailsComponent, data: {routeName: 'rides'}
+      },
+      {
+        path: 'reports/users',
+        component: ReportComponent, data: {routeName: 'users'}
+      },
+      {
+        path: 'reports/rides',
+        component: ReportComponent, data: {routeName: 'rides'}
+      },
       {
         path: 'users/list',
         component: AdminUsersListComponent,

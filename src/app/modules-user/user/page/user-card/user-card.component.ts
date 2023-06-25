@@ -35,13 +35,6 @@ export class UserCardComponent implements OnInit {
     )
   }
 
-  fetchUserImageUrl(): void {
-    this.fileStorage.getObjectUrl(this.user.imagePath).subscribe(response => {
-      this.user.multipartFile = response.url;
-    }, error => {
-      console.error(error)
-    });
-  }
 
   getFullStars(): number[] {
     const fullStars = Math.floor(this.userRate);

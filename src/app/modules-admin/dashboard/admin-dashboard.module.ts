@@ -13,7 +13,6 @@ import { UserCardComponent } from './page/users-list/user-card/user-card.compone
 import {UserModule} from "../../modules-user/user/user.module";
 import {AccountModule} from "../../modules-user/account/account.module";
 import { ReportComponent } from './page/report/report.component';
-import { MemberReportComponent } from './page/report/member-report/member-report.component';
 import { ReportTableComponent } from './page/report/report-table/report-table.component';
 
 
@@ -27,7 +26,6 @@ import { ReportTableComponent } from './page/report/report-table/report-table.co
         AdminRideListComponent,
         UserCardComponent,
         ReportComponent,
-        MemberReportComponent,
         ReportTableComponent
     ],
     exports: [
