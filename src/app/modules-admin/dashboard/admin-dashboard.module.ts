@@ -33,7 +33,8 @@ import {UserModule} from "../../modules-user/user/user.module";
     CommonModule,
     AdminDashboardRoutingModule,
     RideModule,
-    AccountModule
+    AccountModule,
+    UserModule
   ]
 })
 export class AdminDashboardModule {

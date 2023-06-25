@@ -15,6 +15,7 @@ import {CarImage} from "../../../../../data/schema/carImage";
 import {Car} from "../../../../../data/schema/car";
 import {User} from "../../../../../data/schema/user";
 import {CarService} from "../../../../../data/service/car.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-vehicle',
@@ -47,9 +48,8 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
     private sessionService: SessionStorageService,
     private spinner: NgxSpinnerService,
     private carJSON: CarJSONService,
-    private carService: CarService
-  ) {
-
+    private carService: CarService,
+    private router: Router) {
   }
 
 
@@ -124,30 +124,14 @@ export class AddVehicleComponent implements OnInit, OnDestroy {
   }
 
   onAddCarSubmit() {
-    // if (this.carFormChecker()) {
-    //   const formValues = this.carForm.value;
-    //   const car: Car = formValues;
-    //   car.licensePlate = (formValues.code + '-' + formValues.number);
-    //   car.user = this.userObject;
-    //   this.sub = this.carService.saveCar(car, this.files).subscribe(() => {
-    //     this.spinner.hide();
-    //   }, error => {
-    //     console.log(error)
-    //     this.spinner.hide();
-    //   });
-    // }
-
-
-    //TEMP
     const formValues = this.carForm.value;
     const car: Car = formValues;
     car.licensePlate = (formValues.code + '-' + formValues.number);
-    debugger;
     car.user = this.userObject;
     this.spinner.show();
-
     this.sub = this.carService.saveCar(car, this.files).subscribe(() => {
       this.spinner.hide();
+      this.router.navigate(['account', 'vehicles',]);
     }, error => {
       console.log(error)
       this.spinner.hide();
