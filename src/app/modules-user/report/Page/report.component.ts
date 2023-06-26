@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
 import {DynamicScriptLoaderService} from "../../../shared/service/dynamic-script-loader-service.service";
 import {User} from "../../../data/schema/user";
@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
 import {Report} from "../../../data/schema/report";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import ReportUser from "../../../data/schema/reportUser";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../data/service/user.service";
 import {ReportUserService} from "../../../data/service/report-user.service";
 import {Ride} from "../../../data/schema/ride";
@@ -48,6 +48,7 @@ export class ReportComponent implements OnInit, OnDestroy {
               private userService: UserService,
               private rideService: RideService,
               private route: ActivatedRoute,
+              private router: Router
   ) {
 
   }
@@ -209,6 +210,7 @@ export class ReportComponent implements OnInit, OnDestroy {
       this.spinner.show();
       this.sub = this.userReportService.saveReportUser(this.report).subscribe((data) => {
         this.spinner.hide();
+        this.router.navigate([`dashboard/home`]);
       }, error => {
         console.log(error);
         this.spinner.hide();
@@ -217,6 +219,7 @@ export class ReportComponent implements OnInit, OnDestroy {
       this.spinner.show();
       this.sub = this.rideReportService.saveReportRide(this.report).subscribe((data) => {
         this.spinner.hide();
+        this.router.navigate([`dashboard/home`]);
       }, error => {
         console.log(error);
         this.spinner.hide();
@@ -236,6 +239,8 @@ export class ReportComponent implements OnInit, OnDestroy {
       });
       this.report.description = formValues.description;
       this.postReport();
+
+
     }
   }
 

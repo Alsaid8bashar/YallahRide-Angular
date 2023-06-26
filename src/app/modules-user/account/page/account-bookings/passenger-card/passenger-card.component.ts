@@ -33,7 +33,8 @@ export class PassengerCardComponent {
     });
   }
   reportRide() {
-    this.router.navigate(['/report']);
+    console.log("sfs")
+    this.router.navigate([`report/ride/${this.passenger._ride.id}`]);
   }
   protected readonly RideStatus = RideStatus;
 }
