@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../data/service/user.service";
 import {User} from "../../../data/schema/user";
 import {SessionStorageService} from "../../../shared/service/session.service";
+import {TokenService} from "../../../shared/service/token.service";
 import {Router} from "@angular/router";
 
 
@@ -13,11 +14,15 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   user: User;
+  authorities: any = [];
+  hasAdminAuth: boolean = false;
 
-  constructor(private userService: UserService, private sessionService: SessionStorageService, private router: Router) {
+  constructor(private userService: UserService, private tokenService: TokenService, private router: Router, private sessionService: SessionStorageService) {
   }
 
   ngOnInit(): void {
+    this.authorities = this.tokenService.extractObjectFromToken('authorities')
+    this.hasAdminAuth = this.authorities.some(obj => obj.id === 1)
     this.userService.user$.subscribe(user => {
       this.user = user;
     });
@@ -28,5 +33,9 @@ export class HeaderComponent implements OnInit {
     this.sessionService.clear();
     localStorage.clear();
     this.router.navigate(['/auth/login'])
+  }
+
+  routeToAdmin() {
+    this.router.navigate([`admin/dashboard/home`]);
   }
 }

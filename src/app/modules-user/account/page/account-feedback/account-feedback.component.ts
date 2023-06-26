@@ -98,9 +98,13 @@ export class AccountFeedbackComponent implements OnInit, OnDestroy {
     const feedback = formValues.feedback;
     const selectedRating = parseInt(formValues.stars, 10);
     let feedbackObj: Feedback = new Feedback(feedback, selectedRating, this.userObj);
+    this.spinner.show();
     this.sub = this.feedbackService.saveFeedback(feedbackObj).subscribe(() => {
+      this.spinner.hide();
+      location.reload();
     }, error => {
       console.log(error)
+      this.spinner.hide();
     });
   }
 }

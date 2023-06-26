@@ -96,6 +96,7 @@ export class AdminReportDetailsComponent implements OnInit {
       report => {
         this.report = report;
         this.subject = report.ride.driver;
+        console.log(report.ride.driver);
         this.callUserRateTwice(report.report.id, report.ride.driver.id);
 
         this.spinner.hide();
