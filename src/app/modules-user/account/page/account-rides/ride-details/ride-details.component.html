@@ -36,25 +36,25 @@
                   </div>
                   <!-- Ride request END -->
                   <!-- Card START -->
-                  <div class="card border" *ngIf="isDriver">
-                    <!-- Card header -->
-                    <div class="card-header border-bottom">
-                      <h4 class="card-header-title">Delete Ride</h4>
-                    </div>
+<!--                  <div class="card border" *ngIf="isDriver">-->
+<!--                    &lt;!&ndash; Card header &ndash;&gt;-->
+<!--                    <div class="card-header border-bottom">-->
+<!--                      <h4 class="card-header-title">Delete Ride</h4>-->
+<!--                    </div>-->
                     <!-- Card body START -->
-                    <div class="card-body">
-                      <div class="form-check form-check-md mb-3">
-                        <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck"
-                               [(ngModel)]="isDeleteChecked">
-                        <label class="form-check-label">Yes, I'd like to delete my
-                          ride</label>
-                      </div>
-                      <button class="btn btn-danger btn-sm mb-0" (click)="deleteRide()" [disabled]="!isDeleteChecked">
-                        Delete my ride
-                      </button>
-                    </div>
+<!--                    <div class="card-body">-->
+<!--                      <div class="form-check form-check-md mb-3">-->
+<!--                        <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck"-->
+<!--                               [(ngModel)]="isDeleteChecked">-->
+<!--                        <label class="form-check-label">Yes, I'd like to delete my-->
+<!--                          ride</label>-->
+<!--                      </div>-->
+<!--                      <button class="btn btn-danger btn-sm mb-0" (click)="deleteRide()" [disabled]="!isDeleteChecked">-->
+<!--                        Delete my ride-->
+<!--                      </button>-->
+<!--                    </div>-->
                     <!-- Card body END -->
-                  </div>
+<!--                  </div>-->
 
                   <div class="card border" *ngIf="isDriver">
                     <!-- Card header -->
@@ -66,7 +66,7 @@
                       <div class="form-check form-check-md mb-3">
                         <input class="form-check-input" type="checkbox" value="" id="isCompletedCheck"
                                [(ngModel)]="isCompletedCheck">
-                        <label class="form-check-label">Yes, I'd like to complete my ride</label>
+                        <label class="form-check-label">Yes, I'd like to complete the ride</label>
                       </div>
                       <button class="btn btn-success-soft btn-sm mb-0" (click)="completeRide()"
                               [disabled]="!isCompletedCheck">
@@ -86,9 +86,9 @@
                       <div class="form-check form-check-md mb-3">
                         <input class="form-check-input" type="checkbox" value="" id="isCanselCheckedDriver"
                                [(ngModel)]="isCanselCheckedDriver">
-                        <label class="form-check-label">Yes, I'd like to complete my ride</label>
+                        <label class="form-check-label">Yes, I'd like to cancel the ride</label>
                       </div>
-                      <button class="btn btn-success-soft btn-sm mb-0" (click)="(canselDriverRide())"
+                      <button  class="btn btn-danger btn-sm mb-0" (click)="(canselDriverRide())"
                               [disabled]="!isCanselCheckedDriver">
                         Mark as completed
                       </button>

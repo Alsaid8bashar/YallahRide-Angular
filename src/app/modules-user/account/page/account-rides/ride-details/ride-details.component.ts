@@ -3,13 +3,12 @@ import {Ride} from "../../../../../data/schema/ride";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RideService} from "../../../../../data/service/ride.service";
-import {NgxSpinnerService} from "ngx-spinner";
 import {PassengerService} from "../../../../../data/service/passenger.service";
 import {UserService} from "../../../../../data/service/user.service";
 import {Passenger} from "../../../../../data/schema/passenger";
 import {RideStatus} from "../../../../../data/schema/Enum/RideStatus";
 import {DynamicScriptLoaderService} from "../../../../../shared/service/dynamic-script-loader-service.service";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-ride-details',
@@ -33,11 +32,9 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.unloadScripts()
     this.loadScripts();
-    this.spinner.show();
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.getRide(id);
-      this.getRidePassenger(id);
     });
   }
 
@@ -59,11 +56,11 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
       ride => {
         this.ride = ride;
         this.checkDriver();
-        this.checkSpinner();
+        this.getRidePassenger(id);
       },
       error => {
         console.log(error);
-        this.checkSpinner();
+        this.spinner.hide()
       }
     );
   }
@@ -72,11 +69,12 @@ export class RideDetailsComponent implements OnInit, OnDestroy {
     this.passengerSubscription = this.passengerService.getRidePassenger(id).subscribe(
       passengers => {
         this.passengers = passengers;
-        this.checkSpinner();
+        this.spinner.hide()
       },
       error => {
         console.log(error);
-        this.checkSpinner();
+        this.spinner.hide()
+
       }
     );
   }

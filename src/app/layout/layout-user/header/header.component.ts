@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../data/service/user.service";
 import {User} from "../../../data/schema/user";
+import {SessionStorageService} from "../../../shared/service/session.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   user: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private sessionService: SessionStorageService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -22,4 +24,9 @@ export class HeaderComponent implements OnInit {
   }
 
 
+  signOut() {
+    this.sessionService.clear();
+    localStorage.clear();
+    this.router.navigate(['/auth/login'])
+  }
 }
